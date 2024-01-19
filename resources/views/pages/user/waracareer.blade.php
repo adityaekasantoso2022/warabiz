@@ -1,4 +1,4 @@
-<x-user-layout title="Warabiz-Transaksi" active="transaksi">
+<x-user-layout title="Warabiz-WaraCreer" active="waracareer">
     @push('addonStyle')
         <style>
             body {

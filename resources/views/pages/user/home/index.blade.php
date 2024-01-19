@@ -1,4 +1,4 @@
-<x-user-layout title="Home" active="home">
+<x-user-layout title="Warabiz-Home" active="home">
     @push('addonStyle')
         <style>
             body {

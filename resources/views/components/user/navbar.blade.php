@@ -23,10 +23,10 @@
                         href="{{ route('home.index') }}">Home</a>
                     <a class="nav-link me-4 {{ $active == 'waraedu' ? 'active' : '' }}"
                         href="{{ route('waraedu') }}">WaraEdu</a>
-                     <a class="nav-link me-4 {{ $active == 'WaraCarier' ? 'active' : '' }}"
-                        href="#">WaraCareer</a>
-                    <a class="nav-link me-4 {{ $active == 'WaraCarier' ? 'active' : '' }}"
-                        href="#">WaraPartner</a>
+                     <a class="nav-link me-4 {{ $active == 'waracareer' ? 'active' : '' }}"
+                        href="{{ route('waracareer') }}">WaraCareer</a>
+                    <a class="nav-link me-4 {{ $active == 'warapartner' ? 'active' : '' }}"
+                        href="{{ route('warapartner') }}">WaraPartner</a>
 
                     <a class="nav-link me-4 {{ $active == 'bantuan' ? 'active' : '' }}"
                         href="{{ route('bantuan') }}">Bantuan</a>

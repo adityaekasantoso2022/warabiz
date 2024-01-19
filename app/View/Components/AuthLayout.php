@@ -14,7 +14,7 @@ class AuthLayout extends Component
     public $title;
     public function __construct($title = null)
     {
-        $this->title = $title ?? 'Dinacom';
+        $this->title = $title ?? 'Warabiz';
     }
 
     /**
