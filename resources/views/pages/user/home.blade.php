@@ -32,7 +32,6 @@
                 font-weight: 400;
                 font-size: 16px;
                 color: rgba(19, 19, 19, 0.8);
-
             }
 
 
@@ -45,8 +44,8 @@
                 font-size: 16px;
                 line-height: 150%;
                 padding: 12px 32px;
-                /* identical to box height, or 24px */
             }
+
 
             .img-header {
                 position: absolute;
@@ -106,10 +105,7 @@
                 font-weight: 500;
                 font-size: 24px;
                 line-height: 150%;
-                /* identical to box height, or 42px */
-
                 text-align: center;
-
                 color: #FFFFFF;
             }
 
@@ -118,10 +114,7 @@
                 font-weight: 500;
                 font-size: 16px;
                 line-height: 150%;
-                /* or 30px */
-
                 text-align: center;
-
                 color: rgba(255, 255, 255, 0.6);
             }
 
@@ -488,24 +481,14 @@
         100% {
             transform: translateX(100%);
         }
-    }
-
-    .logo-container {
+        .logo-container {
         display: flex;
         overflow: hidden;
         white-space: nowrap;
+        animation: moveRight 5s linear infinite;
     }
-
-    .logo-container div {
-        margin-right: 20px; /* Sesuaikan jarak antar logo */
-    }
-
-    .logo-container img {
-        width: 100px; /* Sesuaikan lebar logo */
-        height: auto;
-        animation: moveRight 5s linear infinite; /* Sesuaikan durasi animasi */
-    }
-        </style>
+}
+</style>
     @endpush
     <div class="position-relative">
         <img src="{{ asset('assets/frontend/image/hero-image.png') }}" alt="bg-header"
@@ -531,8 +514,6 @@
             </div>
         </div>
     </section>
-
-
     <section class="benefit">
         <div class="container">
             <div class="text-center text-white">
@@ -546,7 +527,7 @@
                                 class="img-fluid mb-3" width="100">
                             <h5 class="card-title
                             fw-bold">WaraEdu</h5>
-                            <p class="card-text">Dapat belajar untuk meningkatkan keterampilanmu disini.</p>
+                            <p class="card-text">Menyediakan materi yang berkaitan dengan kewirausahaan.</p>
 
                         </div>
                     </div>
@@ -558,8 +539,7 @@
                                 class="img-fluid mb-3" width="100">
                             <h5 class="card-title
                             fw-bold">WaraCareer</h5>
-                            <p class="card-text">Dapat menjual hasil produk disini secara online dengan mudah.</p>
-
+                            <p class="card-text">Informasi lowongan pekerjaan yang dibutuhkan Mitra Waralaba kami.</p>
                         </div>
                     </div>
                 </div>
@@ -571,9 +551,8 @@
                             <h5 class="card-title
                             fw-bold">WaraPartner</h5>
                             <p class="card-text">
-                                Dapat membayar setelah menyelesaikan home dan menjual produk.
+                            Bekerjasama untuk meningkatkan penjualan Waralaba anda.
                             </p>
-
                         </div>
                     </div>
                 </div>
@@ -581,30 +560,22 @@
         </div>
     </section>
 
-    <section
-        class="pt-50 pb-50 d-flex justify-content-start align-items-center position-relative d-md-none d-sm-none d-lg-flex d-none"
-        id="testimonial-section-v3">
+    <section class="pt-50 pb-50 d-flex justify-content-start align-items-center position-relative d-md-none d-sm-none d-lg-flex d-none" id="testimonial-section-v3">
         <div class="container">
             <div class="row d-flex justify-content-start align-items-center gx-0">
                 <div class="col-lg-5 col-12">
-                    <h4 class="text-primary-green hero-label mb-0">Dipercaya Lebih Dari 900 User</h4>
+                    <h4 class="text-primary-green hero-label mb-0">Dipercaya 200+ Waralaba</h4>
                     <h1 class="header-title mb-0 text-black">
-                        Gabung Bersama <br class="desktop">Kami 😊
+                        Bergabung bersama kami 🤩
                     </h1>
                     <p class="subtitle text-black">
-                        Komunitas yang dibentuk untuk saling <br class="desktop">membantu dalam mencapai karir impian
-                        kita.
+                        Bergabunglah dan rasakan pengalaman berbisnis waralaba luar biasa dengan lebih dari 200 waralaba terpercaya. Dukungan dan solusi terbaik kami membantu Anda mencapai kesuksesan.
                     </p>
-                    <div class="logo-container">
-    <div>
-        <img src="https://example.com/path/to/your/logo1.png" alt="Logo 1">
-    </div>
-    <div>
-        <img src="https://example.com/path/to/your/logo2.png" alt="Logo 2">
-    </div>
-</div>
-
-
+                </div>
+                <div class="col-lg-5 col-12">
+                    <!-- Gambar di sebelah kanan -->
+                    <img src="{{ asset('assets/frontend/image/hero-image.png') }}" alt="Deskripsi Gambar" class="img-fluid">
+                    <!-- Akhir gambar di sebelah kanan -->
                 </div>
             </div>
         </div>

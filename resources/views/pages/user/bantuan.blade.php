@@ -1,4 +1,4 @@
-<x-user-layout title="Bantuan" active="bantuan">
+<x-user-layout title="Warabiz-Bantuan" active="bantuan">
     @push('addonStyle')
         <style>
             body {
@@ -126,20 +126,24 @@
             <div class="row">
                 <div class="col-lg-6 col-12">
                     <h1 class="header-title mt-5">
-                        Kami siap membantu<br class="desktop"> kendala Anda!
+                        Kami siap membantu<br class="desktop"> kendala Anda! 🤩
                     </h1>
+                    <h5>
+                        Pertanyaan Populer
+                    </h5>
+
                     <!-- FAQ Dropdown -->
 <div class="accordion mt-4" id="faqAccordion">
     <!-- Pertanyaan dan Jawaban 1 -->
     <div class="accordion-item">
         <h2 class="accordion-header" id="question1">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#answer1" aria-expanded="true" aria-controls="answer1">
-                Apa itu Warabiz?
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer1" aria-expanded="false" aria-controls="answer1">
+            Apa itu WaraBiz?
             </button>
         </h2>
-        <div id="answer1" class="accordion-collapse collapse show" aria-labelledby="question1" data-bs-parent="#faqAccordion">
+        <div id="answer1" class="accordion-collapse collapse" aria-labelledby="question1" data-bs-parent="#faqAccordion">
             <div class="accordion-body">
-                Warabiz adalah platform waralaba online yang menyediakan kesempatan untuk membuka bisnis waralaba dengan mudah dan efisien.
+            WaraBiz adalah peluang waralaba yang dinamis yang memungkinkan pengusaha untuk berinvestasi dan mengoperasikan bisnis mereka sendiri dalam kerangka kerja yang sudah mapan. Kami menyediakan model bisnis komprehensif dan dukungan untuk membantu Anda berhasil di dunia wirausaha yang kompetitif.
             </div>
         </div>
     </div>
@@ -153,7 +157,7 @@
         </h2>
         <div id="answer2" class="accordion-collapse collapse" aria-labelledby="question2" data-bs-parent="#faqAccordion">
             <div class="accordion-body">
-                Anda dapat mendaftar sebagai mitra Warabiz dengan mengunjungi halaman pendaftaran di situs web kami dan mengikuti langkah-langkah yang diberikan.
+                Anda dapat mendaftar sebagai mitra Warabiz atdengan mengunjungi halaman WaraPartner di situs web kami dan mengikuti langkah-langkah yang diberikan.
             </div>
         </div>
     </div>
@@ -181,7 +185,7 @@
         </h2>
         <div id="answer4" class="accordion-collapse collapse" aria-labelledby="question4" data-bs-parent="#faqAccordion">
             <div class="accordion-body">
-                Warabiz menyediakan berbagai jenis waralaba dari berbagai industri. Anda dapat menjelajahi opsi yang tersedia di situs web kami.
+            WaraBiz merupakan penyedia peluang waralaba yang menyajikan beragam jenis bisnis dari berbagai industri. Dengan fokus pada kuliner, jasa, fashion, ritel, teknologi, dan kesehatan, WaraBiz menghadirkan kesempatan bagi para pengusaha untuk menjelajahi dan mengembangkan bisnis sesuai dengan minat dan keahlian masing-masing.
             </div>
         </div>
     </div>

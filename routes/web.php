@@ -18,19 +18,18 @@ use Illuminate\Support\Facades\Mail;
 
 Route::namespace('App\Http\Controllers\User')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
-    Route::get('/waraedu', function () {
-        return view('pages.user.waraedu');
-    })->name('waraedu');
-    Route::get('/waracareer', function () {
-        return view('pages.user.waracareer');
-    })->name('waracareer');
-    Route::get('/warapartner', function () {
-        return view('pages.user.warapartner');
-    })->name('warapartner');
-    Route::get('/transaksi', function () {
-        return view('pages.user.transaksi');
-    })->name('transaksi');
-
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/waraedu', 'WaraeduController@index')->name('waraedu');
+    });
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/waracareer', 'WaracareerController@index')->name('waracareer');
+    });
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/warapartner', 'WarapartnerController@index')->name('warapartner');
+    });
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/transaksi', 'TransaksiController@index')->name('transaksi');
+    });
     Route::get('/bantuan', function () {
         return view('pages.user.bantuan');
     })->name('bantuan');
