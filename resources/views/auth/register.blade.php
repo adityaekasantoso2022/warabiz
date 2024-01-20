@@ -8,7 +8,7 @@
                     </div>
                     <h1 class="auth-title">Registrasi</h1>
                     <p class="auth-subtitle mb-5">
-                    Buat akun dengan mengisi data pribadi Anda.
+                    Buat akun dengan mengisi data pribadi Anda
                     </p>
 
                     <form action="{{ route('register') }}" method="POST">

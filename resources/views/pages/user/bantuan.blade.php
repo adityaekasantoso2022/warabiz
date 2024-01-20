@@ -197,7 +197,7 @@
                         <img src="https://buildwithangga.com/themes/front/images/ic_konsultasi.svg" class="icon"
                             alt="icon-chat">
                         <h2 class="title mt-5 lh-base">
-                            Kontak Melalui WhatsApp
+                            Hubungi Kami
                         </h2>
                         <textarea id="whatsappMessage" class="form-control mb-2" rows="6"
                             placeholder="Tulis pesan Anda..."></textarea>

@@ -8,7 +8,7 @@
                     </div>
                     <h1 class="auth-title">Selamat Datang</h1>
                     <p class="auth-subtitle mb-5">
-                        Selamat Datang, Silahkan Login terlebih dahulu.
+                       Silahkan masuk menggunakan akun Anda
                     </p>
 
                     <form action="{{ route('login') }}" method="POST">

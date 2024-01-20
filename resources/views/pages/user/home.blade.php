@@ -517,7 +517,7 @@
     <section class="benefit">
         <div class="container">
             <div class="text-center text-white">
-                <h1>Keuntungan yang didapat ketika <br> bergabung bersama kami</h1>
+                <h1>Fitur<br> bergabung bersama kami</h1>
             </div>
             <div class="row ">
                 <div class="col-md-4">
