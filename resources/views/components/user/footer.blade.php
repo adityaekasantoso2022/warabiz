@@ -54,10 +54,10 @@
                     <h2 class="footer-text-title text-white">Support</h2>
                     <ul class="list-unstyled">
                         <li class="list-space">
-                            <a href="register.html" class="list-menu">Getting Started</a>
+                            <a href="#" class="list-menu">Getting Started</a>
                         </li>
                         <li class="list-space">
-                            <a href="contact.html" class="list-menu">Contact</a>
+                            <a href="#" class="list-menu">Contact</a>
                         </li>
                     </ul>
                 </div>
