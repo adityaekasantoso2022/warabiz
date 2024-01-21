@@ -122,6 +122,16 @@
                 font-weight: 500;
                 color: #3ECAB0;
             }
+            .logo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px; /* Sesuaikan dengan margin yang diinginkan */
+}
+
+.logo-container img {
+    margin-right: 10px; /* Sesuaikan dengan margin antar logo yang diinginkan */
+}
 
             .card-benefit .card-more>span {
                 margin-left: 5px
@@ -481,16 +491,6 @@
         100% {
             transform: translateX(100%);
         }
-        .logo-container {
-        display: flex;
-        overflow: hidden;
-        white-space: nowrap;
-        animation: moveRight 5s linear infinite;
-        }
-        .logo-container img {
-        margin-right: 20px; /* Adjust this value based on your spacing preference */
-        animation: blink 1s infinite alternate; /* Add blink animation */
-    }
 
     @keyframes blink {
         to {
@@ -592,44 +592,31 @@
                 </p>
                 <div class="col-lg-7 mt-3">
                     <div class="logo-container">
-                        <img src="https://upload.wikimedia.org/wikipedia/id/thumb/5/5c/LogoMieGacoan.png/800px-LogoMieGacoan.png" alt="Logo 1" width="100">
-                        <img src="https://images.glints.com/unsafe/glints-dashboard.s3.amazonaws.com/company-logo/14cdf734191398a29cd6ba910f7b8000.png" alt="Logo 2" width="100">
+                        <img src="{{ asset('assets/frontend/image/logo/gacoan.png') }}" alt="Gacoan" width="100">
+                        <img src="assets/frontend/image/logo/tehdesa.png" alt="Teh Desa" width="100">
+                        <img src="assets/frontend/image/logo/bangor.png" alt="Burger Bangor" width="100">
+                        <img src="assets/frontend/image/logo/mixue.png" alt="Mixue" width="100">
+                        <img src="assets/frontend/image/logo/roketchiken.png" alt="Roket Chiken" width="100">
+                        <img src="assets/frontend/image/logo/geprekjuara.png" alt="Geprek Juara " width="100">
+
                     </div>
-                </div>
-                <div class="col-lg-7 mt-3">
                     <div class="logo-container">
-                        <img src="https://upload.wikimedia.org/wikipedia/id/thumb/5/5c/LogoMieGacoan.png/800px-LogoMieGacoan.png" alt="Logo 1" width="100">
-                        <img src="https://images.glints.com/unsafe/glints-dashboard.s3.amazonaws.com/company-logo/14cdf734191398a29cd6ba910f7b8000.png" alt="Logo 2" width="100">
+                        <img src="{{ asset('assets/frontend/image/logo/rotio.png') }}" alt="Roti O" width="100">
+                        <img src="assets/frontend/image/logo/mcd.png" alt="MCD" width="100">
+                        <img src="assets/frontend/image/logo/kfc.png" alt="KFC" width="100">
+                        <img src="assets/frontend/image/logo/gepreksai.png" alt="Geprek Sai" width="100">
+                        <img src="assets/frontend/image/logo/richeese.png" alt="Richeese" width="100">
+                        <img src="assets/frontend/image/logo/pakgembus.png" alt="Ayam Gepuk Pak Gembus" width="100">
+
                     </div>
                 </div>
-
-
             </div>
             <div class="col-lg-5 col-12 ms-auto">
-                <!-- Gambar di sebelah kanan -->
                 <img src="{{ asset('assets/frontend/image/hero2-image.png') }}" alt="Deskripsi Gambar" class="img-fluid">
-                <!-- Akhir gambar di sebelah kanan -->
             </div>
         </div>
     </div>
 </section>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const logos = document.querySelectorAll('.logo-container img');
-        let currentLogoIndex = 0;
-
-        function toggleLogo() {
-            logos.forEach((logo, index) => {
-                logo.style.display = index === currentLogoIndex ? 'block' : 'none';
-            });
-
-            currentLogoIndex = (currentLogoIndex + 1) % logos.length;
-        }
-
-        setInterval(toggleLogo, 3000); // Ganti logo setiap 3 detik (3000 milidetik)
-    });
-</script>
 
 
     @push('addonScript')
