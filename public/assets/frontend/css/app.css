@@ -24,7 +24,7 @@
     --gray-dark: #343a40;
     --primary: #3490dc;
     --secondary: #6c757d;
-    --success: #38c172;
+    --success: #0E96AA;
     --info: #6cb2eb;
     --warning: #ffed4a;
     --danger: #e3342f;
@@ -203,7 +203,6 @@ pre {
     margin-top: 0;
     margin-bottom: 1rem;
     overflow: auto;
-    -ms-overflow-style: scrollbar;
 }
 
 figure {
@@ -7032,14 +7031,14 @@ button.bg-secondary:focus {
 }
 
 .bg-success {
-    background-color: #38c172 !important;
+    background-color: #0E96AA !important;
 }
 
 a.bg-success:hover,
 a.bg-success:focus,
 button.bg-success:hover,
 button.bg-success:focus {
-    background-color: #2d995b !important;
+    background-color: #0E96AA !important;
 }
 
 .bg-info {

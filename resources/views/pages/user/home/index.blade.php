@@ -194,7 +194,7 @@
     <section class="hero text-center d-flex align-items-center justify-content-center ">
         <div class="content">
             <h1 class="text-white fw-bolder m-0 px-2 display-4">
-            Buka waralaba <br> Semudah Checkout Belanja Online
+            Buka waralaba <br><b> Semudah Checkout Belanja Online</b>
             </h1>
             <form action="" method="GET" class="search-class container mt-5">
 

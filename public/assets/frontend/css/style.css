@@ -7,15 +7,15 @@
     --blueColor: #0084ff;
     --limeColor: #ff6600;
     --blueHover: #1c91ffda;
-    --primeColor: #03173C;
-    --primeHover: #092D6F;
+    --primeColor: #ff69b4;
+    --primeHover: #010101;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter";
+    font-family: "inter";
 }
 
 .baseColor {
@@ -28,12 +28,12 @@
 }
 
 .bgTheme {
-    background-color: #03173C;
+    background-color: #00A8B4;
 
 }
 
 .bgTheme:hover {
-    background-color: #092D6F;
+    background-color: #039DA8;
 }
 
 .bgColor {

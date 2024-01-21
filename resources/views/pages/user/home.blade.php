@@ -2,7 +2,7 @@
     @push('addonStyle')
         <style>
             body {
-                background: #dae3ec !important;
+                background: #ECF8F9 !important;
             }
 
             .navbar .navbar-nav a:hover.btn-signup {
@@ -37,7 +37,7 @@
 
 
             .hero .btn-cta {
-                background: #4F94D7;
+                background: #FF823C;
                 border-radius: 12px;
                 color: white;
                 font-weight: 500;
@@ -115,7 +115,7 @@
                 font-size: 16px;
                 line-height: 150%;
                 text-align: center;
-                color: rgba(255, 255, 255, 0.6);
+                color: #ffffff;
             }
 
             .card-benefit .card-more {
@@ -494,36 +494,45 @@
         <img src="{{ asset('assets/frontend/image/hero-image.png') }}" alt="bg-header"
             class="img-fluid img-header d-none d-md-none d-lg-block" width="800">
     </div>
-    <section class="hero ">
-        <div class="d-flex container h-100 w-100 min-vh-75 align-items-center ">
-            <div class="row py-4 ">
-                <div class="col-lg-5 col-md-12 pb-5 justify-content-center">
-                    <h1 class="fw-bold hero-text mb-4">
-                        Cara mudah untuk memiliki waralaba keinginanmu
-                    </h1>
-                    <p>Solusi untuk memiliki waralaba yang sesuai dengan diri anda, dengan waralaba yang terpercaya di Indoensia.</p>
-                    @guest
-                        <a href="{{ route('register') }}" class="btn btn-cta btn-block mt-4">
-                            Daftar Sekarang
-                        </a>
-                    @endguest
+    <section class="hero">
+    <div class="d-flex container h-100 w-100 min-vh-75 align-items-center">
+        <div class="row py-4">
+            <div class="col-lg-5 col-md-12 pb-5 d-flex flex-column justify-content-center align-items-start">
+                <h1 class="fw-bold hero-text mb-4">
+                    Cara mudah untuk memiliki <b>waralaba keinginanmu</b>
+                </h1>
+                <p>Solusi untuk memiliki waralaba yang sesuai dengan diri anda, dengan waralaba yang terpercaya di Indonesia.</p>
+                @guest
+                <div class="d-flex flex-column">
+                    <div class="d-flex justify-content-center">
+                         <a href="{{ route('register') }}" class="btn btn-cta btn-block mt-4 me-2">
+                             Daftar Sekarang
+                         </a>
+                         <a href="#" class="btn btn-outline-info btn-block mt-4 me-2">
+                         <i class="fas fa-play"></i> Lihat Video Profile                             
+                         </a>
+                     </div>
                 </div>
-                <div class="col-lg-7 mt-3">
 
-                </div>
+                @endguest
+            </div>
+            <div class="col-lg-7 mt-3">
+                <!-- Placeholder for content in the second column (if any) -->
             </div>
         </div>
-    </section>
-    <section class="benefit">
+    </div>
+</section>
+
+    <section class="benefit" style="background-image: url('{{ asset('assets/frontend/image/backrground-fitur.png') }}');">
         <div class="container">
             <div class="text-center text-white">
-                <h1>Fitur<br> bergabung bersama kami</h1>
+                <h1>Fitur Unggulan Kami ✨</h1>
             </div>
             <div class="row ">
                 <div class="col-md-4">
                     <div class="card card-benefit border-0 bg-transparent">
                         <div class="card-body text-center">
-                            <img src="{{ asset('assets/frontend/image/education.svg') }}" alt="icon"
+                            <img src="{{ asset('assets/frontend/image/waraedu.png') }}" alt="icon"
                                 class="img-fluid mb-3" width="100">
                             <h5 class="card-title
                             fw-bold">WaraEdu</h5>
@@ -535,7 +544,7 @@
                 <div class="col-md-4">
                     <div class="card card-benefit border-0 bg-transparent">
                         <div class="card-body text-center">
-                            <img src="{{ asset('assets/frontend/image/marketplace.svg') }}" alt="icon"
+                            <img src="{{ asset('assets/frontend/image/waracareer.png') }}" alt="icon"
                                 class="img-fluid mb-3" width="100">
                             <h5 class="card-title
                             fw-bold">WaraCareer</h5>
@@ -546,7 +555,7 @@
                 <div class="col-md-4">
                     <div class="card card-benefit border-0 bg-transparent">
                         <div class="card-body text-center">
-                            <img src="{{ asset('assets/frontend/image/easy-pay.svg') }}" alt="icon"
+                            <img src="{{ asset('assets/frontend/image/warapartner.png') }}" alt="icon"
                                 class="img-fluid mb-3" width="100">
                             <h5 class="card-title
                             fw-bold">WaraPartner</h5>
@@ -561,25 +570,25 @@
     </section>
 
     <section class="pt-50 pb-50 d-flex justify-content-start align-items-center position-relative d-md-none d-sm-none d-lg-flex d-none" id="testimonial-section-v3">
-        <div class="container">
-            <div class="row d-flex justify-content-start align-items-center gx-0">
-                <div class="col-lg-5 col-12">
-                    <h4 class="text-primary-green hero-label mb-0">Dipercaya 200+ Waralaba</h4>
-                    <h1 class="header-title mb-0 text-black">
-                        Bergabung bersama kami 🤩
-                    </h1>
-                    <p class="subtitle text-black">
-                        Bergabunglah dan rasakan pengalaman berbisnis waralaba luar biasa dengan lebih dari 200 waralaba terpercaya. Dukungan dan solusi terbaik kami membantu Anda mencapai kesuksesan.
-                    </p>
-                </div>
-                <div class="col-lg-5 col-12">
-                    <!-- Gambar di sebelah kanan -->
-                    <img src="{{ asset('assets/frontend/image/hero-image.png') }}" alt="Deskripsi Gambar" class="img-fluid">
-                    <!-- Akhir gambar di sebelah kanan -->
-                </div>
+    <div class="container">
+        <div class="row d-flex justify-content-start align-items-center gx-0">
+            <div class="col-lg-5 col-12">
+                <h4 class="text-primary-green hero-label mb-0">Dipercaya 200+ Waralaba</h4>
+                <h1 class="header-title mb-0 text-black">
+                    Bergabung bersama kami 🤩
+                </h1>
+                <p class="subtitle text-black">
+                    Bergabunglah dan rasakan pengalaman berbisnis waralaba luar biasa dengan lebih dari 200 waralaba terpercaya. Dukungan dan solusi terbaik kami membantu Anda mencapai kesuksesan.
+                </p>
+            </div>
+            <div class="col-lg-5 col-12 ms-auto">
+                <!-- Gambar di sebelah kanan -->
+                <img src="{{ asset('assets/frontend/image/hero2-image.png') }}" alt="Deskripsi Gambar" class="img-fluid">
+                <!-- Akhir gambar di sebelah kanan -->
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     @push('addonScript')
         <script src="https://d17ivq9b7rppb3.cloudfront.net/build/commons_script-eb16678ced.js"></script>
