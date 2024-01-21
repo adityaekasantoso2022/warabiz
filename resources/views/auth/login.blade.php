@@ -8,12 +8,12 @@
                     </div>
                     <h1 class="auth-title">Selamat Datang</h1>
                     <p class="auth-subtitle mb-5">
-                       Silahkan masuk menggunakan akun Anda
+                        Silahkan masuk menggunakan akun Anda
                     </p>
 
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
-                        <div class="form-group position-relative  mb-4">
+                        <div class="form-group position-relative mb-4">
                             <label for="exampleInputEmail1" class="form-label">Email</label>
                             <input type="text"
                                 class="form-control form-control-xl @error('email') is-invalid @enderror"
@@ -23,12 +23,11 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-
                         </div>
-                        <div class="form-group position-relative  mb-4">
-                            <label for="exampleInputEmail1" class="form-label">Password </label>
+                        <div class="form-group position-relative mb-4">
+                            <label for="exampleInputEmail1" class="form-label">Password</label>
                             <input type="password"
-                                class="form-control form-control-xl  @error('password') is-invalid @enderror"
+                                class="form-control form-control-xl @error('password') is-invalid @enderror"
                                 placeholder="Password" name="password" />
                             @error('password')
                                 <div class="invalid-feedback">
@@ -49,39 +48,53 @@
                     <div class="text-center mt-5 text-auth fs-4">
                         <p class="text-gray-600">
                             Belum punya akun?
-                            <a href="{{ route('register') }}" class="font-bold"> Buat Akun</a>
+                            <a href="{{ route('register') }}" class="font-bold">Buat Akun</a>
                         </p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 d-none d-lg-block">
-                <div id="auth-right"></div>
+                <div id="auth-right">
+                    <img src="{{ asset('assets/frontend/image/login-right.svg') }}" alt="Gambar Samping"
+                        class="img-fluid" />
+                </div>
             </div>
         </div>
     </div>
 
     @push('addonStyle')
-        <style>
-            .form-check-input:checked {
-                background-color: #4F94D7;
-                border-color: #4F94D7;
-            }
+    <style>
+    .form-check-input:checked {
+        background-color: #4F94D7;
+        border-color: #4F94D7;
+    }
 
-            .text-auth .text-gray-600 a {
-                color: #4F94D7;
-            }
+    .text-auth .text-gray-600 a {
+        color: #4F94D7;
+    }
 
-            .text-auth .text-gray-600 a:hover {
-                color: #4d88c3;
-            }
+    .text-auth .text-gray-600 a:hover {
+        color: #4d88c3;
+    }
 
-            .text-auth p a {
-                color: #4F94D7;
-            }
+    .text-auth p a {
+        color: #4F94D7;
+    }
 
-            .text-auth p a:hover {
-                color: #4d88c3;
-            }
-        </style>
+    .text-auth p a:hover {
+        color: #4d88c3;
+    }
+
+    /* Perubahan warna button */
+    .btn-auth {
+        background-color: #FF823C;
+        border-color: #FF823C;
+    }
+
+    .btn-auth:hover {
+        background-color: #007d91;
+        border-color: #007d91;
+    }
+</style>
     @endpush
 </x-auth-layout>

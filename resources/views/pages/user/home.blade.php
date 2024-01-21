@@ -486,12 +486,22 @@
         overflow: hidden;
         white-space: nowrap;
         animation: moveRight 5s linear infinite;
+        }
+        .logo-container img {
+        margin-right: 20px; /* Adjust this value based on your spacing preference */
+        animation: blink 1s infinite alternate; /* Add blink animation */
+    }
+
+    @keyframes blink {
+        to {
+            opacity: 0.3;
+        }
     }
 }
 </style>
     @endpush
     <div class="position-relative">
-        <img src="{{ asset('assets/frontend/image/hero-image.png') }}" alt="bg-header"
+        <img src="{{ asset('assets/frontend/image/hero-image.svg') }}" alt="bg-header"
             class="img-fluid img-header d-none d-md-none d-lg-block" width="800">
     </div>
     <section class="hero">
@@ -532,7 +542,7 @@
                 <div class="col-md-4">
                     <div class="card card-benefit border-0 bg-transparent">
                         <div class="card-body text-center">
-                            <img src="{{ asset('assets/frontend/image/waraedu.png') }}" alt="icon"
+                            <img src="{{ asset('assets/frontend/image/waraedu.svg') }}" alt="icon"
                                 class="img-fluid mb-3" width="100">
                             <h5 class="card-title
                             fw-bold">WaraEdu</h5>
@@ -544,7 +554,7 @@
                 <div class="col-md-4">
                     <div class="card card-benefit border-0 bg-transparent">
                         <div class="card-body text-center">
-                            <img src="{{ asset('assets/frontend/image/waracareer.png') }}" alt="icon"
+                            <img src="{{ asset('assets/frontend/image/waracareer.svg') }}" alt="icon"
                                 class="img-fluid mb-3" width="100">
                             <h5 class="card-title
                             fw-bold">WaraCareer</h5>
@@ -555,7 +565,7 @@
                 <div class="col-md-4">
                     <div class="card card-benefit border-0 bg-transparent">
                         <div class="card-body text-center">
-                            <img src="{{ asset('assets/frontend/image/warapartner.png') }}" alt="icon"
+                            <img src="{{ asset('assets/frontend/image/warapartner.svg') }}" alt="icon"
                                 class="img-fluid mb-3" width="100">
                             <h5 class="card-title
                             fw-bold">WaraPartner</h5>
@@ -580,6 +590,20 @@
                 <p class="subtitle text-black">
                     Bergabunglah dan rasakan pengalaman berbisnis waralaba luar biasa dengan lebih dari 200 waralaba terpercaya. Dukungan dan solusi terbaik kami membantu Anda mencapai kesuksesan.
                 </p>
+                <div class="col-lg-7 mt-3">
+                    <div class="logo-container">
+                        <img src="https://upload.wikimedia.org/wikipedia/id/thumb/5/5c/LogoMieGacoan.png/800px-LogoMieGacoan.png" alt="Logo 1" width="100">
+                        <img src="https://images.glints.com/unsafe/glints-dashboard.s3.amazonaws.com/company-logo/14cdf734191398a29cd6ba910f7b8000.png" alt="Logo 2" width="100">
+                    </div>
+                </div>
+                <div class="col-lg-7 mt-3">
+                    <div class="logo-container">
+                        <img src="https://upload.wikimedia.org/wikipedia/id/thumb/5/5c/LogoMieGacoan.png/800px-LogoMieGacoan.png" alt="Logo 1" width="100">
+                        <img src="https://images.glints.com/unsafe/glints-dashboard.s3.amazonaws.com/company-logo/14cdf734191398a29cd6ba910f7b8000.png" alt="Logo 2" width="100">
+                    </div>
+                </div>
+
+
             </div>
             <div class="col-lg-5 col-12 ms-auto">
                 <!-- Gambar di sebelah kanan -->
@@ -589,6 +613,24 @@
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const logos = document.querySelectorAll('.logo-container img');
+        let currentLogoIndex = 0;
+
+        function toggleLogo() {
+            logos.forEach((logo, index) => {
+                logo.style.display = index === currentLogoIndex ? 'block' : 'none';
+            });
+
+            currentLogoIndex = (currentLogoIndex + 1) % logos.length;
+        }
+
+        setInterval(toggleLogo, 3000); // Ganti logo setiap 3 detik (3000 milidetik)
+    });
+</script>
+
 
     @push('addonScript')
         <script src="https://d17ivq9b7rppb3.cloudfront.net/build/commons_script-eb16678ced.js"></script>
