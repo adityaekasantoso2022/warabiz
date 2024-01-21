@@ -4,6 +4,87 @@
             body {
                 background: #ECF8F9 !important;
             }
+            .faq-section {
+        padding: 60px 0;
+        background-color: #03173C;
+        color: #fff;
+    }
+
+    .testimonial-section {
+        padding: 60px 0;
+        background-color: #ECF8F9;
+    }
+
+    .testimonial-section h1 {
+        margin-bottom: 40px;
+    }
+
+    .testimonial-section img {
+        border-radius: 10px;
+    }
+    .contact-section form button:hover {
+    background-color: #25d366;
+}
+
+.benefit {
+    padding: 30px 0; /* Adjusted padding */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.card-benefit {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 20px; /* Added margin to separate cards */
+}
+
+.card-benefit:hover {
+    transform: scale(1.05);
+}
+
+.card-benefit .card-body {
+    padding: 15px; /* Adjusted padding */
+    text-align: left;
+}
+
+.card-benefit img {
+    max-width: 80px;
+}
+
+.card-benefit h5 {
+    margin-top: 10px; /* Adjusted margin */
+}
+
+.card-benefit p {
+    font-size: 14px;
+    margin-bottom: 10px; /* Adjusted margin */
+}
+
+.card-benefit .card-title,
+.card-benefit .card-text {
+    font-weight: normal; /* Adjusted font weight */
+    text-align: left;
+}
+
+.card-benefit .card-title {
+    font-size: 20px; /* Adjusted font size */
+    line-height: 130%;
+    color: #000; /* Corrected color property */
+}
+
+.card-benefit .card-text {
+    font-size: 14px; /* Adjusted font size */
+    line-height: 120%;
+    color: #000; /* Corrected color property */
+}
+
+.card-benefit .card-more {
+    font-weight: 500;
+    color: #3ECAB0;
+}
+
 
             .navbar .navbar-nav a:hover.btn-signup {
                 color: white !important;
@@ -18,23 +99,22 @@
             }
 
             .profil-name {
-                color: #131313
+                color: #131313;
             }
 
             .hero {
                 background: none !important;
-
                 margin-bottom: -33px !important;
                 height: 80vh !important;
             }
-
+            .text-success {
+                color: #0098B4;
+            }
             .hero p {
                 font-weight: 400;
                 font-size: 16px;
                 color: rgba(19, 19, 19, 0.8);
             }
-
-
 
             .hero .btn-cta {
                 background: #FF823C;
@@ -45,7 +125,6 @@
                 line-height: 150%;
                 padding: 12px 32px;
             }
-
 
             .img-header {
                 position: absolute;
@@ -70,8 +149,6 @@
                 font-size: 43px;
                 font-weight: 700;
                 line-height: 78px;
-
-
             }
 
             @media (min-width: 1280px) {
@@ -84,11 +161,7 @@
             }
 
             @media (min-width: 767px) {
-
-
-
                 .benefit {
-
                     padding: 60px 0px;
                 }
 
@@ -98,55 +171,33 @@
                     margin-bottom: -33px !important;
                     height: 80vh !important;
                 }
-
             }
 
-            .card-benefit .card-title {
-                font-weight: 500;
-                font-size: 24px;
-                line-height: 150%;
-                text-align: center;
-                color: #FFFFFF;
-            }
-
-
-            .card-benefit .card-text {
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 150%;
-                text-align: center;
-                color: #ffffff;
-            }
-
-            .card-benefit .card-more {
-                font-weight: 500;
-                color: #3ECAB0;
-            }
             .logo-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px; /* Sesuaikan dengan margin yang diinginkan */
-}
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 20px;
+            }
 
-.logo-container img {
-    margin-right: 10px; /* Sesuaikan dengan margin antar logo yang diinginkan */
-}
+            .logo-container img {
+                margin-right: 10px;
+            }
 
             .card-benefit .card-more>span {
-                margin-left: 5px
+                margin-left: 5px;
             }
 
             .benefit .row {
-                margin-top: 90px
+                margin-top: 90px;
             }
 
             section {
-                margin-bottom: 0px !important
+                margin-bottom: 0px !important;
             }
 
             .service {
-                background: #FFFFFF
+                background: #FFFFFF;
             }
 
             .service .statistic {
@@ -159,62 +210,6 @@
                 color: #ffff !important;
             }
 
-            @-webkit-keyframes move {
-                0% {
-                    top: 70px
-                }
-
-                50% {
-                    top: -55px
-                }
-
-                to {
-                    top: 70px
-                }
-            }
-
-            @keyframes move {
-                0% {
-                    top: 70px
-                }
-
-                50% {
-                    top: -55px
-                }
-
-                to {
-                    top: 70px
-                }
-            }
-
-            @-webkit-keyframes move-down {
-                0% {
-                    bottom: 70px
-                }
-
-                50% {
-                    bottom: -55px
-                }
-
-                to {
-                    bottom: 70px
-                }
-            }
-
-            @keyframes move-down {
-                0% {
-                    bottom: 70px
-                }
-
-                50% {
-                    bottom: -55px
-                }
-
-                to {
-                    bottom: 70px
-                }
-            }
-
             #testimonial-section-v3 {
                 background-color: #ffffff;
                 height: auto;
@@ -222,9 +217,9 @@
                 overflow: hidden;
             }
 
-            @media(min-width:992px) {
+            @media (min-width: 992px) {
                 #testimonial-section-v3 {
-                    height: 600px
+                    height: 600px;
                 }
             }
 
@@ -232,7 +227,7 @@
                 font-size: 32px;
                 font-weight: 700;
                 line-height: 48px !important;
-                margin-top: 10px
+                margin-top: 10px;
             }
 
             #testimonial-section-v3 .subtitle {
@@ -240,271 +235,15 @@
                 font-size: 16px;
                 font-weight: 400;
                 line-height: 32px;
-                margin-top: 10px
-            }
-
-            #testimonial-section-v3 .btn-showcase {
-                background-color: #fff;
-                border-radius: 100px;
-                color: #34364a
-            }
-
-            #testimonial-section-v3 .btn-testimonial {
-                align-items: center;
-                display: flex;
-                height: 45px;
-                justify-content: center;
-                padding: 0;
-                width: 170px !important
-            }
-
-            #testimonial-section-v3 .testimonial-column {
-                -ms-overflow-style: none;
-                overflow-y: scroll;
-                position: relative;
-                scrollbar-width: none
-            }
-
-            #testimonial-section-v3 .testimonial-column::-webkit-scrollbar {
-                display: none
-            }
-
-            #testimonial-section-v3 .testimonial-column:first-child {
-                -webkit-animation: move 15s ease-in infinite;
-                animation: move 15s ease-in infinite;
-                top: 50px
-            }
-
-            #testimonial-section-v3 .testimonial-column:last-child {
-                -webkit-animation: move-down 15s ease-in infinite;
-                animation: move-down 15s ease-in infinite;
-                bottom: 50px;
-                margin-left: 30px
-            }
-
-            #testimonial-section-v3 .testimonial-card {
-                background: #dae3ec !important;
-                border-radius: 16px;
-                padding: 20px;
-                width: 330px
-            }
-
-            #testimonial-section-v3 .testimonial-card>* {
-                text-align: left !important
-            }
-
-            #testimonial-section-v3 .testimonial-card:not(:last-child) {
-                margin-bottom: 30px
-            }
-
-            #testimonial-section-v3 .testimonial-title {
-                color: #34364a;
-                font-size: 18px;
-                font-weight: 700;
-                line-height: 27px
-            }
-
-            #testimonial-section-v3 .testimonial-description {
-                color: #34364a;
-                font-size: 16px;
-                font-weight: 400;
-                line-height: 24px;
-                margin-bottom: 20px;
                 margin-top: 10px;
-                width: auto
             }
-
-            #testimonial-section-v3 .testimonial-profile {
-                height: 36px;
-                margin-right: 10px;
-                width: 36px;
-                background-position: inherit;
-                background-size: cover;
-                background-repeat: no-repeat;
-                border-radius: 100%;
-            }
-
-            #testimonial-section-v3 .testimonial-author {
-                color: #34364a;
-                font-size: 12px;
-                font-weight: 700;
-                line-height: 18px
-            }
-
-            #testimonial-section-v3 .testimonial-role {
-                color: #999aa4;
-                font-size: 12px;
-                font-weight: 300;
-                line-height: 18px
-            }
-
-            #faq-section-v3 {
-                background-color: #f6f8fd
-            }
-
-            .text-primary-green {
-                color: #47bb8e !important;
-            }
-
-            .pb-50 {
-                padding-bottom: 50px;
-            }
-
-            .pt-50 {
-                padding-top: 50px;
-            }
-
-            @media only screen and (max-width: 992px) and (min-width: 768px) {
-                .hero .row .col-md-12 {
-                    text-align: center
-                }
-
-                .hero .row .col-md-12 p {
-                    width: 100% !important
-                }
-            }
-
-            @media (max-width: 991px) {
-                .student-testimonies {
-                    padding: 50px 0 80px 0 !important;
-                }
-
-                .testimony-content {
-                    font-size: 15px;
-                }
-            }
-
-            .dcd-light-shadow {
-                box-shadow: 2px 4px 12px rgb(0 0 0 / 10%);
-            }
-
-            .carousel {
-                position: relative;
-            }
-
-            #carouselTestimonies .carousel-control-prev {
-                left: unset;
-                right: 45px;
-            }
-
-            #carouselTestimonies .carousel-control-next,
-            #carouselTestimonies .carousel-control-prev {
-                top: -50px;
-                height: 32px;
-                width: 32px;
-                opacity: unset;
-            }
-
-            .carousel-control-next {
-                right: 0;
-            }
-
-            .carousel-control-next,
-            .carousel-control-prev {
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                z-index: 1;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 15%;
-                padding: 0;
-                color: #fff;
-                text-align: center;
-                background: 0 0;
-                border: 0;
-                opacity: .5;
-                transition: opacity .15s ease;
-            }
-
-            .carousel-indicators {
-                position: absolute;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                z-index: 15;
-                display: flex;
-                justify-content: center;
-                padding-left: 0;
-                margin-right: 15%;
-                margin-left: 15%;
-                list-style: none;
-            }
-
-            #carouselTestimonies .carousel-indicators li {
-                width: 8px;
-                height: 8px;
-                background: #85898e;
-                border-radius: 50%;
-                border: none;
-            }
-
-            .carousel-indicators li {
-                box-sizing: content-box;
-                flex: 0 1 auto;
-                width: 30px;
-                height: 3px;
-                margin-right: 3px;
-                margin-left: 3px;
-                text-indent: -999px;
-                cursor: pointer;
-                background-color: #fff;
-                background-clip: padding-box;
-                border-top: 10px solid transparent;
-                border-bottom: 10px solid transparent;
-                opacity: .5;
-                transition: opacity .6s ease;
-            }
-
-            .carousel-item {
-                position: relative;
-                display: none;
-                float: left;
-                width: 100%;
-                margin-right: -100%;
-                backface-visibility: hidden;
-                transition: transform .6s ease-in-out;
-            }
-
-            @media (max-width: 767px) {
-                .testimony-content.row {
-                    flex-wrap: wrap-reverse;
-                }
-            }
-
-            #carouselTestimonies .carousel-control-prev-icon {
-                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAABFFBMVEUAAAAzM2YrK1UkSUkgQGA5OVUrOVUoQ1EzQE0xPVUuOlEsQ04rQFUpPVIxO04vQkwvPFEuO04tQFMsPlEtPk8sPU4rPFErP1IuPE8uQFIsPk8vQFEtPk4tPVEsP1EsPlAvPU8uQFEtP1AtPVAtP1EsPlAuPlAtPU8tP1AsPk8tPk8sPlAsPVAuPk8tPlEtPlAtPlAtP1EuPlAtPlAuPlEtPVAtPlAsPVAtPlAtPk8tPlAsPlAtPlAtPlAtP1AtPlAtPlAuPlAtP1AtPlAtPlAtPk8tPlAtPlAtPlAtPlAtPlAtPlEtPlAtPlAtPlAsPlAtPlAtPlAtPlAtPlAtPlAtPlAtPlAtPlAtPlAtPlAtPlD////NJq3WAAAAWnRSTlMABQYHCAkSExQVFhcYGRobJicoKS0uLzU3ODo8Pj9FRkdISX1+f4CBgoSUlZaXmKmqq629vr/Aw8XHyMnKy8zNzs/Q0tPX293f4uPk5enq6/Dx8vP09fj5+v6o9oGGAAAAAWJLR0RbdLyVNAAAAXVJREFUOMuFU1dbwkAQHBIUhQRFRWkWpEqRoggBBCtNQRAUb/7/D/EhQgIkn/t0ezPf7uzNHrAMOZpvjn5+Rs1cVMZmePOfXMYkr67BzqsvilYs7HE4POF4m5ylnWZcbVAU9o3cVxTUTEWO39g5WS0Z6HLgXyTKgNXddU3bN3zf049bDd46NlVLFWq6jit2XBZjYafLFAB4v4TR392qGoygmCoArlkw8Bc2TTVKzALyRCzn233mq2IiHIixhEve2+HAAy+QZ8wWR4JZNBm2xRFhHR/02OJQOcScEgBgypXQp5X5/T/B3EK1atEwi1Q3RGrIMQ5bRpIZRNmGLeOJZ5AnwmfHOORYAnIs2plVZhaAOhMBa7tDut1Is7tjuTA9JvSV11ixWrk71v4+kNJn1b2Ou2747l0k/gG7wVU81GP/yPSkGkXJZ1qlsmBtxVtnakY+JCKKLCunyUdymlj/wEp2bHg5zngsxpLOM/XhfD6sZ84l4/YXSkpWxAlyJVQAAAAASUVORK5CYII=);
-            }
-
-            #carouselTestimonies .carousel-control-next-icon {
-                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAABFFBMVEUAAAAzM2YrK1UkSUkgQGA5OVUrOVUoQ1EzQE0xPVUuOlEsQ04rQFUpPVIxO04vQkwvPFEuO04tQFMsPlEtPk8sPU4rPFErP1IuPE8uQFIsPk8vQFEtPk4tPVEsP1EsPlAvPU8uQFEtP1AtPVAtP1EsPlAuPlAtPU8tP1AsPk8tPk8sPlAsPVAuPk8tPlEtPlAtPlAtP1EuPlAtPlAuPlEtPVAtPlAsPVAtPlAtPk8tPlAsPlAtPlAtPlAtP1AtPlAtPlAuPlAtP1AtPlAtPlAtPk8tPlAtPlAtPlAtPlAtPlAtPlEtPlAtPlAtPlAsPlAtPlAtPlAtPlAtPlAtPlAtPlAtPlAtPlAtPlAtPlAtPlD////NJq3WAAAAWnRSTlMABQYHCAkSExQVFhcYGRobJicoKS0uLzU3ODo8Pj9FRkdISX1+f4CBgoSUlZaXmKmqq629vr/Aw8XHyMnKy8zNzs/Q0tPX293f4uPk5enq6/Dx8vP09fj5+v6o9oGGAAAAAWJLR0RbdLyVNAAAAXZJREFUOMuFU8lWwkAQLBIVgQFXVMANAZVNQUQMILiyKQoCwtT/f4iHSEhC8uzT9FTNdNXrbsAINZ6vf85mn/VcXMVyhPLfNGKYD9rglfSEspGIBTyeQCzZJMeXK2Y8WKO83lzkWwVJzfTJ3jtb+9YvD9rsheeJ6LHis2taK/FjQz+u1njrWVatlKnpOtJseR1sYb3NCwAITaSpfqXhN84RORIArnhtelbn64JRZBZQh9LkD74Xvhn+tuVAwRkfLJUtjEeeIs8EXBkpZlFnDK6MQ1bxxQBcGUH2MaWi+6MlRvoE8Od/gksJYZSoOYoUc5Eacky64jhnBnE2XXE88xjqUG654TscKECOBbdm3TALIDiWB87tjurtxiXb644D02FKH3mNZaeRu+P93wKJLit+O+4t8SM0T8I9tiNWPNphd9e0OBpl0eR2+0byXlhW72JMPqYOhaqKo/MncpSyL7DIDha9HGQCDraUk0y1P532q5kTZXH7CwVWVsTnnK42AAAAAElFTkSuQmCC);
-            }
-
-            .login {
-                color: rgba(0, 0, 0, .55) !important;
-            }
-            @keyframes moveRight {
-        0% {
-            transform: translateX(-100%);
-        }
-        100% {
-            transform: translateX(100%);
-        }
-
-    @keyframes blink {
-        to {
-            opacity: 0.3;
-        }
-    }
-}
-</style>
-    @endpush
-    <div class="position-relative">
-        <img src="{{ asset('assets/frontend/image/hero-image.svg') }}" alt="bg-header"
-            class="img-fluid img-header d-none d-md-none d-lg-block" width="800">
+        </style>
+@endpush
+<div class="position-relative">
+     <img src="{{ asset('assets/frontend/image/hero-image.svg') }}" alt="bg-header"
+        class="img-fluid img-header d-none d-md-none d-lg-block" width="800">
     </div>
-    <section class="hero">
+<section class="hero">
     <div class="d-flex container h-100 w-100 min-vh-75 align-items-center">
         <div class="row py-4">
             <div class="col-lg-5 col-md-12 pb-5 d-flex flex-column justify-content-center align-items-start">
@@ -533,57 +272,134 @@
     </div>
 </section>
 
-    <section class="benefit" style="background-image: url('{{ asset('assets/frontend/image/backrground-fitur.png') }}');">
-        <div class="container">
-            <div class="text-center text-white">
-                <h1>Fitur Unggulan Kami ✨</h1>
+<section class="benefit" style="background-image: url('{{ asset('assets/frontend/image/backrground-fitur.png') }}');">
+    <div class="container">
+        <div class="text-center text-white">
+            <h1>Fitur Unggulan Kami ✨</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-benefit border-0 bg-white rounded-10" data-bs-toggle="modal" data-bs-target="#waraeduModal">
+                    <div class="card-body text-center text-black">
+                        <h5 class="card-title fw-bold">
+                            <img src="{{ asset('assets/frontend/image/waraedu.svg') }}" alt="WaraEdu Icon" class="img-fluid mr-2" width="60">
+                            WaraEdu
+                        </h5>
+                        <p class="card-text">Menyediakan materi yang berkaitan dengan kewirausahaan.</p>
+                    </div>
+                </div>
             </div>
-            <div class="row ">
-                <div class="col-md-4">
-                    <div class="card card-benefit border-0 bg-transparent">
-                        <div class="card-body text-center">
-                            <img src="{{ asset('assets/frontend/image/waraedu.svg') }}" alt="icon"
-                                class="img-fluid mb-3" width="100">
-                            <h5 class="card-title
-                            fw-bold">WaraEdu</h5>
-                            <p class="card-text">Menyediakan materi yang berkaitan dengan kewirausahaan.</p>
 
-                        </div>
+            <div class="col-md-4">
+                <div class="card card-benefit border-0 bg-white rounded-10" data-bs-toggle="modal" data-bs-target="#waracareerModal">
+                    <div class="card-body text-center text-black">
+                        <h5 class="card-title fw-bold">
+                            <img src="{{ asset('assets/frontend/image/waracareer.svg') }}" alt="WaraCareer Icon" class="img-fluid mr-2" width="60">
+                            WaraCareer
+                        </h5>
+                        <p class="card-text">Informasi lowongan pekerjaan yang dibutuhkan Mitra Waralaba kami.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card card-benefit border-0 bg-transparent">
-                        <div class="card-body text-center">
-                            <img src="{{ asset('assets/frontend/image/waracareer.svg') }}" alt="icon"
-                                class="img-fluid mb-3" width="100">
-                            <h5 class="card-title
-                            fw-bold">WaraCareer</h5>
-                            <p class="card-text">Informasi lowongan pekerjaan yang dibutuhkan Mitra Waralaba kami.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-benefit border-0 bg-transparent">
-                        <div class="card-body text-center">
-                            <img src="{{ asset('assets/frontend/image/warapartner.svg') }}" alt="icon"
-                                class="img-fluid mb-3" width="100">
-                            <h5 class="card-title
-                            fw-bold">WaraPartner</h5>
-                            <p class="card-text">
-                            Bekerjasama untuk meningkatkan penjualan Waralaba anda.
-                            </p>
-                        </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card card-benefit border-0 bg-white rounded-10" data-bs-toggle="modal" data-bs-target="#warapartnerModal">
+                    <div class="card-body text-center text-black">
+                        <h5 class="card-title fw-bold">
+                            <img src="{{ asset('assets/frontend/image/warapartner.svg') }}" alt="WaraPartner Icon" class="img-fluid mr-2" width="60">
+                            WaraPartner
+                        </h5>
+                        <p class="card-text">Bekerjasama untuk meningkatkan penjualan Waralaba anda.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="pt-50 pb-50 d-flex justify-content-start align-items-center position-relative d-md-none d-sm-none d-lg-flex d-none" id="testimonial-section-v3">
+<!-- Modal untuk WaraEdu -->
+<div class="modal fade" id="waraeduModal" tabindex="-1" aria-labelledby="waraeduModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="waraeduModalLabel">WaraEdu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ asset('assets/frontend/image/waraedu.svg') }}" alt="WaraEdu Icon" class="img-fluid mb-3" width="100">
+                <p class="modal-text">WaraEdu adalah fitur unggulan kami yang menyediakan materi berkualitas tinggi yang berkaitan dengan kewirausahaan. Dengan WaraEdu, Anda dapat:</p>
+                
+                <ul class="modal-text">
+                    <li style="font-size: 14px;" >Mengakses kursus online yang dikembangkan oleh pakar industri.</li>
+                    <li style="font-size: 14px;">Belajar keterampilan kewirausahaan yang dibutuhkan untuk sukses dalam menjalankan waralaba.</li>
+                    <li style="font-size: 14px;">Menyimak webinar dan seminar daring dari para ahli bisnis.</li>
+                    <li style="font-size: 14px;">Mendapatkan sumber daya edukasi eksklusif untuk membantu pertumbuhan bisnis Anda.</li>
+                </ul>
+                
+                <p class="modal-text">Dengan WaraEdu, kami berkomitmen untuk memberikan dukungan edukasi terbaik bagi para mitra waralaba kami. Tingkatkan pengetahuan dan keterampilan Anda dalam mengelola bisnis waralaba dengan WaraEdu!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal untuk WaraCareer -->
+<div class="modal fade" id="waracareerModal" tabindex="-1" aria-labelledby="waracareerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="waracareerModalLabel">WaraCareer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ asset('assets/frontend/image/waracareer.svg') }}" alt="WaraCareer Icon" class="img-fluid mb-3" width="100">
+                <p class="modal-text">WaraCareer adalah fitur unggulan kami yang memberikan informasi terkini seputar lowongan pekerjaan yang dibutuhkan oleh Mitra Waralaba kami. Dengan WaraCareer, Anda dapat:</p>
+                
+                <ul class="modal-text">
+                    <li style="font-size: 14px;">Menjelajahi berbagai lowongan pekerjaan dari berbagai sektor bisnis.</li>
+                    <li style="font-size: 14px;">Mendapatkan kesempatan berkarir di perusahaan-perusahaan terkemuka.</li>
+                    <li style="font-size: 14px;">Menerima pemberitahuan langsung mengenai lowongan pekerjaan yang sesuai dengan profil Anda.</li>
+                    <li style="font-size: 14px;">Bergabung dengan jaringan profesional yang luas dalam industri waralaba.</li>
+                </ul>
+                
+                <p class="modal-text">Dengan WaraCareer, kami berusaha membantu Anda dalam mencapai karir yang sukses dan membangun jejak karir yang gemilang.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal untuk WaraPartner -->
+<div class="modal fade" id="warapartnerModal" tabindex="-1" aria-labelledby="warapartnerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold" id="warapartnerModalLabel">WaraPartner</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ asset('assets/frontend/image/warapartner.svg') }}" alt="WaraPartner Icon" class="img-fluid mb-3" width="100">
+                <p class="modal-text">WaraPartner adalah fitur kerjasama yang dirancang untuk meningkatkan penjualan waralaba Anda. Dengan WaraPartner, Anda dapat:</p>
+                
+                <ul class="modal-text">
+                    <li style="font-size: 14px;">Mencari mitra bisnis yang potensial untuk meningkatkan distribusi produk Anda.</li>
+                    <li style="font-size: 14px;">Menjalin kerjasama dengan pelaku bisnis dalam dan luar industri waralaba.</li>
+                    <li style="font-size: 14px;">Memperluas jaringan penjualan dan distribusi produk waralaba Anda.</li>
+                    <li style="font-size: 14px;">Meningkatkan visibilitas dan daya tarik waralaba Anda di pasaran.</li>
+                </ul>
+                
+                <p class="modal-text">Dengan WaraPartner, kami berkomitmen untuk membantu Anda menjalankan bisnis waralaba dengan lebih efektif dan mengoptimalkan potensi penjualan Anda.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="pt-50 pb-50 d-flex justify-content-start align-items-center position-relative d-md-none d-sm-none d-lg-flex d-none" id="testimonial-section-v3">
     <div class="container">
         <div class="row d-flex justify-content-start align-items-center gx-0">
             <div class="col-lg-5 col-12">
-                <h4 class="text-primary-green hero-label mb-0">Dipercaya 200+ Waralaba</h4>
+            <h4 class="text-success hero-label mb-0">
+                <i class="fas fa-medal"></i> Dipercaya 200+ Waralaba
+            </h4>
                 <h1 class="header-title mb-0 text-black">
                     Bergabung bersama kami 🤩
                 </h1>
@@ -612,11 +428,53 @@
                 </div>
             </div>
             <div class="col-lg-5 col-12 ms-auto">
-                <img src="{{ asset('assets/frontend/image/hero2-image.png') }}" alt="Deskripsi Gambar" class="img-fluid">
+                <img src="{{ asset('assets/frontend/image/hero2-image.svg') }}" alt="Deskripsi Gambar" class="img-fluid">
             </div>
         </div>
     </div>
 </section>
+<section class="testimonial-section">
+    <div class="container">
+        <div class="text-center text-black">
+            <h1>Testimonial Pelanggan</h1>
+        </div>
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-flex justify-content-end">
+                        <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}" class="d-block w-30 mb-1 me-5" alt="Testimonial 1">
+                        <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}" class="d-block w-30 me-5" alt="Testimonial 2">
+                        <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}" class="d-block w-30 mb-1 me-5" alt="Testimonial 3">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-end">
+                    <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}" class="d-block w-30 mb-1 me-5" alt="Testimonial 1">
+                        <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}" class="d-block w-30 mb-1 me-5" alt="Testimonial 2">
+                        <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}" class="d-block w-30 mb-1 me-5" alt="Testimonial 3">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="d-flex justify-content-end">
+                    <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}" class="d-block w-30 mb-1 me-5" alt="Testimonial 1">
+                        <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}" class="d-block w-30 mb-1 me-5" alt="Testimonial 2">
+                        <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}" class="d-block w-30 mb-1 me-5" alt="Testimonial 3">
+                    </div>
+                </div>
+                <!-- Tambahkan gambar testimonial lainnya di sini -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+
 
 
     @push('addonScript')
