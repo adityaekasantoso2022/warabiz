@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light position-fixed top-0 w-100 py-lg-3">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset('assets/frontend/image/logo.svg') }}" class="mb-1" alt="logo-skillshop">
+            <img src="{{ asset('assets/frontend/image/logo.svg') }}" class="mb-1" alt="logo-warabiz">
         </a>
 
         @guest
