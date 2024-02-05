@@ -504,10 +504,10 @@
     .logo-container img {
         width: 100px; /* Sesuaikan lebar logo */
         height: auto;
-        animation: moveRight 5s linear infinite; /* Sesuaikan durasi animasi */
+        animation: moveRight 5s linear infinite;
     }
     .waracareer {
-        padding: 60px 0; /* Sesuaikan padding sesuai kebutuhan */
+        padding: 60px 0;
     }
 
     .card-container {
