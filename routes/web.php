@@ -18,6 +18,15 @@ use Illuminate\Support\Facades\Mail;
 
 Route::namespace('App\Http\Controllers\User')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
+
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/payment', 'PaymentController@index')->name('payment');
+    });
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/checkout', 'CheckoutController@index')->name('checkout');
+    });
+
+
     Route::middleware(['auth'])->group(function () {
         Route::get('/waraedu', 'WaraeduController@index')->name('waraedu');
     });
@@ -37,6 +46,8 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
     // Route home
     Route::get('/home', 'HomeController@index')->name('home.index');
     Route::get('/home/{training:slug}', 'TrainingController@show')->name('training.show');
+
+
 });
 
 Auth::routes();

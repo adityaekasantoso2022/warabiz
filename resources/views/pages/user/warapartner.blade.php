@@ -166,9 +166,9 @@
                                                 <div class="elementor-element elementor-element-d9f2c32 elementor-widget-tablet__width-inherit elementor-widget__width-inherit elementor-align-left elementor-mobile-align-center elementor-widget elementor-widget-button" data-id="d9f2c32" data-element_type="widget" data-widget_type="button.default">
                                                     <div class="elementor-widget-container">
                                                         <div class="elementor-button-wrapper">
-                                                            <a class="elementor-button elementor-button-link elementor-size-sm" href="https://api.whatsapp.com/send?l=id&#038;text=Saya%20minat%20jasa%20digitalkan&#038;phone=6285174316646">
+                                                            <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
                                                                 <span class="elementor-button-content-wrapper">
-                                                                    <span class="elementor-button-text">Konsultasi Sekarang</span>
+                                                                    <span class="elementor-button-text">Daftar Sekarang</span>
                                                                 </span>
                                                             </a>
                                                         </div>

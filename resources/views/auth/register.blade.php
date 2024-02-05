@@ -69,8 +69,12 @@
                 </div>
             </div>
             <div class="col-lg-6 d-none d-lg-block">
-                <div id="auth-right"></div>
+                <div id="auth-right">
+                    <img src="{{ asset('assets/frontend/image/login-right.svg') }}" alt="Gambar Samping"
+                        class="img-fluid" />
+                </div>
             </div>
+
         </div>
     </div>
 

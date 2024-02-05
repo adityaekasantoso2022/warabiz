@@ -10,7 +10,8 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'id',
+        'category_name'
     ];
 
     public function home()

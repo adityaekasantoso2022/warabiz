@@ -1,5 +1,6 @@
 <x-user-layout title="Warabiz-Career" active="waracareer">
     @push('addonStyle')
+    
         <style>
             body {
                 background: #dae3ec !important;
@@ -505,11 +506,106 @@
         height: auto;
         animation: moveRight 5s linear infinite; /* Sesuaikan durasi animasi */
     }
+    .waracareer {
+        padding: 60px 0; /* Sesuaikan padding sesuai kebutuhan */
+    }
+
+    .card-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .job-card {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: justify-content;
+        margin-bottom: 20px;
+        font-size: 12px;
+        max-width: 300px; /* Sesuaikan lebar card sesuai kebutuhan */
+    }
+
+    .job-card img {
+        max-width: 100%;
+        border-radius: 1%;
+    }
+
+    .apply-button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 10px;
+        background-color: #03173C;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .carousel-container {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+            .carousel {
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+            }
+
+            .carousel a {
+                flex: 0 0 100%;
+                box-sizing: border-box;
+            }
+
+            .carousel img {
+                height: auto;
+            }
         </style>
     @endpush
     <section class="hero ">
         <div class="d-flex container h-100 w-100 min-vh-75 align-items-center ">
-            
+            <div class="container">
+        
+                <div class="card-container">
+                    <!-- Card 1 -->
+                    <div class="job-card">
+                        <img src="{{ asset('assets') }}/frontend/image/logo/bangor.png" alt="Company Logo 1" width="150" height="150" >
+                        <br>
+                        <br>
+                        <h5>Burger Bangor</h5>
+                        <p>Description About Under Armour</p>
+                        <a href="#" class="apply-button">Daftar</a>
+                    </div>
+        
+                    <!-- Card 2 -->
+                    <div class="job-card">
+                        <img src="{{ asset('assets') }}/frontend/image/logo/gacoan.png" alt="Company Logo 2" width="400" height="150">
+                        <br>
+                        <br>
+                        <h5>Mie Gacoan</h5>
+                        <p>Deskripsi singkat tentang pekerjaan</p>
+                        <a href="#" class="apply-button">Daftar</a>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="job-card">
+                        <img src="{{ asset('assets') }}/frontend/image/logo/kfc.png" alt="Company Logo 2" width="150" height="150">
+                        <br>
+                        <br>
+                        <h5>KFC</h5>
+                        <p>Deskripsi singkat tentang pekerjaan</p>
+                        <a href="#" class="apply-button">Daftar</a>
+                    </div>
+                    <div class="job-card">
+                        <img src="{{ asset('assets') }}/frontend/image/logo/tehdesa.png" alt="Company Logo 2" width="120" height="150">
+                        <br>
+                        <br>
+                        <h5>Teh Desa</h5>
+                        <p>Deskripsi singkat tentang pekerjaan</p>
+                        <a href="#" class="apply-button">Daftar</a>
+                    </div>
+                </div>
+            </div> 
         </div>
     </section>
     @push('addonScript')

@@ -248,7 +248,7 @@
     @endpush
     <div class="position-relative">
         <img src="{{ asset('assets/frontend/image/hero-image.svg') }}" alt="bg-header"
-            class="img-fluid img-header d-none d-md-none d-lg-block" width="720">
+            class="img-fluid img-header d-none d-md-none d-lg-block" width="700">
     </div>
     <section class="hero">
         <div class="d-flex container h-100 w-100 min-vh-75 align-items-center">
