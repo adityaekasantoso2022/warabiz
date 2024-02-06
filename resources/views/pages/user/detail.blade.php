@@ -1,4 +1,4 @@
-<x-user-layout title="Checkout" active="checkout">
+<x-user-layout title="Detail Waralaba" active="detail">
     @push('addonStyle')
     <style>
         body {
@@ -268,10 +268,10 @@
                             <div class="course-detail">
                                 <a>
                                     <h2 class="course-name line-clamp-2">
-                                    {{ \App\Models\Waralaba::pluck('waralaba_name')->first() }}                                    </h2>
+                                        {{ \App\Models\Waralaba::pluck('waralaba_name')->first() }} </h2>
                                 </a>
-                                <div class="d-flex mt-2 align-items-center gap-1">
-                                Rp. {{ \App\Models\Waralaba::pluck('price')->first() }}
+                                <div class="d-flex mt-2 align-items-center gap-2">
+                                    Rp. {{ \App\Models\Waralaba::pluck('price')->first() }}
                                 </div>
                             </div>
                             <div class="course-footer mt-auto">
@@ -285,6 +285,57 @@
                                         (875)
                                     </span>
                                 </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="payment-details">
+                            <div class="item-pricing item-mentor d-flex flex-column gap-3">
+                                <h5 class="header-title mb-0">
+                                    Informasi Mengenai Waralaba
+                                </h5>
+                                <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                    <div class="d-flex gap-3 align-items-center">
+                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                            alt="BuildWith Angga">
+                                        <div class="d-flex flex-column">
+                                            <h5 class="header-title mb-1">
+                                                Tahun Berdiri
+                                            </h5>
+                                            <p>20 Januari 2021</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                    <div class="d-flex gap-3 align-items-center">
+                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                            alt="BuildWith Angga">
+                                        <div class="d-flex flex-column">
+                                            <h5 class="header-title mb-1">
+                                                Total Outlet
+                                            </h5>
+                                            <p>105 Outlet</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                    <div class="d-flex gap-3 align-items-center">
+                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                            alt="BuildWith Angga">
+                                        <div class="d-flex flex-column">
+                                            <h5 class="header-title mb-1">
+                                                Durasi Lisensi (Tahun)
+                                            </h5>
+                                            <p>10 Tahun</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3">
+                                    <i class="fas fa-download me-2"></i> Download Brosur
+                                </button>
+
+                                <button class="mt-2 mb-4 btn btn-primary w-100 text-white border-12 py-3">
+                                    <i class="fas fa-comment-alt me-2"></i> Chat Admin
+                                </button>
 
                             </div>
                         </div>
@@ -294,17 +345,18 @@
                     <div class="payment-details">
                         <div class="item-pricing item-mentor d-flex flex-column gap-3">
                             <h5 class="header-title mb-0">
-                                Benefits untuk anda
+                                Feature Waralaba
                             </h5>
                             <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                 <div class="d-flex gap-3 align-items-center">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_konsultasi.svg"
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
                                         alt="BuildWith Angga">
                                     <div class="d-flex flex-column">
                                         <h5 class="header-title mb-1">
-                                            Grup Diskusi Bimbingan Bisnis
+                                            Pelatihan & SOP
                                         </h5>
-                                        <p>Bonus dari kami</p>
+                                        <p>Dapatkan Pelatihan dari franchisor beserta sistem SOP terstandar dan tertata selama 5 bulan.
+                                        </p>
                                     </div>
                                 </div>
                                 <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
@@ -316,9 +368,37 @@
                                         alt="BuildWith Angga">
                                     <div class="d-flex flex-column">
                                         <h5 class="header-title mb-1">
-                                            Perekrutan Karyawan
+                                            Termasuk Persediaan
                                         </h5>
-                                        <p>Bonus dari kami</p>
+                                        <p>Sudah termasuk persediaan awal dalam setiap pembelian brand franchise.</p>
+                                    </div>
+                                </div>
+                                <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
+                                    alt="BuildWith Angga">
+                            </div>
+                            <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                <div class="d-flex gap-3 align-items-center">
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                        alt="BuildWith Angga">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="header-title mb-1">
+                                            Bantuan Marketing
+                                        </h5>
+                                        <p>Bantuan dukungan pemasaran untuk suksesi bisnis dan strategi pemasaran.</p>
+                                    </div>
+                                </div>
+                                <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
+                                    alt="BuildWith Angga">
+                            </div>
+                            <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                <div class="d-flex gap-3 align-items-center">
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                        alt="BuildWith Angga">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="header-title mb-1">
+                                        Termasuk Peralatan
+                                        </h5>
+                                        <p>Setiap pembelian franchise akan dilengkapi dengan peralatan awal sehingga tidak perlu membeli lagi.</p>
                                     </div>
                                 </div>
                                 <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
@@ -326,72 +406,23 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <form id="form-manual" method="post" action="">
                         @csrf
                         <div class="payment-details  mt-4">
                             <div class="item-pricing item-mentor">
                                 <h5 class="header-title">
-                                    Detail Pembelian
+                                    Deskripsi
                                 </h5>
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="item">
-                                        <p class="title">
-                                            Harga waralaba
-                                        </p>
-                                        <p class="value">
-                                            Rp. {{ \App\Models\Waralaba::pluck('price')->first() }} </p>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="item">
-                                        <p class="title">
-                                            Kode unik
-                                        </p>
-                                        <p class="value text-green">
-                                            @php
-                                            $unique_code = rand(100, 1000);
-                                            @endphp
-                                            - {{ $unique_code }}
+                                        <p>
+                                            Deskripsi Waralaba
                                         </p>
 
-                                        <div class="clear"></div>
                                     </div>
-                                    <div class="item">
-                                        <p class="title">
-                                            Biaya layanan
-                                        </p>
-                                        <p class="value text-green feeMidtransItem0">
-                                            +
-                                            Rp 10.000
-                                        </p>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="item">
-                                        <p class="title">
-                                            Total transfer
-                                        </p>
-                                        <input id="transaction_total" hidden name="transaction_total" value="total">
-                                        <p class="value">
-                                            <strong id="midtransPrice">
-                                                9399388
-                                            </strong>
-                                        </p>
-                                        <div class="clear"></div>
-                                    </div>
-
-
-                                    <h5 class="header-title mt-5">
-                                        Metode Pembayaran
-                                    </h5>
-
-                                    <select class="form-select" name="payment_method" id="paymentMethod" required>
-                                        <option selected value="bca">Bank BCA</option>
-                                        <option value="bni">Bank BNI</option>
-                                        <option value="bri">Bank BRI</option>
-                                        <option value="mandiri">Bank Mandiri</option>
-                                    </select>
                                     <button class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3" type="submit">
-                                        Bayar
+                                        Beli Sekarang
                                     </button>
                                 </div>
                             </div>

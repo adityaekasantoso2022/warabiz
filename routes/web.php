@@ -4,6 +4,10 @@ use App\Mail\Admin\ConfirmationTransaction;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\User\HomeController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +22,7 @@ use Illuminate\Support\Facades\Mail;
 
 Route::namespace('App\Http\Controllers\User')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
-
+    Route::get('/home', [User\HomeController::class, 'index'])->name('home');
     Route::middleware(['auth'])->group(function () {
         Route::get('/payment', 'PaymentController@index')->name('payment');
     });
@@ -45,8 +49,14 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
     
     // Route home
     Route::get('/home', 'HomeController@index')->name('home.index');
-    Route::get('/home/{training:slug}', 'TrainingController@show')->name('training.show');
 
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/detail', 'User\DetailController@index')->name('detail');
+    });
+
+    Route::get('/waralaba/{id}', [HomeController::class, 'show'])->name("waralaba");
+
+    
 
 });
 

@@ -13,6 +13,7 @@ class Waralaba extends Model
 
     protected $fillable = [
         'id',
+        'image_url',
         'category_id',
         'waralaba_name',
         'price',

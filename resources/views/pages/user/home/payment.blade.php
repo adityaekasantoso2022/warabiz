@@ -1,4 +1,4 @@
-<x-user-layout title="payment" active="payment">
+<x-user-layout title="Payment" active="payment">
     @push('addonStyle')
     <style>
         body {
@@ -287,7 +287,6 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-7 col-12 ">
-
                     <form id="form-manual" method="post" action="#" enctype="multipart/form-data">
                         @csrf
                         <div class="payment-details ">
@@ -296,7 +295,7 @@
                                 <div class="p-3 d-flex align-items-center border-theme bg-theme-light rounded-3 mb-4">
                                     <h5 class="themeColor m-0 me-3"><i class="fas fa-info-circle"></i></h5>
                                     <p class="fw-bold">
-                                        Lakukan pembayaran <b> Rp.100.000.589</b> sebelum
+                                        Lakukan pembayaran sebelum
                                         <strong id="countdown"></strong>
                                     </p>
                                 </div>
