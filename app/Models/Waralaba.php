@@ -21,7 +21,9 @@ class Waralaba extends Model
         'brochure_link',
         'since',
         'outlet_total',
-        'license_duration'
+        'license_duration',
+        'description',
+        'royalty'
     ];
 
     public function home()

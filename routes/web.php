@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\User\HomeController;
-
+use App\Http\Controllers\User\WaralabaController;
 
 
 
@@ -54,7 +54,7 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
         Route::get('/detail', 'User\DetailController@index')->name('detail');
     });
 
-    Route::get('/waralaba/{id}', [HomeController::class, 'show'])->name("waralaba");
+    Route::get('/waralaba/{id}', [WaralabaController::class, 'show'])->name("waralaba");
 
     
 

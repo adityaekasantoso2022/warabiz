@@ -261,17 +261,17 @@
                         <div class="course-card">
                             <div class="embed-responsive embed-responsive-16by9 video-iframe ">
                                 <div class="plyr__video-embed" id="player">
-                                    <iframe allowfullscreen="" allowtransparency="" allow="autoplay" frameborder="0"
-                                        id="__existing-iframe-id" data-gtm-yt-inspected-5="true"></iframe>
+                                    <img src="{{ $waralaba->image_url }}" class="img-fluid" alt="Gambar Waralaba">
+
                                 </div>
                             </div>
                             <div class="course-detail">
                                 <a>
                                     <h2 class="course-name line-clamp-2">
-                                        {{ \App\Models\Waralaba::pluck('waralaba_name')->first() }} </h2>
+                                        {{ $waralaba->waralaba_name }} </h2>
                                 </a>
                                 <div class="d-flex mt-2 align-items-center gap-2">
-                                    Rp. {{ \App\Models\Waralaba::pluck('price')->first() }}
+                                    Rp. {{ $waralaba->price }}
                                 </div>
                             </div>
                             <div class="course-footer mt-auto">
@@ -301,7 +301,7 @@
                                             <h5 class="header-title mb-1">
                                                 Tahun Berdiri
                                             </h5>
-                                            <p>20 Januari 2021</p>
+                                            <p>{{ $waralaba->since }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -313,7 +313,7 @@
                                             <h5 class="header-title mb-1">
                                                 Total Outlet
                                             </h5>
-                                            <p>105 Outlet</p>
+                                            <p>{{ $waralaba->outlet_total }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -325,18 +325,26 @@
                                             <h5 class="header-title mb-1">
                                                 Durasi Lisensi (Tahun)
                                             </h5>
-                                            <p>10 Tahun</p>
+                                            <p>{{ $waralaba->license_duration }}</p>
                                         </div>
                                     </div>
                                 </div>
-                                <button class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3">
+                                <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                    <div class="d-flex gap-3 align-items-center">
+                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                            alt="BuildWith Angga">
+                                        <div class="d-flex flex-column">
+                                            <h5 class="header-title mb-1">
+                                                Royalty Fee
+                                            </h5>
+                                            <p>{{ $waralaba->royality }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="{{ $waralaba->brochure_link }}" target="_blank"
+                                    class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3">
                                     <i class="fas fa-download me-2"></i> Download Brosur
-                                </button>
-
-                                <button class="mt-2 mb-4 btn btn-primary w-100 text-white border-12 py-3">
-                                    <i class="fas fa-comment-alt me-2"></i> Chat Admin
-                                </button>
-
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -355,7 +363,8 @@
                                         <h5 class="header-title mb-1">
                                             Pelatihan & SOP
                                         </h5>
-                                        <p>Dapatkan Pelatihan dari franchisor beserta sistem SOP terstandar dan tertata selama 5 bulan.
+                                        <p>Dapatkan Pelatihan dari franchisor beserta sistem SOP terstandar dan tertata
+                                            selama 5 bulan.
                                         </p>
                                     </div>
                                 </div>
@@ -396,9 +405,10 @@
                                         alt="BuildWith Angga">
                                     <div class="d-flex flex-column">
                                         <h5 class="header-title mb-1">
-                                        Termasuk Peralatan
+                                            Termasuk Peralatan
                                         </h5>
-                                        <p>Setiap pembelian franchise akan dilengkapi dengan peralatan awal sehingga tidak perlu membeli lagi.</p>
+                                        <p>Setiap pembelian franchise akan dilengkapi dengan peralatan awal sehingga
+                                            tidak perlu membeli lagi.</p>
                                     </div>
                                 </div>
                                 <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
@@ -417,7 +427,8 @@
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="item">
                                         <p>
-                                            Deskripsi Waralaba
+                                            {{ $waralaba->description }}
+
                                         </p>
 
                                     </div>

@@ -306,54 +306,44 @@
     </section>
 
     <section class="justify-content">
-        <div class="container-scrollable">
-            <div class="container">
-                <div class="col-md-12">
-                    <div class="row">
-                        @foreach ($waralabas as $waralaba)
-                        <div class="col-md-6 col-lg-3 mb-3">
+    <div class="container-scrollable">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="row">
+                    @foreach ($waralabas as $waralaba)
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <a href="{{ route('waralaba', $waralaba->id) }}" class="text-decoration-none">
                             <div class="course-card">
-                            <a href="{{ route('waralaba', $waralaba['id']) }}">
                                 <div class="embed-responsive embed-responsive-16by9 video-iframe">
                                     <div class="plyr__video-embed" id="player">
-                                        <img src="{{ $waralaba->image_url }}" class="img-fluid" alt="Gambar Waralaba">
+                                        <img src="{{ $waralaba->image_url }}" class="img-fluid"
+                                            alt="Gambar Waralaba">
                                     </div>
                                 </div>
                                 <div class="course-detail">
-                                    <a>
-                                        <h2 class="course-name line-clamp-2">
-                                            {{ $waralaba->waralaba_name }}
-                                        </h2>
-                                    </a>
+                                    <h2 class="course-name line-clamp-2">{{ $waralaba->waralaba_name }}</h2>
                                     <div class="d-flex mt-2 align-items-center gap-1">
                                         Rp. {{ $waralaba->price }}
                                     </div>
                                 </div>
                                 <div class="course-footer mt-auto">
                                     <div class="star-rating">
-                                        <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
-                                            alt="ic_star">
-                                        <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
-                                            alt="ic_star">
-                                        <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
-                                            alt="ic_star">
-                                        <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
-                                            alt="ic_star">
-                                        <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
-                                            alt="ic_star">
-                                        <span>
-                                            (52)
-                                        </span>
+                                        @for ($i = 0; $i < 5; $i++)
+                                            <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
+                                                alt="ic_star">
+                                        @endfor
+                                        <span>(52)</span>
                                     </div>
                                 </div>
-                            </a>
                             </div>
-                        </div>
-                        @endforeach
+                        </a>
                     </div>
+                    @endforeach
                 </div>
             </div>
-    </section>
+        </div>
+</section>
+
     {{-- End Hero --}}
 
     </section>
@@ -368,7 +358,6 @@
             $(document).scroll(function () {
                 $nav.toggleClass('scrolled', $(this).scrollTop() > $hero.height());
             });
-        });
-    </script>
+            </script>
     @endpush
 </x-user-layout>

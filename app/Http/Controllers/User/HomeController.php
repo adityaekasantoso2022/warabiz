@@ -29,17 +29,5 @@ class HomeController extends Controller
         return view('pages.user.home', [
             'waralabas' => $waralabas,
         ]);
-    }
-    public function show($id)
-    {
-        // Menggunakan model Waralaba untuk mengambil data dari database
-        $waralaba = Waralaba::find($id);
-    
-        // Periksa jika data waralaba ditemukan
-        if (!$waralaba) {
-            return abort(404); // Tampilkan error 404 jika data tidak ditemukan
-        }
-    
-        return view('pages.user.detail', compact('waralaba'));
-    }    
+    }       
 }
