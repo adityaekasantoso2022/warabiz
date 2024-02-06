@@ -18,5 +18,8 @@ class HomeController extends Controller
         }
         return view('pages.user.home', [
         ]);
+        $products = Waralaba::all();
+
+    return view('your.blade.view', compact('products'));
     }
 }
