@@ -14,6 +14,10 @@ class Waralaba extends Model
     protected $fillable = [
         'id',
         'image_url',
+        'image_url_2',
+        'image_url_3',
+        'image_url_4',
+        'image_url_5',
         'category_id',
         'waralaba_name',
         'price',
@@ -23,7 +27,11 @@ class Waralaba extends Model
         'outlet_total',
         'license_duration',
         'description',
-        'royalty'
+        'royalty',
+        'income',
+        'rating',
+        'concept',
+        'concept_size'
     ];
 
     public function home()

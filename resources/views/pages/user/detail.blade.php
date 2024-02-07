@@ -124,7 +124,7 @@
         .course-card-responsive .course-detail .course-name,
         .line-clamp,
         .line-clamp-1 {
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 1;
             -webkit-box-orient: vertical;
             display: -webkit-box;
             overflow: hidden;
@@ -172,9 +172,6 @@
             margin: 0 0 16px;
         }
 
-        .checkout .payment-details .item {
-            margin-bottom: 16px;
-        }
 
         .checkout .payment-details .title {
             color: #34364a;
@@ -206,7 +203,7 @@
         }
 
         .video-iframe {
-            border-radius: 16px;
+            border-radius: 10px;
             transition: all .3s;
         }
 
@@ -291,8 +288,15 @@
                         <div class="payment-details">
                             <div class="item-pricing item-mentor d-flex flex-column gap-3">
                                 <h5 class="header-title mb-0">
-                                    Informasi Mengenai Waralaba
+                                    Informasi Waralaba
                                 </h5>
+                                <div class="item">
+                                    <p>
+                                        {{ $waralaba->description }}
+
+                                    </p>
+
+                                </div>
                                 <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                     <div class="d-flex gap-3 align-items-center">
                                         <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
@@ -323,28 +327,18 @@
                                             alt="BuildWith Angga">
                                         <div class="d-flex flex-column">
                                             <h5 class="header-title mb-1">
-                                                Durasi Lisensi (Tahun)
+                                                Kontak
                                             </h5>
-                                            <p>{{ $waralaba->license_duration }}</p>
+                                            <p>{{ $waralaba->contact }}</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
-                                    <div class="d-flex gap-3 align-items-center">
-                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                            alt="BuildWith Angga">
-                                        <div class="d-flex flex-column">
-                                            <h5 class="header-title mb-1">
-                                                Royalty Fee
-                                            </h5>
-                                            <p>{{ $waralaba->royality }}</p>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <a href="{{ $waralaba->brochure_link }}" target="_blank"
-                                    class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3">
+                                    class="mt-2 mb-2 btn btn-outline-dark  w-100  border-12 py-3">
                                     <i class="fas fa-download me-2"></i> Download Brosur
                                 </a>
+
                             </div>
                         </div>
                     </div>
@@ -364,7 +358,7 @@
                                             Pelatihan & SOP
                                         </h5>
                                         <p>Dapatkan Pelatihan dari franchisor beserta sistem SOP terstandar dan tertata
-                                            selama 5 bulan.
+                                            selama 5 bulan
                                         </p>
                                     </div>
                                 </div>
@@ -379,7 +373,7 @@
                                         <h5 class="header-title mb-1">
                                             Termasuk Persediaan
                                         </h5>
-                                        <p>Sudah termasuk persediaan awal dalam setiap pembelian brand franchise.</p>
+                                        <p>Sudah termasuk persediaan awal dalam setiap pembelian</p>
                                     </div>
                                 </div>
                                 <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
@@ -393,7 +387,7 @@
                                         <h5 class="header-title mb-1">
                                             Bantuan Marketing
                                         </h5>
-                                        <p>Bantuan dukungan pemasaran untuk suksesi bisnis dan strategi pemasaran.</p>
+                                        <p>Bantuan dukungan pemasaran untuk sukseskan bisnis</p>
                                     </div>
                                 </div>
                                 <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
@@ -408,7 +402,7 @@
                                             Termasuk Peralatan
                                         </h5>
                                         <p>Setiap pembelian franchise akan dilengkapi dengan peralatan awal sehingga
-                                            tidak perlu membeli lagi.</p>
+                                            tidak perlu membeli lagi</p>
                                     </div>
                                 </div>
                                 <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
@@ -416,32 +410,49 @@
                             </div>
                         </div>
                     </div>
-
-                    <form id="form-manual" method="post" action="">
-                        @csrf
-                        <div class="payment-details  mt-4">
-                            <div class="item-pricing item-mentor">
-                                <h5 class="header-title">
-                                    Deskripsi
-                                </h5>
-                                <div class="tab-content" id="pills-tabContent">
-                                    <div class="item">
-                                        <p>
-                                            {{ $waralaba->description }}
-
-                                        </p>
-
-                                    </div>
-                                    <button class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3" type="submit">
-                                        Beli Sekarang
-                                    </button>
+                    <br>
+                    <div class="payment-details">
+                        <div class="item-pricing item-mentor d-flex flex-column gap-3">
+                            <p class="title"><b>Galeri Produk</b></p>
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="{{ $waralaba->image_url_2 }}" alt="Waralaba 1" class="img-thumbnail">
+                                </div>
+                                <div class="col-3">
+                                    <img src="{{ $waralaba->image_url_3 }}" alt="Waralaba 2" class="img-thumbnail">
+                                </div>
+                                <div class="col-3">
+                                    <img src="{{ $waralaba->image_url_4 }}" alt="Waralaba 3" class="img-thumbnail">
+                                </div>
+                                <div class="col-3">
+                                    <img src="{{ $waralaba->image_url_5 }}" alt="Waralaba 4" class="img-thumbnail">
                                 </div>
                             </div>
+                            <p class="title"><b>Konsep Binis</b></p>
+                            <div class="item">
+                                <p class="title">Konsep</p>
+                                <p class="value"> {{ $waralaba->concept }} </p>
+                            </div>
+                            <div class="item">
+                                <p class="title">Ukuran Konsep</p>
+                                <p class="value">{{ $waralaba->concept_size }} </p>
+                            </div>
+                            <div class="item">
+                                <p class="title">Income</p>
+                                <p class="value"> Rp.{{ number_format($waralaba->income, 0, ',', '.') }} </p>
+                            </div>
+                            <div class="item">
+                                <p class="title">Royalty Fee</p>
+                                <p class="value"> Rp.{{ number_format($waralaba->royality, 0, ',', '.') }} </p>
+                            </div>
+                            <a href="{{ route('checkout', ['id' => $waralaba->id]) }}"
+                                class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3">
+                                Beli Sekarang
+                            </a>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
     </section>
 
 </x-user-layout>

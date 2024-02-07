@@ -1,22 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Testimonialhome;
-use App\Models\TestimonialTraining;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
-    public function index()
+    public function checkout(Request $request)
     {
-        if (Auth::check()) {
-            return view('pages.user.home.checkout', [
-            ]);
-        }
-        return view('pages.user.checkout', [
-        ]);
+        // Ambil metode pembayaran yang dipilih dari form
+        $paymentMethod = $request->input('payment_method');
+        // Ambil nomor rekening yang terkait dengan metode pembayaran (bisa dari form atau dari sesi)
+        $bankAccountNumber = $request->input('bank_account_number');
+
+        // Proses checkout dan tampilkan halaman checkout dengan nomor rekening
+        return view('checkout', ['paymentMethod' => $paymentMethod, 'bankAccountNumber' => $bankAccountNumber]);
     }
 }

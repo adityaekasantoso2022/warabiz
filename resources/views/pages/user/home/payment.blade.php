@@ -1,4 +1,4 @@
-<x-user-layout title="Payment" active="payment">
+<x-user-layout title="Checkout" active="checkout">
     @push('addonStyle')
     <style>
         body {
@@ -23,7 +23,6 @@
 
         .hero {
             background: none !important;
-
             margin-bottom: -33px !important;
             height: 80vh !important;
         }
@@ -32,7 +31,7 @@
             font-weight: 400;
             font-size: 16px;
             color: rgba(19, 19, 19, 0.8);
-            margin: 0px !important
+            margin: 0px !important;
         }
 
         .hero .hero-text {
@@ -40,8 +39,6 @@
             font-size: 68px;
             font-weight: 700;
             line-height: 78px;
-
-
         }
 
         .hero .btn-cta {
@@ -52,7 +49,6 @@
             font-size: 16px;
             line-height: 150%;
             padding: 12px 32px;
-            /* identical to box height, or 24px */
         }
 
         .img-header {
@@ -73,12 +69,8 @@
             padding: 20px 0px;
         }
 
-
-
         @media (min-width: 767px) {
-
             .benefit {
-
                 padding: 60px 0px;
             }
 
@@ -88,7 +80,6 @@
                 margin-bottom: -33px !important;
                 height: 80vh !important;
             }
-
         }
 
         .header-primary {
@@ -166,19 +157,19 @@
 
         .checkout .payment-details .header-title {
             color: #34364a;
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 700;
             margin: 0 0 16px;
         }
 
         .checkout .payment-details .item {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .checkout .payment-details .title {
             color: #34364a;
             float: left;
-            font-size: 16px;
+            font-size: 16px !important;
             font-weight: 400;
             margin: 0;
         }
@@ -204,6 +195,11 @@
             width: 100% !important;
         }
 
+        .video-iframe {
+            border-radius: 16px;
+            transition: all .3s;
+        }
+
         .embed-responsive:before {
             content: "";
             display: block;
@@ -215,13 +211,11 @@
             height: 25vh;
         }
 
-
         .plyr__video-embed {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-
         }
 
         .text-green {
@@ -233,212 +227,220 @@
         }
 
         .bg-theme-light {
-            background-color: #FFF2F6;
+            background-color: #e9fff0d2;
         }
 
-        .bg-theme-hijau {
-            background-color: #FAFFFC;
+        .small-circle-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .form-select {
+            border: 1px solid #ced4da !important;
+            padding: 0.375rem 2.25rem 0.375rem 0.75rem !important;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            /* Atur sudut bulat */
+            border: 2px solid #CED4DA;
+            /* Warna border abu-abu dan ketebalan 8px */
+            padding: 10px 15px;
+            /* Atur padding sesuai kebutuhan Anda */
+            font-size: 16px;
+            /* Atur ukuran font sesuai kebutuhan Anda */
+            line-height: 1.5;
+            /* Sesuaikan dengan kebutuhan Anda */
+            color: #495057;
+            /* Warna teks */
+            background-color: #FFFFFF;
+            /* Warna latar belakang */
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            width: 100%;
+            /* Menyesuaikan lebar form-control dengan parentnya */
+        }
+
+        /* Style saat form-control mendapat fokus */
+        .form-control:focus {
+            border-color: #4F94D7;
+            /* Ganti warna border saat mendapat fokus */
+            outline: 0;
+            /* Hapus outline */
+            box-shadow: 0 0 0 0.25rem rgba(79, 148, 215, 0.25);
+            /* Efek shadow saat mendapat fokus */
+        }
+
+        /* Gaya label */
+        .form-label {
+            display: block;
+            /* Menjadikan label sebagai block element */
+            margin-bottom: 5px;
+            /* Memberikan margin bawah agar tidak rapat dengan input */
+            font-weight: bold;
+            /* Memberikan ketebalan pada teks label */
         }
     </style>
     @endpush
     <section class="py-5" style="margin-top: 10px">
         <div class="container">
-            <div class="row">
-                <div class="text-center col-lg-12">
-                    <h1 class="mb-3 header-primary">
-                    </h1>
-
-                </div>
-
-            </div>
             <div class="mt-5 row pricing testimonials mentors checkout gy-4" id="reviews">
                 <div class="col-lg-4 col-md-5 col-12 p-md-0 offset-lg-1">
-                    <div class="d-block" id="courseCardCheckout"
-                        style="position: relative; transition: all 600ms ease-in-out 0s; top: 0px;">
-                        <div class="course-card">
-                            <div class="embed-responsive embed-responsive-16by9 video-iframe ">
-                                <div class="plyr__video-embed" id="player">
-                                </div>
+                    <div class="course-card">
+                        <h5 class="header-title mb-0">
+                            <b>Informasi Pembelian</b>
+                        </h5>
+                        <form>
+                            <div class="form-group">
+                                <label for="name" class="form-label fw-bold">
+                                    <p>Paket Waralaba</p>
+                                </label>
+                                <input type="text" name="name" id="name"
+                                    class="form-control border px-2 py-1 rounded-3 shadow-none"
+                                    value=" {{ $waralaba->waralaba_name }}" readonly>
                             </div>
-                            <div class="course-detail">
-                                <a>
-                                <h2 class="course-name line-clamp-2">
-                                    Nama Waralaba
-                                </h2>
-                                </a>
-                                <div class="d-flex mt-2 align-items-center gap-1">
-                                    Deskripsi Waralaba
-                                </div>
-                            </div>
-                            <div class="course-footer mt-auto">
-                                <div class="star-rating">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
-                                    <span>
-                                        (52)
-                                    </span>
-                                </div>
 
+                            <br>
+                            <div class="form-group">
+                                <label for="name" class="form-label fw-bold">
+                                    <p>Nama Lengkap</p>
+                                </label>
+                                <input type="text" name="name" id="fullname"
+                                    class="form-control border px-2 py-1 rounded-3 shadow-none" required>
+                                <p class="text-sm text-secondary mt-2">
+                                    Nama lengkap sesuai KTP
+                                </p>
+                            </div>
+                            <div class="row m-0 mt-4">
+                                <div class="col-lg-6 p-0">
+                                    <div class="form-group">
+                                        <label for="email" class="form-label fw-bold">
+                                            <p>Alamat Email</p>
+                                        </label>
+                                        <input type="email" name="email" id="email"
+                                            class="form-control border px-2 py-1 rounded-3 shadow-none" required>
+                                        <p class="text-sm text-secondary mt-2">
+                                            Email yang digunakan untuk login
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 p-0 ps-lg-4">
+                                    <div class="form-group">
+                                        <label for="phone_number" class="form-label fw-bold">
+                                            <p>Nomer Hp Aktif</p>
+                                        </label>
+                                        <input type="number" name="phone_number" id="number_phone"
+                                            class="form-control border px-2 py-1 rounded-3 shadow-none" required>
+                                        <p class="text-sm text-secondary mt-2">
+                                            Contoh: 081234567890
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-4">
+                                <label for="address" class="form-label fw-bold">
+                                    <p>Alamat Rumah</p>
+                                </label>
+                                <textarea name="address" id="address"
+                                    class="form-control border px-2 py-1 rounded-3 shadow-none" required cols="30"
+                                    rows="5"></textarea>
+                                <p class="text-sm text-secondary mt-2">
+                                    Alamat Rumah
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-7 col-12">
+                    <div class="payment-details">
+                        <div class="item-pricing item-mentor d-flex flex-column gap-3">
+                            <h5 class="header-title mb-0">
+                                Detail Pembelian
+                            </h5>
+                            <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                <div class="d-flex gap-3 align-items-center">
+                                    <img class="small-circle-img" src="{{ $waralaba->image_url }}" alt="Waralaba Image">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="header-title mb-1">
+                                            {{ $waralaba->waralaba_name }}
+                                        </h5>
+                                        <p>Rp. {{ $waralaba->price }}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-7 col-12 ">
-                    <form id="form-manual" method="post" action="#" enctype="multipart/form-data">
+                    <form id="form-manual" method="post" action="">
                         @csrf
-                        <div class="payment-details ">
+                        <div class="payment-details mt-4">
                             <div class="item-pricing item-mentor">
-
-                                <div class="p-3 d-flex align-items-center border-theme bg-theme-light rounded-3 mb-4">
-                                    <h5 class="themeColor m-0 me-3"><i class="fas fa-info-circle"></i></h5>
-                                    <p class="fw-bold">
-                                        Lakukan pembayaran sebelum
-                                        <strong id="countdown"></strong>
-                                    </p>
-                                </div>
-
-                                <script>
-                                    // Atur waktu akhir hitung mundur (60 menit dari sekarang)
-                                    var endTime = new Date();
-                                    endTime.setMinutes(endTime.getMinutes() + 60);
-
-                                    // Fungsi untuk memperbarui hitung mundur
-                                    function updateCountdown() {
-                                        var now = new Date();
-                                        var timeDifference = endTime - now;
-
-                                        var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-                                        var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-                                        // Tampilkan hitung mundur
-                                        document.getElementById("countdown").innerHTML = minutes + " Menit " + seconds + " Detik";
-
-                                        // Hentikan hitung mundur jika waktu sudah habis
-                                        if (timeDifference <= 0) {
-                                            clearInterval(countdownInterval);
-                                            document.getElementById("countdown").innerHTML = "Waktu Habis";
-                                        }
-                                    }
-
-                                    // Memperbarui hitung mundur setiap 1 detik
-                                    var countdownInterval = setInterval(updateCountdown, 1000);
-
-                                    // Memanggil fungsi untuk memastikan tampilan awal benar
-                                    updateCountdown();
-                                </script>
-                                <div>
-                                    <p class="fw-bold text-secondary mb-2">
-                                        Pilih metode pembayaran
-                                    </p>
-
-                                    <div class="form-group">
-                                        <select class="form-control border px-4 py-3 rounded-12 fw-bold text-sm"
-                                            id="paymentMethod" name="payment_method" onchange="showAccountInfo()">
-                                            <option selected disabled>Pilih metode pembayaran</option>
-                                            <option value="mandiri">Bank Mandiri</option>
-                                            <option value="bca">Bank BCA</option>
-                                            <option value="bni">Bank BNI</option>
-                                            <option value="permata">Bank Permata</option>
-                                        </select>
-                                    </div>
-                                    <br>
-                                    <div class="p-3 d-flex align-items-center  bg-theme-hijau rounded-3 mb-4">
-                                        <div id="accountInfo" style="display:none;">
-                                            <p class="fw-bold">
-                                                Nomer Rekening: <b><span id="accountNumber"></span></b>
-                                            </p>
-                                            <p class="">
-                                                Atas Nama: <span id="accountHolder"></span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div id="accountInfo" style="display:none;">
-
-                                        <p class="fw-bold text-secondary">
-                                            Nomer Rekening: <span id="accountNumber"></span>
-                                        </p>
-                                        <p class="fw-bold text-secondary">
-                                            Atas Nama: <span id="accountHolder"></span>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <script>
-                                    function showAccountInfo() {
-                                        var selectedBank = document.getElementById("paymentMethod").value;
-                                        var accountInfoDiv = document.getElementById("accountInfo");
-
-                                        // Reset content
-                                        document.getElementById("accountNumber").innerText = "";
-                                        document.getElementById("accountHolder").innerText = "";
-
-                                        // Show/hide content based on the selected bank
-                                        if (selectedBank === "mandiri") {
-                                            accountInfoDiv.style.display = "block";
-                                            document.getElementById("accountNumber").innerText = "98737-82837-2882";
-                                            document.getElementById("accountHolder").innerText = "PT. Warabisnis Indonesia";
-                                        } else if (selectedBank === "bca") {
-                                            accountInfoDiv.style.display = "block";
-                                            document.getElementById("accountNumber").innerText = "8377-6277-82774";
-                                            document.getElementById("accountHolder").innerText = "PT. Warabisnis Indonesia";
-                                        } else if (selectedBank === "bni") {
-                                            accountInfoDiv.style.display = "block";
-                                            document.getElementById("accountNumber").innerText = "5412-1113-3231";
-                                            document.getElementById("accountHolder").innerText = "PT. Warabisnis Indonesia";
-                                        } else if (selectedBank === "permata") {
-                                            accountInfoDiv.style.display = "block";
-                                            document.getElementById("accountNumber").innerText = "8277-03985-34245";
-                                            document.getElementById("accountHolder").innerText = "PT. Warabisnis Indonesia";
-                                        } else {
-                                            accountInfoDiv.style.display = "none";
-                                        }
-                                    }
-                                </script>
-
-
-
-                                <p class="fw-bold text-secondary mb-3">
-                                    Upload bukti pembayaran anda
-                                </p>
-                                <input type="file" name="image" id="image" accept="image/png, image/gif, image/jpeg"
-                                    class="form-control border px-4 py-3 rounded-12 fw-bold text-sm" required="">
-                                @error('image')
-                                <div class="alert alert-danger mt-2">{{ $message }}</div>
-                                @enderror
-                                <h5 class="header-title mt-4">
-                                    Jumlah Yang Harus Dibayarkan
+                                <h5 class="header-title">
+                                    Detail Pembayaran
                                 </h5>
                                 <div class="tab-content" id="pills-tabContent">
-                                    <input id="transaction_home_id" hidden="" name="transaction_home_id" value="null">
+                                    <div class="item">
+                                        <p class="title">
+                                            Harga waralaba
+                                        </p>
+                                        <p class="value">
+                                            Rp. {{ $waralaba->price }}
+                                        </p>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="item">
+                                        <p class="title">
+                                            Kode unik
+                                        </p>
+                                        <p class="value text-green">
+                                            @php
+                                            $unique_code = rand(100, 1000);
+                                            @endphp
+                                            - {{ $unique_code }}
+                                        </p>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="item">
+                                        <p class="title">
+                                            Biaya layanan
+                                        </p>
+                                        <p class="value text-green feeMidtransItem0">
+                                            + Rp 10.000
+                                        </p>
+                                        <div class="clear"></div>
+                                    </div>
                                     <div class="item">
                                         <p class="title">
                                             Total transfer
                                         </p>
-
+                                        <input id="transaction_total" hidden name="transaction_total" value="total">
                                         <p class="value">
-                                            <strong id="price">
-                                                Rp.100.000.589
+                                            <strong id="midtransPrice">
+                                                Rp. {{ $waralaba-> price }}
                                             </strong>
                                         </p>
-                                        <div class="clear"></div>
+                                        <br>
                                     </div>
-
-                                    <button class="mt-2 mb-2 btn bgTheme w-100 text-white border-12 py-3" type="submit">
-                                        Kirim
-                                    </button>
+                                    <h5 class="header-title mt-5">
+                                        Metode Pembayaran
+                                    </h5>
+                                    <select class="form-select" name="payment_method" id="paymentMethod" required>
+                                        <option selected value="bca">Bank BCA</option>
+                                        <option value="bni">Bank BNI</option>
+                                        <option value="bri">Bank BRI</option>
+                                        <option value="mandiri">Bank Mandiri</option>
+                                    </select>
+                                    <a href="{{ route('payment', ['id' => $waralaba->id]) }}"
+                                        class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3">
+                                        Beli Sekarang
+                                    </a>
                                 </div>
                             </div>
                         </div>
+                    </form>
                 </div>
-
-                </form>
             </div>
-
-        </div>
         </div>
     </section>
-
 </x-user-layout>

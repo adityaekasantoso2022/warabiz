@@ -51,10 +51,19 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home.index');
 
     Route::middleware(['auth'])->group(function () {
-        Route::get('/detail', 'User\DetailController@index')->name('detail');
+        Route::get('/waralaba/{id}', [WaralabaController::class, 'show'])->name("waralaba");
     });
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/waralaba/{id}/checkout', [WaralabaController::class, 'show2'])->name("checkout");
+    });
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/waralaba/{id}/checkout/submit', [WaralabaController::class, 'show3'])->name("payment");
+    });
+    
 
-    Route::get('/waralaba/{id}', [WaralabaController::class, 'show'])->name("waralaba");
+
+
+
 
     
 
