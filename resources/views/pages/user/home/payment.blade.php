@@ -286,74 +286,7 @@
     <section class="py-5" style="margin-top: 10px">
         <div class="container">
             <div class="mt-5 row pricing testimonials mentors checkout gy-4" id="reviews">
-                <div class="col-lg-4 col-md-5 col-12 p-md-0 offset-lg-1">
-                    <div class="course-card">
-                        <h5 class="header-title mb-0">
-                            <b>Informasi Pembelian</b>
-                        </h5>
-                        <form>
-                            <div class="form-group">
-                                <label for="name" class="form-label fw-bold">
-                                    <p>Paket Waralaba</p>
-                                </label>
-                                <input type="text" name="name" id="name"
-                                    class="form-control border px-2 py-1 rounded-3 shadow-none"
-                                    value=" {{ $waralaba->waralaba_name }}" readonly>
-                            </div>
-
-                            <br>
-                            <div class="form-group">
-                                <label for="name" class="form-label fw-bold">
-                                    <p>Nama Lengkap</p>
-                                </label>
-                                <input type="text" name="name" id="fullname"
-                                    class="form-control border px-2 py-1 rounded-3 shadow-none" required>
-                                <p class="text-sm text-secondary mt-2">
-                                    Nama lengkap sesuai KTP
-                                </p>
-                            </div>
-                            <div class="row m-0 mt-4">
-                                <div class="col-lg-6 p-0">
-                                    <div class="form-group">
-                                        <label for="email" class="form-label fw-bold">
-                                            <p>Alamat Email</p>
-                                        </label>
-                                        <input type="email" name="email" id="email"
-                                            class="form-control border px-2 py-1 rounded-3 shadow-none" required>
-                                        <p class="text-sm text-secondary mt-2">
-                                            Email yang digunakan untuk login
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 p-0 ps-lg-4">
-                                    <div class="form-group">
-                                        <label for="phone_number" class="form-label fw-bold">
-                                            <p>Nomer Hp Aktif</p>
-                                        </label>
-                                        <input type="number" name="phone_number" id="number_phone"
-                                            class="form-control border px-2 py-1 rounded-3 shadow-none" required>
-                                        <p class="text-sm text-secondary mt-2">
-                                            Contoh: 081234567890
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group mt-4">
-                                <label for="address" class="form-label fw-bold">
-                                    <p>Alamat Rumah</p>
-                                </label>
-                                <textarea name="address" id="address"
-                                    class="form-control border px-2 py-1 rounded-3 shadow-none" required cols="30"
-                                    rows="5"></textarea>
-                                <p class="text-sm text-secondary mt-2">
-                                    Alamat Rumah
-                                </p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-md-7 col-12">
+                <div class="col-lg-5 col-md-6 col-12">
                     <div class="payment-details">
                         <div class="item-pricing item-mentor d-flex flex-column gap-3">
                             <h5 class="header-title mb-0">
@@ -366,20 +299,12 @@
                                         <h5 class="header-title mb-1">
                                             {{ $waralaba->waralaba_name }}
                                         </h5>
-                                        <p>Rp. {{ $waralaba->price }}</p>
+                                        <p>{{ $waralaba->concept }}</p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <form id="form-manual" method="post" action="">
-                        @csrf
-                        <div class="payment-details mt-4">
-                            <div class="item-pricing item-mentor">
-                                <h5 class="header-title">
-                                    Detail Pembayaran
-                                </h5>
-                                <div class="tab-content" id="pills-tabContent">
+
+                            <div class="tab-content" id="pills-tabContent">
                                     <div class="item">
                                         <p class="title">
                                             Harga waralaba
@@ -422,25 +347,89 @@
                                         </p>
                                         <br>
                                     </div>
-                                    <h5 class="header-title mt-5">
-                                        Metode Pembayaran
-                                    </h5>
-                                    <select class="form-select" name="payment_method" id="paymentMethod" required>
-                                        <option selected value="bca">Bank BCA</option>
-                                        <option value="bni">Bank BNI</option>
-                                        <option value="bri">Bank BRI</option>
-                                        <option value="mandiri">Bank Mandiri</option>
-                                    </select>
-                                    <a href="{{ route('payment', ['id' => $waralaba->id]) }}"
-                                        class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3">
-                                        Beli Sekarang
-                                    </a>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-6 col-12">
+                    <div class="course-card">
+                        <h5 class="header-title mb-0">
+                            <b>Informasi Pembelian</b>
+                        </h5>
+                        <form id="myForm" action="{{ route('payment', ['id' => $waralaba->id]) }}" method="POST">
+                            @csrf
+                            <!-- Form fields -->
+                            <div class="form-group">
+                                <label for="fullname" class="form-label fw-bold">
+                                    <p>Nama Lengkap</p>
+                                </label>
+                                <input type="text" name="fullname" id="fullname"
+                                    class="form-control border px-2 py-1 rounded-3 shadow-none" required>
+                                <p class="text-sm text-secondary mt-2">
+                                    Nama lengkap sesuai KTP
+                                </p>
+                            </div>
+                            <div class="row m-0 mt-4">
+                                <div class="col-lg-6 p-0">
+                                    <div class="form-group">
+                                        <label for="email" class="form-label fw-bold">
+                                            <p>Alamat Email</p>
+                                        </label>
+                                        <input type="email" name="email" id="email"
+                                            class="form-control border px-2 py-1 rounded-3 shadow-none" required>
+                                        <p class="text-sm text-secondary mt-2">
+                                            Email yang digunakan untuk login
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 p-0 ps-lg-4">
+                                    <div class="form-group">
+                                        <label for="phone_number" class="form-label fw-bold">
+                                            <p>Nomer Hp Aktif</p>
+                                        </label>
+                                        <input type="number" name="phone_number" id="number_phone"
+                                            class="form-control border px-2 py-1 rounded-3 shadow-none" required>
+                                        <p class="text-sm text-secondary mt-2">
+                                            Contoh: 081234567890
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                            <div class="form-group mt-4">
+                                <label for="address" class="form-label fw-bold">
+                                    <p>Alamat Rumah</p>
+                                </label>
+                                <textarea name="address" id="address"
+                                    class="form-control border px-2 py-1 rounded-3 shadow-none" required cols="30"
+                                    rows="3"></textarea>
+                                <p class="text-sm text-secondary mt-2">
+                                    Alamat Rumah
+                                </p>
+                            </div>
+                            <!-- Submit button -->
+                            <button type="submit" class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3"
+                                id="submitButton">Beli Sekarang</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Menghentikan pengiriman formulir langsung
+
+            // Lakukan pengiriman formulir menggunakan AJAX
+            var formData = new FormData(this);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", this.action, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Jika pengiriman berhasil, redirect ke halaman lain
+                    window.location.href = "{{ route('payment', ['id' => $waralaba->id]) }}";
+                }
+            };
+            xhr.send(formData);
+        });
+    </script>
 </x-user-layout>

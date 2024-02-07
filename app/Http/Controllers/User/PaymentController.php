@@ -2,7 +2,7 @@
 
 // app/Http/Controllers/PaymentController.php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Purchase;
