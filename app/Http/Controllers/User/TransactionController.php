@@ -16,8 +16,10 @@ class TransactionController extends Controller
             'email' => 'required|email',
             'phone_number' => 'required|string',
             'address' => 'required|string',
-            'waralaba_id' => 'required|integer', // Menambahkan validasi untuk waralaba_id
-            'waralaba_name' => 'required|string', // Menambahkan validasi untuk waralaba_id
+            'waralaba_id' => 'required|integer', 
+            'waralaba_name' => 'required|string', 
+            'payment_method' => 'required|string', 
+
 
             // tambahkan validasi lainnya sesuai kebutuhan
         ]);
@@ -25,7 +27,7 @@ class TransactionController extends Controller
         // Memasukkan waralaba_id ke dalam data yang akan disimpan
         $validatedData['waralaba_id'] = $request->waralaba_id;
         $validatedData['waralaba_name'] = $request->waralaba_name;
-
+        $validatedData['payment_method'] = $request->payment_method;
 
         // Simpan data transaksi ke dalam tabel transaction
         Transaction::create($validatedData);

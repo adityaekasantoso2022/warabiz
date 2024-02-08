@@ -305,49 +305,49 @@
                             </div>
 
                             <div class="tab-content" id="pills-tabContent">
-                                    <div class="item">
-                                        <p class="title">
-                                            Harga waralaba
-                                        </p>
-                                        <p class="value">
-                                            Rp. {{ $waralaba->price }}
-                                        </p>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="item">
-                                        <p class="title">
-                                            Kode unik
-                                        </p>
-                                        <p class="value text-green">
-                                            @php
-                                            $unique_code = rand(100, 1000);
-                                            @endphp
-                                            - {{ $unique_code }}
-                                        </p>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="item">
-                                        <p class="title">
-                                            Biaya layanan
-                                        </p>
-                                        <p class="value text-green feeMidtransItem0">
-                                            + Rp 10.000
-                                        </p>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="item">
-                                        <p class="title">
-                                            Total transfer
-                                        </p>
-                                        <input id="transaction_total" hidden name="transaction_total" value="total">
-                                        <p class="value">
-                                            <strong id="midtransPrice">
-                                                Rp. {{ $waralaba-> price }}
-                                            </strong>
-                                        </p>
-                                        <br>
-                                    </div>
+                                <div class="item">
+                                    <p class="title">
+                                        Harga waralaba
+                                    </p>
+                                    <p class="value">
+                                        Rp. {{ $waralaba->price }}
+                                    </p>
+                                    <div class="clear"></div>
                                 </div>
+                                <div class="item">
+                                    <p class="title">
+                                        Kode unik
+                                    </p>
+                                    <p class="value text-green">
+                                        @php
+                                        $unique_code = rand(100, 1000);
+                                        @endphp
+                                        - {{ $unique_code }}
+                                    </p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="item">
+                                    <p class="title">
+                                        Biaya layanan
+                                    </p>
+                                    <p class="value text-green feeMidtransItem0">
+                                        + Rp 10.000
+                                    </p>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="item">
+                                    <p class="title">
+                                        Total transfer
+                                    </p>
+                                    <input id="transaction_total" hidden name="transaction_total" value="total">
+                                    <p class="value">
+                                        <strong id="midtransPrice">
+                                            Rp. {{ $waralaba-> price }}
+                                        </strong>
+                                    </p>
+                                    <br>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -357,67 +357,86 @@
                             <b>Informasi Pembelian</b>
                         </h5>
                         <form id="myForm" action="{{ route('payment', ['id' => $waralaba->id]) }}" method="POST">
-    @csrf
-    <!-- Form fields -->
-    <div class="form-group">
-        <label for="fullname" class="form-label fw-bold">
-            <p>Nama Lengkap</p>
-        </label>
-        <input type="text" name="fullname" id="fullname"
-            class="form-control border px-2 py-1 rounded-3 shadow-none" required>
-        <p class="text-sm text-secondary mt-2">
-            Nama lengkap sesuai KTP
-        </p>
-    </div>
-    
-    <div class="row m-0 mt-4">
-        <div class="col-lg-6 p-0">
-            <div class="form-group">
-                <label for="email" class="form-label fw-bold">
-                    <p>Alamat Email</p>
-                </label>
-                <input type="email" name="email" id="email"
-                    class="form-control border px-2 py-1 rounded-3 shadow-none" required>
-                <p class="text-sm text-secondary mt-2">
-                    Email yang digunakan untuk login
-                </p>
-            </div>
-        </div>
-        <div class="col-lg-6 p-0 ps-lg-4">
-            <div class="form-group">
-                <label for="phone_number" class="form-label fw-bold">
-                    <p>Nomer Hp Aktif</p>
-                </label>
-                <input type="number" name="phone_number" id="number_phone"
-                    class="form-control border px-2 py-1 rounded-3 shadow-none" required>
-                <p class="text-sm text-secondary mt-2">
-                    Contoh: 081234567890
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="form-group mt-4">
-        <label for="address" class="form-label fw-bold">
-            <p>Alamat Rumah</p>
-        </label>
-        <textarea name="address" id="address"
-            class="form-control border px-2 py-1 rounded-3 shadow-none" required cols="30"
-            rows="3"></textarea>
-        <p class="text-sm text-secondary mt-2">
-            Alamat Rumah
-        </p>
-    </div>
-    
-    <!-- Input tersembunyi untuk waralaba_id -->
-    <input type="hidden" name="waralaba_id" value="{{ $waralaba->id }}">
-    <input type="hidden" name="waralaba_name" value="{{ $waralaba->waralaba_name }}">
+                            @csrf
+                            <!-- Form fields -->
+                            <div class="form-group">
+                                <label for="fullname" class="form-label fw-bold">
+                                    <p>Nama Lengkap</p>
+                                </label>
+                                <input type="text" name="fullname" id="fullname"
+                                    class="form-control border px-2 py-1 rounded-3 shadow-none" required>
+                                <p class="text-sm text-secondary mt-2">
+                                    Nama lengkap sesuai KTP
+                                </p>
+                            </div>
+
+                            <div class="row m-0 mt-4">
+                                <div class="col-lg-6 p-0">
+                                    <div class="form-group">
+                                        <label for="email" class="form-label fw-bold">
+                                            <p>Alamat Email</p>
+                                        </label>
+                                        <input type="email" name="email" id="email"
+                                            class="form-control border px-2 py-1 rounded-3 shadow-none" required>
+                                        <p class="text-sm text-secondary mt-2">
+                                            Email yang digunakan untuk login
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 p-0 ps-lg-4">
+                                    <div class="form-group">
+                                        <label for="phone_number" class="form-label fw-bold">
+                                            <p>Nomer Hp Aktif</p>
+                                        </label>
+                                        <input type="number" name="phone_number" id="number_phone"
+                                            class="form-control border px-2 py-1 rounded-3 shadow-none" required>
+                                        <p class="text-sm text-secondary mt-2">
+                                            Contoh: 081234567890
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-4">
+                                <label for="address" class="form-label fw-bold">
+                                    <p>Alamat Rumah</p>
+                                </label>
+                                <textarea name="address" id="address"
+                                    class="form-control border px-2 py-1 rounded-3 shadow-none" required cols="30"
+                                    rows="3"></textarea>
+                                <p class="text-sm text-secondary mt-2">
+                                    Alamat Rumah
+                                </p>
+                            </div>
+                            <br>
+                            <h5 class="header-title mb-0">
+                            <b>Informasi Pembayaran</b>
+                        </h5>
+                        <div class="form-group mt-4">
+    <label for="payment_method" class="form-label fw-bold">
+        <p>Pilih Bank Pembayaran</p>
+    </label>
+    <select name="payment_method" id="payment_method"
+        class="form-select border px-2 py-1 rounded-3 shadow-none" required>
+        <option value="" selected disabled>Pilih Bank</option>
+        <option value="BCA">BCA (1234567890)</option>
+        <option value="BNI">BNI (0987654321)</option>
+        <option value="BRI">BRI (9876543210)</option>
+    </select>
+    <p class="text-sm text-secondary mt-2">
+        Silakan pilih bank untuk pembayaran.
+    </p>
+</div>
 
 
-    <!-- Submit button -->
-    <button type="submit" class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3"
-        id="submitButton">Beli Sekarang</button>
-</form>
+                            <!-- Input tersembunyi untuk waralaba_id -->
+                            <input type="hidden" name="waralaba_id" value="{{ $waralaba->id }}">
+                            <input type="hidden" name="waralaba_name" value="{{ $waralaba->waralaba_name }}">
 
+
+                            <!-- Submit button -->
+                            <button type="submit" class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3"
+                                id="submitButton">Beli Sekarang</button>
+                        </form>
                     </div>
                 </div>
             </div>

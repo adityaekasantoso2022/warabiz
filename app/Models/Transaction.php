@@ -16,7 +16,7 @@ class Transaction extends Model
         'address',
         'waralaba_id',
         'waralaba_name',
-
+        'payment_method'
 
     ];
 }
