@@ -1,4 +1,4 @@
-<x-user-layout title="Checkout" active="checkout">
+<x-user-layout title="Waralaba-Detail" active="waralaba">
     @push('addonStyle')
     <style>
         body {
@@ -23,6 +23,7 @@
 
         .hero {
             background: none !important;
+
             margin-bottom: -33px !important;
             height: 80vh !important;
         }
@@ -31,7 +32,7 @@
             font-weight: 400;
             font-size: 16px;
             color: rgba(19, 19, 19, 0.8);
-            margin: 0px !important;
+            margin: 0px !important
         }
 
         .hero .hero-text {
@@ -39,6 +40,8 @@
             font-size: 68px;
             font-weight: 700;
             line-height: 78px;
+
+
         }
 
         .hero .btn-cta {
@@ -49,6 +52,7 @@
             font-size: 16px;
             line-height: 150%;
             padding: 12px 32px;
+            /* identical to box height, or 24px */
         }
 
         .img-header {
@@ -69,8 +73,12 @@
             padding: 20px 0px;
         }
 
+
+
         @media (min-width: 767px) {
+
             .benefit {
+
                 padding: 60px 0px;
             }
 
@@ -80,6 +88,7 @@
                 margin-bottom: -33px !important;
                 height: 80vh !important;
             }
+
         }
 
         .header-primary {
@@ -145,6 +154,7 @@
             gap: 2px;
         }
 
+
         @media only screen and (min-width: 768px) and (max-width: 1250px) {
             .course-card .course-footer .star-rating img {
                 width: 20px !important;
@@ -200,6 +210,8 @@
             transition: all .3s;
         }
 
+
+
         .embed-responsive:before {
             content: "";
             display: block;
@@ -211,11 +223,13 @@
             height: 25vh;
         }
 
+
         .plyr__video-embed {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
+
         }
 
         .text-green {
@@ -230,56 +244,11 @@
             background-color: #e9fff0d2;
         }
 
-        .small-circle-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
         .form-select {
+
             border: 1px solid #ced4da !important;
             padding: 0.375rem 2.25rem 0.375rem 0.75rem !important;
-        }
 
-        .form-control {
-            border-radius: 8px;
-            /* Atur sudut bulat */
-            border: 2px solid #CED4DA;
-            /* Warna border abu-abu dan ketebalan 8px */
-            padding: 10px 15px;
-            /* Atur padding sesuai kebutuhan Anda */
-            font-size: 16px;
-            /* Atur ukuran font sesuai kebutuhan Anda */
-            line-height: 1.5;
-            /* Sesuaikan dengan kebutuhan Anda */
-            color: #495057;
-            /* Warna teks */
-            background-color: #FFFFFF;
-            /* Warna latar belakang */
-            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-            width: 100%;
-            /* Menyesuaikan lebar form-control dengan parentnya */
-        }
-
-        /* Style saat form-control mendapat fokus */
-        .form-control:focus {
-            border-color: #4F94D7;
-            /* Ganti warna border saat mendapat fokus */
-            outline: 0;
-            /* Hapus outline */
-            box-shadow: 0 0 0 0.25rem rgba(79, 148, 215, 0.25);
-            /* Efek shadow saat mendapat fokus */
-        }
-
-        /* Gaya label */
-        .form-label {
-            display: block;
-            /* Menjadikan label sebagai block element */
-            margin-bottom: 5px;
-            /* Memberikan margin bawah agar tidak rapat dengan input */
-            font-weight: bold;
-            /* Memberikan ketebalan pada teks label */
         }
     </style>
     @endpush
@@ -287,163 +256,174 @@
         <div class="container">
             <div class="mt-5 row pricing testimonials mentors checkout gy-4" id="reviews">
                 <div class="col-lg-4 col-md-5 col-12 p-md-0 offset-lg-1">
-                    <div class="course-card">
-                        <h5 class="header-title mb-0">
-                            <b>Informasi Pembelian</b>
-                        </h5>
-                        <form id="form-manual" method="post" action="{{ route('payment', ['id' => $waralaba->id]) }}">
-                            @csrf
-
-                            <!-- Form fields -->
-                            <div class="form-group">
-                                <label for="name" class="form-label fw-bold">
-                                    <p>Paket Waralaba</p>
-                                </label>
-                                <input type="text" name="name" id="name"
-                                    class="form-control border px-2 py-1 rounded-3 shadow-none"
-                                    value="{{ $waralaba->waralaba_name }}" readonly>
-                            </div>
-
-                            <br>
-
-                            <div class="form-group">
-                                <label for="fullname" class="form-label fw-bold">
-                                    <p>Nama Lengkap</p>
-                                </label>
-                                <input type="text" name="fullname" id="fullname"
-                                    class="form-control border px-2 py-1 rounded-3 shadow-none" required>
-                                <p class="text-sm text-secondary mt-2">
-                                    Nama lengkap sesuai KTP
-                                </p>
-                            </div>
-
-                            <div class="row m-0 mt-4">
-                                <div class="col-lg-6 p-0">
-                                    <div class="form-group">
-                                        <label for="email" class="form-label fw-bold">
-                                            <p>Alamat Email</p>
-                                        </label>
-                                        <input type="email" name="email" id="email"
-                                            class="form-control border px-2 py-1 rounded-3 shadow-none" required>
-                                        <p class="text-sm text-secondary mt-2">
-                                            Email yang digunakan untuk login
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 p-0 ps-lg-4">
-                                    <div class="form-group">
-                                        <label for="phone_number" class="form-label fw-bold">
-                                            <p>Nomer Hp Aktif</p>
-                                        </label>
-                                        <input type="number" name="phone_number" id="number_phone"
-                                            class="form-control border px-2 py-1 rounded-3 shadow-none" required>
-                                        <p class="text-sm text-secondary mt-2">
-                                            Contoh: 081234567890
-                                        </p>
-                                    </div>
+                    <div class="d-block" id="courseCardCheckout"
+                        style="position: relative; transition: all 600ms ease-in-out 0s; top: 0px;">
+                        <div class="course-card">
+                            <div class="embed-responsive embed-responsive-16by9 video-iframe ">
+                                <div class="plyr__video-embed" id="player">
+                                    <iframe allowfullscreen="" allowtransparency="" allow="autoplay" frameborder="0"
+                                        id="__existing-iframe-id" data-gtm-yt-inspected-5="true"></iframe>
                                 </div>
                             </div>
-
-                            <div class="form-group mt-4">
-                                <label for="address" class="form-label fw-bold">
-                                    <p>Alamat Rumah</p>
-                                </label>
-                                <textarea name="address" id="address"
-                                    class="form-control border px-2 py-1 rounded-3 shadow-none" required cols="30"
-                                    rows="5"></textarea>
-                                <p class="text-sm text-secondary mt-2">
-                                    Alamat Rumah
-                                </p>
+                            <div class="course-detail">
+                                <a>
+                                    <h2 class="course-name line-clamp-2">
+                                        {{ \App\Models\Waralaba::pluck('waralaba_name')->first() }} </h2>
+                                </a>
+                                <div class="d-flex mt-2 align-items-center gap-2">
+                                    Rp. {{ \App\Models\Waralaba::pluck('price')->first() }}
+                                </div>
                             </div>
-
-                            <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-md-7 col-12">
-                    <div class="payment-details">
-                        <div class="item-pricing item-mentor d-flex flex-column gap-3">
-                            <h5 class="header-title mb-0">
-                                Detail Pembelian
-                            </h5>
-                            <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
-                                <div class="d-flex gap-3 align-items-center">
-                                    <img class="small-circle-img" src="{{ $waralaba->image_url }}" alt="Waralaba Image">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="header-title mb-1">
-                                            {{ $waralaba->waralaba_name }}
-                                        </h5>
-                                        <p>Rp. {{ $waralaba->price }}</p>
-                                    </div>
+                            <div class="course-footer mt-auto">
+                                <div class="star-rating">
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
+                                    <span>
+                                        (875)
+                                    </span>
                                 </div>
                             </div>
                         </div>
+                        <br>
+                        <div class="payment-details">
+                            <div class="item-pricing item-mentor d-flex flex-column gap-3">
+                                <h5 class="header-title mb-0">
+                                    Informasi Mengenai Waralaba
+                                </h5>
+                                <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                    <div class="d-flex gap-3 align-items-center">
+                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                            alt="BuildWith Angga">
+                                        <div class="d-flex flex-column">
+                                            <h5 class="header-title mb-1">
+                                                Tahun Berdiri
+                                            </h5>
+                                            <p>20 Januari 2021</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                    <div class="d-flex gap-3 align-items-center">
+                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                            alt="BuildWith Angga">
+                                        <div class="d-flex flex-column">
+                                            <h5 class="header-title mb-1">
+                                                Total Outlet
+                                            </h5>
+                                            <p>105 Outlet</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                    <div class="d-flex gap-3 align-items-center">
+                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                            alt="BuildWith Angga">
+                                        <div class="d-flex flex-column">
+                                            <h5 class="header-title mb-1">
+                                                Durasi Lisensi (Tahun)
+                                            </h5>
+                                            <p>10 Tahun</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3">
+                                    <i class="fas fa-download me-2"></i> Download Brosur
+                                </button>
+
+                                <button class="mt-2 mb-4 btn btn-primary w-100 text-white border-12 py-3">
+                                    <i class="fas fa-comment-alt me-2"></i> Chat Admin
+                                </button>
+
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div class="col-lg-6 col-md-7 col-12 ">
+                    <div class="payment-details">
+                        <div class="item-pricing item-mentor d-flex flex-column gap-3">
+                            <h5 class="header-title mb-0">
+                                Feature Waralaba
+                            </h5>
+                            <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                <div class="d-flex gap-3 align-items-center">
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                        alt="BuildWith Angga">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="header-title mb-1">
+                                            Pelatihan & SOP
+                                        </h5>
+                                        <p>Dapatkan Pelatihan dari franchisor beserta sistem SOP terstandar dan tertata selama 5 bulan.
+                                        </p>
+                                    </div>
+                                </div>
+                                <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
+                                    alt="BuildWith Angga">
+                            </div>
+                            <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                <div class="d-flex gap-3 align-items-center">
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                        alt="BuildWith Angga">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="header-title mb-1">
+                                            Termasuk Persediaan
+                                        </h5>
+                                        <p>Sudah termasuk persediaan awal dalam setiap pembelian brand franchise.</p>
+                                    </div>
+                                </div>
+                                <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
+                                    alt="BuildWith Angga">
+                            </div>
+                            <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                <div class="d-flex gap-3 align-items-center">
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                        alt="BuildWith Angga">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="header-title mb-1">
+                                            Bantuan Marketing
+                                        </h5>
+                                        <p>Bantuan dukungan pemasaran untuk suksesi bisnis dan strategi pemasaran.</p>
+                                    </div>
+                                </div>
+                                <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
+                                    alt="BuildWith Angga">
+                            </div>
+                            <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                <div class="d-flex gap-3 align-items-center">
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                        alt="BuildWith Angga">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="header-title mb-1">
+                                        Termasuk Peralatan
+                                        </h5>
+                                        <p>Setiap pembelian franchise akan dilengkapi dengan peralatan awal sehingga tidak perlu membeli lagi.</p>
+                                    </div>
+                                </div>
+                                <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
+                                    alt="BuildWith Angga">
+                            </div>
+                        </div>
+                    </div>
+
                     <form id="form-manual" method="post" action="">
                         @csrf
-                        <div class="payment-details mt-4">
+                        <div class="payment-details  mt-4">
                             <div class="item-pricing item-mentor">
                                 <h5 class="header-title">
-                                    Detail Pembayaran
+                                    Deskripsi
                                 </h5>
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="item">
-                                        <p class="title">
-                                            Harga waralaba
+                                        <p>
+                                            Deskripsi Waralaba
                                         </p>
-                                        <p class="value">
-                                            Rp. {{ $waralaba->price }}
-                                        </p>
-                                        <div class="clear"></div>
+
                                     </div>
-                                    <div class="item">
-                                        <p class="title">
-                                            Kode unik
-                                        </p>
-                                        <p class="value text-green">
-                                            @php
-                                            $unique_code = rand(100, 1000);
-                                            @endphp
-                                            - {{ $unique_code }}
-                                        </p>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="item">
-                                        <p class="title">
-                                            Biaya layanan
-                                        </p>
-                                        <p class="value text-green feeMidtransItem0">
-                                            + Rp 10.000
-                                        </p>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="item">
-                                        <p class="title">
-                                            Total transfer
-                                        </p>
-                                        <input id="transaction_total" hidden name="transaction_total" value="total">
-                                        <p class="value">
-                                            <strong id="midtransPrice">
-                                                Rp. {{ $waralaba-> price }}
-                                            </strong>
-                                        </p>
-                                        <br>
-                                    </div>
-                                    <h5 class="header-title mt-5">
-                                        Metode Pembayaran
-                                    </h5>
-                                    <select class="form-select" name="payment_method" id="paymentMethod" required>
-                                        <option selected value="bca">Bank BCA</option>
-                                        <option value="bni">Bank BNI</option>
-                                        <option value="bri">Bank BRI</option>
-                                        <option value="mandiri">Bank Mandiri</option>
-                                    </select>
-                                    <a href="{{ route('payment', ['id' => $waralaba->id]) }}"
-                                        class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3">
+                                    <button class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3" type="submit">
                                         Beli Sekarang
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -452,4 +432,5 @@
             </div>
         </div>
     </section>
+
 </x-user-layout>

@@ -472,7 +472,7 @@
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Jika pengiriman berhasil, redirect ke halaman lain
-            window.location.href = "{{ route('payment', ['id' => $waralaba->id]) }}";
+            window.location.href = "{{ route('pembayaran', ['id' => $waralaba->id]) }}";
         }
     };
     xhr.send(formData);

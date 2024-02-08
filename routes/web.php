@@ -59,10 +59,11 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
         Route::get('/waralaba/{id}/checkout', [WaralabaController::class, 'show2'])->name("checkout");
     });
     Route::middleware(['auth'])->group(function () {
-        Route::get('/waralaba/{id}/checkout/submit', [WaralabaController::class, 'show3'])->name("payment");
-        Route::post('/waralaba/{id}/checkout/submit', [TransactionController::class, 'store']);
-        
-        
+        Route::get('/waralaba/{id}/checkout/submit', [WaralabaController::class, 'show3'])->name("payment"); //yang lama
+        Route::post('/waralaba/{id}/checkout/submit', [TransactionController::class, 'store']); //yang lama
+    });
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/payment/{id}', [WaralabaController::class, 'pembayaran'])->name("pembayaran"); //yang baru: masih error id nya masih id waralabas bukan id transactions
     });
     
 

@@ -257,7 +257,7 @@
                                                 <p class="mb-1">Rekening Tujuan</p>
                                                 <h3 class="card-text mb-2" id="accountNumber"
                                                     style="color: #009688; cursor: pointer;"
-                                                    onclick="copyText('accountNumber')"><b>Disini nomer rekening</b>
+                                                    onclick="copyText('accountNumber')"><b>5412110026382751</b>
                                                 </h3>
                                                 <p class="card-text mb-0"><b>an. PT. Warabiz Indonesia</b></p>
                                             </div>
