@@ -1,13 +1,9 @@
 <?php
 
-// app/Http/Controllers/User/WaralabaController.php
-
 namespace App\Http\Controllers\User;
 
 use App\Models\Waralaba;
 use App\Models\Transaction;
-
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -28,21 +24,26 @@ class WaralabaController extends Controller
     {
         $waralaba = Waralaba::findOrFail($id);
         return view('pages.user.home.payment', compact('waralaba'));
-
     }
+    
     public function show3($id)
     {
         $waralaba = Waralaba::findOrFail($id);
         return view('pages.user.home.submit', compact('waralaba'));
-
     }
+    
     public function pembayaran($id)
     {
-        $waralaba = Transaction::findOrFail($id);
         $transaction = Transaction::findOrFail($id);
 
-        $transaction = $transaction->transaction; // Mengambil transaksi terkait
+        // Pastikan transaksi yang ditemukan memiliki properti 'payment_method'
+        if (!$transaction->payment_method) {
+            return abort(404);
+        }
 
-        return view('pages.user.home.submit', compact( 'waralaba','transaction'));
+        // Ambil waralaba terkait dengan transaksi
+        $waralaba = $transaction->waralaba;
+
+        return view('pages.user.home.submit', compact('waralaba', 'transaction'));
     }
 }

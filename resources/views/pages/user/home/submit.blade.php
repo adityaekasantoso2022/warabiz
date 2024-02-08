@@ -249,7 +249,7 @@
                                                 <p class="mb-1">Total Pembayaran</p>
                                                 <h3 class="card-text mb-2" id="totalpayment"
                                                     style="color: #009688; cursor: pointer;"
-                                                    onclick="copyText('totalpayment')"><b>Rp. {{ $waralaba->price }}</b>
+                                                    onclick="copyText('totalpayment')"><b>Rp. {{ $transaction->payment_method }}</b>
                                                 </h3>
                                             </div>
                                             <!-- Sebelah kanan (nomor rekening) -->
@@ -257,7 +257,7 @@
                                                 <p class="mb-1">Rekening Tujuan</p>
                                                 <h3 class="card-text mb-2" id="accountNumber"
                                                     style="color: #009688; cursor: pointer;"
-                                                    onclick="copyText('accountNumber')"><b>5412110026382751</b>
+                                                    onclick="copyText('accountNumber')"><b>{{$transaction->payment_method }}</b>
                                                 </h3>
                                                 <p class="card-text mb-0"><b>an. PT. Warabiz Indonesia</b></p>
                                             </div>
