@@ -409,23 +409,23 @@
                             </div>
                             <br>
                             <h5 class="header-title mb-0">
-                            <b>Informasi Pembayaran</b>
-                        </h5>
-                        <div class="form-group mt-4">
-    <label for="payment_method" class="form-label fw-bold">
-        <p>Pilih Bank Pembayaran</p>
-    </label>
-    <select name="payment_method" id="payment_method"
-        class="form-select border px-2 py-1 rounded-3 shadow-none" required>
-        <option value="" selected disabled>Pilih Bank</option>
-        <option value="BCA">BCA (1234567890)</option>
-        <option value="BNI">BNI (0987654321)</option>
-        <option value="BRI">BRI (9876543210)</option>
-    </select>
-    <p class="text-sm text-secondary mt-2">
-        Silakan pilih bank untuk pembayaran.
-    </p>
-</div>
+                                <b>Informasi Pembayaran</b>
+                            </h5>
+                            <div class="form-group mt-4">
+                                <label for="payment_method" class="form-label fw-bold">
+                                    <p>Pilih Bank Pembayaran</p>
+                                </label>
+                                <select name="payment_method" id="payment_method"
+                                    class="form-select border px-2 py-1 rounded-3 shadow-none" required>
+                                    <option value="" selected disabled>Pilih Bank</option>
+                                    <option value="BCA">BCA (1234567890)</option>
+                                    <option value="BNI">BNI (0987654321)</option>
+                                    <option value="BRI">BRI (9876543210)</option>
+                                </select>
+                                <p class="text-sm text-secondary mt-2">
+                                    Silakan pilih bank untuk pembayaran.
+                                </p>
+                            </div>
 
 
                             <!-- Input tersembunyi untuk waralaba_id -->
@@ -441,22 +441,42 @@
                 </div>
             </div>
         </div>
+        <div id="processingPopup" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Pesanan Diproses</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Pesanan Anda sedang diproses. Mohon tunggu sebentar...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
     </section>
     <script>
-        document.getElementById("myForm").addEventListener("submit", function (event) {
-            event.preventDefault(); // Menghentikan pengiriman formulir langsung
+       document.getElementById("myForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Menghentikan pengiriman formulir langsung
 
-            // Lakukan pengiriman formulir menggunakan AJAX
-            var formData = new FormData(this);
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", this.action, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Jika pengiriman berhasil, redirect ke halaman lain
-                    window.location.href = "{{ route('payment', ['id' => $waralaba->id]) }}";
-                }
-            };
-            xhr.send(formData);
-        });
+    // Menampilkan popup pesanan sedang diproses
+    $('#processingPopup').modal('show');
+
+    // Lakukan pengiriman formulir menggunakan AJAX
+    var formData = new FormData(this);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", this.action, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Jika pengiriman berhasil, redirect ke halaman lain
+            window.location.href = "{{ route('payment', ['id' => $waralaba->id]) }}";
+        }
+    };
+    xhr.send(formData);
+});
+
     </script>
 </x-user-layout>
