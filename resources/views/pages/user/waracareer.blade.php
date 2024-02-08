@@ -24,7 +24,7 @@
 
             .hero {
                 background: none !important;
-
+                margin-top: 60px;
                 margin-bottom: -33px !important;
                 height: 80vh !important;
             }
@@ -514,6 +514,7 @@
         display: flex;
         justify-content: space-around;
         flex-wrap: wrap;
+        margin-top: 20px;
     }
 
     .job-card {
@@ -531,6 +532,35 @@
         max-width: 100%;
         border-radius: 1%;
     }
+    .job-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 
+}
+
+    .job-card img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .job-card h5, .job-card p, .job-card a {
+        width: 100%; /* Lebar maksimum untuk memanjangkan elemen */
+        box-sizing: border-box; /* Menghindari penambahan padding atau border membuat elemen lebih lebar dari yang diinginkan */
+    }
+    .job-card h5{
+        font-weight: bold
+    }
+
+    .job-card p {
+        font-size: 14px;
+        margin: 5px 0; 
+        text-align: left;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
 
     .apply-button {
         display: inline-block;
@@ -541,67 +571,56 @@
         text-decoration: none;
         border-radius: 5px;
     }
-    .carousel-container {
-        position: relative;
-        overflow: hidden;
-        margin-bottom: 20px;
+    .course-card .course-detail .course-name {
+            color: #34364a;
+            font-size: 20px !important;
+            font-weight: 700 !important;
+            line-height: 30px;
+            min-height: 10px;
+            position: relative;
+            z-index: 80 !important;
     }
-
-            .carousel {
-                display: flex;
-                transition: transform 0.5s ease-in-out;
-            }
-
-            .carousel a {
-                flex: 0 0 100%;
-                box-sizing: border-box;
-            }
-
-            .carousel img {
-                height: auto;
-            }
+    .course-card .course-detail .course-name {
+            color: #34364a;
+            font-size: 20px !important;
+            font-weight: 700 !important;
+            line-height: 30px;
+            min-height: 10px;
+            position: relative;
+            z-index: 80 !important;
+        }
         </style>
     @endpush
     <section class="hero ">
         <div class="d-flex container h-100 w-100 min-vh-75 align-items-center ">
             <div class="container">
-        
                 <div class="card-container">
-                    <!-- Card 1 -->
                     <div class="job-card">
-                        <img src="{{ asset('assets') }}/frontend/image/logo/bangor.png" alt="Company Logo 1" width="150" height="150" >
-                        <br>
-                        <br>
+                        <img src="{{ asset('assets') }}/frontend/image/logo/bangor.png" alt="Company Logo 1" width="150" height="150">
                         <h5>Burger Bangor</h5>
-                        <p>Description About Under Armour</p>
+                        <p>Burger Bangor adalah sebuah restoran cepat saji yang banyak digemari oleh kalangan muda-mudi</p>
+                        <p style="font-size: 12px"><i class="fa fa-map-marker"></i> Jl. Prof. Dr. Suharso, Arcawinangun</p>
                         <a href="#" class="apply-button">Daftar</a>
                     </div>
-        
-                    <!-- Card 2 -->
                     <div class="job-card">
-                        <img src="{{ asset('assets') }}/frontend/image/logo/gacoan.png" alt="Company Logo 2" width="400" height="150">
-                        <br>
-                        <br>
+                        <img src="{{ asset('assets') }}/frontend/image/logo/gacoan.png" alt="Company Logo 1" width="150" height="150">
                         <h5>Mie Gacoan</h5>
-                        <p>Deskripsi singkat tentang pekerjaan</p>
+                        <p>Mie Gacoan adalah sebuah restoran cepat saji yang banyak digemari oleh kalangan muda-mudi</p>
+                        <p style="font-size: 12px"><i class="fa fa-map-marker"></i> Arcawinangun, Kec. Purwokerto Timur</p>
                         <a href="#" class="apply-button">Daftar</a>
                     </div>
-
-                    <!-- Card 2 -->
                     <div class="job-card">
-                        <img src="{{ asset('assets') }}/frontend/image/logo/kfc.png" alt="Company Logo 2" width="150" height="150">
-                        <br>
-                        <br>
+                        <img src="{{ asset('assets') }}/frontend/image/logo/kfc.png" alt="Company Logo 1" width="150" height="150">
                         <h5>KFC</h5>
-                        <p>Deskripsi singkat tentang pekerjaan</p>
+                        <p>KFC adalah sebuah restoran cepat saji yang banyak digemari oleh kalangan muda-mudi</p>
+                        <p style="font-size: 12px"><i class="fa fa-map-marker"></i> Jln. Prof Dr Bunyamin, Sumampir Wetan</p>
                         <a href="#" class="apply-button">Daftar</a>
                     </div>
                     <div class="job-card">
-                        <img src="{{ asset('assets') }}/frontend/image/logo/tehdesa.png" alt="Company Logo 2" width="120" height="150">
-                        <br>
-                        <br>
+                        <img src="{{ asset('assets') }}/frontend/image/logo/tehdesa.png" alt="Company Logo 1" width="150" height="150">
                         <h5>Teh Desa</h5>
-                        <p>Deskripsi singkat tentang pekerjaan</p>
+                        <p>Teh Desa merupakan produk minuman kekinian yang sebagian besar berbahan dasar teh dan susu.</p>
+                        <p style="font-size: 12px"><i class="fa fa-map-marker"></i> Dimana aja sekarang ada bjir</p>
                         <a href="#" class="apply-button">Daftar</a>
                     </div>
                 </div>
