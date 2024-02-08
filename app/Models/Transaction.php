@@ -14,5 +14,9 @@ class Transaction extends Model
         'email',
         'phone_number',
         'address',
+        'waralaba_id',
+        'waralaba_name',
+
+
     ];
 }
