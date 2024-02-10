@@ -1,4 +1,13 @@
-<x-user-layout title="Payment" active="payment">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Informasi Pemesanan untuk Pembayaran">
+    <meta name="keywords" content="pembayaran, informasi pemesanan, waralaba">
+    <title>Pembayaran - Informasi Pemesanan</title>
+    <!-- Gaya tambahan -->
     @push('addonStyle')
     <style>
         body {
@@ -23,7 +32,6 @@
 
         .hero {
             background: none !important;
-
             margin-bottom: -33px !important;
             height: 80vh !important;
         }
@@ -40,8 +48,6 @@
             font-size: 68px;
             font-weight: 700;
             line-height: 78px;
-
-
         }
 
         .hero .btn-cta {
@@ -52,7 +58,6 @@
             font-size: 16px;
             line-height: 150%;
             padding: 12px 32px;
-            /* identical to box height, or 24px */
         }
 
         .img-header {
@@ -73,12 +78,8 @@
             padding: 20px 0px;
         }
 
-
-
         @media (min-width: 767px) {
-
             .benefit {
-
                 padding: 60px 0px;
             }
 
@@ -88,7 +89,6 @@
                 margin-bottom: -33px !important;
                 height: 80vh !important;
             }
-
         }
 
         .header-primary {
@@ -98,250 +98,134 @@
             line-height: 48px;
         }
 
-
         .pricing .item-pricing {
             background: #fff;
             border-radius: 16px;
             padding: 30px;
         }
 
-
-
-        @media only screen and (min-width: 768px) and (max-width: 1250px) {
-            .course-card .course-footer .star-rating img {
-                width: 20px !important;
-            }
-        }
-
-        .course-card .course-footer .star-rating img {
-            width: 24px;
-        }
-
-        .checkout .payment-details .header-title {
-            color: #34364a;
-            font-size: 16px;
-            font-weight: 700;
-            margin: 0 0 16px;
-        }
-
-        .checkout .payment-details .item {
+        .card-title {
+            margin-top: 20px;
             margin-bottom: 20px;
         }
 
-        .checkout .payment-details .title {
-            color: #34364a;
-            float: left;
-            font-size: 16px;
-            font-weight: 400;
-            margin: 0;
+        .check-icon {
+            color: #009688;
+            font-size: 30px;
+            margin-bottom: 15px;
         }
 
-        .checkout .payment-details .value {
-            color: #34364a;
-            float: right;
-            font-size: 16px;
-            font-weight: 400;
-            margin: 0;
+        .non-check-icon {
+            color: #FF5151;
+            font-size: 30px;
+            margin-bottom: 15px;
         }
 
-        .clear {
-            clear: both;
-        }
-
-        .embed-responsive {
-            display: block;
-            height: 25vh;
-            overflow: hidden;
-            padding: 0;
-            position: relative;
-            width: 100% !important;
-        }
-
-        .embed-responsive:before {
-            content: "";
-            display: block;
-        }
-
-        .embed-responsive iframe {
-            border-radius: 16px;
-            width: 100%;
-            height: 25vh;
-        }
-
-
-
-
-        .text-green {
-            color: #22c58b !important;
-        }
-
-        .border-theme {
-            border: 2px solid var(--limeColor);
-        }
-
-        .bg-theme-light {
-            background-color: #FFF2F6;
-        }
-
-        .bg-theme-hijau {
-            background-color: #FAFFFC;
+        .rounded-card {
+            border-radius: 8px;
         }
     </style>
     @endpush
-    <section class="py-5" style="margin-top: 10px">
-        <div class="container">
-            <div class="row">
-                <div class="text-center col-lg-12">
-                    <h1 class="mb-3 header-primary">
-                    </h1>
+</head>
 
+<body>
+    <x-user-layout title="Payment" active="payment">
+        <section class="py-5" style="margin-top: 10px">
+            <div class="container">
+                <div class="row">
+                    <div class="text-center col-lg-12">
+                        <h1 class="mb-3 header-primary"></h1>
+                    </div>
                 </div>
-
-            </div>
-            <div class="mt-5 row pricing testimonials mentors checkout gy-4" id="pembayaran">
-                <div class="container-fluid ">
-                    <form id="form-manual" method="post" action="#" enctype="multipart/form-data">
-                        @csrf
-                        <div class="payment-details ">
-                            <div class="item-pricing item-mentor">
-
-                                <div class="p-3 d-flex align-items-center border-theme bg-theme-light rounded-3 mb-4">
-                                    <h5 class="themeColor m-0 me-3"><i class="fas fa-info-circle"></i></h5>
-                                    <p class="fw-bold">
-                                        Lakukan pembayaran sebelum
-                                        <strong id="countdown"></strong>
-                                    </p>
-                                </div>
-                                <script>
-                                    // Atur waktu akhir hitung mundur (60 menit dari sekarang)
-                                    var endTime = new Date();
-                                    endTime.setMinutes(endTime.getMinutes() + 60);
-
-                                    // Fungsi untuk memperbarui hitung mundur
-                                    function updateCountdown() {
-                                        var now = new Date();
-                                        var timeDifference = endTime - now;
-
-                                        var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-                                        var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-                                        // Tampilkan hitung mundur
-                                        document.getElementById("countdown").innerHTML = minutes + " Menit " + seconds + " Detik";
-
-                                        // Hentikan hitung mundur jika waktu sudah habis
-                                        if (timeDifference <= 0) {
-                                            clearInterval(countdownInterval);
-                                            document.getElementById("countdown").innerHTML = "Waktu Habis";
-                                        }
-                                    }
-                                    // Memperbarui hitung mundur setiap 1 detik
-                                    var countdownInterval = setInterval(updateCountdown, 1000);
-
-                                    // Memanggil fungsi untuk memastikan tampilan awal benar
-                                    updateCountdown();
-                                </script>
-                                <div class="card mb-4 text-center">
+                <div class="mt-5 row pricing testimonials mentors checkout gy-4" id="pembayaran">
+                    <div class="container-fluid ">
+                        <form id="form-manual" method="post" action="#" enctype="multipart/form-data">
+                            @csrf
+                            <div class="payment-details ">
+                                <div class="item-pricing item-mentor">
                                     <div class="card-body">
-                                        <h5 class="card-title">Informasi Pembayaran</h5>
+                                        <img src="{{ asset('assets/frontend/image/logo.svg') }}">
+                                        <h3 class="card-title">Informasi Pemesanan</h3>
                                         <div class="row align-items-center mb-3">
-                                            <!-- Sebelah kiri (total pembayaran) -->
                                             <div class="col-md-6">
-                                                <p class="mb-1">Total Pembayaran</p>
+                                                <p class="mb-1"><b>Nama Pemesan</b></p>
                                                 <h3 class="card-text mb-2" id="totalpayment"
-                                                    style="color: #009688; cursor: pointer;"
-                                                    onclick="copyText('totalpayment')"><b>Rp. {{ $transaction->payment_method }}</b>
-                                                </h3>
+                                                    style="color: #009688; cursor: pointer;"><b>{{
+                                                        $transaction->fullname }}</b></h3>
                                             </div>
-                                            <!-- Sebelah kanan (nomor rekening) -->
                                             <div class="col-md-6">
-                                                <p class="mb-1">Rekening Tujuan</p>
-                                                <h3 class="card-text mb-2" id="accountNumber"
-                                                    style="color: #009688; cursor: pointer;"
-                                                    onclick="copyText('accountNumber')"><b>{{$transaction->payment_method }}</b>
-                                                </h3>
-                                                <p class="card-text mb-0"><b>an. PT. Warabiz Indonesia</b></p>
+                                                <p class="mb-1"><b>Alamat Rumah</b></p>
+                                                <p>{{ $transaction->address }}</p>
+                                                <p>{{ $transaction->phone_number }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col-md-6">
+                                                <p class="mb-1"><b>Tanggal Pemesanan</b></p>
+                                                <p>{{ $transaction->created_at }}</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="mb-1"><b>Metode Pembayaran</b></p>
+                                                <p>Bank {{ $transaction->payment_method }}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="payment-instructions">
-                                    <h5 class="header-title mb-3">Petunjuk Pembayaran Waralaba di Warabiz</h5>
-                                    <ol>
-                                        <li>
-                                            <p>Pastikan Anda telah meninjau semua informasi waralaba yang tersedia di
-                                                platform Warabiz.</p>
-                                        </li>
-                                        <li>
-                                            <p>Pilih waralaba yang sesuai dengan kebutuhan dan budget Anda.</p>
-                                        </li>
-                                        <li>
-                                            <p>Hubungi pemilik waralaba yang bersangkutan melalui platform Warabiz untuk
-                                                mendapatkan informasi lebih lanjut.</p>
-                                        </li>
-                                        <li>
-                                            <p>Setelah memutuskan waralaba yang akan Anda ambil, Anda akan diberikan
-                                                petunjuk pembayaran oleh pemilik waralaba atau melalui platform Warabiz.
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <p>Lakukan pembayaran sesuai petunjuk yang diberikan. Pembayaran biasanya
-                                                dilakukan melalui transfer bank atau metode pembayaran online lainnya
-                                                yang disepakati.</p>
-                                        </li>
-                                        <li>
-                                            <p>Setelah pembayaran diterima, pemilik waralaba akan memberikan informasi
-                                                lebih lanjut mengenai proses selanjutnya, termasuk pengiriman dokumen
-                                                resmi dan pelatihan waralaba.</p>
-                                        </li>
-                                        <li>
-                                            <p>Setelah proses pembayaran selesai, Anda dapat memulai usaha waralaba Anda
-                                                sesuai dengan ketentuan yang telah disepakati.</p>
-                                        </li>
-                                    </ol>
-                                </div>
+                                <br>
+                                <div class="item-pricing item-mentor">
+                                    <h5>Status Pesanan</h5>
+                                    <div class="row justify-content-center mt-4">
+                                        <?php
+                                        $status = $transaction->status;
 
+                                        $steps = [
+                                            1 => ['icon' => 'check', 'text' => 'Pembayaran'],
+                                            2 => ['icon' => 'check', 'text' => 'Verifikasi'],
+                                            3 => ['icon' => 'check', 'text' => 'Pembangunan'],
+                                            4 => ['icon' => 'check', 'text' => 'Selesai']
+                                        ];
 
-                                <script>
-                                    function copyText(elementId) {
-                                        var text = document.getElementById(elementId).innerText;
-                                        var input = document.createElement('textarea');
-                                        input.innerHTML = text;
-                                        document.body.appendChild(input);
-                                        input.select();
-                                        document.execCommand('copy');
-                                        document.body.removeChild(input);
-                                        alert('Berhasil Disalin: ' + text);
-                                    }
-                                </script>
+                                        // Mengatur ikon dan teks berdasarkan status
+                                        foreach ($steps as $step => $info) {
+                                            // Memeriksa apakah status saat ini lebih besar atau sama dengan langkah saat ini
+                                            // Jika ya, maka langkah tersebut sudah selesai
+                                            if ($status >= $step) {
+                                                // Jika status lebih besar atau sama dengan langkah saat ini,
+                                                // gunakan ikon centang dan kelas hijau
+                                                $iconClass = 'check-icon';
+                                                $icon = 'check-circle';
+                                                $statusText = 'Langkah selesai';
+                                            } else {
+                                                // Jika status lebih kecil dari langkah saat ini,
+                                                // gunakan ikon silang dan kelas merah
+                                                $iconClass = 'non-check-icon';
+                                                $icon = 'times-circle';
+                                                $statusText = 'Belum selesai';
+                                            }
 
-                                <h5 class="header-title mt-4">
-                                    Upload Bukti Pembayaran
-                                </h5>
-                                <div class="tab-content" id="pills-tabContent">
-                                    <input id="transaction_home_id" hidden="" name="transaction_home_id" value="null">
-                                    <div class="item">
-                                        <input type="file" name="image" id="image"
-                                            accept="image/png, image/gif, image/jpeg"
-                                            class="form-control border px-4 py-3 rounded-12 fw-bold text-sm"
-                                            required="">
-                                        @error('image')
-                                        <div class="alert alert-danger mt-2">{{ $message }}</div>
-                                        @enderror
-                                        <br>
-                                        <button class="mt-2 mb-2 btn bgTheme w-100 text-white border-12 py-3"
-                                            type="submit">
-                                            Kirim
-                                        </button>
+                                            // Mencetak kartu dengan ikon dan teks yang sesuai
+                                            echo '
+                                                <div class="col-md-3">
+                                                    <div class="card text-center rounded-card">
+                                                        <div class="card-body">
+                                                            <i class="fas fa-' . $icon . ' fa-5x ' . $iconClass . '"></i>
+                                                            <h5>' . $info['text'] . '</h5>
+                                                            <p>' . $statusText . '</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ';
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                    </div>
                     </form>
                 </div>
             </div>
-        </div>
-        </div>
-    </section>
-</x-user-layout>
+        </section>
+    </x-user-layout>
+</body>
 
+</html>
