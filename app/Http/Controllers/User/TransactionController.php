@@ -16,9 +16,9 @@ class TransactionController extends Controller
             'email' => 'required|email',
             'phone_number' => 'required|string',
             'address' => 'required|string',
-            'waralaba_id' => 'required|integer', 
-            'waralaba_name' => 'required|string', 
-            'payment_method' => 'required|string', 
+            'waralaba_id' => 'required|uuid', // Validasi UUID
+            'waralaba_name' => 'required|string',
+            'payment_method' => 'required|string',
 
 
             // tambahkan validasi lainnya sesuai kebutuhan
@@ -34,5 +34,19 @@ class TransactionController extends Controller
 
         // Redirect atau response sesuai kebutuhan
         return redirect()->back()->with('success', 'Transaksi berhasil disimpan.');
+    }
+    public function pembayaran($transactionId)
+    {
+        $transaction = Transaction::findOrFail($transactionId);
+
+        // Pastikan transaksi yang ditemukan memiliki properti 'payment_method'
+        if (!$transaction->payment_method) {
+            return abort(404);
+        }
+
+        // Ambil waralaba terkait dengan transaksi
+        $waralaba = $transaction->waralaba;
+
+        return view('pages.user.home.submit', compact('waralaba', 'transaction'));
     }
 }

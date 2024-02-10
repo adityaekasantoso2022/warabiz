@@ -281,6 +281,138 @@
             font-weight: bold;
             /* Memberikan ketebalan pada teks label */
         }
+
+        .custom-payment-info {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            border: 1px solid #4F94D7;
+            background-color: ##f9ffff;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .custom-payment-info h5 {
+            margin: 0;
+            margin-right: 1rem;
+            color: #4F94D7;
+        }
+
+        .custom-payment-info p {
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        /* CSS untuk membuat modal responsif */
+        .modal-dialog {
+            max-width: 60%;
+            margin: 1.75rem auto;
+        }
+
+        .modal-content {
+            border: none;
+            border-radius: 0.5rem;
+        }
+
+        .modal-body {
+            padding: 2rem;
+            background-color: #ffffff;
+            /* Ganti latar belakang menjadi putih */
+        }
+
+        .invoice-box img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        /* Tambahkan media queries untuk responsivitas */
+        @media (max-width: 576px) {
+            .modal-dialog {
+                max-width: 100%;
+            }
+        }
+
+        /* Gaya CSS untuk checkbox dan pernyataan */
+        .custom-checkbox {
+            display: inline-block;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .custom-checkbox input[type="checkbox"] {
+            display: none;
+        }
+
+        .checkmark {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+
+            /* Sesuaikan ukuran kotak centang dengan kebutuhan Anda */
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+
+        /* Gaya CSS untuk kotak centang saat tercentang */
+        .custom-checkbox input[type="checkbox"]:checked+.checkmark {
+            background-color: #429488;
+            /* Warna latar belakang saat tercentang */
+            border-color: #429488;
+            /* Warna border saat tercentang */
+        }
+
+        /* Gaya CSS untuk tanda centang */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Gaya CSS untuk tanda centang saat tercentang */
+        .custom-checkbox input[type="checkbox"]:checked+.checkmark:after {
+            display: block;
+        }
+
+        /* Gaya CSS untuk tanda centang */
+        .checkmark:after {
+            left: 7px;
+            /* Sesuaikan posisi tanda centang dengan kebutuhan Anda */
+            top: 3px;
+            /* Sesuaikan posisi tanda centang dengan kebutuhan Anda */
+            width: 5px;
+            /* Sesuaikan ukuran tanda centang dengan kebutuhan Anda */
+            height: 10px;
+            /* Sesuaikan ukuran tanda centang dengan kebutuhan Anda */
+            border: solid #fff;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        /* Gaya CSS untuk pernyataan */
+        .statement {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+            /* Sesuaikan margin kiri dengan kebutuhan Anda */
+            font-size: 16px;
+            /* Sesuaikan ukuran teks dengan kebutuhan Anda */
+        }
+
+
+        .small-circle-img {
+            width: 50px;
+            /* Sesuaikan lebar lingkaran sesuai kebutuhan */
+            height: 50px;
+            /* Sesuaikan tinggi lingkaran sesuai kebutuhan */
+            object-fit: contain;
+            /* Membuat gambar tetap proporsional dan terlihat sepenuhnya di dalam lingkaran */
+            border-radius: 50%;
+            /* Membuat gambar menjadi lingkaran */
+            overflow: hidden;
+            /* Menghilangkan bagian gambar yang keluar dari lingkaran */
+        }
     </style>
     @endpush
     <section class="py-5" style="margin-top: 10px">
@@ -289,12 +421,85 @@
                 <div class="col-lg-5 col-md-6 col-12">
                     <div class="payment-details">
                         <div class="item-pricing item-mentor d-flex flex-column gap-3">
+                            <div class="custom-payment-info">
+                                <h5><i class="fas fa-info-circle"></i></h5>
+                                <p>
+                                    Lakukan pembayaran sejumlah <b>Rp.{{ $waralaba->price }}</b>
+                                </p>
+                            </div>
                             <h5 class="header-title mb-0">
-                                Detail Pembelian
+                                Metode Pembayaran
                             </h5>
+                            <div class="item">
+                                <p>
+                                    Mohon lakukan pembayaran melalui rekening bank berikut. Semua rekening tersebut atas
+                                    nama <b>PT. Warabisnis Indonesia</b>.
+                                </p>
+                            </div>
                             <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                 <div class="d-flex gap-3 align-items-center">
-                                    <img class="small-circle-img" src="{{ $waralaba->image_url }}" alt="Waralaba Image">
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                        alt="BuildWith Angga">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="header-title mb-1">
+                                            Bank BCA
+                                        </h5>
+                                        <p>72836265152526</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                <div class="d-flex gap-3 align-items-center">
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                        alt="BuildWith Angga">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="header-title mb-1">
+                                            Bank BNI
+                                        </h5>
+                                        <p>91736561522771</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                <div class="d-flex gap-3 align-items-center">
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                        alt="BuildWith Angga">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="header-title mb-1">
+                                            Bank BRI
+                                        </h5>
+                                        <p>88372615537182</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                <div class="d-flex gap-3 align-items-center">
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                        alt="BuildWith Angga">
+                                    <div class="d-flex flex-column">
+                                        <h5 class="header-title mb-1">
+                                            Bank Mandiri
+                                        </h5>
+                                        <p>18827362651523</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="item-pricing item-mentor d-flex flex-column gap-3">
+                            <h5 class="header-title mb-3 d-flex justify-content-between align-items-center">
+                                <span>Detail Tagihan</span>
+                                <a class="btn btn text-muted" onclick="showInvoiceModal()">Lihat Invoice</a>
+                            </h5>
+                            <script>
+                                function showInvoiceModal() {
+                                    var modal = new bootstrap.Modal(document.getElementById('invoiceModal'));
+                                    modal.show();
+                                }
+                            </script>
+                            <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                <div class="d-flex gap-3 align-items-center">
+                                    <img class="small-circle-img" src="{{ $waralaba->logo }}" alt="Waralaba Image">
                                     <div class="d-flex flex-column">
                                         <h5 class="header-title mb-1">
                                             {{ $waralaba->waralaba_name }}
@@ -303,6 +508,7 @@
                                     </div>
                                 </div>
                             </div>
+
 
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="item">
@@ -314,18 +520,7 @@
                                     </p>
                                     <div class="clear"></div>
                                 </div>
-                                <div class="item">
-                                    <p class="title">
-                                        Kode unik
-                                    </p>
-                                    <p class="value text-green">
-                                        @php
-                                        $unique_code = rand(100, 1000);
-                                        @endphp
-                                        - {{ $unique_code }}
-                                    </p>
-                                    <div class="clear"></div>
-                                </div>
+
                                 <div class="item">
                                     <p class="title">
                                         Biaya layanan
@@ -409,74 +604,204 @@
                             </div>
                             <br>
                             <h5 class="header-title mb-0">
-                                <b>Informasi Pembayaran</b>
+                                <b>Konfirmasi Pembayaran</b>
                             </h5>
                             <div class="form-group mt-4">
                                 <label for="payment_method" class="form-label fw-bold">
-                                    <p>Pilih Bank Pembayaran</p>
+                                    <p>Pilih Metode Pembayaran</p>
                                 </label>
                                 <select name="payment_method" id="payment_method"
                                     class="form-select border px-2 py-1 rounded-3 shadow-none" required>
-                                    <option value="" selected disabled>Pilih Bank</option>
-                                    <option value="BCA">BCA (1234567890)</option>
-                                    <option value="BNI">BNI (0987654321)</option>
-                                    <option value="BRI">BRI (9876543210)</option>
+                                    <option value="" selected disabled>Pilih Metode</option>
+                                    <option value="BCA">Bank BCA</option>
+                                    <option value="BNI">Bank BNI</option>
+                                    <option value="BRI">Bank BRI</option>
                                 </select>
                                 <p class="text-sm text-secondary mt-2">
-                                    Silakan pilih bank untuk pembayaran.
+                                    Pilih metode pembayaran anda
                                 </p>
                             </div>
-
-
+                            <!-- <div class="form-group mt-4">
+                                    <label for="address" class="form-label fw-bold">
+                                        <p>Upload Bukti Pembayaran</p>
+                                    </label>
+                                    <input type="file" name="image" id="image" accept="image/png, image/gif, image/jpeg" class="form-control border px-4 py-3 rounded-12 fw-bold text-sm" maxlength="50" required="">
+                                    <p class="text-sm text-secondary mt-2">
+                                        Upload bukti dalam format img/jpg/jpeg/pdf
+                                    </p>
+                                </div>
+ -->
                             <!-- Input tersembunyi untuk waralaba_id -->
                             <input type="hidden" name="waralaba_id" value="{{ $waralaba->id }}">
                             <input type="hidden" name="waralaba_name" value="{{ $waralaba->waralaba_name }}">
-
-
+                            <br>
+                            <label class="custom-checkbox">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <span class="statement">Data yang saya kirim benar dan saya mematuhi syarat dan ketentuan
+                                Warabiz.</span>
                             <!-- Submit button -->
-                            <button type="submit" class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3"
-                                id="submitButton">Beli Sekarang</button>
+                            <button type="submit" onclick="validateForm()"
+                                class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3" id="submitButton">
+                                Kirim</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
         <div id="processingPopup" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Pesanan Diproses</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Pesanan Anda sedang diproses. Mohon tunggu sebentar...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Menghentikan pengiriman formulir langsung
+
+            // Menampilkan popup pesanan sedang diproses
+            $('#processingPopup').modal('show');
+
+            // Lakukan pengiriman formulir menggunakan AJAX
+            var formData = new FormData(this);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", this.action, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Jika pengiriman berhasil, redirect ke halaman lain
+                    window.location.href = "{{ route('sukses') }}";
+                }
+            };
+            xhr.send(formData);
+        });
+    </script>
+</x-user-layout>
+
+<div class="modal fade" id="invoiceModal" tabindex="-1" aria-labelledby="invoiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Pesanan Diproses</h5>
+                <h5 class="modal-title" id="invoiceModalLabel">Invoice</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>Pesanan Anda sedang diproses. Mohon tunggu sebentar...</p>
+                <div class="container">
+                    <div class="row mb-4">
+                        <div class="col-lg-8 col-12">
+                            <img src="{{ asset('assets/frontend/image/logo.svg') }}" class="mb-4" height="50">
+                            <h3 class="mb-0">Inovoice Pembelian Waralaba</h3>
+                        </div>
+                    </div>
+                    <hr class="mb-4">
+                    <div class="row mb-4">
+                        <div class="col-lg-6 col-12">
+                            <p class="mb-0">
+                                <strong>PT. Warabisnis Technology</strong>
+                            </p>
+                            <p class="mb-0">
+                                Banyumas, Jawa Tengah, Indonesia
+                            </p>
+                            <p class="mb-0">
+                                (081) 572663773
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-lg-12 col-12">
+                            <table class="table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nama Produk</th>
+                                        <th scope="col">Harga</th>
+                                        <th scope="col">Qty</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td width="45%">{{ $waralaba->waralaba_name }}</td>
+                                        <td>
+                                            {{ $waralaba->price }}
+                                        </td>
+                                        <td>1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-lg-12 col-12">
+                            <div class="payment-instructions">
+                                <p class="mb-2">
+                                    <strong>Petunjuk Pembayaran Waralaba di Warabiz</strong>
+                                </p>
+
+                                <ol>
+                                    <li>
+                                        <p>Pastikan Anda telah meninjau semua informasi waralaba yang tersedia di
+                                            platform Warabiz.</p>
+                                    </li>
+                                    <li>
+                                        <p>Pilih waralaba yang sesuai dengan kebutuhan dan budget Anda.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>Hubungi pemilik waralaba yang bersangkutan melalui platform
+                                            Warabiz untuk
+                                            mendapatkan informasi lebih lanjut.</p>
+                                    </li>
+                                    <li>
+                                        <p>Setelah memutuskan waralaba yang akan Anda ambil, Anda akan
+                                            diberikan
+                                            petunjuk pembayaran oleh pemilik waralaba atau melalui
+                                            platform Warabiz.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>Lakukan pembayaran sesuai petunjuk yang diberikan. Pembayaran
+                                            biasanya
+                                            dilakukan melalui transfer bank atau metode pembayaran
+                                            online lainnya
+                                            yang disepakati.</p>
+                                    </li>
+                                    <li>
+                                        <p>Setelah pembayaran diterima, pemilik waralaba akan memberikan
+                                            informasi
+                                            lebih lanjut mengenai proses selanjutnya, termasuk
+                                            pengiriman dokumen
+                                            resmi.</p>
+                                    </li>
+                                    <li>
+                                        <p>Setelah proses pembayaran selesai, Anda dapat memulai usaha
+                                            waralaba Anda
+                                            sesuai dengan ketentuan yang telah disepakati.</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
 </div>
-
-    </section>
-    <script>
-       document.getElementById("myForm").addEventListener("submit", function (event) {
-    event.preventDefault(); // Menghentikan pengiriman formulir langsung
-
-    // Menampilkan popup pesanan sedang diproses
-    $('#processingPopup').modal('show');
-
-    // Lakukan pengiriman formulir menggunakan AJAX
-    var formData = new FormData(this);
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", this.action, true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            // Jika pengiriman berhasil, redirect ke halaman lain
-            window.location.href = "{{ route('pembayaran', ['id' => $waralaba->id]) }}";
-        }
-    };
-    xhr.send(formData);
-});
-
-    </script>
-</x-user-layout>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>

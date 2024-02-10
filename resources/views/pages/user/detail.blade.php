@@ -205,6 +205,8 @@
         .video-iframe {
             border-radius: 10px;
             transition: all .3s;
+            height: 175px;
+
         }
 
 
@@ -221,12 +223,10 @@
         }
 
 
-        .plyr__video-embed {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .plyr__video-embed img {
             width: 100%;
-
+            height: 100%;
+            object-fit: cover;
         }
 
         .text-green {
@@ -247,6 +247,91 @@
             padding: 0.375rem 2.25rem 0.375rem 0.75rem !important;
 
         }
+
+        .share-button {
+            background-color: #05A8B4;
+            /* Warna hijau muda */
+            border: none;
+            border-radius: 50%;
+            /* Membuat tombol berbentuk lingkaran */
+            width: 36px;
+            /* Ukuran tombol */
+            height: 36px;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .share-button i {
+            color: #000;
+            /* Warna ikon */
+            font-size: 20px;
+            /* Sesuaikan dengan ukuran yang diinginkan */
+        }
+
+        .custom-btn {
+            background-color: #05A8B4;
+            /* Warna latar belakang */
+            color: white;
+            /* Warna teks */
+            padding: 14px 24px;
+            /* Tinggi dan lebar tombol */
+            border: none;
+            /* Menghilangkan border */
+            border-radius: 30px;
+            /* Sudut melengkung */
+            display: inline-block;
+            /* Tampilan inline */
+            text-decoration: none;
+            /* Menghilangkan garis bawah pada tautan */
+            transition: background-color 0.3s ease;
+            /* Efek transisi saat hover */
+        }
+
+        .custom-btn:hover {
+            background-color: #05A8B4;
+            /* Warna latar belakang saat hover */
+            color: white;
+            /* Warna teks saat hover */
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            /* Sesuaikan jarak vertikal dari atas */
+            left: 10px;
+            /* Sesuaikan jarak horizontal dari kiri */
+            z-index: 1;
+            /* Pastikan logo berada di atas gambar */
+        }
+
+        .embed-responsive {
+            position: relative;
+            /* Tetapkan posisi relatif pada kontainer video */
+        }
+
+        .logo {
+            width: 80px;
+            /* Sesuaikan lebar sesuai kebutuhan */
+            height: auto;
+            /* Mencegah distorsi gambar */
+            border-radius: 5px;
+        }
+
+        .img-container {
+            width: 100%;
+            padding-top: 100%;
+            /* Maintain 1:1 aspect ratio */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .img-container img {
+            position: absolute;
+            width: auto;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
     </style>
     @endpush
     <section class="py-5" style="margin-top: 10px">
@@ -256,21 +341,28 @@
                     <div class="d-block" id="courseCardCheckout"
                         style="position: relative; transition: all 600ms ease-in-out 0s; top: 0px;">
                         <div class="course-card">
-                            <div class="embed-responsive embed-responsive-16by9 video-iframe ">
-                                <div class="plyr__video-embed" id="player">
-                                    <img src="{{ $waralaba->image_url }}" class="img-fluid" alt="Gambar Waralaba">
-
+                            <div class="embed-responsive embed-responsive-16by9 video-iframe">
+                                <div class="logo-container">
+                                    <img src="{{ $waralaba->logo }}" class="logo" alt="Logo" />
+                                </div>
+                                <div class="plyr__video-embed" id="foto waralaba">
+                                    <img src="{{ $waralaba->image_url_1 }}" class="img-fluid" alt="Gambar Waralaba">
                                 </div>
                             </div>
                             <div class="course-detail">
-                                <a>
-                                    <h2 class="course-name line-clamp-2">
-                                        {{ $waralaba->waralaba_name }} </h2>
-                                </a>
-                                <div class="d-flex mt-2 align-items-center gap-2">
-                                    Rp. {{ $waralaba->price }}
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a>
+                                        <h2 class="course-name line-clamp-2">
+                                            {{ $waralaba->waralaba_name }}
+                                        </h2>
+                                    </a>
+                                    <button onclick="copyPageURL()" class="share-button">
+                                        <i class="fas fa-share" style="color: white;"></i>
+                                    </button>
                                 </div>
+                                <h5>Rp. {{ $waralaba->price }}</h5>
                             </div>
+
                             <div class="course-footer mt-auto">
                                 <div class="star-rating">
                                     <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
@@ -279,7 +371,7 @@
                                     <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
                                     <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
                                     <span>
-                                        (875)
+                                        {{ $waralaba->rating }}
                                     </span>
                                 </div>
                             </div>
@@ -295,8 +387,20 @@
                                         {{ $waralaba->description }}
 
                                     </p>
-
                                 </div>
+                                <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                    <div class="d-flex gap-3 align-items-center">
+                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                            alt="BuildWith Angga">
+                                        <div class="d-flex flex-column">
+                                            <h5 class="header-title mb-1">
+                                                Badan Hukum
+                                            </h5>
+                                            <p>PT. {{ $waralaba->waralaba_name }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                     <div class="d-flex gap-3 align-items-center">
                                         <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
@@ -333,12 +437,10 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <a href="{{ $waralaba->brochure_link }}" target="_blank"
-                                    class="mt-2 mb-2 btn btn-outline-dark  w-100  border-12 py-3">
-                                    <i class="fas fa-download me-2"></i> Download Brosur
+                                <a href="{{ $waralaba->brochure_link }}"
+                                    class="mt-2 mb-2 btn btn-outline-dark custom-btn">
+                                    <i class="fas fa-download me-2"></i> Unduh Brosur
                                 </a>
-
                             </div>
                         </div>
                     </div>
@@ -413,19 +515,27 @@
                     <br>
                     <div class="payment-details">
                         <div class="item-pricing item-mentor d-flex flex-column gap-3">
-                            <p class="title"><b>Galeri Produk</b></p>
+                            <p class="title"><b>Galeri Waralaba</b></p>
                             <div class="row">
                                 <div class="col-3">
-                                    <img src="{{ $waralaba->image_url_2 }}" alt="Waralaba 1" class="img-thumbnail">
+                                    <div class="img-container">
+                                        <img src="{{ $waralaba->image_url_2 }}" alt="Waralaba 1" class="img-thumbnail">
+                                    </div>
                                 </div>
                                 <div class="col-3">
-                                    <img src="{{ $waralaba->image_url_3 }}" alt="Waralaba 2" class="img-thumbnail">
+                                    <div class="img-container">
+                                        <img src="{{ $waralaba->image_url_3 }}" alt="Waralaba 2" class="img-thumbnail">
+                                    </div>
                                 </div>
                                 <div class="col-3">
-                                    <img src="{{ $waralaba->image_url_4 }}" alt="Waralaba 3" class="img-thumbnail">
+                                    <div class="img-container">
+                                        <img src="{{ $waralaba->image_url_4 }}" alt="Waralaba 3" class="img-thumbnail">
+                                    </div>
                                 </div>
                                 <div class="col-3">
-                                    <img src="{{ $waralaba->image_url_5 }}" alt="Waralaba 4" class="img-thumbnail">
+                                    <div class="img-container">
+                                        <img src="{{ $waralaba->image_url_5 }}" alt="Waralaba 4" class="img-thumbnail">
+                                    </div>
                                 </div>
                             </div>
                             <p class="title"><b>Konsep Binis</b></p>
@@ -435,7 +545,11 @@
                             </div>
                             <div class="item">
                                 <p class="title">Ukuran Konsep</p>
-                                <p class="value">{{ $waralaba->concept_size }} </p>
+                                <p class="value">{{ $waralaba->concept_size }} m<sup>2</sup> </p>
+                            </div>
+                            <div class="item">
+                                <p class="title">Durasi Lisensi (Tahun)</p>
+                                <p class="value">{{($waralaba->license_duration) }} </p>
                             </div>
                             <div class="item">
                                 <p class="title">Income</p>
@@ -445,6 +559,7 @@
                                 <p class="title">Royalty Fee</p>
                                 <p class="value"> Rp.{{ number_format($waralaba->royality, 0, ',', '.') }} </p>
                             </div>
+
                             <a href="{{ route('checkout', ['id' => $waralaba->id]) }}"
                                 class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3">
                                 Beli Sekarang
@@ -456,3 +571,19 @@
     </section>
 
 </x-user-layout>
+
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script>
+    function copyPageURL() {
+        var dummy = document.createElement('input');
+        var currentURL = window.location.href;
+
+        document.body.appendChild(dummy);
+        dummy.value = currentURL;
+        dummy.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+
+        alert('Tautan  {{ $waralaba->waralaba_name }} berhasil disalin.');
+    }
+</script>

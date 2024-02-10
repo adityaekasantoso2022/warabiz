@@ -225,12 +225,46 @@
             gap: 2px;
         }
 
-        @media only screen and (min-width: 768px) and (max-width: 1250px) {
-            .course-card .course-footer .star-rating img {
-                width: 18px;
-                /* Adjust the width as per your requirement */
-            }
-        }
+/* For mobile devices */
+/* For mobile devices */
+/* For mobile devices */
+@media only screen and (max-width: 991.100px) {
+    .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding-right: 0px; /* Add padding to the right side of each column */
+        padding-left: 0px; /* Add padding to the left side of each column */
+    }
+
+    .course-card {
+        width: calc(100% - 10px); /* Adjust the width to occupy full width with padding */
+        margin-bottom: 20px; /* Add bottom margin for spacing between rows */
+    }
+    
+    .course-card img.small-circle-img {
+        width: 35px; /* Reduce image width */
+        height: 30px; /* Reduce image height */
+    }
+
+    .course-card .d-flex.flex-column {
+        margin-top: 3px; /* Adjust top margin */
+        margin-bottom: 3px; /* Adjust bottom margin */
+    }
+
+    .course-card .d-flex.flex-column h6 {
+        font-size: 13px; /* Reduce font size for headings */
+    }
+
+    .course-card .d-flex.flex-column p {
+        font-size: 12px; /* Reduce font size for paragraphs */
+    }
+}
+/* For laptops and larger devices */
+@media only screen and (min-width: 992px) {
+    .course-card {
+        width: 300px; /* Keep the width as per your requirement */
+    }
+}
 
         .course-card .course-footer .star-rating img {
             width: 22px;
@@ -260,6 +294,45 @@
             top: 0;
             left: 0;
             width: 100%;
+        }
+
+        .small-circle-img {
+            width: 50px;
+            /* Sesuaikan lebar lingkaran sesuai kebutuhan */
+            height: 50px;
+            /* Sesuaikan tinggi lingkaran sesuai kebutuhan */
+            object-fit: contain;
+            /* Membuat gambar tetap proporsional dan terlihat sepenuhnya di dalam lingkaran */
+            border-radius: 50%;
+            /* Membuat gambar menjadi lingkaran */
+            overflow: hidden;
+            /* Menghilangkan bagian gambar yang keluar dari lingkaran */
+        }
+
+        .small-circle-img {
+            width: 50px;
+            /* Sesuaikan lebar lingkaran sesuai kebutuhan */
+            height: 50px;
+            /* Sesuaikan tinggi lingkaran sesuai kebutuhan */
+            object-fit: contain;
+            /* Membuat gambar tetap proporsional dan terlihat sepenuhnya di dalam lingkaran */
+            border-radius: 50%;
+            /* Membuat gambar menjadi lingkaran */
+            overflow: hidden;
+            /* Menghilangkan bagian gambar yang keluar dari lingkaran */
+        }
+
+        .d-flex.flex-column {
+            margin-top: 5px;
+            /* Atur jarak atas */
+            margin-bottom: 5px;
+            /* Atur jarak bawah */
+        }
+
+        .d-flex.flex-column h6,
+        .d-flex.flex-column p {
+            margin: 0;
+            /* Menghilangkan margin atas dan bawah dari elemen h6 dan p */
         }
     </style>
     @endpush
@@ -308,40 +381,41 @@
     <section class="justify-content">
     <div class="container-scrollable">
         <div class="container">
-            <div class="col-md-12">
-                <div class="row">
-                    @foreach ($waralabas as $waralaba)
-                    <div class="col-md-6 col-lg-3 mb-3">
-                        <a href="{{ route('waralaba', $waralaba->id) }}" class="text-decoration-none">
-                            <div class="course-card">
-                                <div class="embed-responsive embed-responsive-16by9 video-iframe">
-                                    <div class="plyr__video-embed" id="player">
-                                        <img src="{{ $waralaba->image_url }}" class="img-fluid"
-                                            alt="Gambar Waralaba">
-                                    </div>
-                                </div>
-                                <div class="course-detail">
-                                    <h2 class="course-name line-clamp-2">{{ $waralaba->waralaba_name }}</h2>
-                                    <div class="d-flex mt-2 align-items-center gap-1">
-                                        Rp. {{ $waralaba->price }}
-                                    </div>
-                                </div>
-                                <div class="course-footer mt-auto">
-                                    <div class="star-rating">
-                                        @for ($i = 0; $i < 5; $i++)
-                                            <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
-                                                alt="ic_star">
-                                        @endfor
-                                        <span>(52)</span>
-                                    </div>
+            <div class="row">
+                @foreach ($waralabas as $waralaba)
+                <div class="col-md-6 col-lg-3 mb-3">
+                    <a href="{{ route('waralaba', $waralaba->id) }}" class="text-decoration-none">
+                        <div class="course-card">
+                            <div class="embed-responsive embed-responsive-16by9 video-iframe">
+                                <div class="plyr__video-embed" id="player">
+                                    <img src="{{ $waralaba->image_url_1 }}" class="img-fluid"
+                                        alt="Gambar {{ $waralaba->waralaba_name }}">
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                    @endforeach
+                            <div class="d-flex gap-3 align-items-center">
+                                <img class="small-circle-img" src="{{ $waralaba->logo }}" alt="Waralaba Image">
+                                <div class="d-flex flex-column">
+                                    <h6><b>{{ $waralaba->waralaba_name }}</b></h6>
+                                    <p>{{ $waralaba->concept }}</p>
+                                </div>
+                            </div>
+                            <h6>Rp {{ $waralaba->price }}</h6>
+                            <div class="course-footer mt-auto">
+                                <div class="star-rating">
+                                    @for ($i = 0; $i < 5; $i++)
+                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
+                                        alt="ic_star">
+                                    @endfor
+                                    <span>(52)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
+                @endforeach
             </div>
         </div>
+    </div>
 </section>
 
     {{-- End Hero --}}
@@ -358,6 +432,6 @@
             $(document).scroll(function () {
                 $nav.toggleClass('scrolled', $(this).scrollTop() > $hero.height());
             });
-            </script>
+    </script>
     @endpush
 </x-user-layout>

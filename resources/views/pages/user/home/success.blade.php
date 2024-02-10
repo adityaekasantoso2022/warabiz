@@ -1,4 +1,4 @@
-<x-user-layout title="Payment" active="payment">
+<x-user-layout title="Waralaba-Detail" active="waralaba">
     @push('addonStyle')
     <style>
         body {
@@ -18,12 +18,11 @@
         }
 
         .profil-name {
-            color: #131313
+            color: #131313;
         }
 
         .hero {
             background: none !important;
-
             margin-bottom: -33px !important;
             height: 80vh !important;
         }
@@ -32,7 +31,7 @@
             font-weight: 400;
             font-size: 16px;
             color: rgba(19, 19, 19, 0.8);
-            margin: 0px !important
+            margin: 0px !important;
         }
 
         .hero .hero-text {
@@ -40,8 +39,6 @@
             font-size: 68px;
             font-weight: 700;
             line-height: 78px;
-
-
         }
 
         .hero .btn-cta {
@@ -52,7 +49,6 @@
             font-size: 16px;
             line-height: 150%;
             padding: 12px 32px;
-            /* identical to box height, or 24px */
         }
 
         .img-header {
@@ -73,12 +69,8 @@
             padding: 20px 0px;
         }
 
-
-
         @media (min-width: 767px) {
-
             .benefit {
-
                 padding: 60px 0px;
             }
 
@@ -88,7 +80,6 @@
                 margin-bottom: -33px !important;
                 height: 80vh !important;
             }
-
         }
 
         .header-primary {
@@ -98,179 +89,72 @@
             line-height: 48px;
         }
 
-        .card-container,
-        .course-card,
-        .course-card-responsive {
-            background: #fff;
-            border: none;
-            border-radius: 14px;
-            box-sizing: border-box;
-            color: #34364a;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            padding: 30px;
-            position: relative;
-            row-gap: 24px;
+        .payment-success {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 700px;
+            height: 500px;
+            text-align: center;
+        }
+        .payment-success img {
+            margin-top: 20px 
         }
 
-        .pricing .item-pricing {
-            background: #fff;
-            border-radius: 16px;
-            padding: 30px;
-        }
 
-        .course-card .course-detail .course-name,
-        .course-card-responsive .course-detail .course-name,
-        .line-clamp,
-        .line-clamp-1 {
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            display: -webkit-box;
-            overflow: hidden;
-        }
-
-        .course-card .course-detail .course-name {
-            color: #34364a;
-            font-size: 20px !important;
-            font-weight: 700 !important;
-            line-height: 30px;
-            min-height: 60px;
-            position: relative;
-            z-index: 80 !important;
-        }
-
-        .course-card .course-footer {
-            align-items: baseline;
-            display: flex;
-            gap: 4px;
-            justify-content: space-between;
-        }
-
-        .course-card .course-footer .star-rating {
-            align-items: flex-start;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2px;
-        }
-
-        @media only screen and (min-width: 768px) and (max-width: 1250px) {
-            .course-card .course-footer .star-rating img {
-                width: 20px !important;
-            }
-        }
-
-        .course-card .course-footer .star-rating img {
-            width: 24px;
-        }
-
-        .checkout .payment-details .header-title {
-            color: #34364a;
-            font-size: 16px;
+        .payment-success h2 {
+            font-size: 24px;
             font-weight: 700;
-            margin: 0 0 16px;
-        }
-
-        .checkout .payment-details .item {
-            margin-bottom: 16px;
-        }
-
-        .checkout .payment-details .title {
             color: #34364a;
-            float: left;
-            font-size: 16px !important;
-            font-weight: 400;
-            margin: 0;
+            margin-bottom: 10px;
+            margin-top: 15px;
         }
 
-        .checkout .payment-details .value {
-            color: #34364a;
-            float: right;
+        .payment-success p {
             font-size: 16px;
-            font-weight: 400;
-            margin: 0;
+            color: rgba(19, 19, 19, 0.8);
+            margin-bottom: 25px;
         }
 
-        .clear {
-            clear: both;
-        }
-
-        .embed-responsive {
-            display: block;
-            height: 25vh;
-            overflow: hidden;
-            padding: 0;
-            position: relative;
-            width: 100% !important;
-        }
-
-        .video-iframe {
-            border-radius: 16px;
-            transition: all .3s;
-        }
-
-
-
-        .embed-responsive:before {
-            content: "";
-            display: block;
-        }
-
-        .embed-responsive iframe {
-            border-radius: 16px;
+        .btn {
             width: 100%;
-            height: 25vh;
         }
 
+        @media only screen and (max-width: 767px) {
+            .payment-success {
+                width: 90%;
+                height: auto;
+                padding: 20px;
+            }
 
-        .plyr__video-embed {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+            .payment-success img {
+                width: 80px;
+                height: auto;
+                margin-bottom: 20px;
 
-        }
+            }
 
-        .text-green {
-            color: #22c58b !important;
-        }
+            .btn {
+                padding: 12px 16px;
+            }
 
-        .border-theme {
-            border: 2px solid var(--limeColor);
-        }
-
-        .bg-theme-light {
-            background-color: #e9fff0d2;
+            /* Hide the progress image on mobile devices */
+            .payment-success img.progress-image {
+                display: none;
+            }
         }
     </style>
     @endpush
-    <section class="py-5" style="margin-top: 90px">
-        <div class="container">
-            <div class="row">
-                <div class="text-center col-lg-12">
-                    <h1 class="mb-3 header-primary">
-                        Pembayaran Berhasil
-                    </h1>
-                    <p class="mb-5">
-                        Kami akan segera menghubungi anda untuk mempersiapkan langkah berikutnya
-                    </p>
-                </div>
-            </div>
-            <div class="mx-auto d-flex align-items-center justify-content-center flex-column">
-                <img class="img-fluid" src="{{ asset('assets/frontend/image/succes.svg') }}" alt="" width="400">
-                <div class="text-center w-100">
 
-
-                    <div class="d-flex justify-content-center mt-5">
-                        <a href="#" class="nav-link">
-                            <button class="btn bgTheme d-inline-flex text-white py-2 rounded-12">
-                                Lihat Pesanan
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <section class="py-5" style="margin-top: 90px;">
+        <div class="payment-success">
+            <img src="{{ asset('assets/frontend/image/sukses.svg') }}" alt="Gambar Pembayaran Berhasil" width="100">
+            <h2>Pembayaran Sedang Diproses</h2>
+            <p>Kami akan segera menghubungi Anda untuk langkah selanjutnya</p>
+            <!-- Progress image will be hidden on mobile devices -->
+            <img src="{{ asset('assets/frontend/image/progress.svg') }}" class="progress-image" alt="Gambar Pembayaran Berhasil" width="550">
+            <a href="{{ route('home') }}" class="mt-4 mb-2 btn bgTheme text-white border-12 py-3 px-4" style="max-width: 200px; width: 100%;">Back to Home</a>
         </div>
     </section>
-
 </x-user-layout>

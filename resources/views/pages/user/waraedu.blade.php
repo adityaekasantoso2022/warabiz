@@ -1,9 +1,95 @@
-<x-user-layout title="Waralaba-Detail" active="waralaba">
+<x-user-layout title="Warabiz-Home" active="Warabiz">
+    @push('addonScript')
+    <script src="https://d17ivq9b7rppb3.cloudfront.net/build/commons_script-eb16678ced.js"></script>
+    <script>
+        // Munculkan modal ketika halaman dimuat
+        $(document).ready(function () {
+            $('#imageModal').modal('show');
+        });
+    </script>
+    @endpush
+
+    <!-- Modal untuk gambar popup -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- Tombol Close -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Ganti URL gambar sesuai dengan gambar yang ingin Anda tampilkan -->
+                    <img src="{{ asset('assets/frontend/image/hero-image.svg') }}" class="img-fluid" alt="Popup Image">
+                </div>
+            </div>
+        </div>
+    </div>
+
     @push('addonStyle')
     <style>
         body {
-            background: #dae3ec !important;
+            background: #ECF8F9 !important;
         }
+
+        .testimonial-section {
+            padding: 70px 0;
+            background-color: #ECF8F9;
+        }
+
+        .testimonial-section h1 {
+            margin-bottom: 40px;
+        }
+
+        .testimonial-section img {
+            border-radius: 10px;
+        }
+
+        .contact-section form button:hover {
+            background-color: #25d366;
+        }
+
+        .benefit {
+            padding: 30px 0;
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        .card-benefit {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+            margin-bottom: 20px;
+        }
+
+        .card-benefit:hover {
+            transform: scale(1.05);
+        }
+
+        .card-benefit .card-title,
+        .card-benefit .card-text {
+            font-weight: normal;
+            text-align: left;
+
+        }
+
+        .card-benefit .card-title {
+            font-size: 20px;
+            line-height: 130%;
+            color: #000;
+        }
+
+        .card-benefit .card-text {
+            font-size: 15px;
+            line-height: 150%;
+            color: #000;
+        }
+
+        .card-benefit .card-more {
+            font-weight: 500;
+            color: #3ECAB0;
+        }
+
 
         .navbar .navbar-nav a:hover.btn-signup {
             color: white !important;
@@ -18,41 +104,33 @@
         }
 
         .profil-name {
-            color: #131313
+            color: #131313;
         }
 
         .hero {
             background: none !important;
-
             margin-bottom: -33px !important;
             height: 80vh !important;
+        }
+
+        .text-success {
+            color: #0098B4;
         }
 
         .hero p {
             font-weight: 400;
             font-size: 16px;
             color: rgba(19, 19, 19, 0.8);
-            margin: 0px !important
-        }
-
-        .hero .hero-text {
-            color: #34364a;
-            font-size: 68px;
-            font-weight: 700;
-            line-height: 78px;
-
-
         }
 
         .hero .btn-cta {
-            background: #4F94D7;
+            background: #FF823C;
             border-radius: 12px;
             color: white;
             font-weight: 500;
             font-size: 16px;
             line-height: 150%;
             padding: 12px 32px;
-            /* identical to box height, or 24px */
         }
 
         .img-header {
@@ -73,12 +151,24 @@
             padding: 20px 0px;
         }
 
+        .hero .hero-text {
+            color: #34364a;
+            font-size: 43px;
+            font-weight: 700;
+            line-height: 78px;
+        }
 
+        @media (min-width: 1280px) {
+            .hero .hero-text {
+                color: #34364a;
+                font-size: 56px;
+                font-weight: 700;
+                line-height: 73px;
+            }
+        }
 
         @media (min-width: 767px) {
-
             .benefit {
-
                 padding: 60px 0px;
             }
 
@@ -88,349 +178,367 @@
                 margin-bottom: -33px !important;
                 height: 80vh !important;
             }
-
         }
 
-        .header-primary {
-            color: #34364a;
-            font-size: 38px;
-            font-weight: 700;
-            line-height: 48px;
-        }
-
-        .card-container,
-        .course-card,
-        .course-card-responsive {
-            background: #fff;
-            border: none;
-            border-radius: 14px;
-            box-sizing: border-box;
-            color: #34364a;
+        .logo-container {
             display: flex;
-            flex-direction: column;
-            height: 100%;
-            padding: 30px;
-            position: relative;
-            row-gap: 24px;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
         }
 
-        .pricing .item-pricing {
-            background: #fff;
-            border-radius: 16px;
-            padding: 30px;
+        .logo-container img {
+            margin-right: 10px;
         }
 
-        .course-card .course-detail .course-name,
-        .course-card-responsive .course-detail .course-name,
-        .line-clamp,
-        .line-clamp-1 {
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            display: -webkit-box;
+        .card-benefit .card-more>span {
+            margin-left: 5px;
+        }
+
+        .benefit .row {
+            margin-top: 90px;
+        }
+
+        section {
+            margin-bottom: 0px !important;
+        }
+
+        .service {
+            background: #FFFFFF;
+        }
+
+        .service .statistic {
+            top: 77%;
+            width: 60%;
+            border-top-right-radius: 16px;
+            user-select: none;
+            cursor: pointer;
+            background: #03173C !important;
+            color: #ffff !important;
+        }
+
+        #testimonial-section-v3 {
+            background-color: #ffffff;
+            height: auto;
+            margin: 0px 0 100px;
             overflow: hidden;
         }
 
-        .course-card .course-detail .course-name {
-            color: #34364a;
-            font-size: 20px !important;
-            font-weight: 700 !important;
-            line-height: 30px;
-            min-height: 10px;
-            position: relative;
-            z-index: 80 !important;
-        }
-
-        .course-card .course-footer {
-            align-items: baseline;
-            display: flex;
-            gap: 4px;
-            justify-content: space-between;
-        }
-
-        .course-card .course-footer .star-rating {
-            align-items: flex-start;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2px;
-        }
-
-
-        @media only screen and (min-width: 768px) and (max-width: 1250px) {
-            .course-card .course-footer .star-rating img {
-                width: 20px !important;
+        @media (min-width: 992px) {
+            #testimonial-section-v3 {
+                height: 600px;
             }
         }
 
-        .course-card .course-footer .star-rating img {
-            width: 24px;
-        }
-
-        .checkout .payment-details .header-title {
-            color: #34364a;
-            font-size: 17px;
+        #testimonial-section-v3 .header-title {
+            font-size: 32px;
             font-weight: 700;
-            margin: 0 0 16px;
+            line-height: 48px !important;
+            margin-top: 10px;
         }
 
-        .checkout .payment-details .item {
-            margin-bottom: 16px;
-        }
-
-        .checkout .payment-details .title {
-            color: #34364a;
-            float: left;
-            font-size: 16px !important;
-            font-weight: 400;
-            margin: 0;
-        }
-
-        .checkout .payment-details .value {
-            color: #34364a;
-            float: right;
+        #testimonial-section-v3 .subtitle {
+            color: #a9a4bc;
             font-size: 16px;
             font-weight: 400;
-            margin: 0;
-        }
-
-        .clear {
-            clear: both;
-        }
-
-        .embed-responsive {
-            display: block;
-            height: 25vh;
-            overflow: hidden;
-            padding: 0;
-            position: relative;
-            width: 100% !important;
-        }
-
-        .video-iframe {
-            border-radius: 16px;
-            transition: all .3s;
-        }
-
-
-
-        .embed-responsive:before {
-            content: "";
-            display: block;
-        }
-
-        .embed-responsive iframe {
-            border-radius: 16px;
-            width: 100%;
-            height: 25vh;
-        }
-
-
-        .plyr__video-embed {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-
-        }
-
-        .text-green {
-            color: #22c58b !important;
-        }
-
-        .border-theme {
-            border: 2px solid var(--limeColor);
-        }
-
-        .bg-theme-light {
-            background-color: #e9fff0d2;
-        }
-
-        .form-select {
-
-            border: 1px solid #ced4da !important;
-            padding: 0.375rem 2.25rem 0.375rem 0.75rem !important;
-
+            line-height: 32px;
+            margin-top: 10px;
         }
     </style>
     @endpush
-    <section class="py-5" style="margin-top: 10px">
-        <div class="container">
-            <div class="mt-5 row pricing testimonials mentors checkout gy-4" id="reviews">
-                <div class="col-lg-4 col-md-5 col-12 p-md-0 offset-lg-1">
-                    <div class="d-block" id="courseCardCheckout"
-                        style="position: relative; transition: all 600ms ease-in-out 0s; top: 0px;">
-                        <div class="course-card">
-                            <div class="embed-responsive embed-responsive-16by9 video-iframe ">
-                                <div class="plyr__video-embed" id="player">
-                                    <iframe allowfullscreen="" allowtransparency="" allow="autoplay" frameborder="0"
-                                        id="__existing-iframe-id" data-gtm-yt-inspected-5="true"></iframe>
-                                </div>
-                            </div>
-                            <div class="course-detail">
-                                <a>
-                                    <h2 class="course-name line-clamp-2">
-                                        {{ \App\Models\Waralaba::pluck('waralaba_name')->first() }} </h2>
-                                </a>
-                                <div class="d-flex mt-2 align-items-center gap-2">
-                                    Rp. {{ \App\Models\Waralaba::pluck('price')->first() }}
-                                </div>
-                            </div>
-                            <div class="course-footer mt-auto">
-                                <div class="star-rating">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
-                                    <span>
-                                        (875)
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="payment-details">
-                            <div class="item-pricing item-mentor d-flex flex-column gap-3">
-                                <h5 class="header-title mb-0">
-                                    Informasi Mengenai Waralaba
-                                </h5>
-                                <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
-                                    <div class="d-flex gap-3 align-items-center">
-                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                            alt="BuildWith Angga">
-                                        <div class="d-flex flex-column">
-                                            <h5 class="header-title mb-1">
-                                                Tahun Berdiri
-                                            </h5>
-                                            <p>20 Januari 2021</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
-                                    <div class="d-flex gap-3 align-items-center">
-                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                            alt="BuildWith Angga">
-                                        <div class="d-flex flex-column">
-                                            <h5 class="header-title mb-1">
-                                                Total Outlet
-                                            </h5>
-                                            <p>105 Outlet</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
-                                    <div class="d-flex gap-3 align-items-center">
-                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                            alt="BuildWith Angga">
-                                        <div class="d-flex flex-column">
-                                            <h5 class="header-title mb-1">
-                                                Durasi Lisensi (Tahun)
-                                            </h5>
-                                            <p>10 Tahun</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3">
-                                    <i class="fas fa-download me-2"></i> Download Brosur
-                                </button>
-
-                                <button class="mt-2 mb-4 btn btn-primary w-100 text-white border-12 py-3">
-                                    <i class="fas fa-comment-alt me-2"></i> Chat Admin
-                                </button>
-
-                            </div>
+    <div class="position-relative">
+        <img src="{{ asset('assets/frontend/image/hero-image.svg') }}" alt="bg-header"
+            class="img-fluid img-header d-none d-md-none d-lg-block" width="700">
+    </div>
+    <section class="hero">
+        <div class="d-flex container h-100 w-100 min-vh-75 align-items-center">
+            <div class="row py-4">
+                <div class="col-lg-5 col-md-12 pb-5 d-flex flex-column justify-content-center align-items-start">
+                    <h1 class="fw-bold hero-text mb-4">
+                        Cara mudah untuk memiliki <b>waralaba keinginanmu</b>
+                    </h1>
+                    <p>Solusi untuk memiliki waralaba yang sesuai dengan diri anda, dengan waralaba yang terpercaya di
+                        Indonesia.</p>
+                    @guest
+                    <div class="d-flex flex-column">
+                        <div class="d-flex justify-content-center">
+                            <a href="{{ route('register') }}" class="btn btn-cta btn-block mt-4 me-2">
+                                Daftar Sekarang
+                            </a>
+                            <a href="#" class="btn btn-outline-info btn-block btn-block-center mt-4 me-2">
+                                <i class="fas fa-play"></i> Lihat Video Profile
+                            </a>
                         </div>
                     </div>
+
+                    @endguest
                 </div>
-                <div class="col-lg-6 col-md-7 col-12 ">
-                    <div class="payment-details">
-                        <div class="item-pricing item-mentor d-flex flex-column gap-3">
-                            <h5 class="header-title mb-0">
-                                Feature Waralaba
-                            </h5>
-                            <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
-                                <div class="d-flex gap-3 align-items-center">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                        alt="BuildWith Angga">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="header-title mb-1">
-                                            Pelatihan & SOP
-                                        </h5>
-                                        <p>Dapatkan Pelatihan dari franchisor beserta sistem SOP terstandar dan tertata selama 5 bulan.
-                                        </p>
-                                    </div>
-                                </div>
-                                <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
-                                    alt="BuildWith Angga">
-                            </div>
-                            <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
-                                <div class="d-flex gap-3 align-items-center">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                        alt="BuildWith Angga">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="header-title mb-1">
-                                            Termasuk Persediaan
-                                        </h5>
-                                        <p>Sudah termasuk persediaan awal dalam setiap pembelian brand franchise.</p>
-                                    </div>
-                                </div>
-                                <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
-                                    alt="BuildWith Angga">
-                            </div>
-                            <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
-                                <div class="d-flex gap-3 align-items-center">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                        alt="BuildWith Angga">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="header-title mb-1">
-                                            Bantuan Marketing
-                                        </h5>
-                                        <p>Bantuan dukungan pemasaran untuk suksesi bisnis dan strategi pemasaran.</p>
-                                    </div>
-                                </div>
-                                <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
-                                    alt="BuildWith Angga">
-                            </div>
-                            <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
-                                <div class="d-flex gap-3 align-items-center">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                        alt="BuildWith Angga">
-                                    <div class="d-flex flex-column">
-                                        <h5 class="header-title mb-1">
-                                        Termasuk Peralatan
-                                        </h5>
-                                        <p>Setiap pembelian franchise akan dilengkapi dengan peralatan awal sehingga tidak perlu membeli lagi.</p>
-                                    </div>
-                                </div>
-                                <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
-                                    alt="BuildWith Angga">
-                            </div>
-                        </div>
-                    </div>
-
-                    <form id="form-manual" method="post" action="">
-                        @csrf
-                        <div class="payment-details  mt-4">
-                            <div class="item-pricing item-mentor">
-                                <h5 class="header-title">
-                                    Deskripsi
-                                </h5>
-                                <div class="tab-content" id="pills-tabContent">
-                                    <div class="item">
-                                        <p>
-                                            Deskripsi Waralaba
-                                        </p>
-
-                                    </div>
-                                    <button class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3" type="submit">
-                                        Beli Sekarang
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                <div class="col-lg-7 mt-3">
+                    <!-- Placeholder for content in the second column (if any) -->
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="benefit"
+        style="background-image: url('{{ asset('assets/frontend/image/backrground-fitur.png') }}');">
+        <div class="container">
+            <div class="text-center text-white">
+                <h1>Fitur Unggulan Kami ✨</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-benefit border-0 bg-white rounded-10" data-bs-toggle="modal"
+                        data-bs-target="#waraeduModal">
+                        <div class="card-body text-center text-black">
+                            <h5 class="card-title fw-bold">
+                                <img src="{{ asset('assets/frontend/image/waraedu.svg') }}" alt="WaraEdu Icon"
+                                    class="img-fluid mr-2" width="60">
+                                WaraEdu
+                            </h5>
+                            <p class="card-text">WaraEdu adalah fitur materi berkualitas tinggi yang berkaitan dengan
+                                kewirausahaan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card card-benefit border-0 bg-white rounded-10" data-bs-toggle="modal"
+                        data-bs-target="#waracareerModal">
+                        <div class="card-body text-center text-black">
+                            <h5 class="card-title fw-bold">
+                                <img src="{{ asset('assets/frontend/image/waracareer.svg') }}" alt="WaraCareer Icon"
+                                    class="img-fluid mr-2" width="60">
+                                WaraCareer
+                            </h5>
+                            <p class="card-text">WaraCareer adalah fitur seputar lowongan pekerjaan yang dibutuhkan oleh
+                                Mitra Waralaba kami.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card card-benefit border-0 bg-white rounded-10" data-bs-toggle="modal"
+                        data-bs-target="#warapartnerModal">
+                        <div class="card-body text-center text-black">
+                            <h5 class="card-title fw-bold">
+                                <img src="{{ asset('assets/frontend/image/warapartner.svg') }}" alt="WaraPartner Icon"
+                                    class="img-fluid mr-2" width="60">
+                                WaraPartner
+                            </h5>
+                            <p class="card-text">WaraPartner adalah fitur kerjasama yang dirancang untuk meningkatkan
+                                penjualan waralaba Anda.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal untuk WaraEdu -->
+    <div class="modal fade rounded-10" id="waraeduModal" tabindex="-1" aria-labelledby="waraeduModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg rounded-10">
+            <div class="modal-content rounded-10">
+                <div class="modal-header">
+                    <h5 class="card-title fw-bold">
+                        <img src="{{ asset('assets/frontend/image/waraedu.svg') }}" alt="WaraEdu Icon"
+                            class="img-fluid mr-2" width="60">
+                        WaraEdu
+                    </h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-text">WaraEdu adalah fitur unggulan kami yang menyediakan materi berkualitas tinggi
+                        yang berkaitan dengan kewirausahaan. Dengan WaraEdu, Anda dapat:</p>
+
+                    <ul class="modal-text">
+                        <li style="font-size: 14px;">Mengakses kursus online yang dikembangkan oleh pakar industri.</li>
+                        <li style="font-size: 14px;">Belajar keterampilan kewirausahaan yang dibutuhkan untuk sukses
+                            dalam menjalankan waralaba.</li>
+                        <li style="font-size: 14px;">Menyimak webinar dan seminar daring dari para ahli bisnis.</li>
+                        <li style="font-size: 14px;">Mendapatkan sumber daya edukasi eksklusif untuk membantu
+                            pertumbuhan bisnis Anda.</li>
+                    </ul>
+
+                    <p class="modal-text">Dengan WaraEdu, kami berkomitmen untuk memberikan dukungan edukasi terbaik
+                        bagi para mitra waralaba kami. Tingkatkan pengetahuan dan keterampilan Anda dalam mengelola
+                        bisnis waralaba dengan WaraEdu!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal untuk WaraCareer -->
+    <div class="modal fade rounded-10" id="waracareerModal" tabindex="-1" aria-labelledby="waracareerModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg rounded-10">
+            <div class="modal-content rounded-10">
+                <div class="modal-header">
+                    <h5 class="card-title fw-bold">
+                        <img src="{{ asset('assets/frontend/image/waracareer.svg') }}" alt="WaraEdu Icon"
+                            class="img-fluid mr-2" width="60">
+                        WaraCareer
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-text">WaraCareer adalah fitur unggulan kami yang memberikan informasi terkini
+                        seputar lowongan pekerjaan yang dibutuhkan oleh Mitra Waralaba kami. Dengan WaraCareer, Anda
+                        dapat:</p>
+
+                    <ul class="modal-text">
+                        <li style="font-size: 14px;">Menjelajahi berbagai lowongan pekerjaan dari berbagai sektor
+                            bisnis.</li>
+                        <li style="font-size: 14px;">Mendapatkan kesempatan berkarir di perusahaan-perusahaan terkemuka.
+                        </li>
+                        <li style="font-size: 14px;">Menerima pemberitahuan langsung mengenai lowongan pekerjaan yang
+                            sesuai dengan profil Anda.</li>
+                        <li style="font-size: 14px;">Bergabung dengan jaringan profesional yang luas dalam industri
+                            waralaba.</li>
+                    </ul>
+
+                    <p class="modal-text">Dengan WaraCareer, kami berusaha membantu Anda dalam mencapai karir yang
+                        sukses dan membangun jejak karir yang gemilang.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal untuk WaraPartner -->
+    <div class="modal fade rounded-10" id="warapartnerModal" tabindex="-1" aria-labelledby="warapartnerModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg rounded-10">
+            <div class="modal-content rounded-10">
+                <div class="modal-header">
+                    <h5 class="card-title fw-bold">
+                        <img src="{{ asset('assets/frontend/image/warapartner.svg') }}" alt="WaraEdu Icon"
+                            class="img-fluid mr-2" width="60">
+                        WaraPartner
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-text">WaraPartner adalah fitur kerjasama yang dirancang untuk meningkatkan penjualan
+                        waralaba Anda. Dengan WaraPartner, Anda dapat:</p>
+
+                    <ul class="modal-text">
+                        <li style="font-size: 14px;">Mencari mitra bisnis yang potensial untuk meningkatkan distribusi
+                            produk Anda.</li>
+                        <li style="font-size: 14px;">Menjalin kerjasama dengan pelaku bisnis dalam dan luar industri
+                            waralaba.</li>
+                        <li style="font-size: 14px;">Memperluas jaringan penjualan dan distribusi produk waralaba Anda.
+                        </li>
+                        <li style="font-size: 14px;">Meningkatkan visibilitas dan daya tarik waralaba Anda di pasaran.
+                        </li>
+                    </ul>
+
+                    <p class="modal-text">Dengan WaraPartner, kami berkomitmen untuk membantu Anda menjalankan bisnis
+                        waralaba dengan lebih efektif dan mengoptimalkan potensi penjualan Anda.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section
+        class="pt-50 pb-50 d-flex justify-content-start align-items-center position-relative d-md-none d-sm-none d-lg-flex d-none"
+        id="testimonial-section-v3">
+        <div class="container">
+            <div class="row d-flex justify-content-start align-items-center gx-0">
+                <div class="col-lg-5 col-12">
+                    <h4 class="text-success hero-label mb-0">
+                        <i class="fas fa-medal"></i> Dipercaya 200+ Waralaba
+                    </h4>
+                    <h1 class="header-title mb-0 text-black">
+                        Bergabung bersama kami 🤩
+                    </h1>
+                    <p class="subtitle text-black">
+                        Bergabunglah dan rasakan pengalaman berbisnis waralaba luar biasa dengan lebih dari 200 waralaba
+                        terpercaya. Dukungan dan solusi terbaik kami membantu Anda mencapai kesuksesan.
+                    </p>
+                    <div class="col-lg-7 mt-3">
+                        <div class="logo-container">
+                            <img src="{{ asset('assets/frontend/image/logo/gacoan.png') }}" alt="Gacoan" width="100">
+                            <img src="assets/frontend/image/logo/tehdesa.png" alt="Teh Desa" width="100">
+                            <img src="assets/frontend/image/logo/bangor.png" alt="Burger Bangor" width="100">
+                            <img src="assets/frontend/image/logo/mixue.png" alt="Mixue" width="100">
+                            <img src="assets/frontend/image/logo/roketchiken.png" alt="Roket Chiken" width="100">
+                            <img src="assets/frontend/image/logo/geprekjuara.png" alt="Geprek Juara " width="100">
+
+                        </div>
+                        <div class="logo-container">
+                            <img src="{{ asset('assets/frontend/image/logo/rotio.png') }}" alt="Roti O" width="100">
+                            <img src="assets/frontend/image/logo/mcd.png" alt="MCD" width="100">
+                            <img src="assets/frontend/image/logo/kfc.png" alt="KFC" width="100">
+                            <img src="assets/frontend/image/logo/gepreksai.png" alt="Geprek Sai" width="100">
+                            <img src="assets/frontend/image/logo/richeese.png" alt="Richeese" width="100">
+                            <img src="assets/frontend/image/logo/pakgembus.png" alt="Ayam Gepuk Pak Gembus" width="100">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-12 ms-auto">
+                    <img src="{{ asset('assets/frontend/image/hero2-image.svg') }}" alt="Deskripsi Gambar"
+                        class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="testimonial-section">
+        <div class="container">
+            <div class="text-center text-black">
+                <h1>Testimonial Pelanggan</h1>
+            </div>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-end">
+                            <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}"
+                                class="d-block w-30 mb-1 me-5" alt="Testimonial 1">
+                            <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}" class="d-block w-30 me-5"
+                                alt="Testimonial 2">
+                            <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}"
+                                class="d-block w-30 mb-1 me-5" alt="Testimonial 3">
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-end">
+                            <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}"
+                                class="d-block w-30 mb-1 me-5" alt="Testimonial 1">
+                            <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}"
+                                class="d-block w-30 mb-1 me-5" alt="Testimonial 2">
+                            <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}"
+                                class="d-block w-30 mb-1 me-5" alt="Testimonial 3">
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-end">
+                            <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}"
+                                class="d-block w-30 mb-1 me-5" alt="Testimonial 1">
+                            <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}"
+                                class="d-block w-30 mb-1 me-5" alt="Testimonial 2">
+                            <img src="{{ asset('assets/frontend/image/testimoni1.svg') }}"
+                                class="d-block w-30 mb-1 me-5" alt="Testimonial 3">
+                        </div>
+                    </div>
+                    <!-- Tambahkan gambar testimonial lainnya di sini -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+    @push('addonScript')
+    <script src="https://d17ivq9b7rppb3.cloudfront.net/build/commons_script-eb16678ced.js"></script>
+    @endpush
 </x-user-layout>
