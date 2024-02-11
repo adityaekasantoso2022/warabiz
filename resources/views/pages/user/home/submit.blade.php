@@ -89,6 +89,12 @@
                 margin-bottom: -33px !important;
                 height: 80vh !important;
             }
+            
+        }
+        @media (max-width: 767px) {
+            .col-md-3 {
+                margin-bottom: 20px; /* Adjust this value as needed */
+            }
         }
 
         .header-primary {
@@ -120,10 +126,21 @@
             font-size: 30px;
             margin-bottom: 15px;
         }
+        .in-progress-icon {
+            color: #FFBD13;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
 
         .rounded-card {
             border-radius: 8px;
         }
+        .item-pricing.item-mentor p {
+    margin-top: 5px; /* Jarak dari atas */
+    margin-bottom: 5px; /* Jarak dari bawah */
+}
+
     </style>
     @endpush
 </head>
@@ -148,61 +165,67 @@
                                         <h3 class="card-title">Informasi Pemesanan</h3>
                                         <div class="row align-items-center mb-3">
                                             <div class="col-md-6">
-                                                <p class="mb-1"><b>Nama Pemesan</b></p>
+                                                <h6 class="mb-1"><b>Nama Pemesan</b></h6>
                                                 <h3 class="card-text mb-2" id="totalpayment"
                                                     style="color: #009688; cursor: pointer;"><b>{{
                                                         $transaction->fullname }}</b></h3>
                                             </div>
                                             <div class="col-md-6">
-                                                <p class="mb-1"><b>Alamat Rumah</b></p>
-                                                <p>{{ $transaction->address }}</p>
-                                                <p>{{ $transaction->phone_number }}</p>
+                                                <h6 class="mb-1"><b>Nama Waralaba</b></h6>
+                                                <p>{{ $transaction->waralaba_name }}</p>
+
                                             </div>
                                         </div>
                                         <div class="row align-items-center mb-3">
                                             <div class="col-md-6">
-                                                <p class="mb-1"><b>Tanggal Pemesanan</b></p>
-                                                <p>{{ $transaction->created_at }}</p>
+                                                <h6 class="mb-1"><b>Kontak</b></h6>
+                                                <p>{{ $transaction->phone_number }} | {{ $transaction->email }} </p>
                                             </div>
                                             <div class="col-md-6">
-                                                <p class="mb-1"><b>Metode Pembayaran</b></p>
-                                                <p>Bank {{ $transaction->payment_method }}</p>
+                                                <h6 class="mb-1"><b>Lokasi Pendirian</b></h6>
+                                                <p>{{ $transaction->address }}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="item-pricing item-mentor">
-                                    <h5>Status Pesanan</h5>
+                                    <h5>Status Pemesanan</h5>
+                                    <p>Terakhir diupdate: {{ $transaction->updated_at->format('d/m/Y H:i') }} WIB</p>
                                     <div class="row justify-content-center mt-4">
                                         <?php
                                         $status = $transaction->status;
 
                                         $steps = [
-                                            1 => ['icon' => 'check', 'text' => 'Pembayaran'],
-                                            2 => ['icon' => 'check', 'text' => 'Verifikasi'],
+                                            1 => ['icon' => 'check', 'text' => 'Pembelian'],
+                                            2 => ['icon' => 'check', 'text' => 'Pembayaran'],
                                             3 => ['icon' => 'check', 'text' => 'Pembangunan'],
-                                            4 => ['icon' => 'check', 'text' => 'Selesai']
+                                            4 => ['icon' => 'check', 'text' => 'Pembukaan Waralaba'],
                                         ];
-
+                                        
                                         // Mengatur ikon dan teks berdasarkan status
                                         foreach ($steps as $step => $info) {
                                             // Memeriksa apakah status saat ini lebih besar atau sama dengan langkah saat ini
-                                            // Jika ya, maka langkah tersebut sudah selesai
                                             if ($status >= $step) {
                                                 // Jika status lebih besar atau sama dengan langkah saat ini,
                                                 // gunakan ikon centang dan kelas hijau
                                                 $iconClass = 'check-icon';
                                                 $icon = 'check-circle';
-                                                $statusText = 'Langkah selesai';
+                                                $statusText = 'Langkah Selesai';
+                                            } elseif ($status == $step - 1) {
+                                                // Jika status sama dengan langkah saat ini dikurangi 1,
+                                                // berarti dalam proses
+                                                $iconClass = 'in-progress-icon';
+                                                $icon = 'spinner';
+                                                $statusText = 'Dalam Proses';
                                             } else {
                                                 // Jika status lebih kecil dari langkah saat ini,
                                                 // gunakan ikon silang dan kelas merah
                                                 $iconClass = 'non-check-icon';
                                                 $icon = 'times-circle';
-                                                $statusText = 'Belum selesai';
+                                                $statusText = 'Belum Selesai';
                                             }
-
+                                        
                                             // Mencetak kartu dengan ikon dan teks yang sesuai
                                             echo '
                                                 <div class="col-md-3">
@@ -217,10 +240,11 @@
                                             ';
                                         }
                                         ?>
+                                    
                                     </div>
                                 </div>
                             </div>
-                    </div>
+                        </div>
                     </form>
                 </div>
             </div>

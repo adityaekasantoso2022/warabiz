@@ -42,10 +42,10 @@
                     <ul class="dropdown-menu p-0 m-0 border-0 rounded-12 shadow overflow-hidden mt-3"
                         aria-labelledby="dropdownMenu2">
                         <li>
-                            <a href="{{ url('transaksi') }}"
+                            <a href="{{ route('tracking') }}"
                                 class="dropdown-item bg-white btn baseColor rounded-0 fw-bold text-white d-flex align-items-center m-0 py-3 shadow-none">
                                 <p class="me-3"><i class="fas fa-history"></i></p>
-                                <p class="text-sm">Riwayat Transaksi</p>
+                                <p class="text-sm">Lacak Pesanan</p>
                             </a>
                         </li>
                         <li>

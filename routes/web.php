@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\WaralabaController;
 use App\Http\Controllers\User\TransactionController;
+use App\Http\Controllers\User\TrackingController;
+
 
 
 
@@ -40,7 +42,14 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
     });
     Route::middleware(['auth'])->group(function () {
         Route::get('/warapartner', 'WarapartnerController@index')->name('warapartner');
+
     });
+
+    Route::get('/tracking', function () {
+        return view('pages.user.tracking');
+    })->name('tracking');
+
+
     Route::get('/bantuan', function () {
         return view('pages.user.bantuan');
     })->name('bantuan');

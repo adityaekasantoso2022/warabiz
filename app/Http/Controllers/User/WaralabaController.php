@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User;
 use App\Models\Waralaba;
 use App\Models\Transaction;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class WaralabaController extends Controller
 {
@@ -45,5 +44,13 @@ class WaralabaController extends Controller
         $waralaba = $transaction->waralaba;
 
         return view('pages.user.home.submit', compact('waralaba', 'transaction'));
+    }
+    public function detail($id)
+    {
+        // Mengambil data transaksi berdasarkan ID
+        $transaction = Transaction::findOrFail($id);
+    
+        // Mengirimkan data transaksi ke view 'waralaba.detail'
+        return view('waralaba.detail', compact('transaction'));
     }
 }

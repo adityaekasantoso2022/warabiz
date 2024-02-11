@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Testimonialhome;
-use App\Models\TestimonialTraining;
 use App\Models\Waralaba;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

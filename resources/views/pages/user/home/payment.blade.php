@@ -593,13 +593,13 @@
                             </div>
                             <div class="form-group mt-4">
                                 <label for="address" class="form-label fw-bold">
-                                    <p>Alamat Rumah</p>
+                                    <p>Lokasi Pendirian</p>
                                 </label>
                                 <textarea name="address" id="address"
                                     class="form-control border px-2 py-1 rounded-3 shadow-none" required cols="30"
                                     rows="3"></textarea>
                                 <p class="text-sm text-secondary mt-2">
-                                    Alamat Rumah
+                                    Lokasi pendirian waralaba
                                 </p>
                             </div>
                             <br>
