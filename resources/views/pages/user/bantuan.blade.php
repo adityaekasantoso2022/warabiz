@@ -106,7 +106,7 @@
                         <div class="col-md-3 col-xs-12 mb-3">
                             <div class="card text-center rounded-card">
                                 <div class="card-body">
-                                    <img src="{{ asset('assets/frontend/image/logo.svg') }}">
+                                    <img src="{{ asset('assets/frontend/image/icon/callcenter.png') }}">
                                     <h6>Call Center</h6>
                                     <p>08123456789</p>
                                 </div>
@@ -115,7 +115,7 @@
                         <div class="col-md-3 col-xs-12 mb-3">
                             <div class="card text-center rounded-card">
                                 <div class="card-body">
-                                    <img src="{{ asset('assets/frontend/image/logo.svg') }}">
+                                    <img src="{{ asset('assets/frontend/image/icon/gmail.png') }}">
                                     <h6>Email</h6>
                                     <p>bantuan@warabiz.com</p>
                                 </div>
@@ -124,7 +124,7 @@
                         <div class="col-md-3 col-xs-12 mb-3">
                             <div class="card text-center rounded-card">
                                 <div class="card-body">
-                                    <img src="{{ asset('assets/frontend/image/logo.svg') }}">
+                                    <img src="{{ asset('assets/frontend/image/icon/whatsapp.png') }}">
                                     <h6>WhatsApp</h6>
                                     <p>0987654321</p>
                                 </div>
@@ -133,7 +133,7 @@
                         <div class="col-md-3 col-xs-12 mb-3">
                             <div class="card text-center rounded-card">
                                 <div class="card-body">
-                                    <img src="{{ asset('assets/frontend/image/logo.svg') }}">
+                                <img src="{{ asset('assets/frontend/image/icon/instagram.png') }}" style="width: 100px; height: auto;">
                                     <h6>Instagram</h6>
                                     <p>@warabiz.com</p>
                                 </div>
