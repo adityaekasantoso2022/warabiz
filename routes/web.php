@@ -45,7 +45,11 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
     //Route Warapartner
     Route::middleware(['auth'])->group(function () {
         Route::get('/warapartner', 'WarapartnerController@index')->name('warapartner');
+    });
 
+    //Route Tracking Pesanan
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/pesanan/{id}', [TransactionController::class, 'pembayaran'])->name("pembayaran"); //yang baru: masih error id nya masih id waralabas bukan id transactions
     });
 
     //Route Tracking Pesanan
@@ -59,6 +63,7 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
     //Toute Detail Waralaba
     Route::middleware(['auth'])->group(function () {
         Route::get('/waralaba/{id}', [WaralabaController::class, 'show'])->name("waralaba");
+
     });
 
     //Route Pembayaran

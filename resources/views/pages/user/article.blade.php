@@ -114,7 +114,7 @@
         <p>
             <span class="post-date">
                 <time class="post-date">
-                    {{ $article-> created_at }}</span>
+                Diposting pada : {{($article->created_at)->format('d/m/Y H:i') }} WIB
             <span class="dot"></span>
             <span class="readingtime">{{ $article-> created_by }}</span>
         </p>
