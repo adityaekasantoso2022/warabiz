@@ -728,7 +728,7 @@
                             <table class="table">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th scope="col">#</th>
+                                        <th scope="col">No</th>
                                         <th scope="col">Nama Produk</th>
                                         <th scope="col">Harga</th>
                                         <th scope="col">Qty</th>
@@ -772,11 +772,6 @@
                                     <li>
                                         <p>Pilih waralaba yang sesuai dengan kebutuhan dan budget Anda.
                                         </p>
-                                    </li>
-                                    <li>
-                                        <p>Hubungi pemilik waralaba yang bersangkutan melalui platform
-                                            Warabiz untuk
-                                            mendapatkan informasi lebih lanjut.</p>
                                     </li>
                                     <li>
                                         <p>Setelah memutuskan waralaba yang akan Anda ambil, Anda akan
