@@ -8,6 +8,7 @@ use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\WaralabaController;
 use App\Http\Controllers\User\TransactionController;
 use App\Http\Controllers\User\TrackingController;
+use App\Http\Controllers\User\FormController;
 
 
 
@@ -50,10 +51,6 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
     })->name('tracking');
 
 
-    Route::get('/bantuan', function () {
-        return view('pages.user.bantuan');
-    })->name('bantuan');
-    
     // Route home
     Route::get('/home', 'HomeController@index')->name('home.index');
 
@@ -73,6 +70,12 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
     Route::middleware(['auth'])->group(function () {
         Route::get('/sukses', 'SuksesController@index')->name('sukses');
     });
+
+    // Route Form Pertanyaan
+    Route::get('/bantuan', function () {
+        return view('pages.user.bantuan');
+    })->name('bantuan');
+    Route::post('/submit-form', [FormController::class, 'store'])->name('submit.form');
 });
 
 Auth::routes();

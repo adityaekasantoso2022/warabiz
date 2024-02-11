@@ -145,7 +145,7 @@
                     <h5 class="header-title mb-0">
                         <b>Form Pertanyaan</b>
                     </h5>
-                    <form id="myForm" action="" method="POST">
+                    <form id="myForm" action="{{ route('submit.form') }}" method="POST">
                         @csrf
                         <div class="form-group mt-1">
                             <label for="payment_method" class="form-label fw-bold">
