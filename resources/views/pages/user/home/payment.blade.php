@@ -531,7 +531,8 @@
                                         Biaya layanan
                                     </p>
                                     <p class="value text-green feeMidtransItem0">
-                                        + Rp {{ $biayaLayanan }}
+                                        + Rp. {{ number_format($biayaLayanan, 0, ',', '.') }}
+
                                     </p>
                                     <div class="clear"></div>
                                 </div>

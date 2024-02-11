@@ -399,7 +399,7 @@
                                     <p>{{ $waralaba->concept }}</p>
                                 </div>
                             </div>
-                            <h6>Rp {{ $waralaba->price }}</h6>
+                            <h6>Rp. {{ number_format(floatval($waralaba->price), 0, ',', '.') }}</h6>
                             <div class="course-footer mt-auto">
                                 <div class="star-rating">
                                     @for ($i = 0; $i < 5; $i++)
