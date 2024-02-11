@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\WaralabaController;
+use App\Http\Controllers\User\ArticleController;
 use App\Http\Controllers\User\TransactionController;
 use App\Http\Controllers\User\TrackingController;
 use App\Http\Controllers\User\FormController;
@@ -26,13 +27,14 @@ use App\Http\Controllers\User\FormController;
 */
 
 Route::namespace('App\Http\Controllers\User')->group(function () {
-    
+
     //Route Home
     Route::get('/', 'HomeController@index')->name('home');
 
     //Route Waraedu
     Route::middleware(['auth'])->group(function () {
-        Route::get('/waraedu', 'WaraeduController@index')->name('waraedu');
+        Route::get('/waraedu', [ArticleController::class, 'getAll'])->name('waraedu');
+        Route::get('/waraedu/{id}', [ArticleController::class, 'getDetail'])->name('waraedu-detail');
     });
 
     //Route Waracareer

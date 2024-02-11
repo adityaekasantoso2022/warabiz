@@ -123,35 +123,31 @@
     </style>
     @endpush
 
-    <section class="justify-content" style="margin-top: 100px;">
-        <div class="container-scrollable">
-            <div class="container">
-                <div class="row">
-                    @foreach($articles as $article)
-                    <div class="col-md-6 col-lg-3 mb-3">
-                        <a href="{{ route('waraedu-detail', $article->id) }}" class="text-decoration-none">
-                            <div class="waraedu-card">
-                                <div class="embed-responsive embed-responsive-16by9 video-iframe">
-                                    <div class="plyr__video-embed" id="player">
-                                        <img src="{{ $article->image_url }}" class="img-fluid" alt="Gambar">
-                                    </div>
+    <section class="py-5" style="margin-top: 10px">
+        <div class="container">
+            <div class="mt-5 row pricing testimonials mentors checkout gy-4" id="reviews">
+                <div class="col-lg-4 col-md-5 col-12 p-md-0 offset-lg-1">
+                    <div class="d-block" id="courseCardCheckout"
+                        style="position: relative; transition: all 600ms ease-in-out 0s; top: 0px;">
+                        <div class="course-card">
+                            <div class="course-detail">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <a>
+                                        <h2 class="course-name line-clamp-2">
+                                            {{ $article->image_url }}
+                                        </h2>
+                                    </a>
+                                    <button onclick="copyPageURL()" class="share-button">
+                                        <i class="fas fa-share" style="color: white;"></i>
+                                    </button>
                                 </div>
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex flex-column">
-                                        <h6><b>{{ $article->title }}</b></h6>
-                                        <p>{{ $article->category }}</p>
-                                    </div>
-                                </div>
-                                <div class="waraedu-footer mt-1">
-                                    <p>{{ substr($article->article, 0, 150) }}...</p>
-                                </div>
+                                <h2>{{ $article->title }}</h2>
+                                <p>{{ $article->article }}</p>
                             </div>
-                        </a>
+                        </div>
                     </div>
-                    @endforeach
                 </div>
             </div>
-        </div>
     </section>
 
 </x-user-layout>
