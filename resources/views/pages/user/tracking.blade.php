@@ -23,7 +23,6 @@
 
         .hero {
             background: none !important;
-
             margin-bottom: -33px !important;
             height: 80vh !important;
         }
@@ -96,12 +95,20 @@
         }
 
         .card {
-            border-radius: 10px; /* Tambahkan border-radius */
+            border-radius: 15px; /* Tambahkan border-radius */
+            max-width: 550px; /* Atur lebar maksimal card */
+            margin: 0 auto; /* Atur card menjadi berada di tengah */
+            padding: 30px;
         }
 
-        .btn-payment {
-            width: auto;
-            /* Atur lebar tombol menjadi otomatis */
+        .form-control {
+            max-width: 100%; /* Atur lebar maksimal form */
+            margin: 0 auto; /* Atur form menjadi berada di tengah */
+        }
+
+        .btn {
+            margin: 0 auto; /* Atur tombol menjadi berada di tengah */
+            width: 100%; /* Atur tombol agar memenuhi lebar kontainer */
         }
     </style>
     @endpush
@@ -109,20 +116,20 @@
         <div class="container">
             <div class="mt-5 row pricing testimonials mentors checkout gy-4">
                 <div class="container-fluid">
-                    <div class="card p-4">
+                    <div class="card">
                         <h4 class="text-center mb-4">Tracking Pesanan</h4>
                         <form id="paymentForm" action="/pesanan/" method="GET">
                             <div class="form-group">
-                            <label for="orderNumber" class="form-label fw-bold">
-    Nomer Pesanan <span class="text-danger">*</span>
-</label>
+                                <label for="orderNumber" class="form-label fw-bold">
+                                    Nomer Pesanan <span class="text-danger">*</span>
+                                </label>
                                 <input type="text" id="orderNumber" name="id" class="form-control border px-2 py-1 rounded-3 shadow-none" required>
                                 <p class="text-sm text-secondary mt-2">
                                     Nomer pesanan dikirimkan melalui email apabila konfirmasi pembayaran berhasil
                                 </p>
                             </div>
                             <br>
-                            <button type="submit" class="btn mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3">Lihat Pesanan</button>
+                            <button type="submit" class="btn mt-4 mb-2 btn bgTheme text-white border-12 py-3">Lihat Pesanan</button>
                         </form>
                     </div>
                 </div>
