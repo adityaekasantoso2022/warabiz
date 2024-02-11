@@ -509,36 +509,38 @@
                                 </div>
                             </div>
 
-
+                            @php
+                                $waralabaPrice = intval($waralaba->price);
+                                $biayaLayanan = 100000;
+                                $totalTransfer = number_format($waralabaPrice + $biayaLayanan, 0, ',', '.');
+                            @endphp
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="item">
                                     <p class="title">
                                         Harga waralaba
                                     </p>
                                     <p class="value">
-                                        Rp. {{ $waralaba->price }}
+                                        Rp. {{ number_format($waralaba->price, 0, ',', '.') }}
                                     </p>
                                     <div class="clear"></div>
                                 </div>
 
                                 <div class="item">
                                     <p class="title">
-                                        Biaya layanan
+                                      Biaya layanan
                                     </p>
                                     <p class="value text-green feeMidtransItem0">
-                                        + Rp 10.000
+                                      + Rp {{ $biayaLayanan }}
                                     </p>
                                     <div class="clear"></div>
                                 </div>
+
                                 <div class="item">
                                     <p class="title">
-                                        Total transfer
+                                      Total transfer
                                     </p>
-                                    <input id="transaction_total" hidden name="transaction_total" value="total">
                                     <p class="value">
-                                        <strong id="midtransPrice">
-                                            Rp. {{ $waralaba-> price }}
-                                        </strong>
+                                      <strong>Rp. {{ $totalTransfer }}</strong>
                                     </p>
                                     <br>
                                 </div>
