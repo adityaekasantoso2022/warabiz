@@ -18,6 +18,7 @@
 
 
     <link rel="shortcut icon" href="{{ asset('assets/frontend/image/favicon.png') }}" type="image/x-icon">
+    
 
     @include('includes.style')
 
@@ -38,9 +39,9 @@
 
     {{ $slot }}
 
-    <x-user.footer />
     @include('includes.script')
     @stack('addonScript')
+    {{-- <x-user.footer /> --}}
 </body>
 
 </html>

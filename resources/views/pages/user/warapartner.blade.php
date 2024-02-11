@@ -96,8 +96,6 @@
             }
         </style>
     @endpush
-
-        </style>
         <link rel='stylesheet' id='elementor-frontend-css' href='https://digitalkan.co.id/wp-content/uploads/elementor/css/custom-frontend-lite.min.css?ver=1698469971' media='all'/>
         <link rel='stylesheet' id='elementor-post-5-css' href='https://digitalkan.co.id/wp-content/uploads/elementor/css/post-5.css?ver=1698469971' media='all'/>
         <link rel='stylesheet' id='elementor-post-2735-css' href='https://digitalkan.co.id/wp-content/uploads/elementor/css/post-2735.css?ver=1698471194' media='all'/>
