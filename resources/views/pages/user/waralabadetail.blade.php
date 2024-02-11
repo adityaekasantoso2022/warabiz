@@ -1,4 +1,4 @@
-<x-user-layout title="Detail Waralaba" active="detail">
+<x-user-layout title="Detail Waralaba - {{ $waralaba->waralaba_name }}" active="detail">
     @push('addonStyle')
     <style>
         body {
@@ -99,8 +99,8 @@
         }
 
         .card-container,
-        .course-card,
-        .course-card-responsive {
+        .waralaba-card,
+        .waralaba-card-responsive {
             background: #fff;
             border: none;
             border-radius: 14px;
@@ -120,8 +120,8 @@
             padding: 30px;
         }
 
-        .course-card .course-detail .course-name,
-        .course-card-responsive .course-detail .course-name,
+        .waralaba-card .waralaba-detail .waralaba-name,
+        .waralaba-card-responsive .waralaba-detail .waralaba-name,
         .line-clamp,
         .line-clamp-1 {
             -webkit-line-clamp: 1;
@@ -130,7 +130,7 @@
             overflow: hidden;
         }
 
-        .course-card .course-detail .course-name {
+        .waralaba-card .waralaba-detail .waralaba-name {
             color: #34364a;
             font-size: 20px !important;
             font-weight: 700 !important;
@@ -140,14 +140,14 @@
             z-index: 80 !important;
         }
 
-        .course-card .course-footer {
+        .waralaba-card .waralaba-footer {
             align-items: baseline;
             display: flex;
             gap: 4px;
             justify-content: space-between;
         }
 
-        .course-card .course-footer .star-rating {
+        .waralaba-card .waralaba-footer .star-rating {
             align-items: flex-start;
             display: flex;
             flex-wrap: wrap;
@@ -156,13 +156,14 @@
 
 
         @media only screen and (min-width: 768px) and (max-width: 1250px) {
-            .course-card .course-footer .star-rating img {
+            .waralaba-card .waralaba-footer .star-rating img {
                 width: 20px !important;
             }
         }
 
-        .course-card .course-footer .star-rating img {
-            width: 24px;
+        .waralaba-card .waralaba-footer .star-rating img {
+            margin-top: 5px;
+            width: 18px;
         }
 
         .checkout .payment-details .header-title {
@@ -202,8 +203,8 @@
             width: 100% !important;
         }
 
-        .video-iframe {
-            border-radius: 10px;
+        .foto-iframe {
+            border-radius: 5px;
             transition: all .3s;
             height: 175px;
 
@@ -223,7 +224,7 @@
         }
 
 
-        .plyr__video-embed img {
+        .plyr__foto-embed img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -294,23 +295,13 @@
             /* Warna teks saat hover */
         }
 
-        .logo {
-            position: absolute;
-            top: 10px;
-            /* Sesuaikan jarak vertikal dari atas */
-            left: 10px;
-            /* Sesuaikan jarak horizontal dari kiri */
-            z-index: 1;
-            /* Pastikan logo berada di atas gambar */
-        }
-
         .embed-responsive {
             position: relative;
-            /* Tetapkan posisi relatif pada kontainer video */
+            /* Tetapkan posisi relatif pada kontainer foto */
         }
 
         .logo {
-            width: 80px;
+            width: 100px;
             /* Sesuaikan lebar sesuai kebutuhan */
             height: auto;
             /* Mencegah distorsi gambar */
@@ -332,49 +323,54 @@
             top: 0;
             left: 0;
         }
+
+        .waralaba-card img.small-circle-img {
+            width: auto;
+            height: 40px;
+        }
+        .d-flex.flex-column h6,
+        .d-flex.flex-column p {
+            margin: 0;
+        }
+
     </style>
     @endpush
     <section class="py-5" style="margin-top: 10px">
         <div class="container">
             <div class="mt-5 row pricing testimonials mentors checkout gy-4" id="reviews">
                 <div class="col-lg-4 col-md-5 col-12 p-md-0 offset-lg-1">
-                    <div class="d-block" id="courseCardCheckout"
+                    <div class="d-block" id="waralabaCardCheckout"
                         style="position: relative; transition: all 600ms ease-in-out 0s; top: 0px;">
-                        <div class="course-card">
-                            <div class="embed-responsive embed-responsive-16by9 video-iframe">
-                                <div class="logo-container">
-                                    <img src="{{ $waralaba->logo }}" class="logo" alt="Logo" />
-                                </div>
-                                <div class="plyr__video-embed" id="foto waralaba">
+                        <div class="waralaba-card">
+                            <div class="embed-responsive embed-responsive-16by9 foto-iframe">
+                                <div class="plyr__foto-embed" id="foto waralaba">
                                     <img src="{{ $waralaba->image_url_1 }}" class="img-fluid" alt="Gambar Waralaba">
                                 </div>
                             </div>
-                            <div class="course-detail">
+                            <div class="waralaba-detail">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a>
-                                        <h2 class="course-name line-clamp-2">
-                                            {{ $waralaba->waralaba_name }}
-                                        </h2>
-                                    </a>
-                                    <button onclick="copyPageURL()" class="share-button">
-                                        <i class="fas fa-share" style="color: white;"></i>
-                                    </button>
-                                </div>
-                                <h5>Rp. {{ $waralaba->price }}</h5>
-                            </div>
-
-                            <div class="course-footer mt-auto">
+                                    <div class="d-flex gap-3 align-items-center">
+                                        <img class="small-circle-img" src="{{ $waralaba->logo }}" alt="Waralaba Image">
+                                        <div class="d-flex flex-column">
+                                            <h6><b>{{ $waralaba->waralaba_name }}</b></h6>
+                                            <p>{{ $waralaba->concept }}</p>
+                                            <div class="waralaba-footer mt-auto">
                                 <div class="star-rating">
                                     <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
                                     <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
                                     <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
                                     <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
                                     <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
-                                    <span>
-                                        {{ $waralaba->rating }}
-                                    </span>
                                 </div>
                             </div>
+                                        </div>
+                                    </div>
+                                    <button onclick="copyPageURL()" class="share-button">
+                                        <i class="fas fa-share" style="color: white;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <h5><b>Rp. {{ number_format(floatval($waralaba->price), 0, ',', '.') }}</b></h5>
                         </div>
                         <br>
                         <div class="payment-details">
@@ -449,7 +445,7 @@
                     <div class="payment-details">
                         <div class="item-pricing item-mentor d-flex flex-column gap-3">
                             <h5 class="header-title mb-0">
-                                Feature Waralaba
+                                Keunggulan Waralaba
                             </h5>
                             <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                 <div class="d-flex gap-3 align-items-center">
@@ -464,8 +460,6 @@
                                         </p>
                                     </div>
                                 </div>
-                                <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
-                                    alt="BuildWith Angga">
                             </div>
                             <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                 <div class="d-flex gap-3 align-items-center">
@@ -478,8 +472,6 @@
                                         <p>Sudah termasuk persediaan awal dalam setiap pembelian</p>
                                     </div>
                                 </div>
-                                <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
-                                    alt="BuildWith Angga">
                             </div>
                             <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                 <div class="d-flex gap-3 align-items-center">
@@ -492,8 +484,6 @@
                                         <p>Bantuan dukungan pemasaran untuk sukseskan bisnis</p>
                                     </div>
                                 </div>
-                                <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
-                                    alt="BuildWith Angga">
                             </div>
                             <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                 <div class="d-flex gap-3 align-items-center">
@@ -507,8 +497,6 @@
                                             tidak perlu membeli lagi</p>
                                     </div>
                                 </div>
-                                <img src="https://buildwithangga.com/themes/front/images/ic_check.svg"
-                                    alt="BuildWith Angga">
                             </div>
                         </div>
                     </div>
@@ -553,11 +541,11 @@
                             </div>
                             <div class="item">
                                 <p class="title">Income</p>
-                                <p class="value"> Rp.{{ number_format($waralaba->income, 0, ',', '.') }} </p>
+                                <p class="value"> Rp. {{ number_format($waralaba->income, 0, ',', '.') }} </p>
                             </div>
                             <div class="item">
                                 <p class="title">Royalty Fee</p>
-                                <p class="value"> Rp.{{ number_format($waralaba->royality, 0, ',', '.') }} </p>
+                                <p class="value"> Rp. {{ number_format($waralaba->royality, 0, ',', '.') }} </p>
                             </div>
 
                             <a href="{{ route('checkout', ['id' => $waralaba->id]) }}"
