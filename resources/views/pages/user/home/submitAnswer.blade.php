@@ -95,7 +95,7 @@
             padding: 20px;
             margin: 20px auto;
             width: 700px;
-            height: 500px;
+            height: 400px;
             text-align: center;
         }
         .payment-success img {
@@ -150,9 +150,8 @@
     <section class="py-5" style="margin-top: 90px;">
         <div class="payment-success">
             <img src="{{ asset('assets/frontend/image/sukses.svg') }}" alt="Gambar Pembayaran Berhasil" width="100">
-            <h2>Pertanyaan Kamu Sudah Terkirim</h2>
-            <p>Silahkan Cek Jawabannya di Email Kamu Ya!</p>
-            <br>
+            <h2>Pertanyaan Berhasil Terkirim</h2>
+            <p>Silahkan Cek Jawabannya Melalui Email Secara Berkala!</p>
             <a href="{{ route('home') }}" class="mt-4 mb-2 btn bgTheme text-white border-12 py-3 px-4" style="max-width: 200px; width: 100%;">Back to Home</a>
         </div>
     </section>

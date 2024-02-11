@@ -16,7 +16,7 @@ class TransactionController extends Controller
             'email' => 'required|email',
             'phone_number' => 'required|string',
             'address' => 'required|string',
-            'waralaba_id' => 'required|uuid', // Validasi UUID
+            'waralaba_id' => 'required|uuid',
             'waralaba_name' => 'required|string',
             'payment_method' => 'required|string',
 

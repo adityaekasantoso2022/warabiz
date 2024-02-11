@@ -425,7 +425,7 @@
                                 <h5><i class="fas fa-info-circle"></i></h5>
                                 
                                 <p>
-                                    Lakukan pembayaran sesuai nominal</b>
+                                    Lakukan pembayaran sesuai nominal yang tertera</b>
                                 </p>
                             </div>
                             <h5 class="header-title mb-0">

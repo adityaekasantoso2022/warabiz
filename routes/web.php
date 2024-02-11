@@ -26,47 +26,52 @@ use App\Http\Controllers\User\FormController;
 */
 
 Route::namespace('App\Http\Controllers\User')->group(function () {
+    
+    //Route Home
     Route::get('/', 'HomeController@index')->name('home');
-    Route::middleware(['auth'])->group(function () {
-        Route::get('/payment', 'PaymentController@index')->name('payment');
-    });
-    Route::middleware(['auth'])->group(function () {
-        Route::get('/checkout', 'CheckoutController@index')->name('checkout');
-    });
 
-
+    //Route Waraedu
     Route::middleware(['auth'])->group(function () {
         Route::get('/waraedu', 'WaraeduController@index')->name('waraedu');
     });
+
+    //Route Waracareer
     Route::middleware(['auth'])->group(function () {
         Route::get('/waracareer', 'WaracareerController@index')->name('waracareer');
     });
+
+    //Route Warapartner
     Route::middleware(['auth'])->group(function () {
         Route::get('/warapartner', 'WarapartnerController@index')->name('warapartner');
 
     });
 
+    //Route Tracking Pesanan
     Route::get('/tracking', function () {
         return view('pages.user.tracking');
     })->name('tracking');
 
-
     // Route home
     Route::get('/home', 'HomeController@index')->name('home.index');
 
+    //Toute Detail Waralaba
     Route::middleware(['auth'])->group(function () {
         Route::get('/waralaba/{id}', [WaralabaController::class, 'show'])->name("waralaba");
     });
+
+    //Route Pembayaran
     Route::middleware(['auth'])->group(function () {
         Route::get('/waralaba/{id}/checkout', [WaralabaController::class, 'checkout'])->name("checkout");
     });
+
+    //Route Kirim
     Route::middleware(['auth'])->group(function () {
         Route::get('/waralaba/{id}/checkout/submit', [WaralabaController::class, 'show3'])->name("payment"); //yang lama
         Route::post('/waralaba/{id}/checkout/submit', [TransactionController::class, 'store']); //yang lama
     });
-    Route::middleware(['auth'])->group(function () {
-        Route::get('/pesanan/{id}', [TransactionController::class, 'pembayaran'])->name("pembayaran"); //yang baru: masih error id nya masih id waralabas bukan id transactions
-    });
+
+
+    //Route Pesanan Sukses
     Route::middleware(['auth'])->group(function () {
         Route::get('/sukses', 'SuksesController@index')->name('sukses');
     });
