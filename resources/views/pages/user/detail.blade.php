@@ -360,7 +360,7 @@
                                         <i class="fas fa-share" style="color: white;"></i>
                                     </button>
                                 </div>
-                                <h5>Rp. {{ $waralaba->price }}</h5>
+                                <h5>Rp. {{ number_format(floatval($waralaba->price), 2, ',', '.') }}</h5>
                             </div>
 
                             <div class="course-footer mt-auto">
