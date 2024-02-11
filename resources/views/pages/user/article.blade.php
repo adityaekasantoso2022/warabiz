@@ -110,19 +110,19 @@
     @endpush
 
     <section class="articel container" style="padding-top: 180px; padding-bottom: 80px">
-        <h1 class="title">Judul Artikel</h1>
+        <h1 class="title">{{ $article-> title }}</h1>
         <p>
             <span class="post-date">
                 <time class="post-date">
-                    Created at</span>
+                    {{ $article-> created_at }}</span>
             <span class="dot"></span>
-            <span class="readingtime">Admin</span>
+            <span class="readingtime">{{ $article-> created_by }}</span>
         </p>
         <br>
         <img src="https://res.cloudinary.com/dvgmjv4ie/image/upload/v1707646927/warabiz-cloud/Articles/1645723667837130_k8zbpf.jpg"
             class="img-fluid" alt="Gambar" style="max-width: 50%; max-height: 50%;">
         <div class="content mt-5">
-            isi artikel
+            {{ $article-> article }}
         </div>
     </section>
 </x-user-layout>

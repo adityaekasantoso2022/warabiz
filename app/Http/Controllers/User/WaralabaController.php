@@ -16,7 +16,7 @@ class WaralabaController extends Controller
             return abort(404);
         }
 
-        return view('pages.user.detail', compact('waralaba'));
+        return view('pages.user.waralabadetail', compact('waralaba'));
     }
 
     public function checkout($id)
@@ -49,7 +49,7 @@ class WaralabaController extends Controller
     {
         // Mengambil data transaksi berdasarkan ID
         $transaction = Transaction::findOrFail($id);
-    
+
         // Mengirimkan data transaksi ke view 'waralaba.detail'
         return view('waralaba.detail', compact('transaction'));
     }
