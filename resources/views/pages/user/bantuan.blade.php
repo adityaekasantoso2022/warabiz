@@ -139,7 +139,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Tambahan kartu kontak lainnya sesuai kebutuhan -->
                     </div>
                 </div>
                 <div class="bantuan-card">
@@ -148,44 +147,7 @@
                     </h5>
                     <form id="myForm" action="" method="POST">
                         @csrf
-                        <!-- Form fields -->
-                        <div class="form-group">
-                            <label for="fullname" class="form-label fw-bold">
-                                <p>Nama Lengkap</p>
-                            </label>
-                            <input type="text" name="fullname" id="fullname"
-                                class="form-control border px-2 py-1 rounded-3 shadow-none" required>
-                            <p class="text-sm text-secondary mt-2">
-                                Nama lengkap anda
-                            </p>
-                        </div>
-                        <div class="row m-0 mt-4">
-                            <div class="col-lg-6 col-xs-12 p-0">
-                                <div class="form-group">
-                                    <label for="email" class="form-label fw-bold">
-                                        <p>Alamat Email</p>
-                                    </label>
-                                    <input type="email" name="email" id="email"
-                                        class="form-control border px-2 py-1 rounded-3 shadow-none" required>
-                                    <p class="text-sm text-secondary mt-2">
-                                        Contoh: example@gmail.com
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-xs-12 p-0 ps-lg-4">
-                                <div class="form-group">
-                                    <label for="phone_number" class="form-label fw-bold">
-                                        <p>Nomer Hp Aktif</p>
-                                    </label>
-                                    <input type="number" name="phone_number" id="number_phone"
-                                        class="form-control border px-2 py-1 rounded-3 shadow-none" required>
-                                    <p class="text-sm text-secondary mt-2">
-                                        Contoh: 081234567890
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group mt-4">
+                        <div class="form-group mt-1">
                             <label for="payment_method" class="form-label fw-bold">
                                 <p>Pilih Kategori Pertanyaan</p>
                             </label>
