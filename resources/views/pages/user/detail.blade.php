@@ -162,7 +162,7 @@
         }
 
         .course-card .course-footer .star-rating img {
-            width: 24px;
+            width: 21px;
         }
 
         .checkout .payment-details .header-title {
@@ -202,8 +202,8 @@
             width: 100% !important;
         }
 
-        .video-iframe {
-            border-radius: 10px;
+        .foto-iframe {
+            border-radius: 5px;
             transition: all .3s;
             height: 175px;
 
@@ -223,7 +223,7 @@
         }
 
 
-        .plyr__video-embed img {
+        .plyr__foto-embed img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -306,7 +306,7 @@
 
         .embed-responsive {
             position: relative;
-            /* Tetapkan posisi relatif pada kontainer video */
+            /* Tetapkan posisi relatif pada kontainer foto */
         }
 
         .logo {
@@ -341,11 +341,11 @@
                     <div class="d-block" id="courseCardCheckout"
                         style="position: relative; transition: all 600ms ease-in-out 0s; top: 0px;">
                         <div class="course-card">
-                            <div class="embed-responsive embed-responsive-16by9 video-iframe">
+                            <div class="embed-responsive embed-responsive-16by9 foto-iframe">
                                 <div class="logo-container">
                                     <img src="{{ $waralaba->logo }}" class="logo" alt="Logo" />
                                 </div>
-                                <div class="plyr__video-embed" id="foto waralaba">
+                                <div class="plyr__foto-embed" id="foto waralaba">
                                     <img src="{{ $waralaba->image_url_1 }}" class="img-fluid" alt="Gambar Waralaba">
                                 </div>
                             </div>
@@ -360,7 +360,7 @@
                                         <i class="fas fa-share" style="color: white;"></i>
                                     </button>
                                 </div>
-                                <h5>Rp. {{ number_format(floatval($waralaba->price), 2, ',', '.') }}</h5>
+                                <h5>Rp. {{ number_format(floatval($waralaba->price), 0, ',', '.') }}</h5>
                             </div>
 
                             <div class="course-footer mt-auto">
