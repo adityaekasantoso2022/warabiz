@@ -423,8 +423,9 @@
                         <div class="item-pricing item-mentor d-flex flex-column gap-3">
                             <div class="custom-payment-info">
                                 <h5><i class="fas fa-info-circle"></i></h5>
+                                
                                 <p>
-                                    Lakukan pembayaran sejumlah <b>Rp.{{ $waralaba->price }}</b>
+                                    Lakukan pembayaran sesuai nominal</b>
                                 </p>
                             </div>
                             <h5 class="header-title mb-0">
@@ -510,9 +511,9 @@
                             </div>
 
                             @php
-                                $waralabaPrice = floatval($waralaba->price);
-                                $biayaLayanan = 100000;
-                                $totalTransfer = number_format($waralabaPrice + $biayaLayanan, 0, ',', '.');
+                            $waralabaPrice = floatval($waralaba->price);
+                            $biayaLayanan = 100000;
+                            $totalTransfer = number_format($waralabaPrice + $biayaLayanan, 0, ',', '.');
                             @endphp
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="item">
@@ -527,20 +528,20 @@
 
                                 <div class="item">
                                     <p class="title">
-                                      Biaya layanan
+                                        Biaya layanan
                                     </p>
                                     <p class="value text-green feeMidtransItem0">
-                                      + Rp {{ $biayaLayanan }}
+                                        + Rp {{ $biayaLayanan }}
                                     </p>
                                     <div class="clear"></div>
                                 </div>
 
                                 <div class="item">
                                     <p class="title">
-                                      Total transfer
+                                        Total transfer
                                     </p>
                                     <p class="value">
-                                      <strong>Rp. {{ $totalTransfer }}</strong>
+                                        <strong>Rp. {{ $totalTransfer }}</strong>
                                     </p>
                                     <br>
                                 </div>
@@ -737,14 +738,24 @@
                                         <th scope="row">1</th>
                                         <td width="45%">{{ $waralaba->waralaba_name }}</td>
                                         <td>
-                                            {{ $waralaba->price }}
+                                            Rp. {{ number_format($waralaba->price, 0, ',', '.') }}
                                         </td>
                                         <td>1</td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <div class="d-flex justify-content-between mt-3">
+                            <span></span>
+                            <span>Biaya Layanan :‎ ‎  ‎ ‎ ‎ ‎ ‎  ‎ Rp. 100.000</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span></span>
+                            <span><b>Total Pembayaran</b> : Rp. {{ $totalTransfer }}</span>
+                        </div>
+
                         </div>
                     </div>
+
                     <div class="row mt-3">
                         <div class="col-lg-12 col-12">
                             <div class="payment-instructions">
