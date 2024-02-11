@@ -510,7 +510,7 @@
                             </div>
 
                             @php
-                                $waralabaPrice = intval($waralaba->price);
+                                $waralabaPrice = floatval($waralaba->price);
                                 $biayaLayanan = 100000;
                                 $totalTransfer = number_format($waralabaPrice + $biayaLayanan, 0, ',', '.');
                             @endphp

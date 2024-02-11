@@ -1,4 +1,4 @@
-<x-user-layout title="Warabiz-Bantuan" active="bantuan">
+<x-user-layout title="Bantuan" active="bantuan">
     @push('addonStyle')
     <style>
         body {
@@ -18,7 +18,7 @@
         }
 
         .profil-name {
-            color: #131313;
+            color: #131313
         }
 
         .hero {
@@ -31,7 +31,14 @@
             font-weight: 400;
             font-size: 16px;
             color: rgba(19, 19, 19, 0.8);
-            margin: 0 !important;
+            margin: 0px !important;
+        }
+
+        .hero .hero-text {
+            color: #34364a;
+            font-size: 68px;
+            font-weight: 700;
+            line-height: 78px;
         }
 
         .hero .btn-cta {
@@ -44,196 +51,175 @@
             padding: 12px 32px;
         }
 
-        .img-header {
-            position: absolute;
-            top: 1;
-            right: 0;
-            z-index: -1;
-        }
-
         .navbar-expand-lg {
             background-color: white !important;
             box-shadow: -1.5px 4px 16px rgb(118 126 148 / 20%);
             transition: background-color 200ms linear;
         }
 
-        @media screen and (max-width: 1098px) {
-            .hero-banner-one {
-                padding-top: 50px;
-            }
-        }
 
-        .pb-50 {
-            padding-bottom: 50px;
-        }
-
-        .pt-100 {
-            padding-top: 100px;
-        }
-
-        .pb-100 {
-            padding-bottom: 100px;
-        }
-
-        .item-pricing {
-            background: #fff;
-            border-radius: 16px;
-            padding: 30px;
-        }
-
-        .item-pricing .icon {
-            height: 70px;
-            width: 70px;
-        }
-
-        .item-pricing .title {
+        .header-primary {
             color: #34364a;
-            font-size: 26px;
+            font-size: 38px;
             font-weight: 700;
+            line-height: 48px;
         }
 
-        .accordion-item {
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 10px;
+        .card-container,
+        .bantuan-card,
+        .bantuan-card-responsive {
+            background: #fff;
+            border: none;
+            border-radius: 14px;
+            box-sizing: border-box;
+            color: #34364a;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 30px;
+            position: relative;
+            row-gap: 24px;
         }
 
-        .accordion-button {
-            border-radius: 0;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-            padding: 15px;
+
+        /* Styling untuk kartu */
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 1px;
         }
 
-        .accordion-collapse {
-            border-radius: 0;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-            border-bottom-left-radius: 12px;
-            border-bottom-right-radius: 12px;
-        }
-
-        .accordion-body {
-            border-radius: 0;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-            padding: 15px;
+        /* CSS untuk gambar */
+        .card-body img {
+            max-width: 100px;
+            /* Sesuaikan ukuran gambar sesuai kebutuhan */
+            margin-bottom: 15px;
+            /* Jarak antara gambar dan teks */
         }
     </style>
     @endpush
-
-    <section class="hero-banner-one pt-100 pb-50">
+    <section class="py-5" style="margin-top: 10px">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-12">
-                    <h1 class="header-title mt-5">
-                        Kami siap membantu<br class="desktop"> kendala Anda! 🤩
-                    </h1>
-                    <h5>
-                        Pertanyaan Populer
-                    </h5>
-
-                    <!-- FAQ Dropdown -->
-                    <div class="accordion mt-4" id="faqAccordion">
-                        <!-- Pertanyaan dan Jawaban 1 -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="question1">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#answer1" aria-expanded="false" aria-controls="answer1">
-                                    Apa itu WaraBiz?
-                                </button>
-                            </h2>
-                            <div id="answer1" class="accordion-collapse collapse" aria-labelledby="question1"
-                                data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    WaraBiz adalah peluang waralaba yang dinamis yang memungkinkan pengusaha untuk
-                                    berinvestasi dan mengoperasikan bisnis mereka sendiri dalam kerangka kerja yang
-                                    sudah mapan. Kami menyediakan model bisnis komprehensif dan dukungan untuk membantu
-                                    Anda berhasil di dunia wirausaha yang kompetitif.
+            <div class="mt-5 row pricing testimonials mentors checkout gy-4" id="reviews">
+                <div class="bantuan-card">
+                    <div class="row justify-content-center mt-1">
+                        <div class="col-md-3 col-xs-12 mb-3">
+                            <div class="card text-center rounded-card">
+                                <div class="card-body">
+                                    <img src="{{ asset('assets/frontend/image/logo.svg') }}">
+                                    <h6>Call Center</h6>
+                                    <p>08123456789</p>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Pertanyaan dan Jawaban 2 -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="question2">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#answer2" aria-expanded="false" aria-controls="answer2">
-                                    Bagaimana cara mendaftar sebagai mitra Warabiz?
-                                </button>
-                            </h2>
-                            <div id="answer2" class="accordion-collapse collapse" aria-labelledby="question2"
-                                data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Anda dapat mendaftar sebagai mitra Warabiz atdengan mengunjungi halaman WaraPartner
-                                    di situs web kami dan mengikuti langkah-langkah yang diberikan.
+                        <div class="col-md-3 col-xs-12 mb-3">
+                            <div class="card text-center rounded-card">
+                                <div class="card-body">
+                                    <img src="{{ asset('assets/frontend/image/logo.svg') }}">
+                                    <h6>Email</h6>
+                                    <p>bantuan@warabiz.com</p>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Pertanyaan dan Jawaban 3 -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="question3">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#answer3" aria-expanded="false" aria-controls="answer3">
-                                    Apa keuntungan menjadi mitra Warabiz?
-                                </button>
-                            </h2>
-                            <div id="answer3" class="accordion-collapse collapse" aria-labelledby="question3"
-                                data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    Mitra Warabiz mendapatkan akses ke berbagai layanan dan dukungan untuk membantu
-                                    pertumbuhan bisnis waralabanya.
+                        <div class="col-md-3 col-xs-12 mb-3">
+                            <div class="card text-center rounded-card">
+                                <div class="card-body">
+                                    <img src="{{ asset('assets/frontend/image/logo.svg') }}">
+                                    <h6>WhatsApp</h6>
+                                    <p>0987654321</p>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Pertanyaan dan Jawaban 4 -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="question4">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#answer4" aria-expanded="false" aria-controls="answer4">
-                                    Apa saja jenis waralaba yang tersedia di Warabiz?
-                                </button>
-                            </h2>
-                            <div id="answer4" class="accordion-collapse collapse" aria-labelledby="question4"
-                                data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">
-                                    WaraBiz merupakan penyedia peluang waralaba yang menyajikan beragam jenis bisnis
-                                    dari berbagai industri. Dengan fokus
-                                    pada kuliner, jasa, fashion, ritel, teknologi, dan kesehatan, WaraBiz menghadirkan
-                                    kesempatan bagi para pengusaha untuk
-                                    menjelajahi dan mengembangkan bisnis sesuai dengan minat dan keahlian masing-masing.
+                        <div class="col-md-3 col-xs-12 mb-3">
+                            <div class="card text-center rounded-card">
+                                <div class="card-body">
+                                    <img src="{{ asset('assets/frontend/image/logo.svg') }}">
+                                    <h6>Instagram</h6>
+                                    <p>@warabiz.com</p>
                                 </div>
                             </div>
                         </div>
+                        <!-- Tambahan kartu kontak lainnya sesuai kebutuhan -->
                     </div>
-
                 </div>
-                <div class="col-lg-6 col-sm-6 col-12">
-                    <div class="item-pricing">
-                        <img src="https://buildwithangga.com/themes/front/images/ic_konsultasi.svg" class="icon"
-                            alt="icon-chat">
-                        <h2 class="title mt-5 lh-base">
-                            Hubungi Kami
-                        </h2>
-                        <textarea id="whatsappMessage" class="form-control mb-2" rows="6"
-                            placeholder="Tulis pesan Anda..."></textarea>
-                        <button onclick="sendWhatsAppMessage()" class="btn bgTheme p-2 w-100 border-12 text-white mt-3">
-                            Kirim
-                        </button>
-                    </div>
+                <div class="bantuan-card">
+                    <h5 class="header-title mb-0">
+                        <b>Form Pertanyaan</b>
+                    </h5>
+                    <form id="myForm" action="" method="POST">
+                        @csrf
+                        <!-- Form fields -->
+                        <div class="form-group">
+                            <label for="fullname" class="form-label fw-bold">
+                                <p>Nama Lengkap</p>
+                            </label>
+                            <input type="text" name="fullname" id="fullname"
+                                class="form-control border px-2 py-1 rounded-3 shadow-none" required>
+                            <p class="text-sm text-secondary mt-2">
+                                Nama lengkap anda
+                            </p>
+                        </div>
+                        <div class="row m-0 mt-4">
+                            <div class="col-lg-6 col-xs-12 p-0">
+                                <div class="form-group">
+                                    <label for="email" class="form-label fw-bold">
+                                        <p>Alamat Email</p>
+                                    </label>
+                                    <input type="email" name="email" id="email"
+                                        class="form-control border px-2 py-1 rounded-3 shadow-none" required>
+                                    <p class="text-sm text-secondary mt-2">
+                                        Contoh: example@gmail.com
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-xs-12 p-0 ps-lg-4">
+                                <div class="form-group">
+                                    <label for="phone_number" class="form-label fw-bold">
+                                        <p>Nomer Hp Aktif</p>
+                                    </label>
+                                    <input type="number" name="phone_number" id="number_phone"
+                                        class="form-control border px-2 py-1 rounded-3 shadow-none" required>
+                                    <p class="text-sm text-secondary mt-2">
+                                        Contoh: 081234567890
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-4">
+                            <label for="payment_method" class="form-label fw-bold">
+                                <p>Pilih Kategori Pertanyaan</p>
+                            </label>
+                            <select name="kategori_pertanyaan" id="kategori_pertanyaan"
+                                class="form-select border px-2 py-1 rounded-3 shadow-none" required>
+                                <option value="" selected disabled>Pilih Kategori</option>
+                                <option value="Pertanyaan Umum">Produk</option>
+                                <option value="Pembelian">Transaksi</option>
+                                <option value="Transaksi">Layanan</option>
+                            </select>
+                            <p class="text-sm text-secondary mt-2">
+                                Pilih kategori pertanyaan
+                            </p>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <label for="pesan" class="form-label fw-bold">
+                                <p>Pesan</p>
+                            </label>
+                            <textarea name="pesan" id="pesan"
+                                class="form-control border px-2 py-1 rounded-3 shadow-none" required cols="30"
+                                rows="3"></textarea>
+                            <p class="text-sm text-secondary mt-2">
+                                Masukan pertanyaan anda
+                            </p>
+                        </div>
+                        <br>
+                        <!-- Submit button -->
+                        <button type="submit" onclick="validateForm()"
+                            class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3" id="submitButton">
+                            Kirim</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
-    @push('addonScript')
-    <script>
-        function sendWhatsAppMessage() {
-            var message = encodeURIComponent(document.getElementById('whatsappMessage').value);
-            var whatsappURL = "https://api.whatsapp.com/send?phone=6281575332411&text=" + message;
-            window.open(whatsappURL, '_blank');
-        }
-    </script>
-    @endpush
 </x-user-layout>
