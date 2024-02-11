@@ -149,14 +149,15 @@
                         @csrf
                         <div class="form-group mt-1">
                             <label for="payment_method" class="form-label fw-bold">
-                                <p>Pilih Kategori Pertanyaan</p>
+                                <p>Pilih Kategori Pertanyaan <span style="color: red;">*</span></p>
                             </label>
                             <select name="kategori_pertanyaan" id="kategori_pertanyaan"
                                 class="form-select border px-2 py-1 rounded-3 shadow-none" required>
                                 <option value="" selected disabled>Pilih Kategori</option>
-                                <option value="Pertanyaan Umum">Produk</option>
-                                <option value="Pembelian">Transaksi</option>
-                                <option value="Transaksi">Layanan</option>
+                                <option value="Informasi Produk">Informasi Produk</option>
+                                <option value="Proses Pembelian">Proses Pembelian</option>
+                                <option value="Layanan Pelanggan">Layanan Pelanggan</option>
+                                <option value="Lainnya">Lainnya</option>
                             </select>
                             <p class="text-sm text-secondary mt-2">
                                 Pilih kategori pertanyaan
@@ -165,7 +166,7 @@
 
                         <div class="form-group mt-4">
                             <label for="pesan" class="form-label fw-bold">
-                                <p>Pesan</p>
+                                <p>Pesan <span style="color: red;">*</span></p>
                             </label>
                             <textarea name="pesan" id="pesan"
                                 class="form-control border px-2 py-1 rounded-3 shadow-none" required cols="30"

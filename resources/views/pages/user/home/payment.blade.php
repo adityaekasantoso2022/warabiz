@@ -560,7 +560,7 @@
                             <!-- Form fields -->
                             <div class="form-group">
                                 <label for="fullname" class="form-label fw-bold">
-                                    <p>Nama Lengkap</p>
+                                    <p>Nama Lengkap <span style="color: red;">*</span></p>
                                 </label>
                                 <input type="text" name="fullname" id="fullname"
                                     class="form-control border px-2 py-1 rounded-3 shadow-none" required>
@@ -573,7 +573,7 @@
                                 <div class="col-lg-6 p-0">
                                     <div class="form-group">
                                         <label for="email" class="form-label fw-bold">
-                                            <p>Alamat Email</p>
+                                            <p>Alamat Email <span style="color: red;">*</span></p>
                                         </label>
                                         <input type="email" name="email" id="email"
                                             class="form-control border px-2 py-1 rounded-3 shadow-none" required>
@@ -585,7 +585,7 @@
                                 <div class="col-lg-6 p-0 ps-lg-4">
                                     <div class="form-group">
                                         <label for="phone_number" class="form-label fw-bold">
-                                            <p>Nomer Hp Aktif</p>
+                                            <p>Nomer Hp Aktif <span style="color: red;">*</span></p>
                                         </label>
                                         <input type="number" name="phone_number" id="number_phone"
                                             class="form-control border px-2 py-1 rounded-3 shadow-none" required>
@@ -597,7 +597,7 @@
                             </div>
                             <div class="form-group mt-4">
                                 <label for="address" class="form-label fw-bold">
-                                    <p>Lokasi Pendirian</p>
+                                    <p>Lokasi Pendirian <span style="color: red;">*</span></p>
                                 </label>
                                 <textarea name="address" id="address"
                                     class="form-control border px-2 py-1 rounded-3 shadow-none" required cols="30"
@@ -608,11 +608,11 @@
                             </div>
                             <br>
                             <h5 class="header-title mb-0">
-                                <b>Konfirmasi Pembayaran</b>
+                                <b>Konfirmasi Pembayaran </b>
                             </h5>
                             <div class="form-group mt-4">
                                 <label for="payment_method" class="form-label fw-bold">
-                                    <p>Pilih Metode Pembayaran</p>
+                                    <p>Pilih Metode Pembayaran <span style="color: red;">*</span></p>
                                 </label>
                                 <select name="payment_method" id="payment_method"
                                     class="form-select border px-2 py-1 rounded-3 shadow-none" required>
