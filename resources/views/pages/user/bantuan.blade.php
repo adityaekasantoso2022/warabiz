@@ -145,9 +145,7 @@
         font-weight: 400; /* Ketebalan font konten jawaban */
 
     }
-    .accordion-button[aria-expanded="true"] .accordion-icon {
-    fill: #fff; /* Warna ikon menjadi putih */
-
+    
 </style>
     @endpush
     <section class="py-5" style="margin-top: 10px">
