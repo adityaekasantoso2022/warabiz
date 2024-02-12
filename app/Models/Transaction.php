@@ -20,4 +20,25 @@ class Transaction extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getUuidAttribute()
+    {
+        return $this->attributes['id'];
+    }
+
+    public function getStatusTextAttribute()
+    {
+        switch ($this->attributes['status']) {
+            case 1:
+                return 'Pembelian';
+            case 2:
+                return 'Pembayaran';
+            case 3:
+                return 'Pembangunan';
+            case 4:
+                return 'Pembukaan Waralaba';
+            default:
+                return 'Pending...';
+        }
+    }
 }

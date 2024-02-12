@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
+use App\Models\User;
 
 class TransactionController extends Controller
 {
@@ -37,5 +38,17 @@ class TransactionController extends Controller
 
         // Redirect ke halaman sukses
         return view('pages.user.home.success');
+    }
+
+    public function transactionHistory()
+    {
+        // Get the authenticated user
+        $user = auth()->user();
+
+        // Retrieve the user's transactions
+        $transactions = $user->transactions;
+
+        // Pass the transactions to the view
+        return view('pages.user.transactionhistory', compact('transactions'));
     }
 }

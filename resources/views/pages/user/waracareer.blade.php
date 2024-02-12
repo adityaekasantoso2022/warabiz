@@ -21,7 +21,7 @@
             color: #131313
         }
 
-  
+
         .navbar-expand-lg {
             background-color: white !important;
             box-shadow: -1.5px 4px 16px rgb(118 126 148 / 20%);
@@ -47,12 +47,12 @@
             font-weight: 700;
             line-height: 48px;
         }
-        
+
     </style>
     @endpush
     <section class="py-5" style="margin-top: 10px">
         <div class="container">
-        
+
         </div>
     </section>
 </x-user-layout>

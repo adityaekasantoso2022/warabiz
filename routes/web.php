@@ -41,9 +41,9 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
     });
 
     //Route Tracking Pesanan
-    Route::get('/tracking', function () {
-        return view('pages.user.tracking');
-    })->name('tracking');
+    // Route::get('/transaction-history', function () {
+    //     return view('pages.user.transactionhistory');
+    // })->name('transactionhistory');
 
     // Route home
     Route::get('/home', 'HomeController@index')->name('home.index');
@@ -80,7 +80,10 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
     Route::post('/submit-form', [FormController::class, 'store'])->name('submit.form');
 
     //Route Submit Transaksi
-    Route::post('/transaction/store', [TransactionController::class, 'store'])->name('transaction');
+    Route::middleware(['auth'])->group(function () {
+        Route::post('/transaction/store', [TransactionController::class, 'store'])->name('transaction');
+        Route::get('/transaction/history', [TransactionController::class, 'transactionHistory'])->name('transaction.history');
+    });
 });
 
 Auth::routes();

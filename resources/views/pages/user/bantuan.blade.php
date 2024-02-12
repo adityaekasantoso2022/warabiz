@@ -117,7 +117,7 @@
                                 <div class="card-body">
                                     <img src="{{ asset('assets/frontend/image/icon/gmail.png') }}">
                                     <h6>Email</h6>
-                                    <p>bantuan@warabiz.com</p>
+                                    <p>support@warabiz.com</p>
                                 </div>
                             </div>
                         </div>
