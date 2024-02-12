@@ -42,6 +42,14 @@
                     <ul class="dropdown-menu p-0 m-0 border-0 rounded-12 shadow overflow-hidden mt-3"
                         aria-labelledby="dropdownMenu2">
                         <li>
+                            <a href=""
+                                class="dropdown-item bg-white btn baseColor rounded-0 fw-bold text-dark d-flex align-items-center m-0 py-3 shadow-none">
+                                <p class="me-3"><i class="fas fa-user text-dark"></i></p>
+                                <p class="text-sm text-dark">Profil</p>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="{{ route('transaction.history') }}"
                                 class="dropdown-item bg-white btn baseColor rounded-0 fw-bold text-dark d-flex align-items-center m-0 py-3 shadow-none">
                                 <p class="me-3"><i class="fas fa-history text-dark"></i></p>
