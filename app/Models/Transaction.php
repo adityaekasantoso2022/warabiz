@@ -38,7 +38,7 @@ class Transaction extends Model
             case 4:
                 return 'Pembukaan Waralaba';
             default:
-                return 'Pending...';
+                return 'Pending';
         }
     }
 }

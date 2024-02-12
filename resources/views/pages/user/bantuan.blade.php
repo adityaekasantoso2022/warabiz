@@ -108,7 +108,47 @@
             margin-bottom: 15px;
             /* Jarak antara gambar dan teks */
         }
-    </style>
+        .accordion-item {
+        border-bottom: 1px solid #ddd; /* Garis pembatas antar pertanyaan */
+        margin-bottom: 10px; /* Jarak antara setiap pertanyaan */
+        border-radius: 4px; /* Sudut lengkung kontainer pertanyaan */
+    }
+
+    .accordion-button {
+        background-color: #fff; /* Warna latar belakang tombol */
+        color: #343a40; /* Warna teks tombol */
+        font-weight: 400; /* Ketebalan font tombol */
+        border-radius: 4px; /* Sudut lengkung tombol */
+        border: none; /* Hapus border */
+        padding: 10px 15px; /* Padding tombol */
+        width: 100%; /* Lebar tombol */
+        text-align: left; /* Posisi teks ke kiri */
+        transition: background-color 0.3s ease; /* Efek transisi saat dihover */
+    }
+
+    
+    .accordion-button:hover {
+        background-color: #e9ecef; /* Warna latar belakang tombol saat dihover */
+    }
+
+    .accordion-button:focus {
+        box-shadow: none; /* Hapus shadow saat tombol mendapatkan fokus */
+    }
+
+    .accordion-button[aria-expanded="true"] {
+        background-color: #009BB8; /* Warna latar belakang tombol saat dibuka */
+        color: #fff; /* Warna teks tombol saat dibuka */
+    }
+
+    .accordion-body {
+        padding: 15px; /* Padding konten jawaban */
+        font-weight: 400; /* Ketebalan font konten jawaban */
+
+    }
+    .accordion-button[aria-expanded="true"] .accordion-icon {
+    fill: #fff; /* Warna ikon menjadi putih */
+
+</style>
     @endpush
     <section class="py-5" style="margin-top: 10px">
         <div class="container">
@@ -158,8 +198,94 @@
             <div class="row">
                 <div class="col">
                     <div class="card-row">
-                    <h5 class="header-title">
+                        <h5 class="header-title">
                             <b>Pertanyaan Populer</b>
+                            <div class="accordion mt-4" id="faqAccordion">
+                                <!-- Pertanyaan dan Jawaban 1 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="question1">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#answer1" aria-expanded="false"
+                                            aria-controls="answer1">
+                                            Apa itu WaraBiz?
+                                        </button>
+                                    </h2>
+                                    <div id="answer1" class="accordion-collapse collapse" aria-labelledby="question1"
+                                        data-bs-parent="#faqAccordion">
+                                        <p class="accordion-body">
+                                            WaraBiz adalah peluang waralaba yang dinamis yang memungkinkan pengusaha
+                                            untuk
+                                            berinvestasi dan mengoperasikan bisnis mereka sendiri dalam kerangka kerja
+                                            yang
+                                            sudah mapan. Kami menyediakan model bisnis komprehensif dan dukungan untuk
+                                            membantu
+                                            Anda berhasil di dunia wirausaha yang kompetitif.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Pertanyaan dan Jawaban 2 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="question2">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#answer2" aria-expanded="false"
+                                            aria-controls="answer2">
+                                            Bagaimana cara mendaftar sebagai mitra Warabiz?
+                                        </button>
+                                    </h2>
+                                    <div id="answer2" class="accordion-collapse collapse" aria-labelledby="question2"
+                                        data-bs-parent="#faqAccordion">
+                                        <p class="accordion-body">
+                                            Anda dapat mendaftar sebagai mitra Warabiz atdengan mengunjungi halaman
+                                            WaraPartner
+                                            di situs web kami dan mengikuti langkah-langkah yang diberikan.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Pertanyaan dan Jawaban 3 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="question3">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#answer3" aria-expanded="false"
+                                            aria-controls="answer3">
+                                            Apa keuntungan menjadi mitra Warabiz?
+                                        </button>
+                                    </h2>
+                                    <div id="answer3" class="accordion-collapse collapse" aria-labelledby="question3"
+                                        data-bs-parent="#faqAccordion">
+                                        <p class="accordion-body">
+                                            Mitra Warabiz mendapatkan akses ke berbagai layanan dan dukungan untuk
+                                            membantu
+                                            pertumbuhan bisnis waralabanya.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Pertanyaan dan Jawaban 4 -->
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="question4">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#answer4" aria-expanded="false"
+                                            aria-controls="answer4">
+                                            Apa saja jenis waralaba yang tersedia di Warabiz?
+                                        </button>
+                                    </h2>
+                                    <div id="answer4" class="accordion-collapse collapse" aria-labelledby="question4"
+                                        data-bs-parent="#faqAccordion">
+                                        <p class="accordion-body">
+                                            WaraBiz merupakan penyedia peluang waralaba yang menyajikan beragam jenis
+                                            bisnis
+                                            dari berbagai industri. Dengan fokus
+                                            pada kuliner, jasa, fashion, ritel, teknologi, dan kesehatan, WaraBiz
+                                            menghadirkan
+                                            kesempatan bagi para pengusaha untuk
+                                            menjelajahi dan mengembangkan bisnis sesuai dengan minat dan keahlian
+                                            masing-masing.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </h5>
                     </div>
                 </div>

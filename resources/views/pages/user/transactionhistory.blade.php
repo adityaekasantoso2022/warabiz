@@ -139,7 +139,7 @@
                                         </td>
                                         <td>
                                             <div class="transaction-details">
-                                                <p>{{ $transaction->created_at->format('d M Y') }}</p>
+                                                <p>{{ $transaction->created_at->format('d/m/Y h:m') }} WIB</p>
                                             </div>
                                         </td>
                                         <td>
