@@ -1,4 +1,4 @@
-<x-user-layout title="Bantuan" active="bantuan">
+<x-user-layout title="Riwayat Transaksi" active="riwayat-transaksi">
     @push('addonStyle')
     <style>
         body {

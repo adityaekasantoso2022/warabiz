@@ -30,7 +30,7 @@ class Transaction extends Model
     {
         switch ($this->attributes['status']) {
             case 0:
-                return 'Verifikasi Pembayaran';
+                return 'Proses Verifikasi Pembayaran';
             case 2:
                 return 'Proses Pembangunan';
             case 3:

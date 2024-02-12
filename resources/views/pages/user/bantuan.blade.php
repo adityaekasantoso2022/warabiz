@@ -147,6 +147,7 @@
     }
     
 </style>
+
     @endpush
     <section class="py-5" style="margin-top: 10px">
         <div class="container">
@@ -287,6 +288,7 @@
                         </h5>
                     </div>
                 </div>
+                
                 <div class="col">
                     <div class="card-row">
                         <h5 class="header-title">

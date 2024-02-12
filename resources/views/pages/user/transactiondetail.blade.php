@@ -1,4 +1,4 @@
-    <x-user-layout title="Payment" active="payment">
+    <x-user-layout title="Detail Transaksi - {{ $transaction->waralaba_name }}" active="detail-transaksi">
 
         @push('addonStyle')
     <style>
@@ -132,6 +132,17 @@
             margin-top: 5px; /* Jarak dari atas */
             margin-bottom: 5px; /* Jarak dari bawah */
         }
+        h5 {
+            font-size: 16px;
+            font-weight: normal; 
+        }
+
+        h6 {
+            font-size: 18px;
+            font-weight: normal; 
+        }
+
+
 
     </style>
     @endpush
@@ -161,7 +172,7 @@
                                                         $transaction->fullname }}</b></h3>
                                             </div>
                                             <div class="col-md-6">
-                                                <h6 class="mb-1"><b>Nama Waralaba</b></h6>
+                                                <h6><b>Nama Waralaba</b></h6>
                                                 <h5>{{ $transaction->waralaba_name }}</h5>
 
                                             </div>
@@ -180,7 +191,7 @@
                                 </div>
                                 <br>
                                 <div class="item-pricing item-mentor">
-                                    <h5>Status Pemesanan</h5>
+                                    <h6><b>Status Pemesanan</b>
                                     <p>Terakhir diupdate: {{ $transaction->updated_at->format('d/m/Y H:i') }} WIB</p>
                                     <div class="row justify-content-center mt-4">
                                         <?php

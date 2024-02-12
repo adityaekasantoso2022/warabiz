@@ -1,4 +1,4 @@
-<x-user-layout title="WaraCareer" active="waracareer">
+<x-user-layout title="Edit Profile" active="edituser">
     @push('addonStyle')
     <style>
         body {
@@ -110,7 +110,7 @@
                     </div>
                     <button type="submit" onclick="validateForm()"
                         class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3" id="submitButton">
-                        Save Changes</button>
+                        Simpan Perubahan</button>
                 </form>
             </div>
         </div>
