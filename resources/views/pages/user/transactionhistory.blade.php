@@ -158,7 +158,7 @@
                                                 <td>
                                                     <div class="transaction-details">
                                                         <a href="{{ route('transaction.detail', ['transactionId' => $transaction->uuid]) }}" class="btn btn-circle btn-primary" style="background-color: #009BB8; border: none;">
-                                                            <i class="fas fa-info-circle" style="color: white;"></i>
+                                                        <i class="fas fa-eye" style="color: white;"></i>
                                                         </a>
                                                     </div>
                                                 </td>

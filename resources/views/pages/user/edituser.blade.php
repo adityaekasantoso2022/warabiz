@@ -21,7 +21,6 @@
             color: #131313
         }
 
-
         .navbar-expand-lg {
             background-color: white !important;
             box-shadow: -1.5px 4px 16px rgb(118 126 148 / 20%);
@@ -39,6 +38,11 @@
                 margin-bottom: -33px !important;
                 height: 80vh !important;
             }
+
+            .card-row {
+                margin-top: 20px;
+                max-width: 600px;
+            }
         }
 
         .header-primary {
@@ -48,30 +52,67 @@
             line-height: 48px;
         }
 
+        .card-row {
+            background: #fff;
+            border-radius: 10px;
+            box-sizing: border-box;
+            color: #34364a;
+            height: 100%;
+            padding: 30px;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Ubah gaya input */
+        .form-control {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Ubah gaya tombol */
+        #submitButton {
+            background-color: #009BB8;
+            border-color: #009BB8;
+            border-radius: 12px;
+            color: white;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+        }
+
+        #submitButton:hover {
+            background-color: #00829B;
+            border-color: #00829B;
+        }
     </style>
     @endpush
-    <section class="py-5" style="margin-top: 10px">
+
+    <section class="py-5" style="margin-top: 70px">
         <div class="container">
-            <h2>Edit Profil</h2>
+            <div class="card-row mx-auto">
+                <h5 class="header-title">
+                    <b>Edit Profile</b>
+                </h5>
 
-            <form method="POST" action="{{ route('user.update-profile') }}">
-                @csrf
-                @method('PUT')
-
-                <div class="form-group">
-                    <label for="name">Nama:</label>
-                    <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}" class="form-control" required>
-                </div>
-
-                <!-- Tambahkan input untuk atribut profil lainnya sesuai kebutuhan -->
-
-                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-            </form>
+                <form method="POST" action="{{ route('user.update-profile') }}">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group mt-1">
+                        <label for="name" class="form-label fw-bold">Nama:</label>
+                        <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}"
+                            class="form-control border px-2 py-2 rounded-3 shadow-none" required>
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="email" class="form-label fw-bold">Email:</label>
+                        <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}"
+                            class="form-control border px-2 py-2 rounded-3 shadow-none" readonly>
+                    </div>
+                    <button type="submit" onclick="validateForm()"
+                        class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3" id="submitButton">
+                        Save Changes</button>
+                </form>
+            </div>
         </div>
     </section>
 </x-user-layout>

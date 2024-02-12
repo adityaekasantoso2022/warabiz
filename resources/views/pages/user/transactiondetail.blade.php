@@ -162,18 +162,18 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <h6 class="mb-1"><b>Nama Waralaba</b></h6>
-                                                <p>{{ $transaction->waralaba_name }}</p>
+                                                <h5>{{ $transaction->waralaba_name }}</h5>
 
                                             </div>
                                         </div>
                                         <div class="row align-items-center mb-3">
                                             <div class="col-md-6">
                                                 <h6 class="mb-1"><b>Kontak</b></h6>
-                                                <p>{{ $transaction->phone_number }} | {{ $transaction->email }} </p>
+                                                <h5>{{ $transaction->phone_number }} | {{ $transaction->email }} </h5>
                                             </div>
                                             <div class="col-md-6">
                                                 <h6 class="mb-1"><b>Lokasi Pendirian</b></h6>
-                                                <p>{{ $transaction->address }}</p>
+                                                <h5>{{ $transaction->address }}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -187,10 +187,10 @@
                                             $status = $transaction->status;
 
                                             $steps = [
-                                                1 => ['icon' => 'check', 'text' => 'Pembelian'],
-                                                2 => ['icon' => 'check', 'text' => 'Pembayaran'],
-                                                3 => ['icon' => 'check', 'text' => 'Pembangunan'],
-                                                4 => ['icon' => 'check', 'text' => 'Pembukaan Waralaba'],
+                                                0 => ['icon' => 'check', 'text' => 'Pembelian'],
+                                                1 => ['icon' => 'check', 'text' => 'Pembayaran'],
+                                                2 => ['icon' => 'check', 'text' => 'Pembangunan'],
+                                                3 => ['icon' => 'check', 'text' => 'Pembukaan Waralaba'],
                                             ];
 
                                             // Mengatur ikon dan teks berdasarkan status

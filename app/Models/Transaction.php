@@ -29,16 +29,16 @@ class Transaction extends Model
     public function getStatusTextAttribute()
     {
         switch ($this->attributes['status']) {
-            case 1:
-                return 'Pembelian';
+            case 0:
+                return 'Verifikasi Pembayaran';
             case 2:
-                return 'Menunggu Pembayaran';
+                return 'Proses Pembangunan';
             case 3:
-                return 'Pembangunan';
+                return 'Persiapan Pembukaan';
             case 4:
-                return 'Pembukaan Waralaba';
+                return 'Selesai';
             default:
-                return 'Pending';
+                return 'Menunggu Pembayaran';
         }
     }
 }
