@@ -688,7 +688,7 @@
                     <div class="row mb-4">
                         <div class="col-lg-8 col-12">
                             <img src="{{ asset('assets/frontend/image/logo.svg') }}" class="mb-4" height="50">
-                            <h3 class="mb-0">Inovoice Pembelian Waralaba</h3>
+                            <h3 class="mb-0">Invoice Pembelian Waralaba</h3>
                         </div>
                     </div>
                     <hr class="mb-4">
