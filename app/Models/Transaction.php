@@ -32,7 +32,7 @@ class Transaction extends Model
             case 1:
                 return 'Pembelian';
             case 2:
-                return 'Pembayaran';
+                return 'Menunggu Pembayaran';
             case 3:
                 return 'Pembangunan';
             case 4:

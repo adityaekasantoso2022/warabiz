@@ -43,11 +43,12 @@
                         aria-labelledby="dropdownMenu2">
                         <li>
                             <a href="{{ route('transaction.history') }}"
-                                class="dropdown-item bg-white btn baseColor rounded-0 fw-bold text-white d-flex align-items-center m-0 py-3 shadow-none">
-                                <p class="me-3"><i class="fas fa-history"></i></p>
-                                <p class="text-sm">Histori Transaksi</p>
+                                class="dropdown-item bg-white btn baseColor rounded-0 fw-bold text-dark d-flex align-items-center m-0 py-3 shadow-none">
+                                <p class="me-3"><i class="fas fa-history text-dark"></i></p>
+                                <p class="text-sm text-dark"> Transaksi</p>
                             </a>
                         </li>
+
                         <li>
                             <form action="{{ url('logout') }}" method="post">
                                 @csrf
