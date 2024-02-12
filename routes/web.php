@@ -33,7 +33,7 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
 
     //Route Waracareer
     Route::middleware(['auth'])->group(function () {
-        Route::get('/waracareer', 'WaracareerController@index')->name('waracareer');
+        Route::get('/waracareer', 'WaracareerController@getData')->name('waracareer');
     });
 
     //Route Warapartner
