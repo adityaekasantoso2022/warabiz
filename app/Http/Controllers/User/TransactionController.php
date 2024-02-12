@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Transaction;
 use App\Models\User;
 
@@ -50,5 +51,17 @@ class TransactionController extends Controller
 
         // Pass the transactions to the view
         return view('pages.user.transactionhistory', compact('transactions'));
+    }
+
+    public function showDetail($transactionId)
+    {
+        $transaction = Transaction::findOrFail($transactionId);
+
+        // Check if the authenticated user owns the transaction or has the necessary permissions
+        if (Auth::user()->id !== $transaction->user_id) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        return view('pages.user.transactiondetail', compact('transaction'));
     }
 }

@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+    <x-user-layout title="Payment" active="payment">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Informasi Pemesanan untuk Pembayaran">
-    <meta name="keywords" content="pembayaran, informasi pemesanan, waralaba">
-    <title>Pembayaran - Informasi Pemesanan</title>
-    <!-- Gaya tambahan -->
-    @push('addonStyle')
+        @push('addonStyle')
     <style>
         body {
             background: #dae3ec !important;
@@ -89,7 +81,7 @@
                 margin-bottom: -33px !important;
                 height: 80vh !important;
             }
-            
+
         }
         @media (max-width: 767px) {
             .col-md-3 {
@@ -137,16 +129,14 @@
             border-radius: 8px;
         }
         .item-pricing.item-mentor p {
-    margin-top: 5px; /* Jarak dari atas */
-    margin-bottom: 5px; /* Jarak dari bawah */
-}
+            margin-top: 5px; /* Jarak dari atas */
+            margin-bottom: 5px; /* Jarak dari bawah */
+        }
 
     </style>
     @endpush
-</head>
 
-<body>
-    <x-user-layout title="Payment" active="payment">
+
         <section class="py-5" style="margin-top: 10px">
             <div class="container">
                 <div class="row">
@@ -162,7 +152,7 @@
                                 <div class="item-pricing item-mentor">
                                     <div class="card-body">
                                         <img src="{{ asset('assets/frontend/image/logo.svg') }}">
-                                        <h3 class="card-title">Informasi Pemesanan</h3>
+                                        <h3 class="card-title">Detail Transaksi</h3>
                                         <div class="row align-items-center mb-3">
                                             <div class="col-md-6">
                                                 <h6 class="mb-1"><b>Nama Pemesan</b></h6>
@@ -194,53 +184,52 @@
                                     <p>Terakhir diupdate: {{ $transaction->updated_at->format('d/m/Y H:i') }} WIB</p>
                                     <div class="row justify-content-center mt-4">
                                         <?php
-                                        $status = $transaction->status;
+                                            $status = $transaction->status;
 
-                                        $steps = [
-                                            1 => ['icon' => 'check', 'text' => 'Pembelian'],
-                                            2 => ['icon' => 'check', 'text' => 'Pembayaran'],
-                                            3 => ['icon' => 'check', 'text' => 'Pembangunan'],
-                                            4 => ['icon' => 'check', 'text' => 'Pembukaan Waralaba'],
-                                        ];
-                                        
-                                        // Mengatur ikon dan teks berdasarkan status
-                                        foreach ($steps as $step => $info) {
-                                            // Memeriksa apakah status saat ini lebih besar atau sama dengan langkah saat ini
-                                            if ($status >= $step) {
-                                                // Jika status lebih besar atau sama dengan langkah saat ini,
-                                                // gunakan ikon centang dan kelas hijau
-                                                $iconClass = 'check-icon';
-                                                $icon = 'check-circle';
-                                                $statusText = 'Langkah Selesai';
-                                            } elseif ($status == $step - 1) {
-                                                // Jika status sama dengan langkah saat ini dikurangi 1,
-                                                // berarti dalam proses
-                                                $iconClass = 'in-progress-icon';
-                                                $icon = 'spinner';
-                                                $statusText = 'Dalam Proses';
-                                            } else {
-                                                // Jika status lebih kecil dari langkah saat ini,
-                                                // gunakan ikon silang dan kelas merah
-                                                $iconClass = 'non-check-icon';
-                                                $icon = 'times-circle';
-                                                $statusText = 'Belum Selesai';
-                                            }
-                                        
-                                            // Mencetak kartu dengan ikon dan teks yang sesuai
-                                            echo '
-                                                <div class="col-md-3">
-                                                    <div class="card text-center rounded-card">
-                                                        <div class="card-body">
-                                                            <i class="fas fa-' . $icon . ' fa-5x ' . $iconClass . '"></i>
-                                                            <h5>' . $info['text'] . '</h5>
-                                                            <p>' . $statusText . '</p>
+                                            $steps = [
+                                                1 => ['icon' => 'check', 'text' => 'Pembelian'],
+                                                2 => ['icon' => 'check', 'text' => 'Pembayaran'],
+                                                3 => ['icon' => 'check', 'text' => 'Pembangunan'],
+                                                4 => ['icon' => 'check', 'text' => 'Pembukaan Waralaba'],
+                                            ];
+
+                                            // Mengatur ikon dan teks berdasarkan status
+                                            foreach ($steps as $step => $info) {
+                                                // Memeriksa apakah status saat ini lebih besar atau sama dengan langkah saat ini
+                                                if ($status > $step) {
+                                                    // Jika status lebih besar atau sama dengan langkah saat ini,
+                                                    // gunakan ikon centang dan kelas hijau
+                                                    $iconClass = 'check-icon';
+                                                    $icon = 'check-circle';
+                                                    $statusText = 'Langkah Selesai';
+                                                } elseif ($status === $step) {
+                                                    // Jika status sama dengan langkah saat ini,
+                                                    // gunakan ikon spinner dan kelas biru untuk menandakan sedang dalam proses
+                                                    $iconClass = 'in-progress-icon';
+                                                    $icon = 'spinner';
+                                                    $statusText = 'Kamu Di Langkah Ini';
+                                                } else {
+                                                    // Jika status lebih kecil dari langkah saat ini,
+                                                    // gunakan ikon silang dan kelas merah
+                                                    $iconClass = 'non-check-icon';
+                                                    $icon = 'times-circle';
+                                                    $statusText = 'Belum Selesai';
+                                                }
+
+                                                // Mencetak kartu dengan ikon dan teks yang sesuai
+                                                echo '
+                                                    <div class="col-md-3">
+                                                        <div class="card text-center rounded-card">
+                                                            <div class="card-body">
+                                                                <i class="fas fa-' . $icon . ' fa-5x ' . $iconClass . '"></i>
+                                                                <h5>' . $info['text'] . '</h5>
+                                                                <p>' . $statusText . '</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            ';
-                                        }
+                                                ';
+                                            }
                                         ?>
-                                    
                                     </div>
                                 </div>
                             </div>
@@ -250,6 +239,3 @@
             </div>
         </section>
     </x-user-layout>
-</body>
-
-</html>

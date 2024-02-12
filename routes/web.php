@@ -76,13 +76,14 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
         return view('pages.user.bantuan');
     })->name('bantuan');
 
-    //Route Submit Pertanayan
+    //Route Submit Pertanyaan
     Route::post('/submit-form', [FormController::class, 'store'])->name('submit.form');
 
     //Route Submit Transaksi
     Route::middleware(['auth'])->group(function () {
         Route::post('/transaction/store', [TransactionController::class, 'store'])->name('transaction');
         Route::get('/transaction/history', [TransactionController::class, 'transactionHistory'])->name('transaction.history');
+        Route::get('/transaction/history/{transactionId}', [TransactionController::class, 'showDetail'])->name('transaction.detail');
     });
 });
 
