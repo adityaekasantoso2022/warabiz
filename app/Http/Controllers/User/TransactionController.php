@@ -2,51 +2,40 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
-use App\Http\Controllers\Controller;
 
 class TransactionController extends Controller
 {
     public function store(Request $request)
     {
-        // Validasi data dari formulir
-        $validatedData = $request->validate([
-            'fullname' => 'required|string',
-            'email' => 'required|email',
-            'phone_number' => 'required|string',
-            'address' => 'required|string',
-            'waralaba_id' => 'required|uuid',
-            'waralaba_name' => 'required|string',
-            'payment_method' => 'required|string',
-
-
-            // tambahkan validasi lainnya sesuai kebutuhan
+        // Validasi input
+        $request->validate([
+            'fullname' => 'required',
+            'email' => 'required',
+            'phone_number' => 'required',
+            'address' => 'required', // Perbaikan penulisan field 'address'
+            'payment_method' => 'required',
+            'waralaba_id' => 'required',
+            'waralaba_name' => 'required',
         ]);
 
-        // Memasukkan waralaba_id ke dalam data yang akan disimpan
-        $validatedData['waralaba_id'] = $request->waralaba_id;
-        $validatedData['waralaba_name'] = $request->waralaba_name;
-        $validatedData['payment_method'] = $request->payment_method;
+        $user = auth()->user(); // Mendapatkan user yang sedang login
 
-        // Simpan data transaksi ke dalam tabel transaction
-        Transaction::create($validatedData);
+        // Simpan transaction ke database
+        $transaction = new Transaction();
+        $transaction->user_id = $user->id;
+        $transaction->fullname = $request->fullname;
+        $transaction->email = $request->email;
+        $transaction->phone_number = $request->phone_number;
+        $transaction->address = $request->address; // Perbaikan penulisan field 'address'
+        $transaction->payment_method = $request->payment_method;
+        $transaction->waralaba_id = $request->waralaba_id;
+        $transaction->waralaba_name = $request->waralaba_name;
+        $transaction->save();
 
-        // Redirect atau response sesuai kebutuhan
-        return redirect()->back()->with('success', 'Transaksi berhasil disimpan.');
-    }
-    public function pembayaran($transactionId)
-    {
-        $transaction = Transaction::findOrFail($transactionId);
-
-        // Pastikan transaksi yang ditemukan memiliki properti 'payment_method'
-        if (!$transaction->payment_method) {
-            return abort(404);
-        }
-
-        // Ambil waralaba terkait dengan transaksi
-        $waralaba = $transaction->waralaba;
-
-        return view('pages.user.home.submit', compact('waralaba', 'transaction'));
+        // Redirect ke halaman sukses
+        return view('pages.user.home.success');
     }
 }

@@ -423,7 +423,7 @@
                         <div class="item-pricing item-mentor d-flex flex-column gap-3">
                             <div class="custom-payment-info">
                                 <h5><i class="fas fa-info-circle"></i></h5>
-                                
+
                                 <p>
                                     Lakukan pembayaran sesuai nominal yang tertera</b>
                                 </p>
@@ -555,20 +555,18 @@
                         <h5 class="header-title mb-0">
                             <b>Informasi Pembelian</b>
                         </h5>
-                        <form id="myForm" action="{{ route('payment', ['id' => $waralaba->id]) }}" method="POST">
+                        <form id="myForm" action="{{ route('transaction') }}" method="POST">
                             @csrf
-                            <!-- Form fields -->
                             <div class="form-group">
                                 <label for="fullname" class="form-label fw-bold">
                                     <p>Nama Lengkap <span style="color: red;">*</span></p>
                                 </label>
                                 <input type="text" name="fullname" id="fullname"
                                     class="form-control border px-2 py-1 rounded-3 shadow-none" required>
-                                <p class="text-sm text-secondary mt-2">
-                                    Nama lengkap sesuai KTP
-                                </p>
+                                <p class="text-sm text-secondary mt-2">Nama lengkap sesuai KTP</p>
                             </div>
 
+                            <!-- Input untuk alamat email -->
                             <div class="row m-0 mt-4">
                                 <div class="col-lg-6 p-0">
                                     <div class="form-group">
@@ -595,22 +593,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group mt-4">
+                            <br>
+                            <!-- Input untuk alamat -->
+                            <div class="form-group">
                                 <label for="address" class="form-label fw-bold">
                                     <p>Lokasi Pendirian <span style="color: red;">*</span></p>
                                 </label>
                                 <textarea name="address" id="address"
                                     class="form-control border px-2 py-1 rounded-3 shadow-none" required cols="30"
                                     rows="3"></textarea>
-                                <p class="text-sm text-secondary mt-2">
-                                    Lokasi pendirian waralaba
-                                </p>
+                                <p class="text-sm text-secondary mt-2">Lokasi pendirian waralaba</p>
                             </div>
+
                             <br>
-                            <h5 class="header-title mb-0">
-                                <b>Konfirmasi Pembayaran </b>
-                            </h5>
-                            <div class="form-group mt-4">
+
+                            <!-- Input untuk metode pembayaran -->
+                            <div class="form-group">
                                 <label for="payment_method" class="form-label fw-bold">
                                     <p>Pilih Metode Pembayaran <span style="color: red;">*</span></p>
                                 </label>
@@ -621,34 +619,18 @@
                                     <option value="BNI">Bank BNI</option>
                                     <option value="BRI">Bank BRI</option>
                                 </select>
-                                <p class="text-sm text-secondary mt-2">
-                                    Pilih metode pembayaran anda
-                                </p>
+                                <p class="text-sm text-secondary mt-2">Pilih metode pembayaran anda</p>
                             </div>
-                            <!-- <div class="form-group mt-4">
-                                    <label for="address" class="form-label fw-bold">
-                                        <p>Upload Bukti Pembayaran</p>
-                                    </label>
-                                    <input type="file" name="image" id="image" accept="image/png, image/gif, image/jpeg" class="form-control border px-4 py-3 rounded-12 fw-bold text-sm" maxlength="50" required="">
-                                    <p class="text-sm text-secondary mt-2">
-                                        Upload bukti dalam format img/jpg/jpeg/pdf
-                                    </p>
-                                </div>
- -->
-                            <!-- Input tersembunyi untuk waralaba_id -->
+
+                            <!-- Input tersembunyi untuk waralaba_id dan waralaba_name -->
                             <input type="hidden" name="waralaba_id" value="{{ $waralaba->id }}">
                             <input type="hidden" name="waralaba_name" value="{{ $waralaba->waralaba_name }}">
+
                             <br>
-                            <label class="custom-checkbox">
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <span class="statement">Data yang saya kirim benar dan saya mematuhi syarat dan ketentuan
-                                Warabiz.</span>
+
                             <!-- Submit button -->
-                            <button type="submit" onclick="validateForm()"
-                                class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3" id="submitButton">
-                                Kirim</button>
+                            <button type="submit" class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3"
+                                id="submitButton">Kirim</button>
                         </form>
                     </div>
                 </div>
@@ -671,7 +653,7 @@
         </div>
     </section>
     <script>
-        document.getElementById("myForm").addEventListener("submit", function (event) {
+      etElement").addEventListener("submit", function (event) {
             event.preventDefault(); // Menghentikan pengiriman formulir langsung
 
             // Menampilkan popup pesanan sedang diproses
@@ -746,13 +728,13 @@
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-between mt-3">
-                            <span></span>
-                            <span>Biaya Layanan :‎ ‎  ‎ ‎ ‎ ‎ ‎  ‎ Rp. 100.000</span>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span></span>
-                            <span><b>Total Pembayaran</b> : Rp. {{ $totalTransfer }}</span>
-                        </div>
+                                <span></span>
+                                <span>Biaya Layanan :‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ Rp. 100.000</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span></span>
+                                <span><b>Total Pembayaran</b> : Rp. {{ $totalTransfer }}</span>
+                            </div>
 
                         </div>
                     </div>

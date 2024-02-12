@@ -1,18 +1,11 @@
 <?php
 
-use App\Mail\Admin\ConfirmationTransaction;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\WaralabaController;
 use App\Http\Controllers\User\ArticleController;
 use App\Http\Controllers\User\TransactionController;
-use App\Http\Controllers\User\TrackingController;
 use App\Http\Controllers\User\FormController;
-
-
-
 
 
 /*
@@ -48,11 +41,6 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
     });
 
     //Route Tracking Pesanan
-    Route::middleware(['auth'])->group(function () {
-        Route::get('/pesanan/{id}', [TransactionController::class, 'pembayaran'])->name("pembayaran"); //yang baru: masih error id nya masih id waralabas bukan id transactions
-    });
-
-    //Route Tracking Pesanan
     Route::get('/tracking', function () {
         return view('pages.user.tracking');
     })->name('tracking');
@@ -83,11 +71,16 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
         Route::get('/sukses', 'SuksesController@index')->name('sukses');
     });
 
-    // Route Form Pertanyaan
+    // Route Bantuan
     Route::get('/bantuan', function () {
         return view('pages.user.bantuan');
     })->name('bantuan');
+
+    //Route Submit Pertanayan
     Route::post('/submit-form', [FormController::class, 'store'])->name('submit.form');
+
+    //Route Submit Transaksi
+    Route::post('/transaction/store', [TransactionController::class, 'store'])->name('transaction');
 });
 
 Auth::routes();
