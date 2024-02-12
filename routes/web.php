@@ -6,6 +6,7 @@ use App\Http\Controllers\User\WaralabaController;
 use App\Http\Controllers\User\ArticleController;
 use App\Http\Controllers\User\TransactionController;
 use App\Http\Controllers\User\FormController;
+use App\Http\Controllers\User\ProfileController;
 
 
 /*
@@ -84,6 +85,12 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
         Route::post('/transaction/store', [TransactionController::class, 'store'])->name('transaction');
         Route::get('/transaction/history', [TransactionController::class, 'transactionHistory'])->name('transaction.history');
         Route::get('/transaction/history/{transactionId}', [TransactionController::class, 'showDetail'])->name('transaction.detail');
+    });
+
+    // User Edit Profile
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/user/edit-profile', [ProfileController::class, 'editProfile'])->name('user.edit-profile');
+        Route::put('/user/update-profile', [ProfileController::class, 'updateProfile'])->name('user.update-profile');
     });
 });
 
