@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Testimonialhome;
-use App\Models\TestimonialTraining;
-use Illuminate\Http\Request;
+use App\Models\WaraCareer;
 use Illuminate\Support\Facades\Auth;
 
 class WaracareerController extends Controller
@@ -19,5 +17,10 @@ class WaracareerController extends Controller
 
         return view('pages.user.waracareer', [
         ]);
+    }
+
+    public function getData(){
+        $data = WaraCareer::all();
+        return view('pages.user.waracareer',['data' => $data]);
     }
 }
