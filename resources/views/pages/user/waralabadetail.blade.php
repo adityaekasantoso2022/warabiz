@@ -526,7 +526,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="title"><b>Konsep Binis</b></p>
+                            <p class="title"><b>Konsep Bisnis</b></p>
                             <div class="item">
                                 <p class="title">Konsep</p>
                                 <p class="value"> {{ $waralaba->concept }} </p>
