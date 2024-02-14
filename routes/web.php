@@ -91,7 +91,7 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
     Route::middleware(['auth'])->group(function () {
         Route::get('/user/edit-profile', [ProfileController::class, 'editProfile'])->name('user.edit-profile');
         Route::put('/user/update-profile', [ProfileController::class, 'updateProfile'])->name('user.update-profile');
-    });
+    });    
 });
 
 Auth::routes();
