@@ -102,26 +102,6 @@
         </div>
     </div>
 
-    <h4 class="mt-3">Progres waralaba</h4>
-    <div class="card card-home mt-4 border-0 ">
-        <div class="row g-0">
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">ffff</h5>
-
-                    <div class="d-flex justify-content-between mt-5">
-                        <p class="card-text"><small class="text-muted">dx Pertemuan</small></p>
-                        <p class="card-text">System</p>
-                    </div>
-                    <div class="progress mt-3">
-                        <div class="progress-bar w-75" role="progressbar" aria-label="Basic example" aria-valuenow="75"
-                            aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     @push('addonScript')
 
         <script>
