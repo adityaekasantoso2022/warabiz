@@ -1,4 +1,4 @@
-<x-user-layout title="Waralaba-Detail" active="waralaba">
+<x-user-layout title="Waralaba-Diproses" active="waralaba">
     @push('addonStyle')
     <style>
         body {
@@ -98,8 +98,9 @@
             height: 500px;
             text-align: center;
         }
+
         .payment-success img {
-            margin-top: 20px 
+            margin-top: 20px
         }
 
 
@@ -152,9 +153,18 @@
             <img src="{{ asset('assets/frontend/image/sukses.svg') }}" alt="Gambar Pembayaran Berhasil" width="100">
             <h2>Pembayaran Sedang Diproses</h2>
             <p>Kami akan segera menghubungi Anda untuk langkah selanjutnya</p>
-            <!-- Progress image will be hidden on mobile devices -->
-            <img src="{{ asset('assets/frontend/image/progress.svg') }}" class="progress-image" alt="Gambar Pembayaran Berhasil" width="550">
-            <a href="{{ route('home') }}" class="mt-4 mb-2 btn bgTheme text-white border-12 py-3 px-4" style="max-width: 200px; width: 100%;">Back to Home</a>
+            <img src="{{ asset('assets/frontend/image/progress.svg') }}" class="progress-image"
+                alt="Gambar Pembayaran Berhasil" width="550">
+            <a href="{{ route('transaction.history') }}"
+                class="mt-4 mb-2 mr-4 btn bgTheme text-white border-12 py-3 px-4"
+                style="max-width: 200px; width: calc(50% - 14px); display: inline-block; margin-right: 10px;">
+                <i class="fas fa-history mr-2"></i> Lihat Transaksi
+            </a>
+            <a href="{{ route('home') }}" class="mt-4 mb-2 ml-4 btn bgTheme text-white border-12 py-3 px-4"
+                style="max-width: 200px; width: calc(50% - 14px); display: inline-block; margin-left: 10px;">
+                <i class="fas fa-home mr-2"></i> Back to Home
+            </a>
+
         </div>
     </section>
 </x-user-layout>

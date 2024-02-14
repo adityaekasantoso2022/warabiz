@@ -231,6 +231,22 @@
                                                     $icon = 'check-circle';
                                                     $statusText = 'Pesanan Selesai';
                                                 }
+                                                if ($status == null) {
+                                                    echo '
+                                                        <div class="col-md-3">
+                                                            <div class=" text-center">
+                                                                <div class="card-body">
+                                                                    <i class="fas fa-spinner fa-5x in-progress-icon"></i>
+                                                                    <h5><b>Pembayaran Sedang Diverifikasi</b></h5>
+                                                                    <p>Max. 2 x 24 Jam di hari kerja</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    ';
+                                                    break; // Hentikan iterasi setelah menambahkan card baru
+                                                }
+                                    
+
                                             
                                                 if ($status == 4) {
                                                     echo '

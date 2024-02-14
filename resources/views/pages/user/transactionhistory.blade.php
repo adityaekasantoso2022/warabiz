@@ -109,51 +109,54 @@
             max-width: 80px;
             padding: 6px 12px;
         }
-        .proses-verifikasi {
-            background-color: #F16336;
-            color: white;
+
+        .status-label {
             display: inline-block;
             padding: 6px 10px;
-            border-radius: 5px; /* Atur sesuai kebutuhan Anda */
-            font-size: 12px; /* Ubah ukuran teks sesuai kebutuhan */
-            
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .proses-verifikasi {
+            background-color: #f16336;
         }
 
         .proses-pembangunan {
-            background-color: #3095B5;
-            color: white;
-            display: inline-block;
-            padding: 6px 10px;
-            border-radius: 5px; /* Atur sesuai kebutuhan Anda */
-            font-size: 12px; /* Ubah ukuran teks sesuai kebutuhan */
+            background-color: #3095b5;
         }
+
         .persiapan-pembukaan {
-            background-color: #0578FF;
-            color: white;
-            display: inline-block;
-            padding: 6px 10px;
-            border-radius: 5px; /* Atur sesuai kebutuhan Anda */
-            font-size: 12px; /* Ubah ukuran teks sesuai kebutuhan */
+            background-color: #0578ff;
         }
+
         .selesai {
-            background-color: #009D64;
-            color: white;
-            display: inline-block;
-            padding: 6px 10px;
-            border-radius: 5px; /* Atur sesuai kebutuhan Anda */
-            font-size: 12px; /* Ubah ukuran teks sesuai kebutuhan */
+            background-color: #009d64;
         }
+
         .ditolak {
-            background-color: #CF0606;
-            color: white;
-            display: inline-block;
-            padding: 6px 10px;
-            border-radius: 5px; /* Atur sesuai kebutuhan Anda */
-            font-size: 12px; /* Ubah ukuran teks sesuai kebutuhan */
+            background-color: #cf0606;
         }
 
+        .non-check-icon {
+            color: #ff5151;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+        @media screen and (max-width: 576px) {
+            .search-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
+            #searchInput {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
 
+        
     </style>
     @endpush
     <section class="py-5" style="margin-top: 10px">
@@ -162,65 +165,73 @@
                 <div class="bantuan-card">
                     <div class="row justify-content-center">
                         @if($transactions->isEmpty())
-                        <p>Tidak ada transaksi</p>
-                        @else
-                        <div class="transaction-list">
-                            <div class="search-bar mb-3">
-                                <span><b>Pencarian: ‎ ‎ </b></span>
-                                <div class="search-input-wrapper">
-                                    <input type="text" id="searchInput" class="form-control border px-2 py-1 rounded-3 shadow-none" placeholder="Cari transaksi..">
+                            <div class="col-md-3">
+                                <div class=" text-center">
+                                    <div class="card-body">
+                                        <i class="fas fa-times-circle fa-5x non-check-icon"></i>
+                                        <h5>Tidak Ada Transaksi</h5>
+                                        <p>Lakukan pembelian untuk menampilkan riwayat disini</p>
+                                    </div>
                                 </div>
                             </div>
-                            <table class="transaction-table">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>ID Transaksi</th>
-                                        <th>Nama Waralaba</th>
-                                        <th>Tanggal Transaksi</th>
-                                        <th>Metode Pembayaran</th>
-                                        <th>Status</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($transactions as $index => $transaction)
-                                    <tr>
-                                        <td>{{ $index + 1 }}</td>
-                                        <td>TRX-{{ substr($transaction->uuid, 2, 6) }}</td>
-                                        <td>{{ $transaction->waralaba_name }}</td>
-                                        <td>{{ $transaction->created_at->format('d-m-Y h:i:s') }}</td>
-                                        <td>Bank {{ $transaction->payment_method }}</td>
-                                        <td>
-                                            @switch($transaction->status)
-                                                @case(0)
-                                                    <span class="proses-verifikasi">Verifikasi Pembayaran</span>
-                                                    @break
-                                                @case(1)
-                                                    <span class="proses-pembangunan">Proses Pembangunan</span>
-                                                    @break
-                                                @case(2)
-                                                   <span class="persiapan-pembukaan">Peoses Pembukaan Waralaba</span>
-                                                    @break
-                                                @case(3)
-                                                <span class="selesai">Selesai</span>
-                                                    @break
-                                                @case(4)
-                                                <span class="ditolak">Ditolak</span>
-                                                    @break
-                                                    
-                                            @endswitch
-                                        </td>
-                                        <td>
-                                            <div class="transaction-details">
-                                                <a href="{{ route('transaction.detail', ['transactionId' => $transaction->uuid]) }}" class="btn btn-circle btn-primary" style="background-color: #009bb8; border: none;"><i class="fas fa-eye" style="color: white;"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                        @else
+                            <div class="transaction-list">
+                            <div class="search-bar mb-3 d-flex justify-content-between align-items">
+                                    <span><b>Riwayat Transaksi</b></span>
+                                    <div class="d-flex align-items-center">
+                                        <span>Cari Transaksi: ‎ ‎ </span>
+                                        <input type="text" id="searchInput" class="form-control border px-2 py-1 rounded-3 shadow-none ml-2">
+                                    </div>
+                                </div>
+                                <table class="transaction-table">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>ID Transaksi</th>
+                                            <th>Nama Waralaba</th>
+                                            <th>Tanggal Transaksi</th>
+                                            <th>Metode Pembayaran</th>
+                                            <th>Status</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($transactions as $index => $transaction)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>TRX-{{ substr($transaction->uuid, 2, 6) }}</td>
+                                                <td>{{ $transaction->waralaba_name }}</td>
+                                                <td>{{ $transaction->created_at->format('d-m-Y h:i:s') }}</td>
+                                                <td>Bank {{ $transaction->payment_method }}</td>
+                                                <td>
+                                                    @switch($transaction->status)
+                                                        @case(0)
+                                                            <span class="status-label proses-verifikasi">Verifikasi Pembayaran</span>
+                                                            @break
+                                                        @case(1)
+                                                            <span class="status-label proses-pembangunan">Proses Pembangunan</span>
+                                                            @break
+                                                        @case(2)
+                                                            <span class="status-label persiapan-pembukaan">Proses Pembukaan Waralaba</span>
+                                                            @break
+                                                        @case(3)
+                                                            <span class="status-label selesai">Selesai</span>
+                                                            @break
+                                                        @case(4)
+                                                            <span class="status-label ditolak">Ditolak</span>
+                                                            @break
+                                                    @endswitch
+                                                </td>
+                                                <td>
+                                                    <div class="transaction-details">
+                                                        <a href="{{ route('transaction.detail', ['transactionId' => $transaction->uuid]) }}" class="btn btn-circle btn-primary" style="background-color: #009bb8; border: none;"><i class="fas fa-eye" style="color: white;"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         @endif
                     </div>
                 </div>
