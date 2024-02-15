@@ -36,16 +36,15 @@
         <div class="container">
             <div class="artikel-card">
                 <h3>Tambah Artikel</h3>
-                <form action="{{ route('admin.articles.store') }}" method="POST">
+                <form method="POST" action="{{ route('admin.articles.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="title" class="form-label">Judul</label>
                         <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
                     </div>
                     <div class="mb-3">
-                        <label for="image_url" class="form-label">URL Gambar</label>
-                        <input type="text" class="form-control" id="image_url" name="image_url"
-                            value="{{ old('image_url') }}">
+                        <label for="image_url" class="form-label">Pilih Gambar</label>
+                        <input type="file" class="form-control" id="image" name="image_url" accept="image/*">
                     </div>
                     <div class="mb-3">
                         <label for="category" class="form-label">Kategori</label>

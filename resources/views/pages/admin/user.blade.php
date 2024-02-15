@@ -24,7 +24,7 @@
             padding: 8px;
             text-align: center;
         }
-        
+
         .user-table td {
             border: 1px solid #ddd;
             padding: 8px;
@@ -131,9 +131,14 @@
                                             <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-circle btn-warning"
                                                 style="background-color: #FFC107; border: none;"><i class="fas fa-edit"
                                                     style="color: white;"></i></a>
-                                            <a href="#" class="btn btn-circle btn-danger"
-                                                style="background-color: #F44336; border: none;"><i
-                                                    class="fas fa-trash-alt" style="color: white;"></i></a>
+                                                    <form action="{{ route('admin.user.destroy', $user->id) }}" method="post" style="display: inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+
+                                                        <button type="submit" class="btn btn-circle btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
+                                                            <i class="fas fa-trash-alt" style="color: white;"></i>
+                                                        </button>
+                                                    </form>
                                         </div>
                                     </td>
                                 </tr>

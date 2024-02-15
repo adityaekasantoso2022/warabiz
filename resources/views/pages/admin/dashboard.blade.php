@@ -8,7 +8,7 @@
     @endpush
 
     <div class="row">
-    <div class="col-md-3">
+        <div class="col-md-3">
             <div class="card">
                 <div class="card-body px-4 py-4-5">
                     <div class="row">
@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                             <h6 class="text-muted font-semibold">Jumlah Pengguna</h6>
-                            <h6 class="font-extrabold mb-0">{{ $totalUser }}</h6> <!-- Ganti angka 100 dengan jumlah aktual pesanan proses -->
+                            <h6 class="font-extrabold mb-0">{{ $totalUser }}</h6>
                         </div>
                     </div>
                 </div>
@@ -37,12 +37,13 @@
                         </div>
                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                             <h6 class="text-muted font-semibold">Jumlah Waralaba</h6>
-                            <h6 class="font-extrabold mb-0">{{ $totalWaralaba }}</h6> <!-- Ganti angka 100 dengan jumlah aktual waralaba -->
+                            <h6 class="font-extrabold mb-0">{{ $totalWaralaba }}</h6>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body px-4 py-4-5">
@@ -54,12 +55,13 @@
                         </div>
                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                             <h6 class="text-muted font-semibold">Jumlah Transaksi</h6>
-                            <h6 class="font-extrabold mb-0">{{ $totalTransaction }}</h6> <!-- Ganti angka 100 dengan jumlah aktual transaksi -->
+                            <h6 class="font-extrabold mb-0">{{ $totalTransaction }}</h6>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body px-4 py-4-5">
@@ -70,8 +72,8 @@
                             </div>
                         </div>
                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                            <h6 class="text-muted font-semibold">Jumlah Waraedu</h6>
-                            <h6 class="font-extrabold mb-0">{{ $totalArticle }}</h6> <!-- Ganti angka 100 dengan jumlah aktual artikel -->
+                            <h6 class="text-muted font-semibold">Jumlah<br>Waraedu</h6>
+                            <h6 class="font-extrabold mb-0">{{ $totalArticle }}</h6>
                         </div>
                     </div>
                 </div>

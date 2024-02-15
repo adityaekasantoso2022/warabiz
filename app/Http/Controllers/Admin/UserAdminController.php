@@ -41,4 +41,19 @@ class UserAdminController extends Controller
 
         return redirect()->route('admin.user')->with('success', 'Pengguna berhasil diperbarui.');
     }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+
+        // Pastikan admin dapat menghapus user
+        // Contoh: hanya admin yang dapat menghapus user
+        if (auth()->user()->isAdmin()) {
+            $user->delete();
+
+            return redirect()->route('admin.user')->with('success', 'User berhasil dihapus');
+        } else {
+            return redirect()->route('admin.user')->with('error', 'Anda tidak memiliki izin untuk menghapus user');
+        }
+    }
 }

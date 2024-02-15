@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\CloudinaryStorage;
 use App\Models\Articles;
 use Illuminate\Http\Request;
 
@@ -25,16 +26,33 @@ class ArtikelAdminController extends Controller
     {
         // Validasi data yang diterima dari formulir
         $request->validate([
-            'image_url' => 'required',
+            'image_url' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'title' => 'required',
             'article' => 'required',
             'category' => 'required',
         ]);
 
-        // Buat objek artikel baru berdasarkan data yang diterima
-        Articles::create($request->all());
+        // Gunakan 'image_url' daripada 'image' pada baris berikut
+        $image  = $request->file('image_url');
 
-        return redirect()->route('admin.artikel')->with('success', 'Artikel berhasil dibuat.');
+        // Pastikan $image tidak null sebelum melanjutkan
+        if ($image) {
+            // Unggah gambar ke Cloudinary
+            $result = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName());
+
+            // Buat objek artikel baru berdasarkan data yang diterima
+            Articles::create([
+                'image_url' => $result,
+                'title' => $request->input('title'),
+                'article' => $request->input('article'),
+                'category' => $request->input('category'),
+                'created_by'
+            ]);
+            return redirect()->route('admin.artikel')->with('success', 'Artikel berhasil dibuat.');
+        }
+
+        // Tangani kasus di mana $image null (tidak ada file yang diunggah)
+        return view('pages.admin.create.artikel', compact('articles'))->with('error', 'Gambar tidak valid.');
     }
 
     // Menampilkan formulir untuk mengedit artikel
@@ -57,7 +75,7 @@ class ArtikelAdminController extends Controller
 
         // Cari artikel berdasarkan ID
         $article = Articles::findOrFail($id);
-        
+
         // Update artikel dengan data baru
         $article->update($request->all());
 

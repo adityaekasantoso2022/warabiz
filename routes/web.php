@@ -53,28 +53,45 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
             return view('pages.user.bantuan');
         })->name('bantuan');
         Route::post('/submit-form', [FormController::class, 'store'])->name('submit.form');
-        
+
 
     });
     Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
+        // Admin CRUD User
         Route::get('/admin/user', [UserAdminController::class, 'index'])->name('admin.user');
         Route::get('/user/{id}/edit', [UserAdminController::class, 'edit'])->name('admin.user.edit');
         Route::put('/admin/user/{id}', [UserAdminController::class, 'update'])->name('admin.user.update');
+        Route::delete('/admin/users/{id}', [UserAdminController::class, 'destroy'])->name('admin.user.destroy');
 
+        // Admin CRUD Waralaba
         Route::get('/admin/waralaba', [WaralabaAdminController::class, 'index'])->name('admin.waralaba');
+        Route::get('/admin/waralaba/edit', [ArtikelAdminController::class, 'edit'])->name('admin.waralaba.edit');
+        Route::put('/admin/waralaba/{id}', [ArtikelAdminController::class, 'update'])->name('admin.waralaba.update');
+        Route::delete('/admin/waralaba/{id}', [ArtikelAdminController::class, 'destroy'])->name('admin.waralaba.destroy');
+        Route::get('/admin/waralaba/create', [ArtikelAdminController::class, 'create'])->name('admin.waralaba.create');
+        Route::post('/admin/waralaba/add', [ArtikelAdminController::class, 'store'])->name('admin.waralaba.store');
+
+        // Admin CRUD transaction
         Route::get('/admin/transaksi', [TransactionAdminController::class, 'index'])->name('admin.transaksi');
+        Route::get('/admin/transactions/{article}/edit', [ArtikelAdminController::class, 'edit'])->name('admin.transactions.edit');
+        Route::put('/admin/transactions/{article}', [ArtikelAdminController::class, 'update'])->name('admin.transactions.update');
+        Route::delete('/admin/transactions/{article}', [ArtikelAdminController::class, 'destroy'])->name('admin.transactions.destroy');
+        Route::get('/admin/transactions/create', [ArtikelAdminController::class, 'create'])->name('admin.transactions.create');
+        Route::post('/admin/transactions', [ArtikelAdminController::class, 'store'])->name('admin.transactions.store');
+
+        // Admin CRUD Article
         Route::get('/admin/artikel', [ArtikelAdminController::class, 'index'])->name('admin.artikel');
-        Route::get('/articles/{article}/edit', [ArtikelAdminController::class, 'edit'])->name('admin.articles.edit');
-        Route::put('/articles/{article}', [ArtikelAdminController::class, 'update'])->name('admin.articles.update');
-        Route::delete('/articles/{article}', [ArtikelAdminController::class, 'destroy'])->name('admin.articles.destroy');
-        Route::get('/articles/create', [ArtikelAdminController::class, 'create'])->name('admin.articles.create'); // Menampilkan formulir tambah artikel
-        Route::post('/articles', [ArtikelAdminController::class, 'store'])->name('admin.articles.store'); // Menyimpan artikel baru
-    
+        Route::get('/admin/articles/{article}/edit', [ArtikelAdminController::class, 'edit'])->name('admin.articles.edit');
+        Route::put('/admin/articles/{article}', [ArtikelAdminController::class, 'update'])->name('admin.articles.update');
+        Route::delete('/admin/articles/{article}', [ArtikelAdminController::class, 'destroy'])->name('admin.articles.destroy');
+        Route::get('/admin/articles/create', [ArtikelAdminController::class, 'create'])->name('admin.articles.create');
+        Route::post('/admin/articles', [ArtikelAdminController::class, 'store'])->name('admin.articles.store');
+
 
         Route::get('/admin/career', [CareerAdminController::class, 'index'])->name('admin.career');
-        
+
     });
 
 });
