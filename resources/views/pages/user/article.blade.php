@@ -1,4 +1,4 @@
-<x-user-layout title="Artikel-Detail" active="artikel">
+<x-user-layout title="Waraedu-{{ $article-> title }}" active="artikel">
 
 
     @push('addonStyle')
@@ -100,6 +100,34 @@
 
             color: #131313;
         }
+        .share-buttons {
+            margin-top: 20px;
+        }
+
+        .share-buttons a {
+            color: #fff;
+            background-color: #009BB8;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none; 
+
+        }
+
+        .share-buttons a:hover {
+            background-color: #027186;
+        }
+
+        .share-buttons a i {
+            font-size: 20px;
+        }
 
         @media (max-width: 767px) {
             .articel .thumbnail {
@@ -109,17 +137,31 @@
     </style>
     @endpush
 
-    <section class="articel container" style="padding-top: 180px; padding-bottom: 80px">
+    <section class="articel container" style="padding-top: 130px; padding-bottom: 80px">
         <h1 class="title">{{ $article-> title }}</h1>
         <p>
             <span class="post-date">
                 <time class="post-date">
                 Diposting pada : {{($article->created_at)->format('d/m/Y H:i') }} WIB
             <span class="dot"></span>
-            <span class="readingtime">{{ $article-> created_by }}</span>
+            <span class="readingtime">Admin Warabiz</span>
         </p>
+        <div class="share-buttons mt-4">
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::url()) }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::url()) }}&text={{ urlencode($article->title) }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://api.whatsapp.com/send?text={{ urlencode($article->title . ' ' . Request::url()) }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(Request::url()) }}&title={{ urlencode($article->title) }}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
         <br>
-        <img src="https://res.cloudinary.com/dvgmjv4ie/image/upload/v1707646927/warabiz-cloud/Articles/1645723667837130_k8zbpf.jpg"
+        <img src=" {{ $article-> image_url }}"
             class="img-fluid" alt="Gambar" style="max-width: 50%; max-height: 50%;">
         <div class="content mt-5">
             {{ $article-> article }}

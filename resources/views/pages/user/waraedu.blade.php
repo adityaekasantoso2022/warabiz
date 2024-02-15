@@ -1,6 +1,7 @@
 <x-user-layout title="WaraEdu" active="waraedu">
     @push('addonStyle')
     <style>
+        /* Style untuk latar belakang dan elemen-elemen lainnya */
         body {
             background: #dae3ec !important;
         }
@@ -56,88 +57,64 @@
             transition: background-color 200ms linear;
         }
 
-        @media (min-width: 756px) {
-            .hero {
-                height: 85vh !important;
-            }
-
-            .card-img-top {
-                height: 180px !important;
-            }
-        }
-
-        .card-container,
-        .waraedu-card,
-        .waraedu-card-responsive {
-            background: #fff;
-            border: none;
+        /* Style untuk kartu artikel */
+        .article-card {
+            background-color: #fff;
             border-radius: 10px;
-            box-sizing: border-box;
-            color: #34364a;
-            display: flex;
-            flex-direction: column;
-            height: auto;
-            width: 360px;
-            position: relative;
-            row-gap: 16px;
-            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
+            overflow: hidden;
         }
 
-        .waraedu-card img {
+        .article-card img {
             width: 100%;
-            height: 280px;
+            height: 180px; /* Ubah tinggi gambar sesuai kebutuhan */
             object-fit: cover;
             border-radius: 10px 10px 0 0;
-            margin-bottom: 1px;
         }
 
-        .waraedu-card .d-flex.flex-column {
-            padding: 0 23px 23px;
+        .article-card .card-body {
+            padding: 20px;
         }
 
-        .read-more {
+        .article-card h5 {
+            font-weight: bold;
+            color: #131313;
+            margin-bottom: 10px;
+        }
+
+        .article-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .article-card .read-more {
             color: #009BB8;
             text-decoration: none;
-            font-weight: 440;
-            margin-top: 10px;
+            font-weight: 500;
         }
     </style>
     @endpush
 
-    <section class="justify-content" style="margin-top: 100px;">
-        <div class="container-scrollable">
-            <div class="container">
-                <div class="row">
-                    @foreach($articles as $article)
-                    <div class="col-md-6 col-lg-3 mb-3">
-                        <a href="{{ route('waraedu-detail', $article->id) }}" class="text-decoration-none">
-                            <div class="waraedu-card">
-                                <img src="{{ $article->image_url }}" alt="Gambar">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex flex-column">
-                                        <h5><b>{{ $article->title }}</b></h5>
-                                        <p>{{ $article->category }}</p>
-                                        <br>
-                                        <div class="d-flex align-items-center">
-                                            <p>{{ substr($article->article, 0, 120) }}...</p>
-                                        </div>
-                                        <div class="read-more">
-                                            <p>Selengkapnya ></p>
-                                        </div>
-                                        <hr> <!-- Menambahkan garis -->
-                                        <p>
-                                        <i class="far fa-calendar-alt"></i> {{ date('j F Y', strtotime($article->created_at)) }}
-                                        </p>
-                                    </div>
+    <section style="margin-top: 140px;">
+        <div class="container">
+            <div class="row">
+                @foreach($articles as $article)
+                    <div class="col-md-6 col-lg-3 mb-4">
+                        <div class="article-card">
+                            <a href="{{ route('waraedu-detail', $article->id) }}" class="text-decoration-none">
+                                <img src="{{ $article->image_url }}" alt="Gambar Artikel">
+                                <div class="card-body">
+                                    <h5>{{ substr($article->title, 0, 55) }}..</h5>
+                                    <p>{{ $article->category }}</p>
+                                    <p>{{ substr($article->article, 0, 120) }}...</p>
+                                    <a href="{{ route('waraedu-detail', $article->id) }}" class="read-more">Selengkapnya ></a>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
-                    @endforeach
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
-
 </x-user-layout>
