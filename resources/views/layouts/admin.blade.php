@@ -23,12 +23,7 @@
 <body>
     <div id="app">
         <div id="main">
-
             <x-admin.sidebar active="{{ $active }}" />
-            <x-admin.header title="{{ $title }}" />
-
-            @include('sweetalert::alert')
-
             {{ $slot }}
 
         </div>

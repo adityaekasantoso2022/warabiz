@@ -4,64 +4,6 @@
             body {
                 background: #dae3ec !important;
             }
-
-            .small-box {
-                background: #fff;
-                border-radius: 10px;
-                padding: 20px;
-                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-                text-align: center;
-                transition: all 0.3s ease;
-            }
-
-            .small-box:hover {
-                transform: translateY(-5px);
-            }
-
-            .small-box .inner {
-                margin-bottom: 20px;
-            }
-
-            .small-box .inner .d-flex {
-                align-items: center;
-                justify-content: center;
-            }
-
-            .small-box .inner h3 {
-                font-size: 2.5rem;
-                margin-bottom: 0;
-            }
-
-            .small-box .inner h6 {
-                font-size: 0.875rem;
-                color: #6c757d;
-            }
-
-            .progress {
-                display: flex;
-                height: 0.5rem;
-                overflow: hidden;
-                font-size: .75rem;
-                background-color: #e9ecef;
-                border-radius: 0.25rem;
-                margin-top: 20px;
-            }
-
-            .progress-bar {
-                background-color: #6c757d;
-            }
-
-            .card-home .card-body .card-title {
-                font-size: 24px !important;
-                font-weight: 600 !important;
-                color: #131313;
-            }
-
-            .card-home .card-body .card-text {
-                font-size: 14px !important;
-                font-weight: 600 !important;
-                color: #131313;
-            }
         </style>
     @endpush
 
