@@ -7,7 +7,8 @@
                     <!-- Icons and theme toggle -->
                 </div>
                 <div class="sidebar-toggler x">
-                    <a href="javascript:void(0)" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                    <a href="javascript:void(0)" class="sidebar-hide d-xl-none d-block"><i
+                            class="bi bi-x bi-middle"></i></a>
                 </div>
             </div>
         </div>
@@ -59,7 +60,7 @@
                         </button>
                     </form>
                 </li>
-                
+
             </ul>
         </div>
     </div>

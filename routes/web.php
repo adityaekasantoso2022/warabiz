@@ -57,12 +57,15 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
     });
     Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
         Route::get('/admin/user', [UserAdminController::class, 'index'])->name('admin.user');
+        Route::get('/user/{id}/edit', [UserAdminController::class, 'edit'])->name('admin.user.edit');
+        Route::put('/admin/user/{id}', [UserAdminController::class, 'update'])->name('admin.user.update');
+
         Route::get('/admin/waralaba', [WaralabaAdminController::class, 'index'])->name('admin.waralaba');
         Route::get('/admin/transaksi', [TransactionAdminController::class, 'index'])->name('admin.transaksi');
         Route::get('/admin/artikel', [ArtikelAdminController::class, 'index'])->name('admin.artikel');
         Route::get('/admin/career', [CareerAdminController::class, 'index'])->name('admin.career');
-
     });
 
 });

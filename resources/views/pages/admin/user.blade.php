@@ -124,7 +124,7 @@
                                     <td>{{ $user->role }}</td>
                                     <td>
                                         <div class="user-details">
-                                            <a href="#" class="btn btn-circle btn-warning"
+                                            <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-circle btn-warning"
                                                 style="background-color: #FFC107; border: none;"><i class="fas fa-edit"
                                                     style="color: white;"></i></a>
                                             <a href="#" class="btn btn-circle btn-danger"
