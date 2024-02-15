@@ -45,14 +45,21 @@ class TransactionController extends Controller
     {
         // Get the authenticated user
         $user = auth()->user();
-
-        // Retrieve the user's transactions
-        $transactions = $user->transactions;
-
+    
+        // Check if user exists and has transactions
+        if ($user && $user->transactions()->exists()) {
+            // Retrieve the user's transactions
+            $transactions = $user->transactions;
+        } else {
+            // If user doesn't have transactions or is null, return appropriate response
+            $transactions = collect(); // Return an empty collection
+            // You can also customize this response as needed, like showing a message indicating no transactions
+        }
+    
         // Pass the transactions to the view
         return view('pages.user.transactionhistory', compact('transactions'));
     }
-
+    
     public function showDetail($transactionId)
     {
         $transaction = Transaction::findOrFail($transactionId);
