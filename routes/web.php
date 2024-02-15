@@ -53,6 +53,7 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
             return view('pages.user.bantuan');
         })->name('bantuan');
         Route::post('/submit-form', [FormController::class, 'store'])->name('submit.form');
+        
 
     });
     Route::middleware(['auth', 'admin'])->group(function () {
@@ -73,6 +74,7 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
     
 
         Route::get('/admin/career', [CareerAdminController::class, 'index'])->name('admin.career');
+        
     });
 
 });

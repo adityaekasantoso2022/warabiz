@@ -1,5 +1,4 @@
-<x-user-layout title="Waraedu-{{ $article-> title }}" active="artikel">
-
+<x-user-layout title="Waraedu-{{ $article->title }}" active="artikel">
 
     @push('addonStyle')
     <style>
@@ -13,7 +12,6 @@
 
         .navbar-light .navbar-nav .nav-link {
             color: rgba(19, 19, 19, 0.6);
-
         }
 
         .navbar .navbar-nav a:hover.btn-signup {
@@ -47,7 +45,7 @@
 
         .nav-pills .nav-link.active {
             background-color: #3ECAB0;
-            box-shadow: 0 0 5px #3ECAB0
+            box-shadow: 0 0 5px #3ECAB0;
         }
 
         .nav-pills .nav-link {
@@ -68,12 +66,11 @@
             color: #131313;
         }
 
-
         .articel .thumbnail {
             width: 100%;
             height: 597px;
             object-fit: cover;
-            border-radius: 8px
+            border-radius: 8px;
         }
 
         span.post-read,
@@ -96,10 +93,9 @@
         .articel .content p {
             font-size: 1.25rem;
             line-height: 150%;
-            /* or 39px */
-
             color: #131313;
         }
+
         .share-buttons {
             margin-top: 20px;
         }
@@ -117,8 +113,7 @@
             border-radius: 50%;
             margin-right: 10px;
             transition: all 0.3s ease;
-            text-decoration: none; 
-
+            text-decoration: none;
         }
 
         .share-buttons a:hover {
@@ -134,37 +129,122 @@
                 height: 200px;
             }
         }
+
+        .card {
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .read-more-link {
+            display: block;
+            text-align: center;
+            color: #ffffff;
+            background: #009BB8;
+            margin-top: 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            transition: all 0.3s;
+        }
+
+        .read-more-link:hover {
+            color: #ffffff;
+            border-color: #555555;
+        }
+
+        /* Tambahkan gaya untuk teks tautan di sidebar */
+        .sidebar .card-title,
+        .sidebar .card-text {
+            color: #000;
+        }
+
+        .sidebar .read-more-link {
+            color: #ffffff;
+            text-decoration: none;
+        }
     </style>
     @endpush
 
     <section class="articel container" style="padding-top: 130px; padding-bottom: 80px">
-        <h1 class="title">{{ $article-> title }}</h1>
-        <p>
-            <span class="post-date">
-                <time class="post-date">
-                Diposting pada : {{($article->created_at)->format('d/m/Y H:i') }} WIB
-            <span class="dot"></span>
-            <span class="readingtime">Admin Warabiz</span>
-        </p>
-        <div class="share-buttons mt-4">
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::url()) }}" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::url()) }}&text={{ urlencode($article->title) }}" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://api.whatsapp.com/send?text={{ urlencode($article->title . ' ' . Request::url()) }}" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(Request::url()) }}&title={{ urlencode($article->title) }}" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-        </div>
-        <br>
-        <img src=" {{ $article-> image_url }}"
-            class="img-fluid" alt="Gambar" style="max-width: 50%; max-height: 50%;">
-        <div class="content mt-5">
-            {{ $article-> article }}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <section class="article">
+                        <h1 class="title">{{ $article->title }}</h1>
+                        <p>
+                            <span class="post-date">
+                                <time class="post-date">
+                                    Diposting pada: {{ ($article->created_at)->format('d/m/Y H:i') }} WIB
+                                    <span class="dot"></span>
+                                    <span class="readingtime">Admin Warabiz</span>
+                                </time>
+                            </span>
+                        </p>
+                        <!-- Share buttons -->
+                        <div class="share-buttons mt-4">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::url()) }}"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::url()) }}&text={{ urlencode($article->title) }}"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://api.whatsapp.com/send?text={{ urlencode($article->title . ' ' . Request::url()) }}"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(Request::url()) }}&title={{ urlencode($article->title) }}"
+                                target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                        <br>
+                        <img src="{{ $article->image_url }}" class="img-fluid" alt="Gambar"
+                            style="max-width: 100%;">
+                        <div class="content mt-5">
+                            {{ $article->article }}
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-4">
+                    <div class="sidebar">
+                        @php
+                        $count = 0;
+                        @endphp
+                        @foreach($otherArticles as $otherArticle)
+                        @if($count < 3)
+                        <div class="card">
+                        <a href="{{ route('waraedu-detail', ['id' => $otherArticle->id]) }}"> 
+                        <img src="{{ $otherArticle->image_url }}" class="card-img-top" alt="gambar">
+                        </a>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $otherArticle->title }}</h5>
+                                <p class="card-text">{{ substr($otherArticle->article, 0, 120) }}..</p>
+                            </div>
+                        </div>
+                        @endif
+                        @php
+                        $count++;
+                        @endphp
+                        @endforeach
+                        @if(count($otherArticles) > 3)
+                        <a href="{{ route('waraedu') }}" class="read-more-link">Baca Lainnya</a>
+                        @endif
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </x-user-layout>
