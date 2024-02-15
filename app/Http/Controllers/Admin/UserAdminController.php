@@ -46,8 +46,10 @@ class UserAdminController extends Controller
     {
         $user = User::findOrFail($id);
 
+        // Hapus faqs yang merujuk ke user yang akan dihapus
+        $user->faqs()->delete();
+
         // Pastikan admin dapat menghapus user
-        // Contoh: hanya admin yang dapat menghapus user
         if (auth()->user()->isAdmin()) {
             $user->delete();
 
