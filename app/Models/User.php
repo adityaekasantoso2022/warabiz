@@ -39,17 +39,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Other relationships and methods...
-
-    // Example: Additional relationships
-    public function homes()
-    {
-        return $this->hasMany(home::class, 'mentor_id', 'id');
-    }
-
-    // Add other relationships as needed...
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
     }
+    public function hasRole($role)
+{
+    return $this->role === $role;
+}
+
 }
