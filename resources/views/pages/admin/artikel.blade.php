@@ -90,10 +90,6 @@
                     <div class="col-md-6">
                         <h3>Daftar Artikel</h3>
                     </div>
-                    <div class="col-md-6 text-end">
-                        <button class="btn btn-primary">Tambah Artikel</button>
-                    </div>
-
                 </div>
                 <div class="row justify-content-center">
                     <div class="transaction-list">
