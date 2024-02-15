@@ -23,7 +23,8 @@
         .article-table td {
             border: 1px solid #ddd;
             padding: 8px;
-            text-align: left; /* Tetap rata kiri */
+            text-align: left;
+            /* Tetap rata kiri */
         }
 
         .article-table th {
@@ -80,15 +81,17 @@
             max-width: 80px;
             padding: 6px 12px;
         }
-
     </style>
     @endpush
     <section>
         <div class="container">
             <div class="artikel-card">
-            <div class="row">
+                <div class="row">
                     <div class="col-md-6">
                         <h3>Daftar Artikel</h3>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <a href="{{ route('admin.articles.create') }}" class="btn btn-primary">Tambah Artikel</a>
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -106,32 +109,40 @@
                                     <th class="text-center">No.</th>
                                     <th class="text-center">Gambar</th>
                                     <th class="text-center">Judul</th>
+                                    <th class="text-center">Kategori</th>
                                     <th class="text-center">Konten</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($articles as $article)
                                 <tr>
-                                    <td>1</td>
-                                    <td><img src="{{ asset('path_to_thumbnail_image.jpg') }}" alt="Thumbnail"
+                                    <td>01</td>
+                                    <td><img src="{{ asset($article->image_url) }}" alt="Thumbnail"
                                             class="article-thumbnail"></td>
-                                    <td>Disini adalah judul artikel yang sangan menarik</td>
-                                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                        consequat.</td>
+                                    <td>{{ $article->title }}</td>
+                                    <td>{{ $article->category }}</td>
+                                    <td>{{ Str::limit($article->article, 100) }}</td>
                                     <td>
-                                    <div class="artikel-action">
-                                            <a href="#" class="btn btn-circle btn-warning"
-                                                style="background-color: #FFC107; border: none;"><i class="fas fa-edit"
-                                                    style="color: white;"></i></a>
-                                            <a href="#" class="btn btn-circle btn-danger"
-                                                style="background-color: #F44336; border: none;"><i
-                                                    class="fas fa-trash-alt" style="color: white;"></i></a>
+                                        <div class="artikel-action">
+                                            <a href="{{ route('admin.articles.edit', $article->id) }}"
+                                                class="btn btn-circle btn-warning"
+                                                style="background-color: #FFC107; border: none;">
+                                                <i class="fas fa-edit" style="color: white;"></i>
+                                            </a>
+                                            <form action="{{ route('admin.articles.destroy', $article->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-circle btn-danger"
+                                                    style="background-color: #F44336; border: none;">
+                                                    <i class="fas fa-trash-alt" style="color: white;"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
-                                <!-- Tambahkan baris untuk artikel lain di sini -->
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
