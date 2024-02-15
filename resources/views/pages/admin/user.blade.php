@@ -111,16 +111,17 @@
                                     <th>No.</th>
                                     <th>Nama Lengkap</th>
                                     <th>Email</th>
-                                    <th>Rolle</th>
+                                    <th>Role</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($users as $index => $user)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Arif Munandar</td>
-                                    <td>arifmundandar@gmail.com</td>
-                                    <td>Admin</td>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->role }}</td>
                                     <td>
                                         <div class="user-details">
                                             <a href="#" class="btn btn-circle btn-warning"
@@ -132,6 +133,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -139,26 +141,28 @@
             </div>
         </div>
     </section>
-    <script>ument.getElementById("searchInput").addEventListener("input", function () {
-            var input, filter, table, tr, tdName, tdId, i, txtValueName, txtValueId;
-            input = this;
-            filter = input.value.toUpperCase();
-            table = document.querySelector(".user-table");
-            tr = table.getElementsByTagName("tr");
+    <script>
+    document.getElementById("searchInput").addEventListener("input", function () {
+        var input, filter, table, tr, tdName, tdEmail, i, txtValueName, txtValueEmail;
+        input = this;
+        filter = input.value.toUpperCase();
+        table = document.querySelector(".user-table");
+        tr = table.getElementsByTagName("tr");
 
-            for (i = 0; i < tr.length; i++) {
-                tdName = tr[i].getElementsByTagName("td")[2]; // Kolom untuk nama transaksi
-                tdId = tr[i].getElementsByTagName("td")[1]; // Kolom untuk ID transaksi
-                if (tdName || tdId) {
-                    txtValueName = tdName.textContent || tdName.innerText;
-                    txtValueId = tdId.textContent || tdId.innerText;
-                    if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValueId.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
+        for (i = 0; i < tr.length; i++) {
+            tdName = tr[i].getElementsByTagName("td")[1]; // Kolom untuk nama lengkap
+            tdEmail = tr[i].getElementsByTagName("td")[2]; // Kolom untuk email
+            if (tdName || tdEmail) {
+                txtValueName = tdName.textContent || tdName.innerText;
+                txtValueEmail = tdEmail.textContent || tdEmail.innerText;
+                if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValueEmail.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
                 }
             }
-        });
-    </script>
+        }
+    });
+</script>
+
     </x-user-layout>

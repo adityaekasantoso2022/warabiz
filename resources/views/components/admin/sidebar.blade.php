@@ -59,16 +59,11 @@
                         </button>
                     </form>
                 </li>
+                
             </ul>
         </div>
     </div>
 </div>
-
-<script>
-    document.querySelector('.sidebar-hide').addEventListener('click', function () {
-        document.getElementById('sidebar').classList.remove('active');
-    });
-</script>
 
 <script>
     document.querySelector('.sidebar-hide').addEventListener('click', function () {
