@@ -30,6 +30,15 @@
 
                 <a class="nav-link me-4 {{ $active == 'bantuan' ? 'active' : '' }}"
                     href="{{ route('bantuan') }}">Bantuan</a>
+                @php
+                $role = Auth::user()->role; 
+                @endphp
+
+                @if($role === 'admin')
+                <a class="nav-link me-4 {{ $active == 'bantuan' ? 'active' : '' }}"
+                    href="{{ route('admin.dashboard') }}">Dashboard Admin</a>
+                @endif
+
             </div>
             <div class="navbar-nav">
                 <div class="dropdown mt-1">

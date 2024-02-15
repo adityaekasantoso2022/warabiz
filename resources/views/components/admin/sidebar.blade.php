@@ -4,16 +4,12 @@
             <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
                 <img src="{{ asset('assets/frontend/image/logo.svg') }}" alt="logo" style="width: 150px; height: auto;">
                 <div class="theme-toggle d-flex gap-2 align-items-center">
-                    <!-- Icons and theme toggle -->
-                </div>
-                <div class="sidebar-toggler x">
-                    <a href="javascript:void(0)" class="sidebar-hide d-xl-none d-block"><i
-                            class="bi bi-x bi-middle"></i></a>
                 </div>
             </div>
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
+                <li class="sidebar-title"> Selamat Datang, <br><b>{{ Auth::user()->name }}!</b></li>
                 <li class="sidebar-title">Menu</li>
                 <li class="sidebar-item {{ $active == 'dashboard' ? 'active' : '' }}">
                     <a href="{{ route('admin.dashboard') }}" class="sidebar-link">
@@ -51,23 +47,31 @@
                         <span>Pekerjaan</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <form id="logout-form" action="{{ url('logout') }}" method="POST" class="sidebar-link">
-                        @csrf
-                        <button type="submit" style="background: none; border: none;">
-                            <i class="bi bi-box-arrow-right"></i>
-                            <span>Logout</span>
-                        </button>
-                    </form>
+                <li class="sidebar-item dropdown {{ $active == 'lainnya' ? 'active' : '' }}">
+                    <a class="sidebar-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                        <span>Lainnya</span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li class="sidebar-item {{ $active == 'home' ? 'active' : '' }}">
+                            <a href="{{ route('home') }}" class="sidebar-link">
+                                <i class="fas fa-home"></i>
+                                <span> Halaman Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <form id="logout-form" action="{{ url('logout') }}" method="POST" class="dropdown-item">
+                                @csrf
+                                <button type="submit" style="background: none; border: none;">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span style="margin-left: 5px;">Logout</span>
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
                 </li>
-
             </ul>
         </div>
     </div>
 </div>
-
-<script>
-    document.querySelector('.sidebar-hide').addEventListener('click', function () {
-        document.getElementById('sidebar').classList.remove('active');
-    });
-</script>
