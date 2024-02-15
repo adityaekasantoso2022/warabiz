@@ -107,7 +107,7 @@
                                 <div class="card-body">
                                     <h5>{{ substr($article->title, 0, 45) }}..</h5>
                                     <p>{{ $article->category }}</p>
-                                    <p>{{ substr($article->article, 0, 120) }}...</p>
+                                    <p>{!! substr(strip_tags($article->article), 0, 120) !!}...</p>
                                     <a href="{{ route('waraedu-detail', $article->id) }}" class="read-more">Selengkapnya ></a>
                                 </div>
                             </a>

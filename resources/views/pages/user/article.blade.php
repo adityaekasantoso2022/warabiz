@@ -214,7 +214,7 @@
                         <img src="{{ $article->image_url }}" class="img-fluid" alt="Gambar"
                             style="max-width: 100%;">
                         <div class="content mt-5">
-                            {{ $article->article }}
+                        {!! $article->article !!}
                         </div>
                     </section>
                 </div>

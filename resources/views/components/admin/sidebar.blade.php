@@ -47,29 +47,21 @@
                         <span>Pekerjaan</span>
                     </a>
                 </li>
-                <li class="sidebar-item dropdown {{ $active == 'lainnya' ? 'active' : '' }}">
-                    <a class="sidebar-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v"></i>
-                        <span>Lainnya</span>
+                <li class="sidebar-title">Lainnya</li>
+                <li class="sidebar-item {{ $active == 'home' ? 'active' : '' }}">
+                    <a href="{{ route('home') }}" class="sidebar-link">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li class="sidebar-item {{ $active == 'home' ? 'active' : '' }}">
-                            <a href="{{ route('home') }}" class="sidebar-link">
-                                <i class="fas fa-home"></i>
-                                <span> Halaman Home</span>
-                            </a>
-                        </li>
-                        <li>
-                            <form id="logout-form" action="{{ url('logout') }}" method="POST" class="dropdown-item">
-                                @csrf
-                                <button type="submit" style="background: none; border: none;">
-                                    <i class="bi bi-box-arrow-right"></i>
-                                    <span style="margin-left: 5px;">Logout</span>
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <form id="logout-form" action="{{ url('logout') }}" method="POST" class="sidebar-link">
+                        @csrf
+                        <button type="submit" style="background: none; border: none;">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Logout</span>
+                        </button>
+                    </form>
                 </li>
             </ul>
         </div>

@@ -142,7 +142,7 @@
                                     </button>
                                 </div>
                                 <h2>{{ $article->title }}</h2>
-                                <p>{{ $article->article }}</p>
+                                <p>{!! $article->article !!}</p>
                             </div>
                         </div>
                     </div>
