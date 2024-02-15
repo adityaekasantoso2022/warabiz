@@ -20299,8 +20299,9 @@ body .bi:before {
     content: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><path style="fill:none;stroke:%23fff;stroke-width:1" d="m6 9 6 6 6-6"/></svg>')
 }
 
+/* warna navbar active*/
 .sidebar-wrapper .menu .sidebar-item.active>.sidebar-link {
-    background-color: #0084ff !important;
+    background-color: #009BB8 !important;
 }
 
 .sidebar-wrapper .menu .sidebar-item.active>.sidebar-link span {

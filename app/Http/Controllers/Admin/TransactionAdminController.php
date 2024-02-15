@@ -1,15 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Transaction;
-use App\Models\User;
 
-class TransactionController extends Controller
+class TransactionAdminController extends Controller
 {
+    public function index()
+    {
+        if (Auth::check()) {
+            return view('pages.admin.transaksi', [
+            ]);
+        }
+
+        return view('pages.admin.transaksi', [
+        ]);
+    }
+
+
     public function store(Request $request)
     {
         // Validasi input
