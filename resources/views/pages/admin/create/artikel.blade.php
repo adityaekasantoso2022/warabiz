@@ -33,31 +33,34 @@
     @endpush
 
     <section>
-        <div class="container">
-            <div class="artikel-card">
-                <h3>Edit Artikel</h3>
-                <form action="{{ route('admin.articles.update', $article->id) }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <div class="mb-3">
-                        <label for="title" class="form-label">Judul</label>
-                        <input type="text" class="form-control" id="title" name="title" value="{{ $article->title }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="image_url" class="form-label">URL Gambar</label>
-                        <input type="text" class="form-control" id="image_url" name="image_url" value="{{ $article->image_url }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="category" class="form-label">Kategori</label>
-                        <input type="text" class="form-control" id="category" name="category" value="{{ $article->category }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="article" class="form-label">Artikel</label>
-                        <textarea class="form-control" id="article" name="article" rows="5">{{ $article->article }}</textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </form>
-            </div>
+    <div class="container">
+        <div class="artikel-card">
+            <h3>Tambah Artikel</h3>
+            <form action="{{ route('admin.articles.store') }}" method="POST">
+                @csrf
+                <div class="mb-3">
+                    <label for="title" class="form-label">Judul</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
+                </div>
+                <div class="mb-3">
+                    <label for="image_url" class="form-label">URL Gambar</label>
+                    <input type="text" class="form-control" id="image_url" name="image_url" value="{{ old('image_url') }}">
+                </div>
+                <div class="mb-3">
+                    <label for="category" class="form-label">Kategori</label>
+                    <select class="form-control" id="category" name="category">
+                        <option value="Keuangan">Keuangan</option>
+                        <option value="Waralaba">Waralaba</option>
+                        <option value="Finansial">Finansial</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="article" class="form-label">Artikel</label>
+                    <textarea class="form-control" id="article" name="article">{{ old('article') }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Tambah</button>
+            </form>
         </div>
+    </div>
     </section>
 </x-admin-layout>
