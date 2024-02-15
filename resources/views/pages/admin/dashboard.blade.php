@@ -66,58 +66,74 @@
     @endpush
 
 
-    <div class="row justify-content-center align-items-center g-2">
-        <div class="col">
-            <div class="small-box">
-                <div class="inner">
-                    <div class="d-flex">
-                        <i class="fas fa-clipboard me-3"></i>
-                        <h3>ff</h3>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body px-4 py-4-5">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                            <div class="stats-icon blue mb-2">
+                                <i class="iconly-boldProfile"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                            <h6 class="text-muted font-semibold">Total Kandidat</h6>
+                            <h6 class="font-extrabold mb-0">100</h6>
+                        </div>
                     </div>
-                    <h6>waralaba terdaftar</h6>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="small-box">
-                <div class="inner">
-                    <div class="d-flex">
-                        <i class="fas fa-list-alt me-3"></i>
-                        <h3>ff</h3>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body px-4 py-4-5">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                            <div class="stats-icon purple mb-2">
+                                <i class="iconly-boldProfile"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                            <h6 class="text-muted font-semibold">Total Pemilih</h6>
+                            <h6 class="font-extrabold mb-0">100</h6>
+                        </div>
                     </div>
-                    <h6>Artikel diterbitkan</h6>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="small-box">
-                <div class="inner">
-                    <div class="d-flex">
-                        <i class="fas fa-cart-arrow-down me-3"></i>
-                        <h3>fg</h3>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body px-4 py-4-5">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                            <div class="stats-icon green mb-2">
+                                <i class="iconly-boldTick-Square"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                            <h6 class="text-muted font-semibold">100</h6>
+                            <h6 class="font-extrabold mb-0" id="sudah_milih">Loading</h6>
+                        </div>
                     </div>
-                    <h6>Produk Terjual</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body px-4 py-4-5">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                            <div class="stats-icon red mb-2">
+                                <i class="iconly-boldDanger"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                            <h6 class="text-muted font-semibold">Belum Memilih</h6>
+                            <h6 class="font-extrabold mb-0" id="belum_milih">Loading</h6>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    @push('addonScript')
-
-        <script>
-            document.querySelector('.navbar-expand-lg').classList.add('scrolled');
-
-            const previewImage = document.querySelector('#previewImage');
-            const image = document.querySelector('#image');
-
-            image.addEventListener('change', function() {
-                const file = new FileReader();
-                file.readAsDataURL(image.files[0]);
-
-                file.onload = function(e) {
-                    previewImage.src = e.target.result;
-                }
-            })
-        </script>
-    @endpush
 </x-dashboard-admin-layout>

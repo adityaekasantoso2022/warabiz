@@ -1,6 +1,6 @@
-    <x-user-layout title="Detail Transaksi - {{ $transaction->waralaba_name }}" active="detail-transaksi">
+<x-user-layout title="Detail Transaksi - {{ $transaction->waralaba_name }}" active="detail-transaksi">
 
-        @push('addonStyle')
+    @push('addonStyle')
     <style>
         body {
             background: #dae3ec !important;
@@ -83,9 +83,11 @@
             }
 
         }
+
         @media (max-width: 767px) {
             .col-md-3 {
-                margin-bottom: 20px; /* Adjust this value as needed */
+                margin-bottom: 20px;
+                /* Adjust this value as needed */
             }
         }
 
@@ -118,6 +120,7 @@
             font-size: 30px;
             margin-bottom: 15px;
         }
+
         .in-progress-icon {
             color: #FFBD13;
             font-size: 30px;
@@ -128,70 +131,71 @@
         .rounded-card {
             border-radius: 8px;
         }
+
         .item-pricing.item-mentor p {
-            margin-top: 5px; /* Jarak dari atas */
-            margin-bottom: 5px; /* Jarak dari bawah */
+            margin-top: 5px;
+            /* Jarak dari atas */
+            margin-bottom: 5px;
+            /* Jarak dari bawah */
         }
+
         h5 {
             font-size: 16px;
-            font-weight: normal; 
+            font-weight: normal;
         }
 
         h6 {
             font-size: 18px;
-            font-weight: normal; 
+            font-weight: normal;
         }
-
-
-
     </style>
     @endpush
 
 
-        <section class="py-5" style="margin-top: 10px">
-            <div class="container">
-                <div class="row">
-                    <div class="text-center col-lg-12">
-                        <h1 class="mb-3 header-primary"></h1>
-                    </div>
+    <section class="py-5" style="margin-top: 10px">
+        <div class="container">
+            <div class="row">
+                <div class="text-center col-lg-12">
+                    <h1 class="mb-3 header-primary"></h1>
                 </div>
-                <div class="mt-5 row pricing testimonials mentors checkout gy-4" id="pembayaran">
-                    <div class="container-fluid ">
-                        <form id="form-manual" method="post" action="#" enctype="multipart/form-data">
-                            @csrf
-                            <div class="payment-details ">
-                                <div class="item-pricing item-mentor">
-                                    <div class="card-body">
-                                        <img src="{{ asset('assets/frontend/image/logo.svg') }}">
-                                        <h3 class="card-title">Detail Transaksi</h3>
-                                        <div class="row align-items-center mb-3">
-                                            <div class="col-md-6">
-                                                <h6 class="mb-1"><b>Nama Pemesan</b></h6>
-                                                <h3 class="card-text mb-2" id="totalpayment"
-                                                    style="color: #009688; cursor: pointer;"><b>{{
-                                                        $transaction->fullname }}</b></h3>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <h6><b>Nama Waralaba</b></h6>
-                                                <h5>{{ $transaction->waralaba_name }}</h5>
-
-                                            </div>
+            </div>
+            <div class="mt-5 row pricing testimonials mentors checkout gy-4" id="pembayaran">
+                <div class="container-fluid ">
+                    <form id="form-manual" method="post" action="#" enctype="multipart/form-data">
+                        @csrf
+                        <div class="payment-details ">
+                            <div class="item-pricing item-mentor">
+                                <div class="card-body">
+                                    <img src="{{ asset('assets/frontend/image/logo.svg') }}">
+                                    <h4 class="card-title">Detail Transaksi</h4>
+                                    <div class="row align-items-center mb-3">
+                                        <div class="col-md-6 mb-3 mb-md-0">
+                                            <h6 class="mb-1"><b>Nama Pemesan</b></h6>
+                                            <h3 class="card-text mb-2" id="totalpayment"
+                                                style="color: #009688; cursor: pointer;"><b>{{ $transaction->fullname
+                                                    }}</b></h3>
                                         </div>
-                                        <div class="row align-items-center mb-3">
-                                            <div class="col-md-6">
-                                                <h6 class="mb-1"><b>Kontak</b></h6>
-                                                <h5>{{ $transaction->phone_number }} | {{ $transaction->email }} </h5>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <h6 class="mb-1"><b>Lokasi Pendirian</b></h6>
-                                                <h5>{{ $transaction->address }}</h5>
-                                            </div>
+                                        <div class="col-md-6">
+                                            <h6><b>Nama Waralaba</b></h6>
+                                            <h5>{{ $transaction->waralaba_name }}</h5>
                                         </div>
                                     </div>
+                                    <div class="row align-items-center mb-3">
+                                        <div class="col-md-6 mb-3 mb-md-0">
+                                            <h6 class="mb-1"><b>Kontak</b></h6>
+                                            <h5>{{ $transaction->phone_number }} | {{ $transaction->email }}</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="mb-1"><b>Lokasi Pendirian</b></h6>
+                                            <h5>{{ $transaction->address }}</h5>
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <br>
-                                <div class="item-pricing item-mentor">
-                                    <h6><b>Status Pemesanan</b>
+                            </div>
+                            <br>
+                            <div class="item-pricing item-mentor">
+                                <h6><b>Status Transaksi</b>
                                     <p>Terakhir diupdate: {{ $transaction->updated_at->format('d/m/Y H:i') }} WIB</p>
                                     <div class="row justify-content-center mt-4">
                                         <?php
@@ -245,9 +249,7 @@
                                                     ';
                                                     break; // Hentikan iterasi setelah menambahkan card baru
                                                 }
-                                    
-
-                                            
+                        
                                                 if ($status == 4) {
                                                     echo '
                                                         <div class="col-md-3">
@@ -277,13 +279,13 @@
                                                 ';
                                             }
                                             ?>
-                                        </div>
                                     </div>
-                                </div>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
-        </section>
-    </x-user-layout>
+            </form>
+        </div>
+        </div>
+    </section>
+</x-user-layout>

@@ -49,7 +49,7 @@
                 <li class="sidebar-item {{ $active == 'user' ? 'active' : '' }}">
                     <a href=" " class='sidebar-link'>
                         <i class="bi bi-people"></i>
-                        <span>Pengguna</span>
+                        <span>Waralaba</span>
                     </a>
                 </li>
                 <li class="sidebar-item {{ $active == 'transaksi' ? 'active' : '' }}">

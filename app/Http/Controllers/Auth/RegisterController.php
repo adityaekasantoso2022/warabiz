@@ -36,6 +36,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => 'user'
         ]);
 
         // If you have a 'roles' table and a 'roles' relationship in your User model

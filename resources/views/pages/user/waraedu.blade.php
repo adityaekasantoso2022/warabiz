@@ -71,54 +71,36 @@
         .waraedu-card-responsive {
             background: #fff;
             border: none;
-            border-radius: 13px;
+            border-radius: 10px;
             box-sizing: border-box;
             color: #34364a;
             display: flex;
             flex-direction: column;
             height: auto;
-            width: 360px; /* Perlebar ukuran card */
-            padding: 25px;
+            width: 360px;
             position: relative;
             row-gap: 16px;
             margin-top: 30px;
-            margin-bottom: 30px; /* Tambahkan margin bawah di sini */
+            margin-bottom: 30px;
         }
 
-        /* For mobile devices */
-        @media only screen and (max-width: 991.100px) {
-            .col-md-6 {
-                flex: 0 0 50%;
-                max-width: 50%;
-                padding-right: 0px; /* Add padding to the right side of each column */
-                padding-left: 0px; /* Add padding to the left side of each column */
-            }
-
-            .waraedu-card {
-                width: calc(100% - 10px); /* Adjust the width to occupy full width with padding */
-                margin-bottom: 20px; /* Add bottom margin for spacing between rows */
-            }
-
-            .waraedu-card .d-flex.flex-column h6 {
-                font-size: 13px; /* Reduce font size for headings */
-            }
-
-            .waraedu-card .d-flex.flex-column p {
-                font-size: 12px; /* Reduce font size for paragraphs */
-            }
+        .waraedu-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 1px;
         }
 
-        /* For laptops and larger devices */
-        @media only screen and (min-width: 992px) {
-            .waraedu-card {
-                width: 360px; /* Keep the width as per your requirement */
-            }
+        .waraedu-card .d-flex.flex-column {
+            padding: 0 23px 23px;
         }
 
-        .d-flex.flex-column h6,
-        .d-flex.flex-column p {
-            margin: 0;
-            /* Menghilangkan margin atas dan bawah dari elemen h6 dan p */
+        .read-more {
+            color: #009BB8;
+            text-decoration: none;
+            font-weight: 440;
+            margin-top: 10px;
         }
     </style>
     @endpush
@@ -131,19 +113,23 @@
                     <div class="col-md-6 col-lg-3 mb-3">
                         <a href="{{ route('waraedu-detail', $article->id) }}" class="text-decoration-none">
                             <div class="waraedu-card">
-                                <div class="embed-responsive embed-responsive-16by9 video-iframe">
-                                    <div class="plyr__video-embed" id="player">
-                                        <img src="{{ $article->image_url }}" class="img-fluid" alt="Gambar">
-                                    </div>
-                                </div>
+                                <img src="{{ $article->image_url }}" alt="Gambar">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex flex-column">
-                                        <h6><b>{{ $article->title }}</b></h6>
+                                        <h5><b>{{ $article->title }}</b></h5>
                                         <p>{{ $article->category }}</p>
+                                        <br>
+                                        <div class="d-flex align-items-center">
+                                            <p>{{ substr($article->article, 0, 120) }}...</p>
+                                        </div>
+                                        <div class="read-more">
+                                            <p>Selengkapnya ></p>
+                                        </div>
+                                        <hr> <!-- Menambahkan garis -->
+                                        <p>
+                                        <i class="far fa-calendar-alt"></i> {{ date('j F Y', strtotime($article->created_at)) }}
+                                        </p>
                                     </div>
-                                </div>
-                                <div class="waraedu-footer mt-1">
-                                    <p>{{ substr($article->article, 0, 150) }}...</p>
                                 </div>
                             </div>
                         </a>
