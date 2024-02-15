@@ -45,8 +45,8 @@ class Waralaba extends Model
         });
     }
 
-    public function home()
-    {
-        return $this->hasMany(Home::class, 'category_id', 'id');
-    }
+    // public function home()
+    // {
+    //     return $this->hasMany(Home::class, 'category_id', 'id');
+    // }
 }

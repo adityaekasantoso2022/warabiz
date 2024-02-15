@@ -8,6 +8,7 @@ use App\Http\Controllers\User\TransactionController;
 use App\Http\Controllers\User\FormController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\WaralabaAdminController;
 
 
 
@@ -43,13 +44,14 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
         Route::get('/bantuan', function () {
             return view('pages.user.bantuan');
         })->name('bantuan');
-        Route::post('/submit-form', [FormController::class, 'store'])->name('submit.form'); 
+        Route::post('/submit-form', [FormController::class, 'store'])->name('submit.form');
 
     });
     Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+        Route::get('/admin/waralaba', [WaralabaAdminController::class, 'index'])->name('admin.waralaba');
     });
-    
+
 });
 
 Auth::routes();

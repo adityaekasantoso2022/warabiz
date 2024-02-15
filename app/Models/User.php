@@ -21,13 +21,11 @@ class User extends Authenticatable
         'name', 'email', 'password', 'role'
     ];
     public function isAdmin()
-{
-    return $this->role === 'admin';
-}
-public function transactions()
-{
-    return $this->hasMany(Transaction::class);
-}
-
-
+    {
+        return $this->role === 'admin';
+    }
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }
