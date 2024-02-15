@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                             <h6 class="text-muted font-semibold">Jumlah Pengguna</h6>
-                            <h6 class="font-extrabold mb-0">100</h6> <!-- Ganti angka 100 dengan jumlah aktual pesanan proses -->
+                            <h6 class="font-extrabold mb-0">{{ $totalUser }}</h6> <!-- Ganti angka 100 dengan jumlah aktual pesanan proses -->
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                         </div>
                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                             <h6 class="text-muted font-semibold">Jumlah Waralaba</h6>
-                            <h6 class="font-extrabold mb-0">100</h6> <!-- Ganti angka 100 dengan jumlah aktual waralaba -->
+                            <h6 class="font-extrabold mb-0">{{ $totalWaralaba }}</h6> <!-- Ganti angka 100 dengan jumlah aktual waralaba -->
                         </div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                             <h6 class="text-muted font-semibold">Jumlah Transaksi</h6>
-                            <h6 class="font-extrabold mb-0">100</h6> <!-- Ganti angka 100 dengan jumlah aktual transaksi -->
+                            <h6 class="font-extrabold mb-0">{{ $totalTransaction }}</h6> <!-- Ganti angka 100 dengan jumlah aktual transaksi -->
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                         </div>
                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                             <h6 class="text-muted font-semibold">Jumlah Waraedu</h6>
-                            <h6 class="font-extrabold mb-0">100</h6> <!-- Ganti angka 100 dengan jumlah aktual artikel -->
+                            <h6 class="font-extrabold mb-0">{{ $totalArticle }}</h6> <!-- Ganti angka 100 dengan jumlah aktual artikel -->
                         </div>
                     </div>
                 </div>
@@ -96,16 +96,35 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($transactions as $key => $transaction)
                                 <tr>
-                                    <td>1</td>
-                                    <td>TRX001</td>
-                                    <td>Waralaba A</td>
-                                    <td>Arif Mundandar</td>
-                                    <td>2024-02-15</td>
-                                    <td>Transfer Bank</td>
-                                    <td>Selesai</td>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>TRX-{{ substr($transaction->uuid, 2, 6) }}</td>
+                                    <td>{{ $transaction->waralaba_name }}</td>
+                                    <td>{{ $transaction->fullname }}</td>
+                                    <td>{{ $transaction->created_at }}</td>
+                                    <td>{{ $transaction->payment_method }}</td>
+                                    <td>
+                                        @switch($transaction->status)
+                                        @case(0)
+                                            <span class="status-label proses-verifikasi">Verifikasi Pembayaran</span>
+                                            @break
+                                        @case(1)
+                                            <span class="status-label proses-pembangunan">Proses Pembangunan</span>
+                                            @break
+                                        @case(2)
+                                            <span class="status-label persiapan-pembukaan">Proses Pembukaan Waralaba</span>
+                                            @break
+                                        @case(3)
+                                            <span class="status-label selesai">Selesai</span>
+                                            @break
+                                        @case(4)
+                                            <span class="status-label ditolak">Ditolak</span>
+                                            @break
+                                        @endswitch
+                                    </td>
                                 </tr>
-                                <!-- Tambahkan baris untuk transaksi lain di sini -->
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
