@@ -115,14 +115,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($articles as $article)
+                                @foreach($articles as $index => $article)
                                 <tr>
-                                    <td>01</td>
+                                    <td class="text-center">{{ $index + 1 }}</td>
                                     <td><img src="{{ asset($article->image_url) }}" alt="Thumbnail"
                                             class="article-thumbnail"></td>
                                     <td>{{ $article->title }}</td>
                                     <td>{{ $article->category }}</td>
-                                    <td>{{ Str::limit($article->article, 100) }}</td>
+                                    <td>{{ Str::limit($article->article, 135) }}</td>
                                     <td>
                                         <div class="artikel-action">
                                             <a href="{{ route('admin.articles.edit', $article->id) }}"
@@ -150,4 +150,33 @@
             </div>
         </div>
     </section>
+
+    @push('addonScript')
+    <script>
+        document.getElementById("searchInput").addEventListener("input", function () {
+            var input, filter, table, tr, tdTitle, tdCategory, tdContent, i, txtValueTitle, txtValueCategory, txtValueContent;
+            input = this;
+            filter = input.value.toUpperCase();
+            table = document.querySelector(".article-table");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                tdTitle = tr[i].getElementsByTagName("td")[2]; // Kolom untuk judul artikel
+                tdCategory = tr[i].getElementsByTagName("td")[3]; // Kolom untuk kategori artikel
+                tdContent = tr[i].getElementsByTagName("td")[4]; // Kolom untuk konten artikel
+                if (tdTitle || tdCategory || tdContent) {
+                    txtValueTitle = tdTitle.textContent || tdTitle.innerText;
+                    txtValueCategory = tdCategory.textContent || tdCategory.innerText;
+                    txtValueContent = tdContent.textContent || tdContent.innerText;
+                    if (txtValueTitle.toUpperCase().indexOf(filter) > -1 || txtValueCategory.toUpperCase().indexOf(filter) > -1 || txtValueContent.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        });
+    </script>
+    @endpush
+
 </x-admin-layout>

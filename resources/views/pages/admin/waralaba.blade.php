@@ -19,11 +19,15 @@
             border-collapse: collapse;
         }
 
-        .waralaba-table th,
-        .waralaba-table td {
+        .waralaba-table th {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
+        }
+
+        .waralaba-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
         }
 
         .waralaba-table th {
@@ -111,24 +115,24 @@
                         <table class="waralaba-table">
                             <thead>
                                 <tr>
-                                    <th>No.</th>
-                                    <th>Logo</th>
+                                    <th class="text-center">No.</th>
+                                    <th class="text-center">Logo</th>
                                     <th>Nama Waralaba</th>
                                     <th>Tipe</th>
                                     <th>Harga</th>
-                                    <th>Aksi</th>
+                                    <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($waralabas as $index => $waralaba)
                                 <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td><img class="small-circle-img" src="{{ $waralaba->logo }}" alt="Waralaba Image">
+                                    <td class="text-center">{{ $index + 1 }}</td>
+                                    <td class="text-center"><img class="small-circle-img" src="{{ $waralaba->logo }}" alt="Waralaba Image">
                                     </td>
                                     <td>{{ $waralaba->waralaba_name }}</td>
                                     <td>{{ $waralaba->concept }}</td>
                                     <td>Rp. {{ number_format(floatval($waralaba->price), 0, ',', '.') }}</td>
-                                    <td>
+                                    <td class="text-center">
                                         <div class="waralaba-details">
                                             <a href="#" class="btn btn-circle btn-primary"
                                                 style="background-color: #009bb8; border: none;"><i class="fas fa-eye"

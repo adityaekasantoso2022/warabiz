@@ -45,15 +45,24 @@
                     </div>
                     <div class="mb-3">
                         <label for="image_url" class="form-label">URL Gambar</label>
-                        <input type="text" class="form-control" id="image_url" name="image_url" value="{{ $article->image_url }}">
+                        <input type="text" class="form-control" id="image_url" name="image_url"
+                            value="{{ $article->image_url }}">
                     </div>
                     <div class="mb-3">
                         <label for="category" class="form-label">Kategori</label>
-                        <input type="text" class="form-control" id="category" name="category" value="{{ $article->category }}">
+                        <select class="form-control" id="category" name="category">
+                            <option value="Keuangan" {{ $article->category == 'Keuangan' ? 'selected' : '' }}>Keuangan
+                            </option>
+                            <option value="Waralaba" {{ $article->category == 'Waralaba' ? 'selected' : '' }}>Waralaba
+                            </option>
+                            <option value="Finansial" {{ $article->category == 'Finansial' ? 'selected' : ''
+                                }}>Finansial</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="article" class="form-label">Artikel</label>
-                        <textarea class="form-control" id="article" name="article" rows="5">{{ $article->article }}</textarea>
+                        <textarea class="form-control" id="article" name="article"
+                            rows="5" style="height: 250px;">{{ $article->article }}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>

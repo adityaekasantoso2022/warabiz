@@ -19,11 +19,15 @@
             border-collapse: collapse;
         }
 
-        .user-table th,
-        .user-table td {
+        .user-table th{
             border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
+        }
+        
+        .user-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
         }
 
         .user-table th {
@@ -108,7 +112,7 @@
                         <table class="user-table">
                             <thead>
                                 <tr>
-                                    <th>No.</th>
+                                    <th class="text-center">No.</th>
                                     <th>Nama Lengkap</th>
                                     <th>Email</th>
                                     <th>Role</th>
@@ -118,11 +122,11 @@
                             <tbody>
                                 @foreach ($users as $index => $user)
                                 <tr>
-                                    <td>{{ $index + 1 }}</td>
+                                    <td class="text-center">{{ $index + 1 }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->role }}</td>
-                                    <td>
+                                    <td class="text-center">{{ $user->role }}</td>
+                                    <td class="text-center">
                                         <div class="user-details">
                                             <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-circle btn-warning"
                                                 style="background-color: #FFC107; border: none;"><i class="fas fa-edit"
