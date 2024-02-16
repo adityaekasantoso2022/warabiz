@@ -119,28 +119,58 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>TRX-176262</td>
-                                    <td>Mie Gacoan</td>
-                                    <td>Arif Munandar</td>
-                                    <td>14-01-2023 10:00:59</td>
-                                    <td>Bank BRI</td>
-                                    <td>Sukses</td>
-                                    <td>
-                                        <div class="transaction-details">
-                                            <a href="#" class="btn btn-circle btn-primary"
-                                                style="background-color: #009bb8; border: none;"><i class="fas fa-eye"
-                                                    style="color: white;"></i></a>
-                                            <a href="#" class="btn btn-circle btn-warning"
-                                                style="background-color: #FFC107; border: none;"><i class="fas fa-edit"
-                                                    style="color: white;"></i></a>
-                                            <a href="#" class="btn btn-circle btn-danger"
-                                                style="background-color: #F44336; border: none;"><i
-                                                    class="fas fa-trash-alt" style="color: white;"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @foreach($transactions as $key => $transaction)
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>TRX-{{ substr($transaction->uuid, 2, 6) }}</td>
+                                        <td>{{ $transaction->waralaba_name }}</td>
+                                        <td>{{ $transaction->fullname }}</td>
+                                        <td>{{ $transaction->created_at }}</td>
+                                        <td>{{ $transaction->payment_method }}</td>
+                                        <td>
+                                            @switch($transaction->status)
+                                                @case(0)
+                                                    <span>Verifikasi Pembayaran</span>
+                                                    @break
+                                                @case(1)
+                                                    <span>Proses Pembangunan</span>
+                                                    @break
+                                                @case(2)
+                                                    <span>Proses Pembukaan</span>
+                                                    @break
+                                                @case(3)
+                                                    <span>Selesai</span>
+                                                    @break
+                                                @case(4)
+                                                    <span>Gagal</span>
+                                                    @break
+                                            @endswitch
+                                        </td>
+                                        <td>
+                                            <div class="transaction-details">
+                                                <a href="{{ route('admin.transactions.show', ['id' => $transaction->uuid]) }}"
+                                                    class="btn btn-circle btn-primary"
+                                                    style="background-color: #009bb8; border: none;">
+                                                    <i class="fas fa-eye" style="color: white;"></i>
+                                                </a>
+                                                <a href="{{ route('admin.transactions.edit', ['id' => $transaction->uuid]) }}"
+                                                    class="btn btn-circle btn-warning"
+                                                    style="background-color: #FFC107; border: none;">
+                                                    <i class="fas fa-edit" style="color: white;"></i>
+                                                </a>
+                                                <form action="{{ route('admin.transactions.destroy', $transaction->uuid) }}" method="POST"
+                                                    style="display: inline-block;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-circle btn-danger"
+                                                        style="background-color: #F44336; border: none;">
+                                                        <i class="fas fa-trash-alt" style="color: white;"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

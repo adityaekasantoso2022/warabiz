@@ -11,68 +11,55 @@ class TransactionAdminController extends Controller
 {
     public function index()
     {
-        if (Auth::check()) {
-            return view('pages.admin.transaksi', [
-            ]);
-        }
-
-        return view('pages.admin.transaksi', [
-        ]);
+        $transactions = Transaction::all();
+        return view('pages.admin.transaction', compact('transactions'));
     }
 
 
-    public function store(Request $request)
+    // Menampilkan formulir untuk mengedit transaction
+    public function edit($id)
     {
-        // Validasi input
+        $transaction = Transaction::findOrFail($id);
+        return view('pages.admin.edit.transaction', compact('transaction'));
+    }
+
+    // Memperbarui transaction dalam database
+    public function update(Request $request, $id)
+    {
+        // Validasi input dari form
         $request->validate([
-            'fullname' => 'required',
-            'email' => 'required',
-            'phone_number' => 'required',
-            'address' => 'required', // Perbaikan penulisan field 'address'
-            'payment_method' => 'required',
-            'waralaba_id' => 'required',
-            'waralaba_name' => 'required',
+            'status' => 'required',
         ]);
 
-        $user = auth()->user(); // Mendapatkan user yang sedang login
+        // Cari transaksi berdasarkan ID
+        $transaction = Transaction::findOrFail($id);
 
-        // Simpan transaction ke database
-        $transaction = new Transaction();
-        $transaction->user_id = $user->id;
-        $transaction->fullname = $request->fullname;
-        $transaction->email = $request->email;
-        $transaction->phone_number = $request->phone_number;
-        $transaction->address = $request->address; // Perbaikan penulisan field 'address'
-        $transaction->payment_method = $request->payment_method;
-        $transaction->waralaba_id = $request->waralaba_id;
-        $transaction->waralaba_name = $request->waralaba_name;
-        $transaction->save();
+        // Update data transaksi
+        $transaction->update($request->all());
 
-        // Redirect ke halaman sukses
-        return view('pages.user.home.success');
+        // Redirect atau berikan respons sesuai kebutuhan
+        return redirect()->route('admin.transactions')->with('success', 'Data transaksi berhasil diperbarui');
     }
 
-    public function transactionHistory()
+    public function show($id)
     {
-        // Get the authenticated user
-        $user = auth()->user();
+        // Cari transaksi berdasarkan UUID
+        $transaction = Transaction::where('id', $id)->first();
 
-        // Retrieve the user's transactions
-        $transactions = $user->transactions;
-
-        // Pass the transactions to the view
-        return view('pages.user.transactionhistory', compact('transactions'));
-    }
-
-    public function showDetail($transactionId)
-    {
-        $transaction = Transaction::findOrFail($transactionId);
-
-        // Check if the authenticated user owns the transaction or has the necessary permissions
-        if (Auth::user()->id !== $transaction->user_id) {
-            abort(403, 'Unauthorized action.');
+        // Jika transaksi tidak ditemukan, bisa ditangani sesuai kebutuhan
+        if (!$transaction) {
+            return redirect()->view('pages.admin.error');
         }
 
-        return view('pages.user.transactiondetail', compact('transaction'));
+        // Tampilkan halaman dengan detail transaksi
+        return view('pages.admin.transactiondetail', ['transaction' => $transaction]);
     }
+
+    public function destroy($id)
+    {
+        $article = Transaction::findOrFail($id);
+        $article->delete();
+        return redirect()->route('admin.transactions')->with('success', 'Artikel berhasil dihapus.');
+    }
+
 }

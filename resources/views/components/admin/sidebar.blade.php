@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item {{ $active == 'transaksi' ? 'active' : '' }}">
-                    <a href="{{ route('admin.transaksi') }}" class="sidebar-link">
+                    <a href="{{ route('admin.transactions') }}" class="sidebar-link">
                         <i class="fas fa-exchange-alt"></i>
                         <span>Transaksi</span>
                     </a>

@@ -74,12 +74,12 @@ Route::
                 Route::post('/admin/waralaba/add', [ArtikelAdminController::class, 'store'])->name('admin.waralaba.store');
 
                 // Admin CRUD transaction
-                Route::get('/admin/transaksi', [TransactionAdminController::class, 'index'])->name('admin.transaksi');
-                Route::get('/admin/transactions/{article}/edit', [ArtikelAdminController::class, 'edit'])->name('admin.transactions.edit');
-                Route::put('/admin/transactions/{article}', [ArtikelAdminController::class, 'update'])->name('admin.transactions.update');
-                Route::delete('/admin/transactions/{article}', [ArtikelAdminController::class, 'destroy'])->name('admin.transactions.destroy');
-                Route::get('/admin/transactions/create', [ArtikelAdminController::class, 'create'])->name('admin.transactions.create');
-                Route::post('/admin/transactions', [ArtikelAdminController::class, 'store'])->name('admin.transactions.store');
+                Route::get('/admin/transaksi', [TransactionAdminController::class, 'index'])->name('admin.transactions');
+                Route::get('/admin/transaction/{id}', [TransactionAdminController::class, 'show'])->name('admin.transactions.show');
+                Route::get('/admin/transaction/{id}/edit', [TransactionAdminController::class, 'edit'])->name('admin.transactions.edit');
+                Route::put('/admin/transactions/{id}', [TransactionAdminController::class, 'update'])->name('admin.transactions.update');
+                Route::delete('/admin/transactions/{id}', [TransactionAdminController::class, 'destroy'])->name('admin.transactions.destroy');
+                Route::post('/admin/transactions', [TransactionAdminController::class, 'store'])->name('admin.transactions.store');
 
                 // Admin CRUD Article
                 Route::get('/admin/artikel', [ArtikelAdminController::class, 'index'])->name('admin.artikel');

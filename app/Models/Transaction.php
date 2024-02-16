@@ -14,6 +14,7 @@ class Transaction extends Model
         'payment_method',
         'waralaba_id',
         'waralaba_name',
+        'status',
     ];
 
     public function user()
