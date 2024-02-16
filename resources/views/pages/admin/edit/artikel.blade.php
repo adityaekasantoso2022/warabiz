@@ -46,7 +46,7 @@
                     <div class="mb-3">
                         <label for="image_url" class="form-label">URL Gambar</label>
                         <input type="text" class="form-control" id="image_url" name="image_url"
-                            value="{{ $article->image_url }}">
+                            value="{{ $article->image_url }}" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="category" class="form-label">Kategori</label>

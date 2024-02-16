@@ -45,6 +45,7 @@
                     <div class="mb-3">
                         <label for="image_url" class="form-label">Pilih Gambar</label>
                         <input type="file" class="form-control" id="image" name="image_url" accept="image/*">
+                        <small class="form-text text-muted">Format: PNG, JPG, JPEG | Maks 2MB</small>
                     </div>
                     <div class="mb-3">
                         <label for="category" class="form-label">Kategori</label>

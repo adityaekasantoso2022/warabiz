@@ -46,35 +46,42 @@ class CareerAdminController extends Controller
             'description' => 'required|string',
             'address' => 'required|string',
             'image_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'logo_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi untuk logo_url
         ]);
-
-        // Gunakan 'image_url' daripada 'image' pada baris berikut
+    
+        // Pengunggahan gambar image_url
         $image = $request->file('image_url');
-
-        // Pastikan $image tidak null sebelum melanjutkan
+        $imageResult = null;
         if ($image) {
-            // Unggah gambar ke Cloudinary
-            $result = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName());
-
+            $imageResult = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName());
+        }
+    
+        // Pengunggahan gambar logo_url
+        $logo = $request->file('logo_url');
+        $logoResult = null;
+        if ($logo) {
+            $logoResult = CloudinaryStorage::upload($logo->getRealPath(), $logo->getClientOriginalName());
+        }
+    
+        // Pastikan setidaknya satu gambar diunggah sebelum melanjutkan
+        if ($imageResult || $logoResult) {
             // Buat objek artikel baru berdasarkan data yang diterima
             WaraCareer::create([
                 'career_title' => $request->career_title,
                 'description' => $request->description,
                 'address' => $request->address,
-                'image_url' => $result,
+                'image_url' => $imageResult,
+                'logo_url' => $logoResult,
                 'created_by' => 'admin',
             ]);
+            
             return redirect()->route('admin.career')->with('success', 'Artikel berhasil dibuat.');
         }
-
-        $imageName = time() . '.' . $request->image_url->extension();
-        $request->image_url->move(public_path('images'), $imageName);
-
-
-
-        return redirect()->route('admin.career')->with('success', 'Karier berhasil ditambahkan');
+    
+        // Jika tidak ada gambar yang diunggah, kembalikan dengan pesan kesalahan
+        return redirect()->route('admin.career')->with('error', 'Mohon unggah gambar untuk setidaknya satu field.');
     }
-    public function edit($id)
+        public function edit($id)
     {
         $career = WaraCareer::findOrFail($id);
         // Jika karier tidak ditemukan, lempar 404

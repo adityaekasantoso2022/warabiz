@@ -42,6 +42,11 @@
                             value="{{ $career->career_title }}">
                     </div>
                     <div class="mb-3">
+                        <label for="image_url" class="form-label">Gambar</label>
+                        <input type="text" class="form-control" id="image_url" name="image_url"
+                            value="{{ $career->image_url }}" readonly>
+                    </div>
+                    <div class="mb-3">
                         <label for="address" class="form-label">Alamat</label>
                         <input type="text" class="form-control" id="address" name="address"
                             value="{{ $career->address }}">
@@ -50,11 +55,6 @@
                         <label for="description" class="form-label">Deskripsi</label>
                         <textarea class="form-control" id="description" name="description"
                             rows="4">{{ $career->description }}</textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="image_url" class="form-label">Gambar</label>
-                        <input type="text" class="form-control" id="image_url" name="image_url"
-                            value="{{ $career->image_url }}" readonly>
                     </div>
                     <button type="submit" class="btn btn-primary">Perbarui</button>
                 </form>

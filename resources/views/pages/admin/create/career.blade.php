@@ -40,19 +40,29 @@
                     @csrf
                     <div class="mb-3">
                         <label for="career_title" class="form-label">Judul Karier</label>
-                        <input type="text" class="form-control" id="career_title" name="career_title" value="{{ old('career_title') }}">
+                        <input type="text" class="form-control" id="career_title" name="career_title"
+                            value="{{ old('career_title') }}">
                     </div>
                     <div class="mb-3">
                         <label for="image_url" class="form-label">Pilih Gambar</label>
-                        <input type="file" class="form-control" id="image" name="image_url" accept="image/*">
+                        <input type="file" class="form-control" id="image_url" name="image_url" accept="image/*">
+                        <small class="form-text text-muted">Format: PNG, JPG, JPEG | Maks 2MB</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="logo_url" class="form-label">Pilih Logo</label>
+                        <input type="file" class="form-control" id="logo_url" name="logo_url" accept="image/*">
+                        <small class="form-text text-muted">Format: PNG, JPG, JPEG | Maks 2MB</small>
+
                     </div>
                     <div class="mb-3">
                         <label for="address" class="form-label">Alamat</label>
-                        <textarea class="form-control" id="address" name="address" style="height: 100px;">{{ old('address') }}</textarea>
+                        <textarea class="form-control" id="address" name="address"
+                            style="height: 100px;">{{ old('address') }}</textarea>
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Deskripsi</label>
-                        <textarea class="form-control" id="description" name="description" style="height: 250px;">{{ old('description') }}</textarea>
+                        <textarea class="form-control" id="description" name="description"
+                            style="height: 250px;">{{ old('description') }}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Tambah</button>
                 </form>

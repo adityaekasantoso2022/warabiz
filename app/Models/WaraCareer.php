@@ -14,6 +14,7 @@ class WaraCareer extends Model
         'description',
         'address',
         'image_url',
+        'logo_url',
         'created_by',
         'created_at',
         'updated_by',

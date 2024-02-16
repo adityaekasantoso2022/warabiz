@@ -122,11 +122,11 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
+                                    <th>Logo</th>
                                     <th>Gambar</th>
                                     <th>Nama Pekerjaan</th>
                                     <th>Alamat</th>
                                     <th>Deskripsi</th>
-                                    <th>Created</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -134,12 +134,13 @@
                                 @foreach ($careers as $index => $career)
                                 <tr>
                                     <td class="text-center">{{ $index + 1 }}</td>
+                                    <td><img src="{{ asset($career->logo_url) }}" alt="Thumbnail"
+                                            class="career-thumbnail"></td>
                                     <td><img src="{{ asset($career->image_url) }}" alt="Thumbnail"
                                             class="career-thumbnail"></td>
                                     <td>{{ $career->career_title }}</td>
                                     <td>{{ $career->address }}</td>
-                                    <td>{{ $career->description }}</td>
-                                    <td>{{ $career->created_at }}</td>
+                                    <td>{{ Str::limit($career->description, 135) }}</td>
                                     <td>
                                         <div class="career-details d-flex justify-content-between align-items-center">
                                             <a href="{{ route('admin.careers.edit', $career->id) }}"
