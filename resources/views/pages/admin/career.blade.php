@@ -117,6 +117,7 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
+                                    <th>Gambar</th>
                                     <th>Nama Pekerjaan</th>
                                     <th>Alamat</th>
                                     <th>Keterangan</th>
@@ -128,6 +129,7 @@
                                 @foreach ($careers as $index => $career)
                                 <tr>
                                     <td class="text-center">{{ $index + 1 }}</td>
+                                    <td>{{ $career->image_url }}</td>
                                     <td>{{ $career->career_title }}</td>
                                     <td>{{ $career->address }}</td>
                                     <td>{{ $career->description }}</td>
@@ -137,10 +139,16 @@
                                             <a href="#" class="btn btn-circle btn-warning"
                                                 style="background-color: #FFC107; border: none;"><i class="fas fa-edit"
                                                     style="color: white;"></i></a>
-                                            <span style="width: 7px;"></span>
-                                            <a href="#" class="btn btn-circle btn-danger"
-                                                style="background-color: #F44336; border: none;"><i
-                                                    class="fas fa-trash-alt" style="color: white;"></i></a>
+                                                    <span style="width: 5px;"></span>
+
+                                            <form action="{{ route('admin.careers.destroy', $career->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-circle btn-danger"
+                                                    style="background-color: #F44336; border: none;"><i
+                                                        class="fas fa-trash-alt" style="color: white;"></i></button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>

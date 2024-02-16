@@ -9,6 +9,7 @@ use App\Models\WaraCareer;
 
 class CareerAdminController extends Controller
 {
+    //Mengambil data pekerjaan
     public function index()
     {
         if (Auth::check()) {
@@ -20,5 +21,13 @@ class CareerAdminController extends Controller
         }
 
         return view('pages.admin.career');
+    }
+
+    //Hapus pekerjaan
+    public function destroy($id)
+    {
+        $career = WaraCareer::findOrFail($id);
+        $career->delete();
+        return redirect()->route('admin.career')->with('success', 'Pekerjaan berhasil dihapus.');
     }
 }

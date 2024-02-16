@@ -91,6 +91,8 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
 
 
         Route::get('/admin/career', [CareerAdminController::class, 'index'])->name('admin.career');
+        Route::delete('/admin/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroy');
+
 
     });
 

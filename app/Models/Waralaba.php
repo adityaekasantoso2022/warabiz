@@ -32,7 +32,8 @@ class Waralaba extends Model
         'income',
         'rating',
         'concept',
-        'concept_size'
+        'concept_size',
+        'created_at'
     ];
 
     // Method untuk membuat UUID baru saat membuat instance baru
