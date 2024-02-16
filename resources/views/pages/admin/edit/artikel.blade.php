@@ -69,4 +69,29 @@
             </div>
         </div>
     </section>
+    <script>
+        function validateForm() {
+            // Validasi apakah data kosong
+            var title = document.getElementById("title").value;
+            var image = document.getElementById("image").value;
+            var category = document.getElementById("category").value;
+            var article = document.getElementById("article").value;
+
+            if (title === "" || image === "" || category === "" || article === "") {
+                alert("Semua kolom harus diisi!");
+                return false;
+            }
+
+            // Validasi ukuran gambar
+            var imageSize = document.getElementById("image").files[0].size; // ukuran dalam byte
+            var maxSize = 2 * 1024 * 1024; // 2 MB
+
+            if (imageSize > maxSize) {
+                document.getElementById("imageError").innerHTML = "Ukuran gambar tidak boleh lebih dari 2 MB";
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </x-admin-layout>
