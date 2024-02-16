@@ -9,7 +9,7 @@
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
-                <li class="sidebar-title"> Selamat Datang, <br><b>{{ Auth::user()->name }}!</b></li>
+                <li class="sidebar-title"> Selamat Datang, <br><b>{{ Auth::user()->name }}</b></li>
                 <li class="sidebar-title">Menu</li>
                 <li class="sidebar-item {{ $active == 'dashboard' ? 'active' : '' }}">
                     <a href="{{ route('admin.dashboard') }}" class="sidebar-link">

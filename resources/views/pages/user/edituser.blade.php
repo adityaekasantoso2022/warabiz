@@ -99,14 +99,20 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group mt-1">
-                        <label for="name" class="form-label fw-bold">Nama Lengkap:</label>
+                        <label for="name" class="form-label fw-bold">Nama Lengkap</label>
                         <input type="text" id="name" name="name" value="{{ old('name', $user->name) }}"
                             class="form-control border px-2 py-2 rounded-3 shadow-none" required>
                     </div>
                     <div class="form-group mt-2">
-                        <label for="email" class="form-label fw-bold">Alamat Email:</label>
+                        <label for="email" class="form-label fw-bold">Alamat Email</label>
                         <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}"
                             class="form-control border px-2 py-2 rounded-3 shadow-none" readonly>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="role" class="form-label fw-bold">Role</label>
+                        <input type="text" name="role" id="role"
+                            class="form-control border px-2 py-2 rounded-3 shadow-none"
+                            value="{{ ucfirst(auth()->user()->role) }}" required="" readonly>
                     </div>
                     <button type="submit" onclick="validateForm()"
                         class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3" id="submitButton">

@@ -31,13 +31,8 @@
                 <a class="nav-link me-4 {{ $active == 'bantuan' ? 'active' : '' }}"
                     href="{{ route('bantuan') }}">Bantuan</a>
                 @php
-                $role = Auth::user()->role; 
+                $role = Auth::user()->role;
                 @endphp
-
-                @if($role === 'admin')
-                <a class="nav-link me-4 {{ $active == 'bantuan' ? 'active' : '' }}"
-                    href="{{ route('admin.dashboard') }}">Dashboard Admin</a>
-                @endif
 
             </div>
             <div class="navbar-nav">
@@ -46,10 +41,23 @@
                         class="btn fw-bold text-white d-flex align-items-center p-0 shadow-none drdwn nav-link dropdown-toggle"
                         type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                         <p class="profil-name">{{ Str::limit(Auth::user()->name, 20, '') }}</p>
+                        @if($role === 'admin')
+                        <span class="badge bg-warning text-dark ms-2">Admin</span>
+                        @endif
+
                     </button>
 
                     <ul class="dropdown-menu p-0 m-0 border-0 rounded-12 shadow overflow-hidden mt-3"
                         aria-labelledby="dropdownMenu2">
+                        <li>
+                            @if($role === 'admin')
+                            <a href="{{ route('admin.dashboard') }}"
+                                class="dropdown-item bg-white btn baseColor rounded-0 fw-bold text-dark d-flex align-items-center m-0 py-3 shadow-none">
+                                <p class="me-3"><i class="fas fa-tachometer-alt text-dark"></i></p>
+                                <p class="text-sm text-dark"> Dashboard Admin</p>
+                            </a>
+                            @endif
+                        </li>
                         <li>
                             <a href="{{ route('user.edit-profile') }}"
                                 class="dropdown-item bg-white btn baseColor rounded-0 fw-bold text-dark d-flex align-items-center m-0 py-3 shadow-none">
@@ -57,7 +65,6 @@
                                 <p class="text-sm text-dark">Profil</p>
                             </a>
                         </li>
-
                         <li>
                             <a href="{{ route('transaction.history') }}"
                                 class="dropdown-item bg-white btn baseColor rounded-0 fw-bold text-dark d-flex align-items-center m-0 py-3 shadow-none">
