@@ -124,12 +124,13 @@
                                     <td>{{ $article->category }}</td>
                                     <td>{{ Str::limit($article->article, 135) }}</td>
                                     <td>
-                                        <div class="artikel-action">
+                                        <div class="artikel-action d-flex justify-content-between align-items-center">
                                             <a href="{{ route('admin.articles.edit', $article->id) }}"
                                                 class="btn btn-circle btn-warning"
                                                 style="background-color: #FFC107; border: none;">
                                                 <i class="fas fa-edit" style="color: white;"></i>
                                             </a>
+                                            <span style="width: 7px;"></span>
                                             <form action="{{ route('admin.articles.destroy', $article->id) }}"
                                                 method="POST">
                                                 @csrf

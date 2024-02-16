@@ -19,11 +19,15 @@
             border-collapse: collapse;
         }
 
-        .career-table th,
-        .career-table td {
+        .career-table th {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: center;
+        }
+
+        .career-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
         }
 
         .career-table th {
@@ -88,6 +92,7 @@
         }
     </style>
     @endpush
+
     <section>
         <div class="container">
             <div class="waralaba-card">
@@ -112,38 +117,34 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>ID Transaksi</th>
-                                    <th>Nama Waralaba</th>
-                                    <th>Nama Pemesan</th>
-                                    <th>Tanggal Transaksi</th>
-                                    <th>Pembayaran</th>
-                                    <th>Status</th>
+                                    <th>Nama Pekerjaan</th>
+                                    <th>Alamat</th>
+                                    <th>Keterangan</th>
+                                    <th>Created</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($careers as $index => $career)
                                 <tr>
-                                    <td>1</td>
-                                    <td>TRX-176262</td>
-                                    <td>Mie Gacoan</td>
-                                    <td>Arif Munandar</td>
-                                    <td>14-01-2023 10:00:59</td>
-                                    <td>Bank BRI</td>
-                                    <td>Sukses</td>
+                                    <td class="text-center">{{ $index + 1 }}</td>
+                                    <td>{{ $career->career_title }}</td>
+                                    <td>{{ $career->address }}</td>
+                                    <td>{{ $career->description }}</td>
+                                    <td>{{ $career->created_at }}</td>
                                     <td>
-                                        <div class="career-details">
-                                            <a href="#" class="btn btn-circle btn-primary"
-                                                style="background-color: #009bb8; border: none;"><i class="fas fa-eye"
-                                                    style="color: white;"></i></a>
+                                        <div class="career-details d-flex justify-content-between align-items-center">
                                             <a href="#" class="btn btn-circle btn-warning"
                                                 style="background-color: #FFC107; border: none;"><i class="fas fa-edit"
                                                     style="color: white;"></i></a>
+                                            <span style="width: 7px;"></span>
                                             <a href="#" class="btn btn-circle btn-danger"
                                                 style="background-color: #F44336; border: none;"><i
                                                     class="fas fa-trash-alt" style="color: white;"></i></a>
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -151,20 +152,20 @@
             </div>
         </div>
     </section>
-    <script>ument.getElementById("searchInput").addEventListener("input", function () {
-            var input, filter, table, tr, tdName, tdId, i, txtValueName, txtValueId;
+
+    <script>
+        document.getElementById("searchInput").addEventListener("input", function () {
+            var input, filter, table, tr, td, i, txtValue;
             input = this;
             filter = input.value.toUpperCase();
-            table = document.querySelector(".career-table");
+            table = input.closest(".waralaba-card").querySelector(".career-table");
             tr = table.getElementsByTagName("tr");
 
             for (i = 0; i < tr.length; i++) {
-                tdName = tr[i].getElementsByTagName("td")[2]; // Kolom untuk nama transaksi
-                tdId = tr[i].getElementsByTagName("td")[1]; // Kolom untuk ID transaksi
-                if (tdName || tdId) {
-                    txtValueName = tdName.textContent || tdName.innerText;
-                    txtValueId = tdId.textContent || tdId.innerText;
-                    if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValueId.toUpperCase().indexOf(filter) > -1) {
+                td = tr[i].getElementsByTagName("td")[1]; // Kolom untuk nama pekerjaan
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";
                     } else {
                         tr[i].style.display = "none";
@@ -173,4 +174,4 @@
             }
         });
     </script>
-    </x-user-layout>
+</x-admin-layout>
