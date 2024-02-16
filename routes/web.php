@@ -68,8 +68,8 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
         // Admin CRUD Waralaba
         Route::get('/admin/waralaba', [WaralabaAdminController::class, 'index'])->name('admin.waralaba');
         Route::get('/admin/waralaba/edit', [ArtikelAdminController::class, 'edit'])->name('admin.waralaba.edit');
+        Route::delete('/admin/waralaba/{id}', [WaralabaAdminController::class, 'destroy'])->name('admin.waralaba.destroy');
         Route::put('/admin/waralaba/{id}', [ArtikelAdminController::class, 'update'])->name('admin.waralaba.update');
-        Route::delete('/admin/waralaba/{id}', [ArtikelAdminController::class, 'destroy'])->name('admin.waralaba.destroy');
         Route::get('/admin/waralaba/create', [ArtikelAdminController::class, 'create'])->name('admin.waralaba.create');
         Route::post('/admin/waralaba/add', [ArtikelAdminController::class, 'store'])->name('admin.waralaba.store');
 
@@ -91,8 +91,12 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
 
 
         Route::get('/admin/career', [CareerAdminController::class, 'index'])->name('admin.career');
-        Route::delete('/admin/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroy');
-
+        Route::get('/admin/careers/create', [CareerAdminController::class, 'create'])->name('admin.career.create');
+        Route::post('/admin/careers', [CareerAdminController::class, 'store'])->name('admin.careers.store');
+        Route::get('/admin/careers/{id}/edit', [CareerAdminController::class, 'edit'])->name('admin.careers.edit');
+        Route::post('/admin/careers/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroy');
+        Route::delete('/admin/careers/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroy');
+        Route::put('/admin/careers/{id}', [CareerAdminController::class, 'update'])->name('admin.careers.update');
 
     });
 

@@ -90,6 +90,11 @@
                 margin: 5px 0;
             }
         }
+
+        .career-thumbnail {
+            max-width: 100px;
+            max-height: 100px;
+        }
     </style>
     @endpush
 
@@ -101,7 +106,7 @@
                         <h3>Daftar Pekerjaan</h3>
                     </div>
                     <div class="col-md-6 text-end">
-                        <button class="btn btn-primary">Tambah Pekerjaan</button>
+                        <a href="{{ route('admin.career.create') }}" class="btn btn-primary">Tambah Karier</a>
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -120,7 +125,7 @@
                                     <th>Gambar</th>
                                     <th>Nama Pekerjaan</th>
                                     <th>Alamat</th>
-                                    <th>Keterangan</th>
+                                    <th>Deskripsi</th>
                                     <th>Created</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -129,18 +134,20 @@
                                 @foreach ($careers as $index => $career)
                                 <tr>
                                     <td class="text-center">{{ $index + 1 }}</td>
-                                    <td>{{ $career->image_url }}</td>
+                                    <td><img src="{{ asset($career->image_url) }}" alt="Thumbnail"
+                                            class="career-thumbnail"></td>
                                     <td>{{ $career->career_title }}</td>
                                     <td>{{ $career->address }}</td>
                                     <td>{{ $career->description }}</td>
                                     <td>{{ $career->created_at }}</td>
                                     <td>
                                         <div class="career-details d-flex justify-content-between align-items-center">
-                                            <a href="#" class="btn btn-circle btn-warning"
-                                                style="background-color: #FFC107; border: none;"><i class="fas fa-edit"
-                                                    style="color: white;"></i></a>
-                                                    <span style="width: 5px;"></span>
-
+                                            <a href="{{ route('admin.careers.edit', $career->id) }}"
+                                                class="btn btn-circle btn-warning"
+                                                style="background-color: #FFC107; border: none;">
+                                                <i class="fas fa-edit" style="color: white;"></i>
+                                            </a>
+                                            <span style="width: 5px;"></span>
                                             <form action="{{ route('admin.careers.destroy', $career->id) }}"
                                                 method="POST">
                                                 @csrf
@@ -170,7 +177,7 @@
             tr = table.getElementsByTagName("tr");
 
             for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[1]; // Kolom untuk nama pekerjaan
+                td = tr[i].getElementsByTagName("td")[2]; // Kolom untuk nama pekerjaan
                 if (td) {
                     txtValue = td.textContent || td.innerText;
                     if (txtValue.toUpperCase().indexOf(filter) > -1) {

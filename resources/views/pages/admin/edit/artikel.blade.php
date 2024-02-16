@@ -1,4 +1,4 @@
-<x-admin-layout title="Edit Artikel" active="article" style="margin-top: 0;">
+<x-admin-layout title="Edit Artikel" active="articel" style="margin-top: 0;">
     @push('addonStyle')
     <style>
         body {

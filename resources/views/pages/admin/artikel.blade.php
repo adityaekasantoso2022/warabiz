@@ -151,7 +151,6 @@
             </div>
         </div>
     </section>
-
     @push('addonScript')
     <script>
         document.getElementById("searchInput").addEventListener("input", function () {
@@ -179,5 +178,4 @@
         });
     </script>
     @endpush
-
 </x-admin-layout>
