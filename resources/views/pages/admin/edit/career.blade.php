@@ -31,21 +31,27 @@
     <section>
         <div class="container">
             <div class="career-card">
-                <h3>Edit Karier</h3>
+                <h3>Edit Pekerjaan</h3>
                 <form method="POST" action="{{ route('admin.careers.update', $career->id) }}"
                     enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
-                        <label for="career_title" class="form-label">Judul Karier</label>
+                        <label for="career_title" class="form-label">Nama Pekerjaan</label>
                         <input type="text" class="form-control" id="career_title" name="career_title"
                             value="{{ $career->career_title }}">
                     </div>
                     <div class="mb-3">
-                        <label for="image_url" class="form-label">Gambar</label>
+                        <label for="logo_url" class="form-label">Logo Perusahaan</label>
+                        <input type="text" class="form-control" id="logo_url" name="logo_url"
+                            value="{{ $career->logo_url }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image_url" class="form-label"> Gambar Perusahaan</label>
                         <input type="text" class="form-control" id="image_url" name="image_url"
                             value="{{ $career->image_url }}" readonly>
                     </div>
+
                     <div class="mb-3">
                         <label for="address" class="form-label">Alamat</label>
                         <input type="text" class="form-control" id="address" name="address"

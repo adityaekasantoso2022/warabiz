@@ -25,12 +25,9 @@
         <div id="main">
             <x-admin.sidebar active="{{ $active }}" />
             {{ $slot }}
-
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="{{ asset('assets/backend/js/apexcharts.min.js') }}"></script>
-    {{-- <script src="{{ asset('assets/backend/js/app.js') }}"></script> --}}
     <script src="{{ asset('assets/backend/js/pages/datatables.js') }}"></script>
     <script src="{{ asset('assets/backend/js/script.js') }}"></script>
     <script src="{{ asset('assets/backend/js/pages/lightbox-plus-jquery.min.js') }}"></script>

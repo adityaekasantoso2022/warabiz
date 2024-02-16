@@ -38,6 +38,7 @@
 
     {{ $slot }}
 
+    <x-user.footer />
     @include('includes.script')
     @stack('addonScript')
 </body>

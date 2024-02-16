@@ -122,8 +122,8 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Logo</th>
-                                    <th>Gambar</th>
+                                    <th>Logo Perusahaan</th>
+                                    <th>Gambar Perusahaan</th>
                                     <th>Nama Pekerjaan</th>
                                     <th>Alamat</th>
                                     <th>Deskripsi</th>

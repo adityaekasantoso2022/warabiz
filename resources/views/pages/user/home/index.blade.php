@@ -2,240 +2,268 @@
     @push('addonStyle')
     <style>
         body {
-            background: #dae3ec !important;
+            background: #DAE3EC !important;
         }
-    
+
+        /* Penyesuaian untuk tampilan responsif */
+        .banner-container {
+            height: 250px;
+            /* Tinggi banner di perangkat seluler */
+            top: 60px;
+            /* Jarak banner dari atas di perangkat seluler */
+        }
+
+        .card-container {
+            height: 200px;
+            /* Tinggi card di perangkat seluler */
+            top: -30px;
+            /* Jarak card dari atas di perangkat seluler */
+        }
+
         .navbar .navbar-nav a:hover.btn-signup {
             color: white !important;
         }
-    
+
         .navbar .navbar-nav a:hover {
             color: #131313 !important;
         }
-    
+
         .navbar .navbar-nav .active {
             color: #131313 !important;
         }
-    
+
         .profil-name {
             color: #131313;
         }
-    
-        .bgTheme {
-            background: #4F94D7 !important;
-        }
-    
-        .navbar .btn-signup,
-        .navbar-expand-lg .login {
-            border-radius: 12px;
-            padding: 7.6px 32px 8px 32px;
-            color: white;
-        }
-    
-        .hero h1 {
-            font-weight: 500 !important;
-            letter-spacing: 1px;
-            line-height: 150%;
-        }
-    
+
         .nav-pills .nav-link.active {
             background-color: #3ECAB0;
             box-shadow: 0 0 5px #3ECAB0;
         }
-    
+
         .nav-pills .nav-link {
             background-color: #0A2048;
             border: 0;
             border-radius: 0.25rem;
             color: rgba(255, 255, 255, 0.6);
         }
-    
+
         .navbar-expand-lg {
             background-color: white !important;
             box-shadow: -1.5px 4px 16px rgb(118 126 148 / 20%);
             transition: background-color 200ms linear;
         }
-    
-        @media (max-width: 756px) {
-    
-            .line-text p.text-white::before,
-            .line-text p.text-white::after {
-                width: 50px;
-            }
-    
-            .line-text p.text-white::before {
-                left: 10%;
-            }
-    
-            .line-text p.text-white::after {
-                right: 10%;
-            }
-        }
-    
-        .card.card-home {
-            min-height: 365px;
-            transition: 0.3s;
-        }
-    
-        .card.card-home:hover {
-            box-shadow: 0 0 10px #4F94D7 !important;
-        }
-    
-        .card-img-top {
+
+        .banner-container {
+            position: relative;
             width: 100%;
-            height: 250px;
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            border-radius: 14px;
+            height: 347px;
+            /* Tinggi banner */
+            overflow: hidden;
+            top: 60px;
+            /* Sesuaikan jarak dari atas */
         }
-    
-        @media (min-width: 756px) {
-            .hero {
-                height: 85vh !important;
+
+        .banner-slide img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* Lebar gambar */
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* CSS untuk card putih */
+        .card-container {
+            width: 90%;
+            height: 270px;
+            /* Tinggi card */
+            margin: 0 auto;
+            position: relative;
+            top: -50px;
+            /* Sesuaikan jarak dari atas */
+            border-radius: 10px;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+            /* Atur z-indeks untuk menumpuk di atas gambar-gambar */
+        }
+
+        /* Style tambahan */
+        .card-container h3 {
+            margin-top: 0;
+            font-size: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .card-container hr {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border: none;
+            border-top: 1px solid #A4A4A4;
+        }
+
+        .search-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-label {
+            margin-top: 20px;
+            text-align: left;
+            font-weight: 600;
+
+        }
+
+        .search-box {
+            width: 50%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding: 10px;
+            border-radius: 2px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .search-waralaba {
+            width: 100%;
+            margin-top: 5px;
+            padding: 10px 20px;
+            border-radius: 2px;
+            box-sizing: border-box;
+            outline: 1px solid #D5D5D5;
+            height: 40px;
+        }
+
+
+        .search-column {
+            width: calc(33.33% - 10px);
+        }
+
+        .form-control::placeholder {
+            padding-left: 10px;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .banner-container {
+                height: 150px;
+                top: 50px;
             }
-    
-            .card-img-top {
-                height: 180px !important;
+
+            .card-container {
+                height: auto;
+                top: -10px;
+            }
+
+            .search-column {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .search-box,
+            .search-waralaba {
+                padding: 8px;
+                height: 35px;
+            }
+
+            .input-group-append {
+                margin-left: 0;
+                /* Menghilangkan margin kiri untuk responsif lebih baik */
+            }
+
+            .card-container h3 {
+                font-size: 16px;
+            }
+
+            .search-label {
+                font-size: 14px;
             }
         }
-    
-        .search-class .input-group input {
-            background: #0A2048;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px !important;
-            padding: 16px 20px 16px 32px !important;
-            color: white;
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
         }
-    
-        .search-class .input-group input:focus {
-            box-shadow: 0 0 5px #4F94D7 !important;
+
+        .card:hover {
+            transform: translateY(-5px);
         }
-    
-        .search-class .input-group .right-button button {
-            background: #4F94D7;
-            border-radius: 12px !important;
-            top: 0.35rem;
-            font-weight: 500;
-            border: 0px;
+
+        .card-img-top {
+            object-fit: cover;
+            height: 200px;
+            /* Sesuaikan tinggi gambar sesuai kebutuhan */
         }
-    
-        .search-class .input-group .right-button button:hover {
-            background: #4886c3;
+
+        .card-body {
+            padding: 20px;
         }
-    
-        .search-class .input-group .right-button button:active,
-        .search-class .input-group .right-button button:focus {
-            box-shadow: 0 0 5px #4F94D7 !important;
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
-    
-        .right-button {
-            right: 0 !important;
-            position: absolute !important;
-            padding: 0 0.6rem;
-            z-index: 999;
+
+        .card-text {
+            margin-bottom: 5px;
         }
-    
-        .card-container,
-        .course-card,
-        .course-card-responsive {
+
+        .card.card-home {
+            min-height: 250px;
+            transition: 0.3s;
             background: #fff;
             border: none;
-            border-radius: 14px;
+            border-radius: 10px;
             box-sizing: border-box;
             color: #34364a;
             display: flex;
             flex-direction: column;
             height: 320px;
-            width: 300px;
-            padding: 20px;
+            width: 100%;
+            padding: 18px;
             position: relative;
             row-gap: 16px;
-            margin-top: 30px;
+            margin-top:5px;
         }
-    
-        .pricing .item-pricing {
-            background: #fff;
-            border-radius: 16px;
-            padding: 15px;
-        }
-    
-        .course-card .course-detail .course-name,
-        .course-card-responsive .course-detail .course-name,
-        .line-clamp,
-        .line-clamp-1 {
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            display: -webkit-box;
+        
+        .card .small-circle-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 50%;
             overflow: hidden;
         }
-    
-        .course-card .course-detail .course-name {
-            color: #34364a;
-            font-size: 16px;
-            font-weight: 700;
-            line-height: 24px;
-            min-height: 10px;
-            position: relative;
-            z-index: 80 !important;
+
+        .card .d-flex.flex-column {
+            margin-top: 5px;
+            margin-bottom: 5px;
         }
-    
-        .course-card .course-footer {
-            align-items: baseline;
-            display: flex;
-            gap: 4px;
-            justify-content: space-between;
+
+        .card .d-flex.flex-column h6,
+        .card .d-flex.flex-column p {
+            margin: 0;
         }
-    
-        .course-card .course-footer .star-rating {
+
+
+        .card .waralaba-footer .star-rating {
             align-items: flex-start;
             display: flex;
             flex-wrap: wrap;
             gap: 2px;
         }
-    
-        @media only screen and (max-width: 991.100px) {
-            .col-md-6 {
-                flex: 0 0 50%;
-                max-width: 50%;
-                padding-right: 0px;
-                padding-left: 0px;
-            }
-    
-            .course-card {
-                width: calc(100% - 10px);
-                margin-bottom: 20px;
-            }
-    
-            .course-card img.small-circle-img {
-                width: 35px;
-                height: 30px;
-            }
-    
-            .course-card .d-flex.flex-column {
-                margin-top: 3px;
-                margin-bottom: 3px;
-            }
-    
-            .course-card .d-flex.flex-column h6 {
-                font-size: 13px;
-            }
-    
-            .course-card .d-flex.flex-column p {
-                font-size: 12px;
-            }
-        }
-    
-        @media only screen and (min-width: 992px) {
-            .course-card {
-                width: 300px;
-            }
-        }
-    
-        .course-card .course-footer .star-rating img {
+
+        .card .waralaba-footer .star-rating img {
             width: 22px;
         }
-    
         .embed-responsive {
             display: block;
             height: 20vh;
@@ -251,84 +279,75 @@
             height: 20vh;
         }
     
-        .plyr__video-embed {
+        .plyr__waralaba-embed {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
         }
-    
-        .small-circle-img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-    
-        .d-flex.flex-column {
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-    
-        .d-flex.flex-column h6,
-        .d-flex.flex-column p {
-            margin: 0;
-        }
+
+        
     </style>
     @endpush
 
-    {{-- Hero --}}
-    <section class="hero text-center d-flex align-items-center justify-content-center ">
-        <div class="content">
-            <h1 class="text-white fw-bolder m-0 px-2 display-4">
-                Buka waralaba <br><b> Semudah Checkout Belanja Online</b>
-            </h1>
-            <form action="{{ route('home') }}" method="GET" class="search-class container mt-5">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Cari waralaba keinginanmu.." name="search"
-                        aria-label="Cari waralaba keinginanmu.." aria-describedby="button-addon2"
-                        value="{{ request('search') }}">
-                    <div class="right-button">
-                        <button class="btn btn-primary " type="submit" id="button-addon2">Cari</button>
+    <section class="mt-4 mb-4">
+        <div class="banner-container">
+            <div class="banner-slide">
+                <img src="{{ asset('assets/frontend/image/backrground-fitur.png') }}" alt="Banner 1">
+            </div>
+        </div>
+        <div class="card-container">
+            <img src="{{ asset('assets/frontend/image/sukses.svg') }}" alt="Small Image"
+                style="width: 30px; height: auto; vertical-align: middle;">
+            <h3 style="display: inline; vertical-align: middle; margin-left: 10px;">Cari peluang bisnis franchise dan
+                kemitraan di Warabiz</h3>
+            <hr>
+            <div class="search-container">
+                <div class="search-column">
+                    <div class="search-label">Tipe Franchise</div>
+                    <div class="input-group">
+                        <select class="search-box">
+                            <option value="" selected disabled>Pilih tipe franchise</option>
+                            <option value="Restoran">Restoran</option>
+                            <option value="Restoran">Semi Resto</option>
+                            <option value="Gerai">Gerai</option>
+                            <option value="Booth">Booth</option>
+                        </select>
                     </div>
                 </div>
-            </form>
-            <ul class="nav nav-pills mx-auto justify-content-center gap-3 mt-4" id="pills-tab" role="tablist">
-
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="pills-semua-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-semua" type="button" role="tab" aria-controls="pills-semua"
-                        aria-selected="true">Semua</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-kuliner-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-kuliner" type="button" role="tab" aria-controls="pills-kuliner"
-                        aria-selected="false">Kuliner</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-fashion-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-fashion" type="button" role="tab" aria-controls="pills-fashion"
-                        aria-selected="false">Fashion</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-jasa-tab" data-bs-toggle="pill" data-bs-target="#pills-jasa"
-                        type="button" role="tab" aria-controls="pills-jasa" aria-selected="false">Jasa</button>
-                </li>
-            </ul>
+                <div class="search-column">
+                    <div class="search-label">Harga Franchise</div>
+                    <input type="text" class="search-box" placeholder="Masukkan harga franchise">
+                </div>
+                <div class="search-column">
+                    <div class="search-label">Lokasi</div>
+                    <input type="text" class="search-box" placeholder="Masukkan lokasi">
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <div class="input-group">
+                    <input type="text" name="search" id="search" class="form-control border px-2 py-2 rounded-3 shadow-none"
+                        placeholder="Cari di warabiz">
+                    <div class="input-group-append" style="margin-left: 15px;">
+                        <button class="btn btn-primary" type="button"
+                            style="background-color: #009BB8; border: none; height: 40px;">
+                            <i class="fa fa-search" style="color: white;"></i> Search
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-
-    <section class="justify-content">
+    <section class="mt-4 mb-4">
     <div class="container-scrollable">
         <div class="container">
             <div class="row">
                 @foreach ($waralabas as $waralaba)
-                <div class="col-md-6 col-lg-3 mb-3">
-                    <a href="{{ route('waralaba', $waralaba->id) }}" class="text-decoration-none">
-                        <div class="course-card">
-                            <div class="embed-responsive embed-responsive-16by9 video-iframe">
-                                <div class="plyr__video-embed" id="player">
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <a href="{{ route('waralaba', $waralaba->id) }}" class="text-decoration-none">
+                          <div class="card card-home">
+                            <div class="embed-responsive embed-responsive-16by9 waralaba-iframe">
+                                <div class="plyr__waralaba-embed" id="player">
                                     <img src="{{ $waralaba->image_url_1 }}" class="img-fluid"
                                         alt="Gambar {{ $waralaba->waralaba_name }}">
                                 </div>
@@ -341,13 +360,12 @@
                                 </div>
                             </div>
                             <h6>Rp. {{ number_format(floatval($waralaba->price), 0, ',', '.') }}</h6>
-                            <div class="course-footer mt-auto">
+                            <div class="waralaba-footer mt-auto">
                                 <div class="star-rating">
                                     @for ($i = 0; $i < 5; $i++)
                                     <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
                                         alt="ic_star">
                                     @endfor
-                                    <span>(52)</span>
                                 </div>
                             </div>
                         </div>
@@ -358,15 +376,5 @@
         </div>
     </div>
 </section>
-    @push('addonScript')
-    <script>
-        let slideIndex = 1;
 
-        $nav.toggleClass('scrolled', $(this).scrollTop() > $hero.height());
-        $(function () {
-            $(document).scroll(function () {
-                $nav.toggleClass('scrolled', $(this).scrollTop() > $hero.height());
-            });
-    </script>
-    @endpush
 </x-user-layout>
