@@ -1,4 +1,4 @@
-<x-admin-layout title="Detail Transaksi - {{ $transaction->waralaba_name }}" active="transaksi">
+<x-admin-layout title="Invoice - TRX-{{ substr($transaction->uuid, 2, 6) }}" active="transaksi">
     @push('addonStyle')
     <style>
         body {
@@ -123,7 +123,7 @@
                 </div>
             </div>
             <div class="text-center mt-3">
-                <button onclick="printInvoice()" class="btn btn-dark">Print</button>
+                <button onclick="printInvoice()" class="btn btn-dark">Print Invoice</button>
             </div>
         </div>
     </div>

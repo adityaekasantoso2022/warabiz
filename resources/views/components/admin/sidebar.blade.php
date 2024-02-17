@@ -47,6 +47,12 @@
                         <span>Pekerjaan</span>
                     </a>
                 </li>
+                <li class="sidebar-item {{ $active == 'bantuan' ? 'active' : '' }}">
+                    <a href="{{ route('admin.bantuan') }}" class="sidebar-link">
+                    <i class="fas fa-question-circle"></i>
+                        <span>Bantuan</span>
+                    </a>
+                </li>
                 <li class="sidebar-title">Lainnya</li>
                 <li class="sidebar-item {{ $active == 'home' ? 'active' : '' }}">
                     <a href="{{ route('home') }}" class="sidebar-link">

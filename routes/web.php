@@ -13,11 +13,7 @@ use App\Http\Controllers\Admin\TransactionAdminController;
 use App\Http\Controllers\Admin\ArtikelAdminController;
 use App\Http\Controllers\Admin\CareerAdminController;
 use App\Http\Controllers\Admin\UserAdminController;
-
-
-
-
-
+use App\Http\Controllers\Admin\BantuanAdminController;
 
 
 /*
@@ -97,6 +93,10 @@ Route::
                 Route::post('/admin/careers/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroy');
                 Route::delete('/admin/careers/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroy');
                 Route::put('/admin/careers/{id}', [CareerAdminController::class, 'update'])->name('admin.careers.update');
+
+                Route::get('/admin/bantuan', [BantuanAdminController::class, 'index'])->name('admin.bantuan');
+                Route::get('pesan/{id}/balas', [BantuanAdminController::class, 'balas'])->name('pesan.balas');
+                Route::delete('/hapus-pesan/{id}', [BantuanAdminController::class, 'hapusPesan'])->name('pesan.hapus');
 
             });
 
