@@ -108,7 +108,6 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Nama Lengkap</th>
-                                    <th>Email</th>
                                     <th>Kategori</th>
                                     <th>Pesan</th>
                                     <th>Aksi</th>
@@ -119,14 +118,13 @@
                                 <tr>
                                     <td class="text-center">{{ $index + 1 }}</td>
                                     <td>{{ $faq->user->name }}</td>
-                                    <td>{{ $faq->email }}</td>
                                     <td>{{ $faq->kategori_pertanyaan }}</td>
                                     <td>{{ $faq->pesan }}</td>
                                     <td>
                                         <div class="career-details d-flex justify-content-between align-items-center">
                                             <a href="{{ route('pesan.balas', $faq->id) }}" class="btn btn-circle btn-primary"
                                                 style="background-color: #009bb8; border: none;">
-                                                <i class="fas fa-envelope" style="color: white;"></i>
+                                                <i class="fas fa-reply" style="color: white;"></i>
                                             </a>
                                         </div>
                                     </td>
