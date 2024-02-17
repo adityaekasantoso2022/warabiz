@@ -1,6 +1,7 @@
 <x-admin-layout title="Transaksi" active="transaksi" style="margin-top: 0;">
     @push('addonStyle')
     <style>
+        /* CSS Styles */
         body {
             background: #dae3ec !important;
         }
@@ -91,6 +92,7 @@
         }
     </style>
     @endpush
+
     <section>
         <div class="container">
             <div class="waralaba-card">
@@ -99,6 +101,7 @@
                         <h3>Daftar Transaksi</h3>
                     </div>
                 </div>
+
                 <div class="row justify-content-center">
                     <div class="transaction-list">
                         <div class="search-bar mb-3 d-flex justify-content-between align-items-center">
@@ -108,6 +111,7 @@
                                     class="form-control border px-2 py-1 rounded-3 shadow-none ml-2">
                             </div>
                         </div>
+
                         <table class="transaction-table">
                             <thead>
                                 <tr>
@@ -121,10 +125,16 @@
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
+
                             <tbody>
-                                @foreach($transactions as $key => $transaction)
+                                @php
+                                    $sortedTransactions = $transactions->sortByDesc('created_at');
+                                    $transactionIndex = 0; // Inisialisasi nomor urut transaksi
+                                @endphp
+
+                                @foreach($sortedTransactions as $transaction)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ ++$transactionIndex }}</td>
                                     <td>TRX-{{ substr($transaction->uuid, 2, 6) }}</td>
                                     <td>{{ $transaction->waralaba_name }}</td>
                                     <td>{{ $transaction->fullname }}</td>
@@ -132,21 +142,21 @@
                                     <td>{{ $transaction->payment_method }}</td>
                                     <td>
                                         @switch($transaction->status)
-                                        @case(0)
-                                        <span>Verifikasi Pembayaran</span>
-                                        @break
-                                        @case(1)
-                                        <span>Proses Pembangunan</span>
-                                        @break
-                                        @case(2)
-                                        <span>Proses Pembukaan</span>
-                                        @break
-                                        @case(3)
-                                        <span>Selesai</span>
-                                        @break
-                                        @case(4)
-                                        <span>Gagal</span>
-                                        @break
+                                            @case(0)
+                                                <span>Verifikasi Pembayaran</span>
+                                                @break
+                                            @case(1)
+                                                <span>Proses Pembangunan</span>
+                                                @break
+                                            @case(2)
+                                                <span>Proses Pembukaan</span>
+                                                @break
+                                            @case(3)
+                                                <span>Selesai</span>
+                                                @break
+                                            @case(4)
+                                                <span>Gagal</span>
+                                                @break
                                         @endswitch
                                     </td>
                                     <td>
@@ -181,6 +191,7 @@
             </div>
         </div>
     </section>
+
     <script>
         document.getElementById("searchInput").addEventListener("input", function () {
             var input, filter, table, tr, tdName, tdId, tdPemesan, i, txtValueName, txtValueId, txtValuePemesan;
@@ -206,4 +217,4 @@
             }
         });
     </script>
-</x-user-layout>
+</x-admin-layout>

@@ -10,12 +10,18 @@ class Transaction extends Model
         'fullname',
         'email',
         'phone_number',
-        'address', // Perbaikan penulisan field 'address'
+        'address',
         'payment_method',
         'waralaba_id',
         'waralaba_name',
         'status',
     ];
+
+    // Definisikan relasi dengan model Waralaba
+    public function waralaba()
+    {
+        return $this->belongsTo(Waralaba::class, 'waralaba_id');
+    }
 
     public function user()
     {

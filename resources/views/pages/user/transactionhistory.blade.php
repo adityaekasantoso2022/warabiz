@@ -144,6 +144,7 @@
             font-size: 30px;
             margin-bottom: 15px;
         }
+
         @media screen and (max-width: 576px) {
             .search-bar {
                 flex-direction: column;
@@ -155,8 +156,6 @@
                 margin: 5px 0;
             }
         }
-
-        
     </style>
     @endpush
     <section class="py-5" style="margin-top: 10px">
@@ -165,6 +164,7 @@
                 <div class="bantuan-card">
                     <div class="row justify-content-center">
                         @if($transactions->isEmpty())
+                            <!-- Kode untuk menampilkan pesan jika tidak ada transaksi -->
                             <div class="col-md-3">
                                 <div class=" text-center">
                                     <div class="card-body">
@@ -176,7 +176,7 @@
                             </div>
                         @else
                             <div class="transaction-list">
-                            <div class="search-bar mb-3 d-flex justify-content-between align-items">
+                                <div class="search-bar mb-3 d-flex justify-content-between align-items">
                                     <span><b>Riwayat Transaksi</b></span>
                                     <div class="d-flex align-items-center">
                                         <span>Cari Transaksi: ‎ ‎ </span>
@@ -196,12 +196,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($transactions as $index => $transaction)
+                                        @foreach($transactions->sortByDesc('created_at') as $index => $transaction)
                                             <tr>
-                                                <td>{{ $index + 1 }}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                                 <td>TRX-{{ substr($transaction->uuid, 2, 6) }}</td>
                                                 <td>{{ $transaction->waralaba_name }}</td>
-                                                <td>{{ $transaction->created_at->format('d-m-Y h:i:s') }}</td>
+                                                <td>{{ $transaction->created_at->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s') }}</td>
                                                 <td>Bank {{ $transaction->payment_method }}</td>
                                                 <td>
                                                     @switch($transaction->status)

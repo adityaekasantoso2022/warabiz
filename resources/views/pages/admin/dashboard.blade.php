@@ -1,10 +1,10 @@
 <x-admin-layout title="Dashboard" active="dashboard">
     @push('addonStyle')
-        <style>
-            body {
-                background: #dae3ec !important;
-            }
-        </style>
+    <style>
+        body {
+            background: #dae3ec !important;
+        }
+    </style>
     @endpush
 
     <div class="row">
@@ -79,7 +79,9 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-4">
+    </div>
+
+    <div class="row mt-4">
         <div class="col">
             <div class="card">
                 <div class="card-body">
@@ -93,19 +95,20 @@
                                     <th>Nama Waralaba</th>
                                     <th>Nama Pemesan</th>
                                     <th>Tanggal Transaksi</th>
-                                    <th>Metode Pembayaran</th>
+                                    <th>Pembayaran</th>
                                     <th>Status</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($transactions as $key => $transaction)
+                                @foreach ($transactions->sortByDesc('created_at') as $key => $transaction)
                                 <tr>
-                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>TRX-{{ substr($transaction->uuid, 2, 6) }}</td>
                                     <td>{{ $transaction->waralaba_name }}</td>
                                     <td>{{ $transaction->fullname }}</td>
-                                    <td>{{ $transaction->created_at }}</td>
-                                    <td>{{ $transaction->payment_method }}</td>
+                                    <td>{{ $transaction->created_at->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s') }}</td>
+                                    <td>Bank {{ $transaction->payment_method }}</td>
                                     <td>
                                         @switch($transaction->status)
                                         @case(0)
@@ -125,8 +128,22 @@
                                             @break
                                         @endswitch
                                     </td>
+                                    <td>
+                                        <div class="transaction-details transaction-buttons-container">
+                                            <a href="{{ route('admin.transactions.show', ['id' => $transaction->uuid]) }}"
+                                                class="btn btn-circle btn-primary"
+                                                style="background-color: #009bb8; border: none;">
+                                                <i class="fas fa-eye" style="color: white;"></i>
+                                            </a>
+                                            <a href="{{ route('admin.transactions.edit', ['id' => $transaction->uuid]) }}"
+                                                class="btn btn-circle btn-warning"
+                                                style="background-color: #FFC107; border: none;">
+                                                <i class="fas fa-edit" style="color: white;"></i>
+                                            </a>
+                                        </div>
+                                    </td>
                                 </tr>
-                            @endforeach
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -134,4 +151,101 @@
             </div>
         </div>
     </div>
+    <!-- Tambahkan ini di dalam area yang sesuai pada halaman HTML Anda -->
+<div class="row mt-4">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Grafik Penjualan Harian</h5>
+                <canvas id="dailySalesChart" style="height: 300px;"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Waralaba Terlaris</h5>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Nama Waralaba</th>
+                                    <th>Jumlah Terjual</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php 
+                                    $topFranchises = $transactions->groupBy('waralaba_name')
+                                                        ->map->count()
+                                                        ->sortDesc(); 
+                                @endphp
+                                @foreach($topFranchises as $name => $count)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $name }}</td>
+                                    <td>{{ $count }} Waralaba</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+@push('addonScript')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+<script>
+    const transactions = {!! json_encode($transactions) !!};
+
+    const transactionDates = transactions.map(transaction => new Date(transaction.created_at).toLocaleDateString());
+    const dailyTransactionCounts = {}; 
+
+    transactionDates.forEach(date => {
+        dailyTransactionCounts[date] = (dailyTransactionCounts[date] || 0) + 1;
+    });
+
+    const dailySalesData = {
+        labels: Object.keys(dailyTransactionCounts),
+        datasets: [{
+            label: 'Jumlah Penjualan Waralaba',
+            data: Object.values(dailyTransactionCounts),
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    };
+
+    const dailySalesConfig = {
+        type: 'bar',
+        data: dailySalesData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Jumlah Transaksi'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Tanggal Transaksi'
+                    }
+                }
+            }
+        }
+    };
+
+    var dailySalesChart = new Chart(document.getElementById('dailySalesChart'), dailySalesConfig);
+</script>
+@endpush
+
+    
 </x-admin-layout>

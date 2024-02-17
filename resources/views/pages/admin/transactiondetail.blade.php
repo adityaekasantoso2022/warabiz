@@ -1,291 +1,143 @@
-<x-admin-layout title="Detail Transaksi - {{ $transaction->waralaba_name }}" active="detail-transaksi">
-
+<x-admin-layout title="Detail Transaksi - {{ $transaction->waralaba_name }}" active="transaksi">
     @push('addonStyle')
     <style>
         body {
             background: #dae3ec !important;
         }
 
-        .navbar .navbar-nav a:hover.btn-signup {
-            color: white !important;
+        /* Menyembunyikan navbar saat mencetak */
+        .navbar {
+            display: none;
         }
 
-        .navbar .navbar-nav a:hover {
-            color: #131313 !important;
-        }
-
-        .navbar .navbar-nav .active {
-            color: #131313 !important;
-        }
-
-        .profil-name {
-            color: #131313
-        }
-
-        .hero {
-            background: none !important;
-            margin-bottom: -33px !important;
-            height: 80vh !important;
-        }
-
-        .hero p {
-            font-weight: 400;
-            font-size: 16px;
-            color: rgba(19, 19, 19, 0.8);
-            margin: 0px !important
-        }
-
-        .hero .hero-text {
-            color: #34364a;
-            font-size: 68px;
-            font-weight: 700;
-            line-height: 78px;
-        }
-
-        .hero .btn-cta {
-            background: #4F94D7;
-            border-radius: 12px;
-            color: white;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 150%;
-            padding: 12px 32px;
-        }
-
-        .img-header {
-            position: absolute;
-            top: 1;
-            right: 0px;
-            z-index: -1;
-        }
-
-        .navbar-expand-lg {
-            background-color: white !important;
-            box-shadow: -1.5px 4px 16px rgb(118 126 148 / 20%);
-            transition: background-color 200ms linear;
-        }
-
-        .benefit {
-            background: #03173C;
-            padding: 20px 0px;
-        }
-
-        @media (min-width: 767px) {
-            .benefit {
-                padding: 60px 0px;
+        /* Menampilkan kembali navbar saat tidak mencetak */
+        @media screen {
+            .navbar {
+                display: block;
             }
-
-            .hero {
-                background: none !important;
-                margin-top: 35px;
-                margin-bottom: -33px !important;
-                height: 80vh !important;
-            }
-
-        }
-
-        @media (max-width: 767px) {
-            .col-md-3 {
-                margin-bottom: 20px;
-                /* Adjust this value as needed */
-            }
-        }
-
-        .header-primary {
-            color: #34364a;
-            font-size: 38px;
-            font-weight: 700;
-            line-height: 48px;
-        }
-
-        .pricing .item-pricing {
-            background: #fff;
-            border-radius: 16px;
-            padding: 30px;
-        }
-
-        .card-title {
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        .check-icon {
-            color: #009688;
-            font-size: 30px;
-            margin-bottom: 15px;
-        }
-
-        .non-check-icon {
-            color: #FF5151;
-            font-size: 30px;
-            margin-bottom: 15px;
-        }
-
-        .in-progress-icon {
-            color: #FFBD13;
-            font-size: 30px;
-            margin-bottom: 15px;
-        }
-
-
-        .rounded-card {
-            border-radius: 8px;
-        }
-
-        .item-pricing.item-mentor p {
-            margin-top: 5px;
-            /* Jarak dari atas */
-            margin-bottom: 5px;
-            /* Jarak dari bawah */
-        }
-
-        h5 {
-            font-size: 16px;
-            font-weight: normal;
-        }
-
-        h6 {
-            font-size: 18px;
-            font-weight: normal;
         }
     </style>
     @endpush
 
-
-    <section class="py-5" style="margin-top: 10px">
-        <div class="container">
-            <div class="row">
-                <div class="text-center col-lg-12">
-                    <h1 class="mb-3 header-primary"></h1>
-                </div>
-            </div>
-            <div class="mt-5 row pricing testimonials mentors checkout gy-4" id="pembayaran">
-                <div class="container-fluid ">
-                    <form id="form-manual" method="post" action="#" enctype="multipart/form-data">
-                        @csrf
-                        <div class="payment-details ">
-                            <div class="item-pricing item-mentor">
-                                <div class="card-body">
-                                    <img src="{{ asset('assets/frontend/image/logo.svg') }}">
-                                    <h4 class="card-title">Detail Transaksi</h4>
-                                    <div class="row align-items-center mb-3">
-                                        <div class="col-md-6 mb-3 mb-md-0">
-                                            <h6 class="mb-1"><b>Nama Pemesan</b></h6>
-                                            <h3 class="card-text mb-2" id="totalpayment"
-                                                style="color: #009688; cursor: pointer;"><b>{{ $transaction->fullname
-                                                    }}</b></h3>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <h6><b>Nama Waralaba</b></h6>
-                                            <h5>{{ $transaction->waralaba_name }}</h5>
-                                        </div>
-                                    </div>
-                                    <div class="row align-items-center mb-3">
-                                        <div class="col-md-6 mb-3 mb-md-0">
-                                            <h6 class="mb-1"><b>Kontak</b></h6>
-                                            <h5>{{ $transaction->phone_number }} | {{ $transaction->email }}</h5>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <h6 class="mb-1"><b>Lokasi Pendirian</b></h6>
-                                            <h5>{{ $transaction->address }}</h5>
-                                        </div>
-                                    </div>
-
+    <div class="row mt-4">
+        <div class="col">
+            <div id="print-content">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row mt-5">
+                                <div class="col-lg-8 col-12">
+                                    <img src="{{ asset('assets/frontend/image/logo.svg') }}" class="mb-4" height="40">
+                                    <h3 class="mb-0">Invoice Pembelian Waralaba</h3>
+                                </div>
+                                <div class="col-lg-4 text-right col-12">
+                                    <p class="mb-0 mt-2">
+                                        ID Transaksi: TRX-{{ substr($transaction->uuid, 2, 6) }}
+                                    </p>
+                                    <p>
+                                        Status: <strong>
+                                            @if($transaction->status == 0)
+                                                PENDING
+                                            @elseif($transaction->status == 1)
+                                                PENDING
+                                            @elseif($transaction->status == 2)
+                                                PENDING
+                                            @elseif($transaction->status == 3)
+                                                SUCCESS
+                                            @elseif($transaction->status == 4)
+                                                GAGAL
+                                            @else
+                                                UNKNOWN
+                                            @endif
+                                        </strong>
+                                    </p>
                                 </div>
                             </div>
-                            <br>
-                            <div class="item-pricing item-mentor">
-                                <h6><b>Status Transaksi</b>
-                                    <p>Terakhir diupdate: {{ $transaction->updated_at->format('d/m/Y H:i') }} WIB</p>
-                                    <div class="row justify-content-center mt-4">
-                                        <?php
-                                            $status = $transaction->status;
-
-                                            $steps = [
-                                                0 => ['icon' => 'check', 'text' => 'Verifikasi Pembayaran'],
-                                                1 => ['icon' => 'check', 'text' => 'Pembangunan'],
-                                                2 => ['icon' => 'check', 'text' => 'Pembukaan Waralaba'],
-                                                3 => ['icon' => 'check', 'text' => 'Selesai'],
-                                            ];
-
-                                            // Mengatur ikon dan teks berdasarkan status
-                                            foreach ($steps as $step => $info) {
-                                                // Memeriksa apakah status saat ini lebih besar atau sama dengan langkah saat ini
-                                                if ($status > $step) {
-                                                    // Jika status lebih besar atau sama dengan langkah saat ini,
-                                                    // gunakan ikon centang dan kelas hijau
-                                                    $iconClass = 'check-icon';
-                                                    $icon = 'check-circle';
-                                                    $statusText = 'Selesai';
-                                                } elseif ($status === $step) {
-                                                    // Jika status sama dengan langkah saat ini,
-                                                    // gunakan ikon spinner dan kelas biru untuk menandakan sedang dalam proses
-                                                    $iconClass = 'in-progress-icon';
-                                                    $icon = 'spinner';
-                                                    $statusText = 'Sedang Dalam Proses';
-                                                } else {
-                                                    // Jika status lebih kecil dari langkah saat ini,
-                                                    // gunakan ikon silang dan kelas merah
-                                                    $iconClass = 'non-check-icon';
-                                                    $icon = 'times-circle';
-                                                    $statusText = 'Belum Selesai';
-                                                }
-                                                if ($status == 3 && $step == 3) {
-                                                    $iconClass = 'check-icon';
-                                                    $icon = 'check-circle';
-                                                    $statusText = 'Pesanan Selesai';
-                                                }
-                                                if ($status == null) {
-                                                    echo '
-                                                        <div class="col-md-3">
-                                                            <div class=" text-center">
-                                                                <div class="card-body">
-                                                                    <i class="fas fa-spinner fa-5x in-progress-icon"></i>
-                                                                    <h5><b>Pembayaran Sedang Diverifikasi</b></h5>
-                                                                    <p>Max. 2 x 24 Jam di hari kerja</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    ';
-                                                    break; // Hentikan iterasi setelah menambahkan card baru
-                                                }
-
-                                                if ($status == 4) {
-                                                    echo '
-                                                        <div class="col-md-3">
-                                                            <div class=" text-center">
-                                                                <div class="card-body">
-                                                                    <i class="fas fa-times-circle fa-5x non-check-icon"></i>
-                                                                    <h5>Pesanan Anda Ditolak</h5>
-                                                                    <p>Karena pembayaran tidak valid</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    ';
-                                                    break; // Hentikan iterasi setelah menambahkan card baru
-                                                }
-
-                                                // Mencetak kartu dengan ikon dan teks yang sesuai
-                                                echo '
-                                                    <div class="col-md-3">
-                                                        <div class="card text-center rounded-card">
-                                                            <div class="card-body">
-                                                                <i class="fas fa-' . $icon . ' fa-5x ' . $iconClass . '"></i>
-                                                                <h5>' . $info['text'] . '</h5>
-                                                                <p>' . $statusText . '</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                ';
-                                            }
-                                            ?>
+                            <hr class="mb-4">
+                            <div class="row mb-4">
+                                <div class="col-lg-6 col-12">
+                                    <p class="mb-0">
+                                        <strong>PT. Warabisnis Technology</strong>
+                                    </p>
+                                    <p class="mb-0">
+                                        Banyumas, Jawa Tengah, Indonesia
+                                    </p>
+                                    <p class="mb-0">
+                                        (081) 572663773
+                                    </p>
+                                </div>
+                                <div class="col-lg-6 col-12 text-right">
+                                    <p class="mb-0 text-blue">
+                                        Kepada:
+                                    </p>
+                                    <p class="mb-0">
+                                        <strong>{{ $transaction->user->name }}</strong>
+                                    </p>
+                                    <p class="mb-0">
+                                        {{ $transaction->user->email }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-lg-12 col-12">
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Nama Waralaba</th>
+                                                <th scope="col">Harga</th>
+                                                <th scope="col">Qty</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td width="45%">{{ $transaction->waralaba_name }}</td>
+                                                <td>
+                                                    Rp. {{ number_format($transaction->waralaba->price, 0, ',', '.') }}
+                                                </td>
+                                                <td>1</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <span></span>
+                                        <span>Biaya Layanan :‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ Rp. 100.000</span>
                                     </div>
+                                    @php
+                                        $totalPayment = $transaction->waralaba->price + 100000;
+                                    @endphp
+                                    <div class="d-flex justify-content-between">
+                                        <span></span>
+                                        <h6><b>Total Pembayaran</b> : Rp. {{ number_format($totalPayment, 0, ',', '.') }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-lg-12 col-12">
+                                    
+                                </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
-            </form>
+            <div class="text-center mt-3">
+                <button onclick="printInvoice()" class="btn btn-dark">Print</button>
+            </div>
         </div>
-        </div>
-    </section>
+    </div>
+
+    <script>
+        function printInvoice() {
+            var printContent = document.getElementById("print-content").innerHTML;
+            var originalContent = document.body.innerHTML;
+
+            document.body.innerHTML = printContent;
+
+            window.print();
+
+            document.body.innerHTML = originalContent;
+        }
+    </script>
 </x-admin-layout>

@@ -196,7 +196,6 @@
                             <br>
                             <div class="item-pricing item-mentor">
                                 <h6><b>Status Transaksi</b>
-                                    <p>Terakhir diupdate: {{ $transaction->updated_at->format('d/m/Y H:i') }} WIB</p>
                                     <div class="row justify-content-center mt-4">
                                         <?php
                                             $status = $transaction->status;
