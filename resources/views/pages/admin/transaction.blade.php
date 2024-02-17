@@ -64,16 +64,12 @@
             color: white;
         }
 
-
         .small-circle-img {
             width: 50px;
-            /* Ukuran gambar profil */
             height: 50px;
             border-radius: 50%;
-            /* Lingkaran */
             object-fit: contain;
         }
-
 
         @media screen and (max-width: 576px) {
             .search-bar {
@@ -85,6 +81,13 @@
                 width: 100%;
                 margin: 5px 0;
             }
+        }
+
+        .transaction-buttons-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
         }
     </style>
     @endpush
@@ -120,56 +123,56 @@
                             </thead>
                             <tbody>
                                 @foreach($transactions as $key => $transaction)
-                                    <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>TRX-{{ substr($transaction->uuid, 2, 6) }}</td>
-                                        <td>{{ $transaction->waralaba_name }}</td>
-                                        <td>{{ $transaction->fullname }}</td>
-                                        <td>{{ $transaction->created_at }}</td>
-                                        <td>{{ $transaction->payment_method }}</td>
-                                        <td>
-                                            @switch($transaction->status)
-                                                @case(0)
-                                                    <span>Verifikasi Pembayaran</span>
-                                                    @break
-                                                @case(1)
-                                                    <span>Proses Pembangunan</span>
-                                                    @break
-                                                @case(2)
-                                                    <span>Proses Pembukaan</span>
-                                                    @break
-                                                @case(3)
-                                                    <span>Selesai</span>
-                                                    @break
-                                                @case(4)
-                                                    <span>Gagal</span>
-                                                    @break
-                                            @endswitch
-                                        </td>
-                                        <td>
-                                            <div class="transaction-details">
-                                                <a href="{{ route('admin.transactions.show', ['id' => $transaction->uuid]) }}"
-                                                    class="btn btn-circle btn-primary"
-                                                    style="background-color: #009bb8; border: none;">
-                                                    <i class="fas fa-eye" style="color: white;"></i>
-                                                </a>
-                                                <a href="{{ route('admin.transactions.edit', ['id' => $transaction->uuid]) }}"
-                                                    class="btn btn-circle btn-warning"
-                                                    style="background-color: #FFC107; border: none;">
-                                                    <i class="fas fa-edit" style="color: white;"></i>
-                                                </a>
-                                                <form action="{{ route('admin.transactions.destroy', $transaction->uuid) }}" method="POST"
-                                                    style="display: inline-block;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-circle btn-danger"
-                                                        style="background-color: #F44336; border: none;">
-                                                        <i class="fas fa-trash-alt" style="color: white;"></i>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>TRX-{{ substr($transaction->uuid, 2, 6) }}</td>
+                                    <td>{{ $transaction->waralaba_name }}</td>
+                                    <td>{{ $transaction->fullname }}</td>
+                                    <td>{{ $transaction->created_at }}</td>
+                                    <td>{{ $transaction->payment_method }}</td>
+                                    <td>
+                                        @switch($transaction->status)
+                                        @case(0)
+                                        <span>Verifikasi Pembayaran</span>
+                                        @break
+                                        @case(1)
+                                        <span>Proses Pembangunan</span>
+                                        @break
+                                        @case(2)
+                                        <span>Proses Pembukaan</span>
+                                        @break
+                                        @case(3)
+                                        <span>Selesai</span>
+                                        @break
+                                        @case(4)
+                                        <span>Gagal</span>
+                                        @break
+                                        @endswitch
+                                    </td>
+                                    <td>
+                                        <div class="transaction-details transaction-buttons-container">
+                                            <a href="{{ route('admin.transactions.show', ['id' => $transaction->uuid]) }}"
+                                                class="btn btn-circle btn-primary"
+                                                style="background-color: #009bb8; border: none;">
+                                                <i class="fas fa-eye" style="color: white;"></i>
+                                            </a>
+                                            <a href="{{ route('admin.transactions.edit', ['id' => $transaction->uuid]) }}"
+                                                class="btn btn-circle btn-warning"
+                                                style="background-color: #FFC107; border: none;">
+                                                <i class="fas fa-edit" style="color: white;"></i>
+                                            </a>
+                                            <form action="{{ route('admin.transactions.destroy', $transaction->uuid) }}"
+                                                method="POST" style="display: inline-block;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-circle btn-danger"
+                                                    style="background-color: #F44336; border: none;">
+                                                    <i class="fas fa-trash-alt" style="color: white;"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -178,20 +181,23 @@
             </div>
         </div>
     </section>
-    <script>ument.getElementById("searchInput").addEventListener("input", function () {
-            var input, filter, table, tr, tdName, tdId, i, txtValueName, txtValueId;
+    <script>
+        document.getElementById("searchInput").addEventListener("input", function () {
+            var input, filter, table, tr, tdName, tdId, tdPemesan, i, txtValueName, txtValueId, txtValuePemesan;
             input = this;
             filter = input.value.toUpperCase();
             table = document.querySelector(".transaction-table");
             tr = table.getElementsByTagName("tr");
 
             for (i = 0; i < tr.length; i++) {
-                tdName = tr[i].getElementsByTagName("td")[2]; // Kolom untuk nama transaksi
+                tdName = tr[i].getElementsByTagName("td")[2]; // Kolom untuk nama waralaba
                 tdId = tr[i].getElementsByTagName("td")[1]; // Kolom untuk ID transaksi
-                if (tdName || tdId) {
+                tdPemesan = tr[i].getElementsByTagName("td")[3]; // Kolom untuk Nama Pemesan
+                if (tdName && tdId && tdPemesan) {
                     txtValueName = tdName.textContent || tdName.innerText;
                     txtValueId = tdId.textContent || tdId.innerText;
-                    if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValueId.toUpperCase().indexOf(filter) > -1) {
+                    txtValuePemesan = tdPemesan.textContent || tdPemesan.innerText;
+                    if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValueId.toUpperCase().indexOf(filter) > -1 || txtValuePemesan.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";
                     } else {
                         tr[i].style.display = "none";
@@ -200,4 +206,4 @@
             }
         });
     </script>
-    </x-user-layout>
+</x-user-layout>
