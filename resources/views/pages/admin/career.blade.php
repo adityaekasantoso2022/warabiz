@@ -148,7 +148,6 @@
                                                 style="background-color: #FFC107; border: none;">
                                                 <i class="fas fa-edit" style="color: white;"></i>
                                             </a>
-                                            <span style="width: 5px;"></span>
                                             <form action="{{ route('admin.careers.destroy', $career->id) }}"
                                                 method="POST">
                                                 @csrf

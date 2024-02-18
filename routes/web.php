@@ -30,9 +30,13 @@ Route::
         namespace('App\Http\Controllers\User')->group(function () {
             Route::get('/', 'HomeController@index')->name('home');
             Route::middleware(['auth'])->group(function () {
+
                 Route::get('/waraedu', [ArticleController::class, 'getAll'])->name('waraedu');
                 Route::get('/waraedu/{id}', [ArticleController::class, 'getDetail'])->name('waraedu-detail');
+
                 Route::get('/waracareer', 'WaracareerController@getData')->name('waracareer');
+                Route::get('/career/{id}', 'WaracareerController@show')->name('career.show');
+
                 Route::get('/warapartner', 'WarapartnerController@index')->name('warapartner');
                 Route::get('/home', 'HomeController@index')->name('home.index');
                 Route::get('/waralaba/{id}', [WaralabaController::class, 'show'])->name("waralaba");
@@ -85,15 +89,18 @@ Route::
                 Route::get('/admin/articles/create', [ArtikelAdminController::class, 'create'])->name('admin.articles.create');
                 Route::post('/admin/articles', [ArtikelAdminController::class, 'store'])->name('admin.articles.store');
 
-
+                //Admin CRUD Waracareer
                 Route::get('/admin/career', [CareerAdminController::class, 'index'])->name('admin.career');
                 Route::get('/admin/careers/create', [CareerAdminController::class, 'create'])->name('admin.career.create');
                 Route::post('/admin/careers', [CareerAdminController::class, 'store'])->name('admin.careers.store');
                 Route::get('/admin/careers/{id}/edit', [CareerAdminController::class, 'edit'])->name('admin.careers.edit');
                 Route::post('/admin/careers/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroy');
                 Route::delete('/admin/careers/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroy');
+                Route::put('/admin/careers/', [CareerAdminController::class, 'update'])->name('admin.careers.update');
                 Route::put('/admin/careers/{id}', [CareerAdminController::class, 'update'])->name('admin.careers.update');
 
+
+                //Admin RUD Bantuan
                 Route::get('/admin/bantuan', [BantuanAdminController::class, 'index'])->name('admin.bantuan');
                 Route::get('pesan/{id}/balas', [BantuanAdminController::class, 'balas'])->name('pesan.balas');
                 Route::delete('/hapus-pesan/{id}', [BantuanAdminController::class, 'hapusPesan'])->name('pesan.hapus');

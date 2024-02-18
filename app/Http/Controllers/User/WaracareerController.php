@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class WaracareerController extends Controller
 {
+    public function show($id)
+    {
+        $career = WaraCareer::find($id);
+        return view('pages.user.waracareerdetail', compact('career'));
+    }
     public function index()
     {
         if (Auth::check()) {

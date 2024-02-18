@@ -4,6 +4,8 @@
         /* Style untuk latar belakang dan elemen-elemen lainnya */
         body {
             background: #dae3ec !important;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
         }
 
         .navbar .navbar-nav a:hover.btn-signup {
@@ -60,22 +62,14 @@
         /* Style untuk kartu artikel */
         .job-card {
             display: grid;
-            grid-template-columns: 80px auto 100px;
-            grid-template-rows: 35px 10px 35px;
-            width: 640px;
-            border-top: 1px solid #e3e3e3;
-            border-bottom: 1px solid #e3e3e3;
+            grid-template-columns: 80px auto 200px;
+            grid-template-rows: 35px 10px 35px auto;
+            width: 100%;
+            border: 1px solid #e3e3e3;
             padding: 24px;
             background-color: #fff;
             margin-bottom: 20px;
-            margin-right: 20px;
-            border-radius: 5px;
-        }
-
-        .job-card:hover,
-        .job-card:focus {
-            transform: scale(1.01);
-            transition: transform 0.3s ease;
+            border-radius: 10px;
         }
 
         .company-logo-img {
@@ -123,6 +117,33 @@
             padding: 0 24px;
         }
 
+        .description {
+            grid-area: 4 / 1 / 5 / 4;
+            padding: 0 24px;
+            margin-top: 20px;
+        }
+
+        .description-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .description-content {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .description-content ul {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .description-content ul li {
+            margin-bottom: 5px;
+        }
+
         .skill {
             display: inline;
             color: #00a6c2;
@@ -131,34 +152,65 @@
             border: 1px solid rgba(0, 166, 194, .15);
             padding: 5px 8px;
             font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
         }
 
-        .apply {
-            grid-area: 1 / 3 / 2 / 4;
+        .register-now {
+
             background-color: #1ab059;
             color: #fff;
-            display: block;
             width: 100%;
             cursor: pointer;
             border: 0;
-            border-radius: 4px;
+            border-radius: 30px;
+            margin-top: 40px;
+            margin-bottom: 10px;
             font-size: 14px;
-            padding: 6px 12px;
-            z-index: 2;
+            padding: 10px;
+            display: block;
+            max-width: 200px;
         }
 
-        .save {
-            grid-area: 3 / 3 / 4 / 4;
-            background-color: #fff;
-            border: 1px solid #a4a5a8;
-            color: #777;
-            display: block;
-            width: 100%;
-            cursor: pointer;
-            border-radius: 4px;
+        /* Tombol kembali */
+        .back-button {
+            border: 2px solid #1ab059;
+            color: #1ab059;
+            background: none;
+            border-radius: 30px;
+            margin-top: 40px;
+            margin-bottom: 10px;
             font-size: 14px;
-            padding: 6px 12px;
-            z-index: 2;
+            width: 100%;
+            padding: 10px;
+            display: block;
+            max-width: 200px;
+            margin-right: 10px;
+
+        }
+
+        .buttons-container {
+            display: flex;
+            /* Menjadikan flexbox */
+            justify-content: space-between;
+            /* Agar tombol berada pada ujung masing-masing */
+        }
+
+
+        /* Responsive CSS */
+        @media only screen and (max-width: 600px) {
+            .job-card {
+                grid-template-columns: 80px auto;
+            }
+        }
+
+        .banner img {
+            width: 1300px;
+            height: 150px;
+            object-fit: cover;
+            object-position: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px; 
         }
     </style>
     @endpush
@@ -166,29 +218,39 @@
     <section style="margin-top: 140px;">
         <div class="container">
             <div class="row">
-                @foreach($data as $career)
+                <div class="banner">
+                    <img src="{{ $career->image_url }}" alt="Banner Image">
+                </div>
+            </div>
+            <div class="row">
                 <div class="job-card">
                     <div class="company-logo-img">
-                        <img src="{{ $career->logo_url }}" />
+                        <img src="{{ $career->logo_url }}" alt="Company Logo">
                     </div>
                     <div class="job-title">{{ $career->career_title }}</div>
-                    <div class="company-name">Alfamart Tbk</div>
+                    <div class="company-name">{{ $career->address }}</div>
                     <div class="skills-container">
-                        <div class="skill">Lulusan SMA/SMK</div>
-                        <div class="skill">S</div>
-                        <div class="skill">Skill</div>
+                        <div class="skill">HTML</div>
+                        <div class="skill">CSS</div>
+                        <div class="skill">JavaScript</div>
                     </div>
-                    <button class="apply" onclick="applyJob({{ $career->id }})">Apply</button>
-                    <button class="save">Save Job</button>
-                    <a href="#"></a>
+                    <div class="description">
+                        <h6 class="description-title">Deskripsi Pekerjaan</h6>
+                        <p class="description-content">{{ $career->description }}.</p>
+                        <h6 class="description-title">Syarat & Ketentuan:</h6>
+                        <ul class="description-content">
+                            <li>Minimal memiliki pengalaman 2 tahun di bidang terkait.</li>
+                            <li>Mahir menggunakan Adobe Photoshop, Illustrator, dan Sketch.</li>
+                            <li>Berpengalaman dalam desain UI/UX adalah nilai tambah.</li>
+                        </ul>
+                        <div class="buttons-container">
+                            <button class="register-now">Daftar</button>
+                            <button class="back-button">Kembali</button>
+                        </div>
+                    </div>
+                    <p class="description-content"><b>Perkiraan Gaji</b><br> 7-8 Juta per bulan</p>
                 </div>
-                @endforeach
             </div>
+        </div>
     </section>
 </x-user-layout>
-
-<script>
-    function applyJob(careerId) {
-        window.location.href = "{{ route('career.show', 'career_id') }}".replace('career_id', careerId);
-    }
-</script>
