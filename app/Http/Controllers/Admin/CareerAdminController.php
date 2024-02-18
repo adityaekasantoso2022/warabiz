@@ -22,6 +22,10 @@ class CareerAdminController extends Controller
     public function destroy($id)
     {
         $career = WaraCareer::findOrFail($id);
+
+        CloudinaryStorage::delete($career->image_url);
+        CloudinaryStorage::delete($career->logo_url);
+
         $career->delete();
         return redirect()->route('admin.career')->with('success', 'Pekerjaan berhasil dihapus.');
     }
@@ -38,7 +42,7 @@ class CareerAdminController extends Controller
             'image_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'logo_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi untuk logo_url
         ]);
-    
+
         // Pengunggahan gambar image_url
         $image = $request->file('image_url');
         $imageResult = null;

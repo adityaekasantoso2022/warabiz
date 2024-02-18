@@ -106,6 +106,10 @@ class ArtikelAdminController extends Controller
     public function destroy($id)
     {
         $article = Articles::findOrFail($id);
+
+        // Hapus gambar dari Cloudinary
+        CloudinaryStorage::delete($article->image_url);
+
         $article->delete();
         return redirect()->route('admin.artikel')->with('success', 'Artikel berhasil dihapus.');
     }

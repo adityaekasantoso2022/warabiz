@@ -202,8 +202,25 @@ class WaralabaAdminController extends Controller
 
     public function destroy($id)
     {
+        // Cari waralaba berdasarkan ID
         $waralaba = Waralaba::findOrFail($id);
+
+        // Hapus logo dari Cloudinary
+        CloudinaryStorage::delete($waralaba->logo);
+
+        // Hapus gambar dari Cloudinary
+        CloudinaryStorage::delete($waralaba->image_url_1);
+        CloudinaryStorage::delete($waralaba->image_url_2);
+        CloudinaryStorage::delete($waralaba->image_url_3);
+        CloudinaryStorage::delete($waralaba->image_url_4);
+        CloudinaryStorage::delete($waralaba->image_url_5);
+
+        // Hapus brosur dari Cloudinary
+        CloudinaryStorage::delete($waralaba->brochure_link);
+
+        // Hapus data waralaba dari database
         $waralaba->delete();
+
         return redirect()->route('admin.waralaba')->with('success', 'Waralaba berhasil dihapus.');
     }
 }
