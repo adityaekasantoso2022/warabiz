@@ -128,17 +128,19 @@
                                     <td class="text-center">{{ $user->role }}</td>
                                     <td class="text-center">
                                         <div class="user-details">
-                                            <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-circle btn-warning"
+                                            <a href="{{ route('admin.user.edit', $user->id) }}"
+                                                class="btn btn-circle btn-warning"
                                                 style="background-color: #FFC107; border: none;"><i class="fas fa-edit"
                                                     style="color: white;"></i></a>
-                                                    <form action="{{ route('admin.user.destroy', $user->id) }}" method="post" style="display: inline;">
-                                                        @csrf
-                                                        @method('DELETE')
-
-                                                        <button type="submit" class="btn btn-circle btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
-                                                            <i class="fas fa-trash-alt" style="color: white;"></i>
-                                                        </button>
-                                                    </form>
+                                            <form action="{{ route('admin.user.destroy', $user->id) }}" method="post"
+                                                style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-circle btn-danger"
+                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
+                                                    <i class="fas fa-trash-alt" style="color: white;"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>

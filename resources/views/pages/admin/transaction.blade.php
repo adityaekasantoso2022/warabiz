@@ -110,6 +110,17 @@
                                 <input type="text" id="searchInput"
                                     class="form-control border px-2 py-1 rounded-3 shadow-none ml-2">
                             </div>
+                            <div>
+                                <label for="statusFilter">Filter Status:</label>
+                                <select id="statusFilter" class="form-select">
+                                    <option value="">Semua</option>
+                                    <option value="Verifikasi Pembayaran">Verifikasi Pembayaran</option>
+                                    <option value="Proses Pembangunan">Proses Pembangunan</option>
+                                    <option value="Proses Pembukaan">Proses Pembukaan</option>
+                                    <option value="Selesai">Selesai</option>
+                                    <option value="Gagal">Gagal</option>
+                                </select>
+                            </div>
                         </div>
 
                         <table class="transaction-table">
@@ -133,12 +144,13 @@
                                 @endphp
 
                                 @foreach($sortedTransactions as $transaction)
-                                <tr>
+                                <tr class="transaction-row"
+                                    data-status="{{ $transaction->status }}">
                                     <td>{{ ++$transactionIndex }}</td>
                                     <td>TRX-{{ substr($transaction->uuid, 2, 6) }}</td>
                                     <td>{{ $transaction->waralaba_name }}</td>
                                     <td>{{ $transaction->fullname }}</td>
-                                    <td>{{ $transaction->created_at }}</td>
+                                    <td>{{ $transaction->created_at->setTimezone('Asia/Jakarta')->format('d/m/Y H:i') }}</td>
                                     <td>{{ $transaction->payment_method }}</td>
                                     <td>
                                         @switch($transaction->status)
@@ -209,6 +221,25 @@
                     txtValueId = tdId.textContent || tdId.innerText;
                     txtValuePemesan = tdPemesan.textContent || tdPemesan.innerText;
                     if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValueId.toUpperCase().indexOf(filter) > -1 || txtValuePemesan.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        });
+
+        document.getElementById("statusFilter").addEventListener("change", function () {
+            var filter, table, tr, tdStatus, i, txtValueStatus;
+            filter = this.value.toUpperCase();
+            table = document.querySelector(".transaction-table");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                tdStatus = tr[i].getElementsByTagName("td")[6]; // Kolom untuk status transaksi
+                if (tdStatus) {
+                    txtValueStatus = tdStatus.textContent || tdStatus.innerText;
+                    if (filter === '' || txtValueStatus.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";
                     } else {
                         tr[i].style.display = "none";

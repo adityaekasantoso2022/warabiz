@@ -202,15 +202,26 @@
             .job-card {
                 grid-template-columns: 80px auto;
             }
+
+            .skills-container {
+                display: none;
+                /* Menyembunyikan kontainer keterampilan saat tampilan di perangkat seluler */
+            }
+
+            .company-name {
+                display: none;
+                /* Menyembunyikan kontainer keterampilan saat tampilan di perangkat seluler */
+            }
+
         }
 
         .banner img {
-            width: 1300px;
-            height: 150px;
+            width: 100%;
+            max-height: 150px;
             object-fit: cover;
             object-position: center;
             border-top-left-radius: 10px;
-            border-top-right-radius: 10px; 
+            border-top-right-radius: 10px;
         }
     </style>
     @endpush
@@ -230,11 +241,13 @@
                     <div class="job-title">{{ $career->career_title }}</div>
                     <div class="company-name">{{ $career->address }}</div>
                     <div class="skills-container">
-                        <div class="skill">HTML</div>
-                        <div class="skill">CSS</div>
-                        <div class="skill">JavaScript</div>
+                        <div class="skill">Komunikasi</div>
+                        <div class="skill">Sopan</div>
+                        <div class="skill">Bertanggung Jawab</div>
                     </div>
                     <div class="description">
+                        <h6 class="description-title">Profile Perusahaan</h6>
+                        <p class="description-content">{{ $career->description }}.</p>
                         <h6 class="description-title">Deskripsi Pekerjaan</h6>
                         <p class="description-content">{{ $career->description }}.</p>
                         <h6 class="description-title">Syarat & Ketentuan:</h6>
@@ -245,10 +258,11 @@
                         </ul>
                         <div class="buttons-container">
                             <button class="register-now">Daftar</button>
-                            <button class="back-button">Kembali</button>
+                            <button class="back-button"
+                                onclick="window.location.href='{{ route('waracareer') }}'">Kembali</button>
                         </div>
                     </div>
-                    <p class="description-content"><b>Perkiraan Gaji</b><br> 7-8 Juta per bulan</p>
+                    <p class="description-content"><b>Perkiraan Gaji</b><br> 7-8 Juta/bulan</p>
                 </div>
             </div>
         </div>

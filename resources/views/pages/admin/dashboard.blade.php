@@ -25,7 +25,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body px-4 py-4-5">
@@ -43,7 +42,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body px-4 py-4-5">
@@ -61,7 +59,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body px-4 py-4-5">
@@ -80,78 +77,73 @@
             </div>
         </div>
     </div>
-
     <div class="row mt-4">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Transaksi Terbaru</h5>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>ID Transaksi</th>
-                                    <th>Nama Waralaba</th>
-                                    <th>Nama Pemesan</th>
-                                    <th>Tanggal Transaksi</th>
-                                    <th>Pembayaran</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($transactions->sortByDesc('created_at') as $key => $transaction)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>TRX-{{ substr($transaction->uuid, 2, 6) }}</td>
-                                    <td>{{ $transaction->waralaba_name }}</td>
-                                    <td>{{ $transaction->fullname }}</td>
-                                    <td>{{ $transaction->created_at->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s') }}</td>
-                                    <td>Bank {{ $transaction->payment_method }}</td>
-                                    <td>
-                                        @switch($transaction->status)
-                                        @case(0)
-                                            <span class="status-label proses-verifikasi">Verifikasi Pembayaran</span>
-                                            @break
-                                        @case(1)
-                                            <span class="status-label proses-pembangunan">Proses Pembangunan</span>
-                                            @break
-                                        @case(2)
-                                            <span class="status-label persiapan-pembukaan">Proses Pembukaan Waralaba</span>
-                                            @break
-                                        @case(3)
-                                            <span class="status-label selesai">Selesai</span>
-                                            @break
-                                        @case(4)
-                                            <span class="status-label ditolak">Ditolak</span>
-                                            @break
-                                        @endswitch
-                                    </td>
-                                    <td>
-                                        <div class="transaction-details transaction-buttons-container">
-                                            <a href="{{ route('admin.transactions.show', ['id' => $transaction->uuid]) }}"
-                                                class="btn btn-circle btn-primary"
-                                                style="background-color: #009bb8; border: none;">
-                                                <i class="fas fa-eye" style="color: white;"></i>
-                                            </a>
-                                            <a href="{{ route('admin.transactions.edit', ['id' => $transaction->uuid]) }}"
-                                                class="btn btn-circle btn-warning"
-                                                style="background-color: #FFC107; border: none;">
-                                                <i class="fas fa-edit" style="color: white;"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Transaksi Terbaru</h5>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>ID Transaksi</th>
+                                <th>Nama Waralaba</th>
+                                <th>Nama Pemesan</th>
+                                <th>Tanggal Transaksi</th>
+                                <th>Pembayaran</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($transactions->sortByDesc('created_at') as $key => $transaction)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>TRX-{{ substr($transaction->uuid, 2, 6) }}</td>
+                                <td>{{ $transaction->waralaba_name }}</td>
+                                <td>{{ $transaction->fullname }}</td>
+                                <td>{{ $transaction->created_at->setTimezone('Asia/Jakarta')->format('d/m/Y H:i') }}</td>
+                                <td>Bank {{ $transaction->payment_method }}</td>
+                                <td>
+                                    @switch($transaction->status)
+                                    @case(0)
+                                        <span class="status-label proses-verifikasi">Verifikasi Pembayaran</span>
+                                        @break
+                                    @case(1)
+                                        <span class="status-label proses-pembangunan">Proses Pembangunan</span>
+                                        @break
+                                    @case(2)
+                                        <span class="status-label persiapan-pembukaan">Proses Pembukaan Waralaba</span>
+                                        @break
+                                    @case(3)
+                                        <span class="status-label selesai">Selesai</span>
+                                        @break
+                                    @case(4)
+                                        <span class="status-label ditolak">Ditolak</span>
+                                        @break
+                                    @endswitch
+                                </td>
+                                <td>
+                                    <div class="transaction-details transaction-buttons-container d-flex justify-content-between">
+                                        <a href="{{ route('admin.transactions.show', ['id' => $transaction->uuid]) }}" class="btn btn-circle btn-primary" style="background-color: #009bb8; border: none;">
+                                            <i class="fas fa-eye" style="color: white;"></i>
+                                        </a>
+                                        <span style="width: 5px;"></span>
+                                        <a href="{{ route('admin.transactions.edit', ['id' => $transaction->uuid]) }}" class="btn btn-circle btn-warning" style="background-color: #FFC107; border: none;">
+                                            <i class="fas fa-edit" style="color: white;"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Tambahkan ini di dalam area yang sesuai pada halaman HTML Anda -->
+</div>
 <div class="row mt-4">
     <div class="col">
         <div class="card">
@@ -163,39 +155,38 @@
     </div>
 </div>
 <div class="row mt-4">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Waralaba Terlaris</h5>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Nama Waralaba</th>
-                                    <th>Jumlah Terjual</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php 
-                                    $topFranchises = $transactions->groupBy('waralaba_name')
-                                                        ->map->count()
-                                                        ->sortDesc(); 
-                                @endphp
-                                @foreach($topFranchises as $name => $count)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $name }}</td>
-                                    <td>{{ $count }} Waralaba</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Waralaba Terlaris</h5>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama Waralaba</th>
+                                <th>Jumlah Terjual</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Isi tabel waralaba terlaris -->
+                            @php 
+                                $topFranchises = $transactions->groupBy('waralaba_name')->map->count()->sortDesc(); 
+                            @endphp
+                            @foreach($topFranchises as $name => $count)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $name }}</td>
+                                <td>{{ $count }} Waralaba</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
 @push('addonScript')
