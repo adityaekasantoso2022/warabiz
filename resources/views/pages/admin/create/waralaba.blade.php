@@ -40,35 +40,35 @@
                     @csrf
                     <div class="mb-3">
                         <label for="waralaba_name" class="form-label">Nama Waralaba</label>
-                        <input type="text" class="form-control" id="waralaba_name" name="waralaba_name">
+                        <input type="text" class="form-control" id="waralaba_name" name="waralaba_name" required>
                     </div>
                     <div class="mb-3">
                         <label for="logo" class="form-label">Logo</label>
-                        <input type="file" class="form-control" id="logo" name="logo">
+                        <input type="file" class="form-control" id="logo" name="logo" accept="image/*">
                     </div>
                     <div class="mb-3">
                         <label for="image_url_1" class="form-label">Gambar 1</label>
-                        <input type="file" class="form-control" id="image_url_1" name="image_url_1">
+                        <input type="file" class="form-control" id="image_url_1" name="image_url_1" accept="image/*">
                     </div>
                     <div class="mb-3">
                         <label for="image_url_2" class="form-label">Gambar 2</label>
-                        <input type="file" class="form-control" id="image_url_2" name="image_url_2">
+                        <input type="file" class="form-control" id="image_url_2" name="image_url_2" accept="image/*">
                     </div>
                     <div class="mb-3">
                         <label for="image_url_3" class="form-label">Gambar 3</label>
-                        <input type="file" class="form-control" id="image_url_3" name="image_url_3">
+                        <input type="file" class="form-control" id="image_url_3" name="image_url_3" accept="image/*">
                     </div>
                     <div class="mb-3">
                         <label for="image_url_4" class="form-label">Gambar 4</label>
-                        <input type="file" class="form-control" id="image_url_4" name="image_url_4">
+                        <input type="file" class="form-control" id="image_url_4" name="image_url_4" accept="image/*">
                     </div>
                     <div class="mb-3">
                         <label for="image_url_5" class="form-label">Gambar 5</label>
-                        <input type="file" class="form-control" id="image_url_5" name="image_url_5">
+                        <input type="file" class="form-control" id="image_url_5" name="image_url_5" accept="image/*">
                     </div>
                     <div class="mb-3">
                         <label for="category_id" class="form-label">Kategori</label>
-                        <select class="form-control" id="category_id" name="category_id">
+                        <select class="form-control" id="category_id" name="category_id" required>
                             <option value=10101>Makanan dan Minuman</option>
                             <option value=10102>Pendidikan</option>
                             <option value=10103>Ritel</option>

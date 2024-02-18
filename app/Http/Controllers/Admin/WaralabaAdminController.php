@@ -65,12 +65,15 @@ class WaralabaAdminController extends Controller
             'outlet_total' => 'required',
             'license_duration' => 'required',
             'description' => 'required',
-            'royalty' => 'required',
+            'royality' => 'required',
             'income' => 'required',
             'rating' => 'required',
             'concept' => 'required',
             'concept_size' => 'required',
         ]);
+
+        // Generate UUID for id field
+        $id = (string) Str::uuid();
 
         // Gunakan 'image_url' daripada 'image' pada baris berikut
         $logo = $request->file('logo');
@@ -90,10 +93,11 @@ class WaralabaAdminController extends Controller
             $image_url_3 = CloudinaryStorage::upload($image3->getRealPath(), $image3->getClientOriginalName());
             $image_url_4 = CloudinaryStorage::upload($image4->getRealPath(), $image4->getClientOriginalName());
             $image_url_5 = CloudinaryStorage::upload($image5->getRealPath(), $image5->getClientOriginalName());
-            $bochure_url = CloudinaryStorage::uploadFile($brochure->getRealPath(), $brochure->getClientOriginalName());
+            $brochure_url = CloudinaryStorage::uploadFile($brochure->getRealPath(), $brochure->getClientOriginalName());
 
             // Buat objek artikel baru berdasarkan data yang diterima
             Waralaba::create([
+                'id' => $id,
                 'logo' => $logo,
                 'image_url_1' => $image_url_1,
                 'image_url_2' => $image_url_2,
@@ -104,12 +108,12 @@ class WaralabaAdminController extends Controller
                 'waralaba_name' => $request->input('waralaba_name'),
                 'price' => $request->input('price'),
                 'contact' => $request->input('contact'),
-                'brochure_link' => $bochure_url,
+                'brochure_link' => $brochure_url,
                 'since' => $request->input('since'),
                 'outlet_total' => $request->input('outlet_total'),
                 'license_duration' => $request->input('license_duration'),
                 'description' => $request->input('description'),
-                'royality' => $request->input('royalty'),
+                'royality' => $request->input('royality'),
                 'income' => $request->input('income'),
                 'rating' => $request->input('rating'),
                 'concept' => $request->input('concept'),
@@ -124,7 +128,82 @@ class WaralabaAdminController extends Controller
 
     public function edit($id)
     {
-        $article = Waralaba::findOrFail($id);
+        $waralaba = Waralaba::findOrFail($id);
         return view('pages.admin.edit.waralaba', compact('waralaba'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validasi input
+        $request->validate([
+            'logo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id' => 'required',
+            'waralaba_name' => 'required',
+            'price' => 'required',
+            'contact' => 'required',
+            'since' => 'required',
+            'outlet_total' => 'required',
+            'license_duration' => 'required',
+            'description' => 'required',
+            'royality' => 'required',
+            'income' => 'required',
+            'rating' => 'required',
+            'concept' => 'required',
+            'concept_size' => 'required',
+        ]);
+
+        // Cari waralaba berdasarkan ID
+        $waralaba = Waralaba::findOrFail($id);
+
+        // Gunakan 'image_url' daripada 'image' pada baris berikut
+        $logo = $request->file('logo');
+        $image1 = $request->file('image_url_1');
+        $image2 = $request->file('image_url_2');
+        $image3 = $request->file('image_url_3');
+        $image4 = $request->file('image_url_4');
+        $image5 = $request->file('image_url_5');
+        $brochure = $request->file('brochure_link');
+
+        // Periksa apakah file baru dipilih, jika tidak, gunakan file yang sudah ada
+        $logoPath = $logo ? CloudinaryStorage::replace($waralaba->logo, $logo->getRealPath(), $logo->getClientOriginalName()) : $waralaba->logo;
+        $image1Path = $image1 ? CloudinaryStorage::replace($waralaba->image_url_1, $image1->getRealPath(), $image1->getClientOriginalName()) : $waralaba->image_url_1;
+        $image2Path = $image2 ? CloudinaryStorage::replace($waralaba->image_url_2, $image2->getRealPath(), $image2->getClientOriginalName()) : $waralaba->image_url_2;
+        $image3Path = $image3 ? CloudinaryStorage::replace($waralaba->image_url_3, $image3->getRealPath(), $image3->getClientOriginalName()) : $waralaba->image_url_3;
+        $image4Path = $image4 ? CloudinaryStorage::replace($waralaba->image_url_4, $image4->getRealPath(), $image4->getClientOriginalName()) : $waralaba->image_url_4;
+        $image5Path = $image5 ? CloudinaryStorage::replace($waralaba->image_url_5, $image5->getRealPath(), $image5->getClientOriginalName()) : $waralaba->image_url_5;
+        $brochurePath = $brochure ? CloudinaryStorage::replace($waralaba->brochure_link, $brochure->getRealPath(), $brochure->getClientOriginalName()) : $waralaba->brochure_link;
+
+        // Update data waralaba berdasarkan data yang diterima
+        $waralaba->update([
+            'logo' => $logoPath,
+            'image_url_1' => $image1Path,
+            'image_url_2' => $image2Path,
+            'image_url_3' => $image3Path,
+            'image_url_4' => $image4Path,
+            'image_url_5' => $image5Path,
+            'category_id' => $request->input('category_id'),
+            'waralaba_name' => $request->input('waralaba_name'),
+            'price' => $request->input('price'),
+            'contact' => $request->input('contact'),
+            'brochure_link' => $brochurePath,
+            'since' => $request->input('since'),
+            'outlet_total' => $request->input('outlet_total'),
+            'license_duration' => $request->input('license_duration'),
+            'description' => $request->input('description'),
+            'royality' => $request->input('royality'),
+            'income' => $request->input('income'),
+            'rating' => $request->input('rating'),
+            'concept' => $request->input('concept'),
+            'concept_size' => $request->input('concept_size'),
+        ]);
+
+        return redirect()->route('admin.waralaba')->with('success', 'Waralaba berhasil diupdate.');
+    }
+
+    public function destroy($id)
+    {
+        $waralaba = Waralaba::findOrFail($id);
+        $waralaba->delete();
+        return redirect()->route('admin.waralaba')->with('success', 'Waralaba berhasil dihapus.');
     }
 }

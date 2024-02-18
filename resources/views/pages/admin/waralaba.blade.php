@@ -115,13 +115,13 @@
                         <table class="waralaba-table">
                             <thead>
                                 <tr>
-                                    <th class="text-center">No.</th>
-                                    <th class="text-center">Logo</th>
+                                    <th>No.</th>
+                                    <th>Logo</th>
                                     <th>Nama Waralaba</th>
                                     <th>Tipe</th>
                                     <th>Harga</th>
-                                    <th>Dibuat</th>
-                                    <th class="text-center">Aksi</th>
+                                    <th>Tanggal Berdiri</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -133,18 +133,21 @@
                                     <td>{{ $waralaba->waralaba_name }}</td>
                                     <td>{{ $waralaba->concept }}</td>
                                     <td>Rp. {{ number_format(floatval($waralaba->price), 0, ',', '.') }}</td>
-                                    <td>{{ $waralaba->created_at->setTimezone('Asia/Jakarta')->format('d/m/Y') }}</td>
+                                    <td class="text-center">{{ \Carbon\Carbon::parse($waralaba->since)->format('d - M - Y') }}</td>
                                     <td class="text-center">
-                                        <div class="waralaba-details">
+                                        <div class="waralaba-details" style="display: flex; gap: 5px; align-items: center; justify-content: center;">
                                             <a href="{{ route('admin.waralaba.show', $waralaba->id) }}" class="btn btn-circle btn-primary"
-                                                style="background-color: #009bb8; border: none;"><i class="fas fa-eye"
-                                                    style="color: white;"></i></a>
-                                            <a href="#" class="btn btn-circle btn-warning"
-                                                style="background-color: #FFC107; border: none;"><i class="fas fa-edit"
-                                                    style="color: white;"></i></a>
-                                            <a href="#" class="btn btn-circle btn-danger"
-                                                style="background-color: #F44336; border: none;"><i
-                                                    class="fas fa-trash-alt" style="color: white;"></i></a>
+                                                style="background-color: #009bb8; border: none;"><i class="fas fa-eye" style="color: white;"></i></a>
+                                            <a href="{{ route('admin.waralaba.edit', $waralaba->id) }}" class="btn btn-circle btn-warning"
+                                                style="background-color: #FFC107; border: none;"><i class="fas fa-edit" style="color: white;"></i></a>
+                                            <form action="{{ route('admin.waralaba.destroy', $waralaba->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-circle btn-danger"
+                                                    style="background-color: #F44336; border: none;">
+                                                    <i class="fas fa-trash-alt" style="color: white;"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>

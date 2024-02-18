@@ -108,8 +108,8 @@
                                 <p>{{ \Carbon\Carbon::parse($waralaba->since)->translatedFormat('d F Y') }}</p>
                             </div>
                             <div class="info-item">
-                                <label>Total Outlit</label>
-                                <p>PT. {{ $waralaba->outlet_total }}</p>
+                                <label>Total Outlet</label>
+                                <p>{{ $waralaba->outlet_total }}</p>
                             </div>
                             <div class="info-item">
                                 <label>Kontak</label>

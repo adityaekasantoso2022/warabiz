@@ -52,7 +52,15 @@ class Waralaba extends Model
     {
         return $this->transactions()->count();
     }
-    
+
+    protected static function booted()
+    {
+        parent::booted();
+
+        static::creating(function ($waralaba) {
+            $waralaba->id = (string) Str::uuid();
+        });
+    }
 
     // public function home()
     // {

@@ -65,22 +65,44 @@ class ArtikelAdminController extends Controller
     // Memperbarui artikel dalam database
     public function update(Request $request, $id)
     {
-        // Validasi data yang diterima dari formulir
+        // Validasi data yang diterima dari formulir edit
         $request->validate([
-            'image_url' => 'required',
+            'image_url' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // boleh kosong jika tidak ingin mengganti gambar
             'title' => 'required',
             'article' => 'required',
             'category' => 'required',
         ]);
 
-        // Cari artikel berdasarkan ID
+        // Ambil artikel berdasarkan ID
         $article = Articles::findOrFail($id);
 
-        // Update artikel dengan data baru
-        $article->update($request->all());
+        // Update data artikel sesuai dengan input dari formulir edit
+        $articleData = [
+            'title' => $request->input('title'),
+            'article' => $request->input('article'),
+            'category' => $request->input('category'),
+        ];
 
-        return redirect()->route('admin.artikel')->with('success', 'Artikel berhasil diperbarui.');
+        // Periksa apakah ada file gambar yang diunggah untuk pembaruan
+        if ($request->hasFile('image_url')) {
+            // Jika ada, unggah gambar baru ke Cloudinary
+            $newImage = $request->file('image_url');
+            $result = CloudinaryStorage::upload($newImage->getRealPath(), $newImage->getClientOriginalName());
+
+            // Hapus gambar lama dari Cloudinary
+            CloudinaryStorage::delete($article->image_url);
+
+            // Simpan URL gambar yang baru diupdate
+            $articleData['image_url'] = $result;
+        }
+
+        // Update data artikel
+        $article->update($articleData);
+
+        // Redirect ke halaman artikel dengan pesan sukses
+        return redirect()->route('admin.artikel')->with('success', 'Artikel berhasil diupdate.');
     }
+
     public function destroy($id)
     {
         $article = Articles::findOrFail($id);
