@@ -100,7 +100,7 @@
                         <h3>Daftar Waralaba</h3>
                     </div>
                     <div class="col-md-6 text-end">
-                        <button class="btn btn-primary">Tambah Produk</button>
+                        <a href="{{ route('admin.waralaba.create.form') }}" class="btn btn-primary">Tambah Waralaba</a>
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -136,7 +136,7 @@
                                     <td>{{ $waralaba->created_at->format('d-m-Y H:i') }} WIB</td>
                                     <td class="text-center">
                                         <div class="waralaba-details">
-                                            <a href="#" class="btn btn-circle btn-primary"
+                                            <a href="{{ route('admin.waralaba.show', $waralaba->id) }}" class="btn btn-circle btn-primary"
                                                 style="background-color: #009bb8; border: none;"><i class="fas fa-eye"
                                                     style="color: white;"></i></a>
                                             <a href="#" class="btn btn-circle btn-warning"
@@ -165,9 +165,9 @@
         tr = table.getElementsByTagName("tr");
 
         for (i = 0; i < tr.length; i++) {
-            tdName = tr[i].getElementsByTagName("td")[2]; 
-            tdId = tr[i].getElementsByTagName("td")[1]; 
-            tdConcept = tr[i].getElementsByTagName("td")[3]; 
+            tdName = tr[i].getElementsByTagName("td")[2];
+            tdId = tr[i].getElementsByTagName("td")[1];
+            tdConcept = tr[i].getElementsByTagName("td")[3];
             tdPrice = tr[i].getElementsByTagName("td")[4];
             if (tdName || tdId || tdConcept || tdPrice) {
                 txtValueName = tdName.textContent || tdName.innerText;

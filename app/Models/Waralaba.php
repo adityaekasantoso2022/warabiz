@@ -36,14 +36,10 @@ class Waralaba extends Model
         'created_at'
     ];
 
-    // Method untuk membuat UUID baru saat membuat instance baru
-    protected static function boot()
+    public function isEmpty()
     {
-        parent::boot();
-
-        static::creating(function ($model) {
-            $model->id = Str::uuid(); // Tetapkan UUID baru ke 'id'
-        });
+        // Periksa apakah properti tertentu yang menandakan bahwa model ini kosong
+        return empty($this->attributes['waralaba_name']);
     }
 
     // public function home()

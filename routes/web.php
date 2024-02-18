@@ -67,11 +67,12 @@ Route::
 
                 // Admin CRUD Waralaba
                 Route::get('/admin/waralaba', [WaralabaAdminController::class, 'index'])->name('admin.waralaba');
-                Route::get('/admin/waralaba/edit', [ArtikelAdminController::class, 'edit'])->name('admin.waralaba.edit');
+                Route::get('/admin/waralaba/create', [WaralabaAdminController::class, 'create'])->name('admin.waralaba.create.form');
+                Route::post('/admin/waralaba/add', [WaralabaAdminController::class, 'store'])->name('admin.waralaba.store');
+                Route::get('/admin/waralaba/{id}', [WaralabaAdminController::class, 'show'])->name('admin.waralaba.show');
+                Route::get('/admin/waralaba/edit', [WaralabaAdminController::class, 'edit'])->name('admin.waralaba.edit');
                 Route::delete('/admin/waralaba/{id}', [WaralabaAdminController::class, 'destroy'])->name('admin.waralaba.destroy');
-                Route::put('/admin/waralaba/{id}', [ArtikelAdminController::class, 'update'])->name('admin.waralaba.update');
-                Route::get('/admin/waralaba/create', [ArtikelAdminController::class, 'create'])->name('admin.waralaba.create');
-                Route::post('/admin/waralaba/add', [ArtikelAdminController::class, 'store'])->name('admin.waralaba.store');
+                Route::put('/admin/waralaba/{id}', [WaralabaAdminController::class, 'update'])->name('admin.waralaba.update');
 
                 // Admin CRUD transaction
                 Route::get('/admin/transaksi', [TransactionAdminController::class, 'index'])->name('admin.transactions');

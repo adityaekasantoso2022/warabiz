@@ -23,6 +23,18 @@ class CloudinaryStorage extends Controller
 
         return $result;
     }
+    
+    public static function uploadFile($file, $filename)
+    {
+        $newFilename = str_replace(' ', '_', $filename);
+        $public_id = date('Y-m-d_His') . '_' . self::path($newFilename);
+        $result = cloudinary()->uploadApi()->upload($file, [
+            "public_id" => $public_id,
+            "folder"    => self::folder_path
+        ]);
+
+        return $result['secure_url'];
+    }
 
     public static function replace($path, $image, $public_id){
         self::delete($path);
