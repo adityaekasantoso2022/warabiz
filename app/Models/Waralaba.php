@@ -28,7 +28,7 @@ class Waralaba extends Model
         'outlet_total',
         'license_duration',
         'description',
-        'royalty',
+        'royality',
         'income',
         'rating',
         'concept',
@@ -41,6 +41,18 @@ class Waralaba extends Model
         // Periksa apakah properti tertentu yang menandakan bahwa model ini kosong
         return empty($this->attributes['waralaba_name']);
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'waralaba_id');
+    }
+
+    // Method untuk mengambil jumlah transaksi terkait
+    public function soldCount()
+    {
+        return $this->transactions()->count();
+    }
+    
 
     // public function home()
     // {

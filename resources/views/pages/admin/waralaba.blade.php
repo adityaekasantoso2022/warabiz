@@ -120,7 +120,7 @@
                                     <th>Nama Waralaba</th>
                                     <th>Tipe</th>
                                     <th>Harga</th>
-                                    <th>Created</th>
+                                    <th>Dibuat</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
@@ -133,7 +133,7 @@
                                     <td>{{ $waralaba->waralaba_name }}</td>
                                     <td>{{ $waralaba->concept }}</td>
                                     <td>Rp. {{ number_format(floatval($waralaba->price), 0, ',', '.') }}</td>
-                                    <td>{{ $waralaba->created_at->format('d-m-Y H:i') }} WIB</td>
+                                    <td>{{ $waralaba->created_at->setTimezone('Asia/Jakarta')->format('d/m/Y') }}</td>
                                     <td class="text-center">
                                         <div class="waralaba-details">
                                             <a href="{{ route('admin.waralaba.show', $waralaba->id) }}" class="btn btn-circle btn-primary"
