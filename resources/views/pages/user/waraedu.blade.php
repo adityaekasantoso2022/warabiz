@@ -60,8 +60,8 @@
         /* Style untuk kartu artikel */
         .article-card {
             background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
             margin-bottom: 30px;
             overflow: hidden;
         }
@@ -91,8 +91,15 @@
         .article-card .read-more {
             color: #009BB8;
             text-decoration: none;
+            font-size: 14px;
             font-weight: 500;
         }
+        .article-content {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
+    }
     </style>
     @endpush
 
@@ -107,7 +114,7 @@
                                 <div class="card-body">
                                     <h5>{{ substr($article->title, 0, 45) }}..</h5>
                                     <p>{{ $article->category }}</p>
-                                    <p>{!! substr(strip_tags($article->article), 0, 120) !!}...</p>
+                                    <p class="article-content">{!! substr(strip_tags($article->article), 0, 135) !!}...</p>
                                     <a href="{{ route('waraedu-detail', $article->id) }}" class="read-more">Selengkapnya ></a>
                                 </div>
                             </a>

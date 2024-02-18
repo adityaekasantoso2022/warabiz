@@ -328,11 +328,11 @@
             width: auto;
             height: 40px;
         }
+
         .d-flex.flex-column h6,
         .d-flex.flex-column p {
             margin: 0;
         }
-
     </style>
     @endpush
     <section class="py-5" style="margin-top: 10px">
@@ -355,14 +355,13 @@
                                             <h6><b>{{ $waralaba->waralaba_name }}</b></h6>
                                             <p>{{ $waralaba->concept }}</p>
                                             <div class="waralaba-footer mt-auto">
-                                <div class="star-rating">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg" alt="ic_star">
-                                </div>
-                            </div>
+                                                <div class="star-rating">
+                                                    @for ($i = 0; $i < $waralaba->rating; $i++)
+                                                        <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
+                                                            alt="ic_star">
+                                                        @endfor
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <button onclick="copyPageURL()" class="share-button">
@@ -557,7 +556,6 @@
                 </div>
             </div>
     </section>
-
 </x-user-layout>
 
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>

@@ -5,19 +5,16 @@
             background: #DAE3EC !important;
         }
 
-        /* Penyesuaian untuk tampilan responsif */
         .banner-container {
+            position: relative;
+            width: 100%;
             height: 250px;
-            /* Tinggi banner di perangkat seluler */
             top: 60px;
-            /* Jarak banner dari atas di perangkat seluler */
         }
 
         .card-container {
             height: 200px;
-            /* Tinggi card di perangkat seluler */
             top: -30px;
-            /* Jarak card dari atas di perangkat seluler */
         }
 
         .navbar .navbar-nav a:hover.btn-signup {
@@ -54,44 +51,28 @@
             transition: background-color 200ms linear;
         }
 
-        .banner-container {
-            position: relative;
-            width: 100%;
-            height: 347px;
-            /* Tinggi banner */
-            overflow: hidden;
-            top: 60px;
-            /* Sesuaikan jarak dari atas */
-        }
-
-        .banner-slide img {
+        .banner-container .banner-slide img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            /* Lebar gambar */
             height: 100%;
             object-fit: cover;
         }
 
-        /* CSS untuk card putih */
         .card-container {
             width: 90%;
             height: 270px;
-            /* Tinggi card */
             margin: 0 auto;
             position: relative;
             top: -50px;
-            /* Sesuaikan jarak dari atas */
             border-radius: 10px;
             background-color: #fff;
             padding: 30px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             z-index: 2;
-            /* Atur z-indeks untuk menumpuk di atas gambar-gambar */
         }
 
-        /* Style tambahan */
         .card-container h3 {
             margin-top: 0;
             font-size: 20px;
@@ -118,7 +99,6 @@
             margin-top: 20px;
             text-align: left;
             font-weight: 600;
-
         }
 
         .search-box {
@@ -140,7 +120,6 @@
             outline: 1px solid #D5D5D5;
             height: 40px;
         }
-
 
         .search-column {
             width: calc(33.33% - 10px);
@@ -213,10 +192,6 @@
             margin-bottom: 5px;
         }
 
-        .card-text {
-            margin-bottom: 5px;
-        }
-
         .card.card-home {
             min-height: 250px;
             transition: 0.3s;
@@ -227,14 +202,15 @@
             color: #34364a;
             display: flex;
             flex-direction: column;
-            height: 320px;
+            height: 300px;
             width: 100%;
             padding: 18px;
             position: relative;
             row-gap: 16px;
-            margin-top:5px;
+            margin-top: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
         }
-        
+
         .card .small-circle-img {
             width: 50px;
             height: 50px;
@@ -253,7 +229,6 @@
             margin: 0;
         }
 
-
         .card .waralaba-footer .star-rating {
             align-items: flex-start;
             display: flex;
@@ -262,9 +237,10 @@
         }
 
         .card .waralaba-footer .star-rating img {
-            width: 22px;
+            width: 16px;
         }
-        .embed-responsive {
+
+        .waralaba-responsive {
             display: block;
             height: 20vh;
             overflow: hidden;
@@ -272,20 +248,19 @@
             position: relative;
             width: 100% !important;
         }
-    
-        .embed-responsive iframe {
+
+        .waralaba-responsive iframe {
             border-radius: 14px;
             width: 100%;
             height: 20vh;
         }
-    
-        .plyr__waralaba-embed {
+
+        .cardwaralaba {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
         }
-
         
     </style>
     @endpush
@@ -326,8 +301,8 @@
             </div>
             <div class="form-group mt-3">
                 <div class="input-group">
-                    <input type="text" name="search" id="search" class="form-control border px-2 py-2 rounded-3 shadow-none"
-                        placeholder="Cari di warabiz">
+                    <input type="text" name="search" id="search"
+                        class="form-control border px-2 py-2 rounded-3 shadow-none" placeholder="Cari di warabiz">
                     <div class="input-group-append" style="margin-left: 15px;">
                         <button class="btn btn-primary" type="button"
                             style="background-color: #009BB8; border: none; height: 40px;">
@@ -339,42 +314,41 @@
         </div>
     </section>
     <section class="mt-4 mb-4">
-    <div class="container-scrollable">
-        <div class="container">
-            <div class="row">
-                @foreach ($waralabas as $waralaba)
+        <div class="container-scrollable">
+            <div class="container">
+                <div class="row">
+                    @foreach ($waralabas as $waralaba)
                     <div class="col-md-6 col-lg-3 mb-3">
                         <a href="{{ route('waralaba', $waralaba->id) }}" class="text-decoration-none">
-                          <div class="card card-home">
-                            <div class="embed-responsive embed-responsive-16by9 waralaba-iframe">
-                                <div class="plyr__waralaba-embed" id="player">
-                                    <img src="{{ $waralaba->image_url_1 }}" class="img-fluid"
-                                        alt="Gambar {{ $waralaba->waralaba_name }}">
+                            <div class="card card-home">
+                                <div class="waralaba-responsive waralaba-responsive-16by9 waralaba-iframe">
+                                    <div class="cardwaralaba" id="card">
+                                        <img src="{{ $waralaba->image_url_1 }}" class="img-fluid"
+                                            alt="Gambar {{ $waralaba->waralaba_name }}">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="d-flex gap-3 align-items-center">
-                                <img class="small-circle-img" src="{{ $waralaba->logo }}" alt="Waralaba Image">
-                                <div class="d-flex flex-column">
-                                    <h6><b>{{ $waralaba->waralaba_name }}</b></h6>
-                                    <p>{{ $waralaba->concept }}</p>
+                                <div class="d-flex gap-3 align-items-center">
+                                    <img class="small-circle-img" src="{{ $waralaba->logo }}" alt="Waralaba Image">
+                                    <div class="d-flex flex-column">
+                                        <h6><b>{{ $waralaba->waralaba_name }}</b></h6>
+                                        <p>{{ $waralaba->concept }}</p>
+                                        <div class="waralaba-footer mt-auto">
+                                            <div class="star-rating">
+                                                @for ($i = 0; $i < $waralaba->rating; $i++)
+                                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
+                                                        alt="ic_star">
+                                                    @endfor
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                <h6><b>Rp. {{ number_format(floatval($waralaba->price), 0, ',', '.') }}</b></h6>
                             </div>
-                            <h6>Rp. {{ number_format(floatval($waralaba->price), 0, ',', '.') }}</h6>
-                            <div class="waralaba-footer mt-auto">
-                                <div class="star-rating">
-                                    @for ($i = 0; $i < 5; $i++)
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
-                                        alt="ic_star">
-                                    @endfor
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
         </div>
-    </div>
-</section>
-
+    </section>
 </x-user-layout>
