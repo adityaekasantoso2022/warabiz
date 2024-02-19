@@ -359,7 +359,7 @@
                                                     @for ($i = 0; $i < $waralaba->rating; $i++)
                                                         <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
                                                             alt="ic_star">
-                                                        @endfor
+                                                    @endfor
                                                 </div>
                                             </div>
                                         </div>

@@ -528,6 +528,16 @@
 
                                 <div class="item">
                                     <p class="title">
+                                        Kode Unik
+                                    </p>
+                                    <p class="value" id="uniqueCode">
+                                        <!-- Kode unik akan ditambahkan melalui JavaScript -->
+                                    </p>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="item">
+                                    <p class="title">
                                         Biaya layanan
                                     </p>
                                     <p class="value text-green feeMidtransItem0">
@@ -555,7 +565,7 @@
                         <h5 class="header-title mb-0">
                             <b>Informasi Pembelian</b>
                         </h5>
-                        <form id="myForm" action="{{ route('transaction') }}" method="POST">
+                        <form id="myForm" action="{{ route('transaction') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="fullname" class="form-label fw-bold">
@@ -628,15 +638,14 @@
                                 <label for="payment_proof" class="form-label fw-bold">
                                     <p>Bukti Pembayaran <span style="color: red;">*</span></p>
                                 </label>
-                                <input type="file" name="payment_proof" id="payment_proof"
-                                    class="form-control border px-2 py-1 rounded-3 shadow-none" required>
+                                <input type="file" class="form-control border px-2 py-1 rounded-3 shadow-none" class="form-control" id="payment_proof" name="payment_proof" accept="file/*" required>
                                 <p class="text-sm text-secondary mt-2">Unggah bukti pembayaran Anda di sini</p>
                             </div>
 
-
-                            <!-- Input tersembunyi untuk waralaba_id dan waralaba_name -->
+                            <!-- Input tersembunyi untuk user_id, waralaba_id dan waralaba_name -->
                             <input type="hidden" name="waralaba_id" value="{{ $waralaba->id }}">
                             <input type="hidden" name="waralaba_name" value="{{ $waralaba->waralaba_name }}">
+                            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
 
                             <br>
 
@@ -807,4 +816,20 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Fungsi untuk menghasilkan kode unik acak
+    function generateRandomCode() {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < 10; i++) {
+            result += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return result;
+    }
+
+    // Menambahkan kode unik acak pada elemen dengan ID "uniqueCode"
+    const uniqueCodeElement = document.getElementById('uniqueCode');
+    const randomCode = generateRandomCode(6); // Ganti panjang kode sesuai kebutuhan
+    uniqueCodeElement.innerHTML = randomCode;
+</script>
 </body>

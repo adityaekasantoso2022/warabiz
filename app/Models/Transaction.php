@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     protected $fillable = [
+        'user_id',
         'fullname',
         'email',
         'phone_number',
@@ -15,6 +16,7 @@ class Transaction extends Model
         'waralaba_id',
         'waralaba_name',
         'status',
+        'payment_proof',
     ];
 
     // Definisikan relasi dengan model Waralaba

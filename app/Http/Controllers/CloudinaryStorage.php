@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CloudinaryStorage extends Controller
 {
     private const folder_path = 'warabiz-cloud';
+    private const folder_payment_path = 'warabiz-payment';
 
     public static function path($path){
         return pathinfo($path, PATHINFO_FILENAME);
@@ -39,12 +41,12 @@ class CloudinaryStorage extends Controller
     public static function uploadSecureFile($file, $filename)
     {
         $newFilename = str_replace(' ', '_', $filename);
-        $public_id = date('Y-m-d_His') . '_' . $newFilename;
-
+        $public_id = Str::random(20) . '_' . $newFilename;
         $result = cloudinary()->upload($file, [
             "public_id" => self::path($public_id),
-            "folder"    => self::folder_path,
-            "private"   => true, // Set file menjadi terenkripsi atau privat
+            "folder"    => self::folder_payment_path,
+            "type"        => "private", // Mengatur tipe akses file
+            "access_mode" => "private", // Mengatur mode akses file
         ])->getSecurePath();
 
         return $result;
