@@ -153,12 +153,11 @@
                 <div class="layar-dalam">
                     <h3>Warabiz-Career</h3>
                 </div>
-                <div class="quotes" style="display: flex; justify-content: center; align-items: center;">
-                    <p class="ringkasan">"No-Asep No-Party"</p>
-                </div>
-                <div class="konten-isi" style="display: flex; justify-content: center; align-items: center;">
-                    <p>Warabiz-Career is a blablablabla</p>
-                </div>
+                    @foreach($data as $career)
+                    <div class="konten-isi text-justify" style="display: flex; justify-content: center; align-items: center;">
+                        <p>{{ $career->about }}</p>
+                    </div>
+                    @endforeach
             </section>
             <section class="quote">
                 <div class="layar-dalam">
@@ -174,7 +173,7 @@
                                 <div class="row">
                                 @foreach($data as $career)
                                     <div class="col-md-6 col-lg-3 mb-3">
-                                        <a href="#" class="text-decoration-none">
+                                        <a href="{{ route('waracareer.detail') }}" class="text-decoration-none">
                                             <div class="course-card">
                                                 <div class="embed-responsive embed-responsive-16by9 video-iframe">
                                                     <div class="plyr__video-embed" id="player">
@@ -183,7 +182,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="d-flex gap-3 align-items-center">
-                                                    <img class="small-circle-img" src="{{ asset('assets') }}/frontend/image/logo/bangor.png" alt="Waralaba Image">
+                                                    <img class="small-circle-img" src="{{ $career->logo_url }}" alt="Waralaba Image">
                                                     <div class="d-flex flex-column">
                                                         <h6><b>{{ $career->career_title }}</b></h6>
                                                         <p style="font-size: 12px">{{ $career->description }}</p>

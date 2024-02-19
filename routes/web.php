@@ -25,6 +25,9 @@ Route::namespace('App\Http\Controllers\User')->group(function () {
         Route::get('/waracareer', 'WaracareerController@getData')->name('waracareer');
     });
     Route::middleware(['auth'])->group(function () {
+        Route::get('/detailCareer', 'DetailCareerController@detail')->name('waracareer.detail');
+    });
+    Route::middleware(['auth'])->group(function () {
         Route::get('/warapartner', 'WarapartnerController@index')->name('warapartner');
     });
     Route::middleware(['auth'])->group(function () {
