@@ -618,6 +618,7 @@
                                     <option value="BCA">Bank BCA</option>
                                     <option value="BNI">Bank BNI</option>
                                     <option value="BRI">Bank BRI</option>
+                                    <option value="Mandiri">Bank Mandiri</option>
                                 </select>
                                 <p class="text-sm text-secondary mt-2">Pilih metode pembayaran anda</p>
                             </div>

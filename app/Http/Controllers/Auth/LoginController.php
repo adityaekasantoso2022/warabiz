@@ -44,6 +44,10 @@ class LoginController extends Controller
         if ($user->isAdmin()) {
             return redirect()->route('admin.dashboard'); // Ganti 'admin.dashboard' dengan nama rute dashboard admin Anda
         }
+        else if ($user->isOwner()) {
+            return redirect()->route('owner.dashboard'); // Ganti 'admin.dashboard' dengan nama rute dashboard admin Anda
+        }
+
 
         return redirect()->intended($this->redirectPath());
     }

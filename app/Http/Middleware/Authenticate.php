@@ -18,7 +18,11 @@ class Authenticate extends Middleware
         if (! $request->expectsJson()) {
             if (Auth::check() && Auth::user()->isAdmin()) {
                 return route('admin.dashboard'); // Redirect ke dashboard admin jika pengguna adalah admin
-            } else {
+            }
+            else if (Auth::check() && Auth::user()->isOwner()) {
+                return route('owner.dashboard'); // Redirect ke dashboard admin jika pengguna adalah admin
+            }
+            else {
                 return route('login'); // Jika pengguna bukan admin, redirect ke halaman login
             }
         }

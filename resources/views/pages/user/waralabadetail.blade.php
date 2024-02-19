@@ -404,7 +404,7 @@
                                             <h5 class="header-title mb-1">
                                                 Tahun Berdiri
                                             </h5>
-                                            <p>{{ $waralaba->since }}</p>
+                                            <p>{{ \Carbon\Carbon::parse($waralaba->since)->translatedFormat('d F Y') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -416,7 +416,7 @@
                                             <h5 class="header-title mb-1">
                                                 Total Outlet
                                             </h5>
-                                            <p>{{ $waralaba->outlet_total }}</p>
+                                            <p>{{ $waralaba->outlet_total }} Outlet</p>
                                         </div>
                                     </div>
                                 </div>

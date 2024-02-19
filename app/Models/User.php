@@ -27,12 +27,8 @@ class User extends Authenticatable
     {
         return $this->role === 'admin';
     }
-    public function transactions()
+    public function isOwner()
     {
-        return $this->hasMany(Transaction::class);
-    }
-    public function faqs(): HasMany
-    {
-        return $this->hasMany(Faq::class);
+        return $this->role === 'owner';
     }
 }

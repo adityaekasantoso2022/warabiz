@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\ArtikelAdminController;
 use App\Http\Controllers\Admin\CareerAdminController;
 use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Admin\BantuanAdminController;
+use App\Http\Controllers\Admin\OwnerController;
+
 
 
 /*
@@ -29,6 +31,8 @@ use App\Http\Controllers\Admin\BantuanAdminController;
 Route::
         namespace('App\Http\Controllers\User')->group(function () {
             Route::get('/', 'HomeController@index')->name('home');
+            Route::get('/register-as', 'RegisterAsController@index')->name('registeras');
+
             Route::middleware(['auth'])->group(function () {
 
                 Route::get('/waraedu', [ArticleController::class, 'getAll'])->name('waraedu');
@@ -106,8 +110,9 @@ Route::
                 Route::get('pesan/{id}/balas', [BantuanAdminController::class, 'balas'])->name('pesan.balas');
                 Route::delete('/hapus-pesan/{id}', [BantuanAdminController::class, 'hapusPesan'])->name('pesan.hapus');
 
-            });
-
+            });            
         });
-
+        Route::middleware(['auth', 'owner'])->group(function () {
+            Route::get('/owner/dashboard', [OwnerController::class, 'dashboard'])->name('owner.dashboard');
+        }); 
 Auth::routes();
