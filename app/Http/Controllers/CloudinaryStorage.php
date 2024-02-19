@@ -36,6 +36,20 @@ class CloudinaryStorage extends Controller
         return $result;
     }
 
+    public static function uploadSecureFile($file, $filename)
+    {
+        $newFilename = str_replace(' ', '_', $filename);
+        $public_id = date('Y-m-d_His') . '_' . $newFilename;
+
+        $result = cloudinary()->upload($file, [
+            "public_id" => self::path($public_id),
+            "folder"    => self::folder_path,
+            "private"   => true, // Set file menjadi terenkripsi atau privat
+        ])->getSecurePath();
+
+        return $result;
+    }
+
     public static function replace($path, $image, $public_id){
         self::delete($path);
         return self::upload($image, $public_id);

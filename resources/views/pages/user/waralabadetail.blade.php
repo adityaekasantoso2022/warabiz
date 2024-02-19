@@ -432,8 +432,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="{{ $waralaba->brochure_link }}"
-                                    class="mt-2 mb-2 btn btn-outline-dark custom-btn">
+                                <a id="downloadLink" href="{{ $waralaba->brochure_link }}" class="mt-2 mb-2 btn btn-outline-dark custom-btn">
                                     <i class="fas fa-download me-2"></i> Unduh Brosur
                                 </a>
                             </div>
@@ -572,4 +571,19 @@
 
         alert('Tautan  {{ $waralaba->waralaba_name }} berhasil disalin.');
     }
+
+    document.getElementById('downloadLink').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        var brochureLink = this.getAttribute('href');
+
+        // Membuka tab baru dengan link brosur
+        var newTab = window.open(brochureLink, '_blank');
+
+        // Menunggu sebentar sebelum memicu unduhan
+        setTimeout(function() {
+            // Memicu unduhan di tab baru
+            newTab.location.href = brochureLink;
+        }, 500);
+    });
 </script>
