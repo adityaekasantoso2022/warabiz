@@ -53,7 +53,7 @@
                         <select class="form-control" id="role" name="role">
                             <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
                             <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>User</option>
-                            <!-- Tambahkan opsi role lain sesuai kebutuhan -->
+                            <option value="owner" {{ $user->role == 'owner' ? 'selected' : '' }}>Owner</option>
                         </select>
                     </div>
                     <!-- Tambahkan field lain sesuai kebutuhan -->

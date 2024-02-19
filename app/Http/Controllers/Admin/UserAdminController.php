@@ -29,7 +29,7 @@ class UserAdminController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
-            'role' => 'required|in:admin,user',
+            'role' => 'required|in:admin,user,owner',
         ]);
 
         $user = User::findOrFail($id);
