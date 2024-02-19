@@ -1,4 +1,4 @@
-<x-admin-layout title="Dashboard" active="dashboard">
+<x-owner-layout title="Dashboard">
     @push('addonStyle')
     <style>
         body {
@@ -84,4 +84,4 @@
 @endpush
 
     
-</x-admin-layout>
+</x-owner-layout>

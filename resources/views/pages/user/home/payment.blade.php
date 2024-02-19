@@ -622,6 +622,17 @@
                                 </select>
                                 <p class="text-sm text-secondary mt-2">Pilih metode pembayaran anda</p>
                             </div>
+                            <br>
+                            <!-- Input untuk bukti pembayaran -->
+                            <div class="form-group">
+                                <label for="payment_proof" class="form-label fw-bold">
+                                    <p>Bukti Pembayaran <span style="color: red;">*</span></p>
+                                </label>
+                                <input type="file" name="payment_proof" id="payment_proof"
+                                    class="form-control border px-2 py-1 rounded-3 shadow-none" required>
+                                <p class="text-sm text-secondary mt-2">Unggah bukti pembayaran Anda di sini</p>
+                            </div>
+
 
                             <!-- Input tersembunyi untuk waralaba_id dan waralaba_name -->
                             <input type="hidden" name="waralaba_id" value="{{ $waralaba->id }}">
@@ -655,22 +666,22 @@
     </section>
     <script>
       etElement").addEventListener("submit", function (event) {
-            event.preventDefault(); // Menghentikan pengiriman formulir langsung
+        event.preventDefault(); // Menghentikan pengiriman formulir langsung
 
-            // Menampilkan popup pesanan sedang diproses
-            $('#processingPopup').modal('show');
+        // Menampilkan popup pesanan sedang diproses
+        $('#processingPopup').modal('show');
 
-            // Lakukan pengiriman formulir menggunakan AJAX
-            var formData = new FormData(this);
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", this.action, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Jika pengiriman berhasil, redirect ke halaman lain
-                    window.location.href = "{{ route('sukses') }}";
-                }
-            };
-            xhr.send(formData);
+        // Lakukan pengiriman formulir menggunakan AJAX
+        var formData = new FormData(this);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", this.action, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Jika pengiriman berhasil, redirect ke halaman lain
+                window.location.href = "{{ route('sukses') }}";
+            }
+        };
+        xhr.send(formData);
         });
     </script>
 </x-user-layout>
