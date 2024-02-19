@@ -31,30 +31,30 @@ class ArtikelAdminController extends Controller
             'article' => 'required',
             'category' => 'required',
         ]);
-
+    
         // Gunakan 'image_url' daripada 'image' pada baris berikut
         $image  = $request->file('image_url');
-
+    
         // Pastikan $image tidak null sebelum melanjutkan
         if ($image) {
             // Unggah gambar ke Cloudinary
             $result = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName());
-
+    
             // Buat objek artikel baru berdasarkan data yang diterima
             Articles::create([
                 'image_url' => $result,
                 'title' => $request->input('title'),
-                'article' => $request->input('article'),
+                'article' => $request->input('article'), // Ambil konten dari text editor
                 'category' => $request->input('category'),
-                'created_by'
+                'created_by' => auth()->id() // Atur pembuat artikel, sesuaikan sesuai kebutuhan Anda
             ]);
             return redirect()->route('admin.artikel')->with('success', 'Artikel berhasil dibuat.');
         }
-
+    
         // Tangani kasus di mana $image null (tidak ada file yang diunggah)
-        return view('pages.admin.create.artikel', compact('articles'))->with('error', 'Gambar tidak valid.');
+        return view('pages.admin.create.artikel')->with('error', 'Gambar tidak valid.');
     }
-
+    
     // Menampilkan formulir untuk mengedit artikel
     public function edit($id)
     {

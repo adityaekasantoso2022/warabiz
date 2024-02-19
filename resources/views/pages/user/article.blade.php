@@ -91,11 +91,16 @@
         }
 
         .articel .content p {
-            font-size: 1.25rem;
-            line-height: 150%;
-            color: #131313;
-        }
+            font-size: 16px;
+            margin-top:20px;
+            margin-bottom:15px;
 
+        }
+        .articel .content li {
+            font-size: 16px;
+            margin-bottom:8px;
+
+        }
         .share-buttons {
             margin-top: 20px;
         }
@@ -213,7 +218,7 @@
                         <br>
                         <img src="{{ $article->image_url }}" class="img-fluid" alt="Gambar"
                             style="max-width: 100%;">
-                        <div class="content mt-5">
+                        <div class="content">
                         {!! $article->article !!}
                         </div>
                     </section>
@@ -231,7 +236,7 @@
                         </a>
                             <div class="card-body">
                                 <h5 class="card-title">{{ $otherArticle->title }}</h5>
-                                <p class="card-text">{{ substr($otherArticle->article, 0, 120) }}..</p>
+                                <p class="card-text">{{ Str::limit(strip_tags($otherArticle->article), 170) }}..</p>
                             </div>
                         </div>
                         @endif

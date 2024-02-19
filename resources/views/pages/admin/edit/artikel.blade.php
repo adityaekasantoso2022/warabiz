@@ -36,7 +36,7 @@
         <div class="container">
             <div class="artikel-card">
                 <h3>Edit Artikel</h3>
-                <form action="{{ route('admin.articles.update', $article->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.articles.update', $article->id) }}" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
@@ -44,7 +44,7 @@
                         <input type="text" class="form-control" id="title" name="title" value="{{ $article->title }}">
                     </div>
                     <div class="mb-3">
-                        <label for="image_url" class="form-label">Logo</label>
+                        <label for="image_url" class="form-label">Gambar</label>
                         <input type="file" class="form-control" id="image_url" name="image_url" accept="image/*">
                         @if ($article->image_url)
                             <img src="{{ $article->image_url }}" alt="Logo Artikel" class="img-thumbnail" width="100">
@@ -60,36 +60,35 @@
                     </div>
                     <div class="mb-3">
                         <label for="article" class="form-label">Artikel</label>
-                        <textarea class="form-control" id="article" name="article" rows="5" style="height: 250px;">{{ $article->article }}</textarea>
+                        <textarea id="article" name="article" rows="5" class="form-control tinymce-editor">{{ $article->article }}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>
         </div>
     </section>
-    <script>
-        function validateForm() {
-            // Validasi apakah data kosong
-            var title = document.getElementById("title").value;
-            var image = document.getElementById("image").value;
-            var category = document.getElementById("category").value;
-            var article = document.getElementById("article").value;
-
-            if (title === "" || image === "" || category === "" || article === "") {
-                alert("Semua kolom harus diisi!");
-                return false;
-            }
-
-            // Validasi ukuran gambar
-            var imageSize = document.getElementById("image").files[0].size; // ukuran dalam byte
-            var maxSize = 2 * 1024 * 1024; // 2 MB
-
-            if (imageSize > maxSize) {
-                document.getElementById("imageError").innerHTML = "Ukuran gambar tidak boleh lebih dari 2 MB";
-                return false;
-            }
-
-            return true;
-        }
-    </script>
 </x-admin-layout>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdn.tiny.cloud/1/e6lfcgsxma4viss20i5oitxdkrt8oyovotn6tknfg1qmum2p/tinymce/5/tinymce.min.js"
+    referrerpolicy="origin"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: 'textarea.tinymce-editor',
+        height: 400,
+        menubar: false,
+        plugins: [
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table paste code help wordcount'
+        ],
+        toolbar: 'undo redo | formatselect | ' +
+            'bold italic backcolor | alignleft aligncenter ' +
+            'alignright alignjustify | bullist numlist outdent indent | ' +
+            'removeformat | help',
+        content_css: '//www.tiny.cloud/css/codepen.min.css'
+    });
+</script>
+
+@push('addonScript')
+@endpush
