@@ -72,7 +72,7 @@
         var jawaban = document.getElementById('jawaban').value;
         var encodedJawaban = encodeURIComponent(jawaban).replace(/%20/g, ' ');
         var subject = encodeURIComponent('Balasan Pertanyaan Warabiz');
-        var body = encodeURIComponent('Hallo {{ $pesan->user->name }}\n Terima kasih telah menggunakan jawaban dari kami\n Berikut adalah balasan untuk pertanyaan yang Anda ajukan\n\n Pertanyaan: \n {{ $pesan->pesan }}\n\nJawaban:\n' + encodedJawaban + '\n\nTerima kasih atas pertanyaan Anda.\n\nSalam,\nTim Dukungan Warabiz');
+        var body = encodeURIComponent('Hallo {{ $pesan->user->name }},\n Terima kasih telah menunggu jawaban dari kami\n Berikut adalah balasan untuk pertanyaan yang Anda ajukan\n\n Pertanyaan: \n {{ $pesan->pesan }}\n\nJawaban:\n' + encodedJawaban + '\n\nTerima kasih atas pertanyaan Anda.\n\nSalam,\nTim Dukungan Warabiz');
         var mailtoLink = 'mailto:{{ $pesan->email }}?subject=' + subject + '&body=' + body;
 
         fetch('/hapus-pesan/' + pesanId, {
