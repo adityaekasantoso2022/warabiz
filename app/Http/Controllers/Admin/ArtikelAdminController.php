@@ -65,42 +65,32 @@ class ArtikelAdminController extends Controller
     // Memperbarui artikel dalam database
     public function update(Request $request, $id)
     {
-        // Validasi data yang diterima dari formulir edit
+        // Validasi input
         $request->validate([
-            'image_url' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // boleh kosong jika tidak ingin mengganti gambar
             'title' => 'required',
+            'image_url' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'article' => 'required',
-            'category' => 'required',
+            'category'=> 'required',
         ]);
 
-        // Ambil artikel berdasarkan ID
+        // Cari waralaba berdasarkan ID
         $article = Articles::findOrFail($id);
 
-        // Update data artikel sesuai dengan input dari formulir edit
-        $articleData = [
+        // Gunakan 'image_url' daripada 'image' pada baris berikut
+        $image = $request->file('image_url');
+
+        // Periksa apakah file baru dipilih, jika tidak, gunakan file yang sudah ada
+        $imagePath = $image ? CloudinaryStorage::replace($article->image_url, $image->getRealPath(), $image->getClientOriginalName()) : $article->image_url;
+
+        // Update data article berdasarkan data yang diterima
+        $article->update([
             'title' => $request->input('title'),
+            'image_url' => $imagePath,
             'article' => $request->input('article'),
-            'category' => $request->input('category'),
-        ];
+            'category' =>  $request->input('category')
+        ]);
 
-        // Periksa apakah ada file gambar yang diunggah untuk pembaruan
-        if ($request->hasFile('image_url')) {
-            // Jika ada, unggah gambar baru ke Cloudinary
-            $newImage = $request->file('image_url');
-            $result = CloudinaryStorage::upload($newImage->getRealPath(), $newImage->getClientOriginalName());
-
-            // Hapus gambar lama dari Cloudinary
-            CloudinaryStorage::delete($article->image_url);
-
-            // Simpan URL gambar yang baru diupdate
-            $articleData['image_url'] = $result;
-        }
-
-        // Update data artikel
-        $article->update($articleData);
-
-        // Redirect ke halaman artikel dengan pesan sukses
-        return redirect()->route('admin.artikel')->with('success', 'Artikel berhasil diupdate.');
+        return redirect()->route('admin.artikel')->with('success', 'Article berhasil diupdate.');
     }
 
     public function destroy($id)

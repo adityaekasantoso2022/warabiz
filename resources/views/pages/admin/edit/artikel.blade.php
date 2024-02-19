@@ -36,7 +36,7 @@
         <div class="container">
             <div class="artikel-card">
                 <h3>Edit Artikel</h3>
-                <form action="{{ route('admin.articles.update', $article->id) }}" method="POST">
+                <form action="{{ route('admin.articles.update', $article->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
@@ -44,25 +44,23 @@
                         <input type="text" class="form-control" id="title" name="title" value="{{ $article->title }}">
                     </div>
                     <div class="mb-3">
-                        <label for="image_url" class="form-label">URL Gambar</label>
-                        <input type="text" class="form-control" id="image_url" name="image_url"
-                            value="{{ $article->image_url }}" readonly>
+                        <label for="image_url" class="form-label">Logo</label>
+                        <input type="file" class="form-control" id="image_url" name="image_url" accept="image/*">
+                        @if ($article->image_url)
+                            <img src="{{ $article->image_url }}" alt="Logo Artikel" class="img-thumbnail" width="100">
+                        @endif
                     </div>
                     <div class="mb-3">
                         <label for="category" class="form-label">Kategori</label>
                         <select class="form-control" id="category" name="category">
-                            <option value="Keuangan" {{ $article->category == 'Keuangan' ? 'selected' : '' }}>Keuangan
-                            </option>
-                            <option value="Waralaba" {{ $article->category == 'Waralaba' ? 'selected' : '' }}>Waralaba
-                            </option>
-                            <option value="Finansial" {{ $article->category == 'Finansial' ? 'selected' : ''
-                                }}>Finansial</option>
+                            <option value="Keuangan" {{ $article->category == 'Keuangan' ? 'selected' : '' }}>Keuangan</option>
+                            <option value="Waralaba" {{ $article->category == 'Waralaba' ? 'selected' : '' }}>Waralaba</option>
+                            <option value="Finansial" {{ $article->category == 'Finansial' ? 'selected' : '' }}>Finansial</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="article" class="form-label">Artikel</label>
-                        <textarea class="form-control" id="article" name="article"
-                            rows="5" style="height: 250px;">{{ $article->article }}</textarea>
+                        <textarea class="form-control" id="article" name="article" rows="5" style="height: 250px;">{{ $article->article }}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
