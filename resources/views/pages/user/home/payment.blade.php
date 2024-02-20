@@ -513,7 +513,12 @@
                             @php
                             $waralabaPrice = floatval($waralaba->price);
                             $biayaLayanan = 100000;
-                            $totalTransfer = number_format($waralabaPrice + $biayaLayanan, 0, ',', '.');
+
+                            // Generate a 3-digit unique code
+                            $uniqueCode = mt_rand(100, 999);
+
+                            // Calculate the total transfer amount
+                            $totalTransfer = number_format($waralabaPrice + $biayaLayanan + $uniqueCode, 0, ',', '.');
                             @endphp
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="item">
@@ -531,7 +536,7 @@
                                         Kode Unik
                                     </p>
                                     <p class="value" id="uniqueCode">
-                                        <!-- Kode unik akan ditambahkan melalui JavaScript -->
+                                        {{ $uniqueCode }}
                                     </p>
                                     <div class="clear"></div>
                                 </div>
@@ -691,7 +696,7 @@
             }
         };
         xhr.send(formData);
-        });
+
     </script>
 </x-user-layout>
 
@@ -751,6 +756,10 @@
                             <div class="d-flex justify-content-between mt-3">
                                 <span></span>
                                 <span>Biaya Layanan :‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ Rp. 100.000</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span></span>
+                                <span>Kode Unik :  {{ $uniqueCode }}</span>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <span></span>
@@ -816,20 +825,4 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    // Fungsi untuk menghasilkan kode unik acak
-    function generateRandomCode() {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        let result = '';
-        for (let i = 0; i < 10; i++) {
-            result += characters.charAt(Math.floor(Math.random() * characters.length));
-        }
-        return result;
-    }
-
-    // Menambahkan kode unik acak pada elemen dengan ID "uniqueCode"
-    const uniqueCodeElement = document.getElementById('uniqueCode');
-    const randomCode = generateRandomCode(6); // Ganti panjang kode sesuai kebutuhan
-    uniqueCodeElement.innerHTML = randomCode;
-</script>
 </body>
