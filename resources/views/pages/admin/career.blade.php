@@ -5,7 +5,7 @@
             background: #dae3ec !important;
         }
 
-        .waralaba-card {
+        .career-card {
             background: #fff;
             border-radius: 14px;
             color: #34364a;
@@ -100,7 +100,7 @@
 
     <section>
         <div class="container">
-            <div class="waralaba-card">
+            <div class="career-card">
                 <div class="row">
                     <div class="col-md-6">
                         <h3>Daftar Pekerjaan</h3>
@@ -126,7 +126,7 @@
                                     <th>Gambar Perusahaan</th>
                                     <th>Nama Pekerjaan</th>
                                     <th>Alamat</th>
-                                    <th>Deskripsi</th>
+                                    <th>Nama Perusahaan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -139,7 +139,7 @@
                                     <td><img src="{{ asset($career->image_url) }}" alt="Thumbnail"
                                             class="career-thumbnail"></td>
                                     <td>{{ $career->career_title }}</td>
-                                    <td>{{ $career->address }}</td>
+                                    <td>{{ $career->company_name }}</td>
                                     <td>{{ Str::limit($career->description, 135) }}</td>
                                     <td>
                                         <div class="career-details d-flex justify-content-between align-items-center">
@@ -171,17 +171,19 @@
 
     <script>
         document.getElementById("searchInput").addEventListener("input", function () {
-            var input, filter, table, tr, td, i, txtValue;
+            var input, filter, table, tr, tdJobName, tdCompanyName
             input = this;
             filter = input.value.toUpperCase();
-            table = input.closest(".waralaba-card").querySelector(".career-table");
+            table = document.querySelector(".transaction-table");
             tr = table.getElementsByTagName("tr");
 
             for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[2]; // Kolom untuk nama pekerjaan
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tdJobName = tr[i].getElementsByTagName("td")[3]; // Kolom untuk nama perusahaan
+                tdCompanyName = tr[i].getElementsByTagName("td")[5]; // Kolom untuk Nama pekerjaan
+                if (tdJobName && tdCompanyName) {
+                    txtValueName = tdJobName.textContent || tdJobName.innerText;
+                    txtValuePemesan = tdCompanyName.textContent || tdCompanyName.innerText;
+                    if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValueId.toUpperCase().indexOf(filter) > -1 || txtValuePemesan.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";
                     } else {
                         tr[i].style.display = "none";

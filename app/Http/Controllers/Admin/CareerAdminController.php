@@ -38,35 +38,36 @@ class CareerAdminController extends Controller
         $request->validate([
             'career_title' => 'required|string',
             'description' => 'required|string',
-            'address' => 'required|string',
-            'image_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'logo_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi untuk logo_url
+            'company_name' => 'required|string',
+            'image_url' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'logo_url' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'profile_company' => 'required',
+            'work_requirements' => 'required',
         ]);
 
         // Pengunggahan gambar image_url
         $image = $request->file('image_url');
-        $imageResult = null;
-        if ($image) {
-            $imageResult = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName());
-        }
-
-        // Pengunggahan gambar logo_url
         $logo = $request->file('logo_url');
-        $logoResult = null;
-        if ($logo) {
-            $logoResult = CloudinaryStorage::upload($logo->getRealPath(), $logo->getClientOriginalName());
-        }
+
+        $user = auth()->user(); // Mendapatkan user yang sedang login
 
         // Pastikan setidaknya satu gambar diunggah sebelum melanjutkan
-        if ($imageResult || $logoResult) {
+        if ($image || $logo) {
+
+            $logoResult = CloudinaryStorage::upload($logo->getRealPath(), $logo->getClientOriginalName());
+            $imageResult = CloudinaryStorage::upload($image->getRealPath(), $image->getClientOriginalName());
             // Buat objek artikel baru berdasarkan data yang diterima
             WaraCareer::create([
-                'career_title' => $request->career_title,
-                'description' => $request->description,
-                'address' => $request->address,
+                'career_title' => $request->input('career_title'),
+                'description' => $request->input('description'),
+                'company_name' => $request->input('company_name'),
                 'image_url' => $imageResult,
                 'logo_url' => $logoResult,
-                'created_by' => 'admin',
+                'profile_company' => $request->input('profile_company'),
+                'work_requirements' => $request->input('work_requirements'),
+                'min_salary' => $request->input('min_salary'),
+                'max_salary' => $request->input('max_salary'),
+                'created_by' => $user->role,
             ]);
 
             return redirect()->route('admin.career')->with('success', 'Artikel berhasil dibuat.');
@@ -75,7 +76,7 @@ class CareerAdminController extends Controller
         // Jika tidak ada gambar yang diunggah, kembalikan dengan pesan kesalahan
         return redirect()->route('admin.career')->with('error', 'Mohon unggah gambar untuk setidaknya satu field.');
     }
-        public function edit($id)
+    public function edit($id)
     {
         $career = WaraCareer::findOrFail($id);
         // Jika karier tidak ditemukan, lempar 404
@@ -85,25 +86,70 @@ class CareerAdminController extends Controller
         // Kirim data karier ke view untuk diedit
         return view('pages.admin.edit.career', compact('career'));
     }
+    // public function update(Request $request, $id)
+    // {
+    //     $user = auth()->user(); // Mendapatkan user yang sedang login
+
+    //     // Validasi data yang diterima dari formulir
+    //     $request->validate([
+    //         'career_title' => 'required',
+    //         'description' => 'required',
+    //         'company_name' => 'required',
+    //         'image_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    //         'logo_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    //         'profile_company' => 'required',
+    //         'work_requirements' => 'required',
+    //         'updated_by' => $user->role,
+    //     ]);
+
+    //     // Cari artikel berdasarkan ID
+    //     $career = WaraCareer::findOrFail($id);
+
+    //     // Update artikel dengan data baru
+    //     $career->update($request->all());
+
+    //     return redirect()->route('admin.career')->with('success', 'career berhasil diperbarui.');
+    // }
     public function update(Request $request, $id)
     {
-        // Validasi data yang diterima dari formulir
         $request->validate([
-            'career_title' => 'required',
-            'description' => 'required',
-            'address' => 'required',
-            'image_url' => 'required',
-            'logo_url' => 'required',
-            'created_by' => 'admin',
+            'career_title' => 'required|string',
+            'description' => 'required|string',
+            'company_name' => 'required|string',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'logo_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'profile_company' => 'required',
+            'work_requirements' => 'required',
         ]);
 
-        // Cari artikel berdasarkan ID
         $career = WaraCareer::findOrFail($id);
 
-        // Update artikel dengan data baru
-        $career->update($request->all());
+        // Pengunggahan gambar image_url jika diunggah
+        if ($request->hasFile('image_url')) {
+            $image = $request->file('image_url');
+            $imageResult = $image ? CloudinaryStorage::replace($career->image_url, $image->getRealPath(), $image->getClientOriginalName()) : $career->image_url;
+            $career->image_url = $imageResult;
+        }
 
-        return redirect()->route('admin.career')->with('success', 'career berhasil diperbarui.');
+        // Pengunggahan gambar logo_url jika diunggah
+        if ($request->hasFile('logo_url')) {
+            $logo = $request->file('logo_url');
+            $logoResult = $logo ? CloudinaryStorage::replace($career->logo_url, $logo->getRealPath(), $logo->getClientOriginalName()) : $career->logo_url;
+            $career->logo_url = $logoResult;
+        }
+
+        // Pembaruan atribut karier
+        $career->update([
+            'career_title' => $request->input('career_title'),
+            'description' => $request->input('description'),
+            'company_name' => $request->input('company_name'),
+            'profile_company' => $request->input('profile_company'),
+            'work_requirements' => $request->input('work_requirements'),
+            'min_salary' => $request->input('min_salary'),
+            'max_salary' => $request->input('max_salary'),
+        ]);
+
+        return redirect()->route('admin.career')->with('success', 'Wara Career berhasil diperbarui.');
     }
 
 }

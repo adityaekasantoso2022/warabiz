@@ -12,13 +12,16 @@ class WaraCareer extends Model
     protected $fillable = [
         'career_title',
         'description',
-        'address',
+        'company_name',
         'image_url',
         'logo_url',
+        'min_salary',
+        'max_salary',
+        'profile_company',
+        'work_requirements',
         'created_by',
         'created_at',
         'updated_by',
         'updated_at',
-        'deleted_at',
     ];
 }

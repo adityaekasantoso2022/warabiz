@@ -48,8 +48,8 @@ Route::
                 Route::get('/home', 'HomeController@index')->name('home.index');
                 Route::get('/waralaba/{id}', [WaralabaController::class, 'show'])->name("waralaba");
                 Route::get('/waralaba/{id}/checkout', [WaralabaController::class, 'checkout'])->name("checkout");
-                Route::get('/waralaba/{id}/checkout/submit', [WaralabaController::class, 'show3'])->name("payment"); 
-                Route::post('/waralaba/{id}/checkout/submit', [TransactionController::class, 'store']); 
+                Route::get('/waralaba/{id}/checkout/submit', [WaralabaController::class, 'show3'])->name("payment");
+                Route::post('/waralaba/{id}/checkout/submit', [TransactionController::class, 'store']);
                 Route::get('/sukses', 'SuksesController@index')->name('sukses');
                 Route::post('/transaction/store', [TransactionController::class, 'store'])->name('transaction');
                 Route::get('/transaction/history', [TransactionController::class, 'transactionHistory'])->name('transaction.history');
@@ -104,8 +104,7 @@ Route::
                 Route::get('/admin/careers/{id}/edit', [CareerAdminController::class, 'edit'])->name('admin.careers.edit');
                 Route::post('/admin/careers/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroy');
                 Route::delete('/admin/careers/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroy');
-                Route::put('/admin/careers/', [CareerAdminController::class, 'update'])->name('admin.careers.update');
-                Route::put('/admin/careers/{id}', [CareerAdminController::class, 'update'])->name('admin.careers.update');
+                Route::put('/admin/careers/{id}/update', [CareerAdminController::class, 'update'])->name('admin.careers.update');
 
 
                 //Admin RUD Bantuan
@@ -113,9 +112,9 @@ Route::
                 Route::get('pesan/{id}/balas', [BantuanAdminController::class, 'balas'])->name('pesan.balas');
                 Route::delete('/hapus-pesan/{id}', [BantuanAdminController::class, 'hapusPesan'])->name('pesan.hapus');
 
-            });            
+            });
         });
         Route::middleware(['auth', 'owner'])->group(function () {
             Route::get('/owner/dashboard', [OwnerController::class, 'dashboard'])->name('owner.dashboard');
-        }); 
+        });
 Auth::routes();
