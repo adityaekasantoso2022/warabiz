@@ -101,7 +101,7 @@
             padding: 0 24px;
         }
 
-        .company-name {
+        .compeny-name {
             grid-area: 2 / 2 / 3 / 3;
             align-self: center;
             font-size: 14px;
@@ -208,7 +208,7 @@
                 /* Menyembunyikan kontainer keterampilan saat tampilan di perangkat seluler */
             }
 
-            .company-name {
+            .compeny-name {
                 display: none;
                 /* Menyembunyikan kontainer keterampilan saat tampilan di perangkat seluler */
             }
@@ -239,9 +239,9 @@
                         <img src="{{ $career->logo_url }}" alt="Company Logo">
                     </div>
                     <div class="job-title">{{ $career->career_title }}</div>
-                    <div class="company-name">{{ $career->address }}</div>
+                    <div class="compeny-name">{{ $career->company_name }}</div>
                     <div class="skills-container">
-                        <div class="skill">Diposting Pada 10/01/2023 19:00</div>
+                        <div class="skill">Diposting Pada {{ $career->created_at->format('d/m/Y') }}</div>
                     </div>
                     <div class="description">
                         <h6 class="description-title">Profile Perusahaan</h6>
@@ -249,20 +249,22 @@
                         <h6 class="description-title">Deskripsi Pekerjaan</h6>
                         <p class="description-content">{{ $career->description }}.</p>
                         <h6 class="description-title">Syarat & Ketentuan:</h6>
-                        <ul class="description-content">
-                            <li>Minimal memiliki pengalaman 2 tahun di bidang terkait.</li>
-                            <li>Mahir menggunakan Adobe Photoshop, Illustrator, dan Sketch.</li>
-                            <li>Berpengalaman dalam desain UI/UX adalah nilai tambah.</li>
-                        </ul>
+                        <p class="description-content">{{ $career->work_requirements }}.</p>
                         <div class="buttons-container">
                             <button class="register-now"
                                 onclick="window.location.href='{{ route('career.daftar', ['id' => $career->id]) }}'">Daftar</button>
-
                             <button class="back-button"
                                 onclick="window.location.href='{{ route('waracareer') }}'">Kembali</button>
                         </div>
                     </div>
-                    <p class="description-content"><b>Perkiraan Gaji</b><br> 7-8 Juta/bulan</p>
+                    <p class="description-content"><b>Perkiraan Gaji</b><br>
+                        @if ($career->min_salary !== null && $career->max_salary !== null)
+                        {{ number_format($career->min_salary / 1000000, 0) }}-{{ number_format($career->max_salary /
+                        1000000, 0) }} Juta/bulan
+                        @else
+                        Gaji tidak ditampilkan
+                        @endif
+                    </p>
                 </div>
             </div>
         </div>

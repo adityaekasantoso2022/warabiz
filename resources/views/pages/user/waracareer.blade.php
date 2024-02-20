@@ -175,9 +175,7 @@
                     <div class="job-title">{{ $career->career_title }}</div>
                     <div class="company-name">Alfamart Tbk</div>
                     <div class="skills-container">
-                        <div class="skill">Lulusan SMA/SMK</div>
-                        <div class="skill">S</div>
-                        <div class="skill">Skill</div>
+                        <div class="skill">Diposting pada {{ $career->created_at->format('d/m/Y') }}</div>
                     </div>
                     <button class="apply" onclick="applyJob({{ $career->id }})">Apply</button>
                     <button class="save">Save Job</button>
