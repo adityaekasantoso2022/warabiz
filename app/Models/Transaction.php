@@ -17,6 +17,7 @@ class Transaction extends Model
         'waralaba_name',
         'status',
         'payment_proof',
+        'total_payment',
     ];
 
     // Definisikan relasi dengan model Waralaba

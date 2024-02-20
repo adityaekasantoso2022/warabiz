@@ -44,6 +44,8 @@ class TransactionController extends Controller
                 'waralaba_id' => $request->input('waralaba_id'),
                 'waralaba_name' => $request->input('waralaba_name'),
                 'payment_proof' => $payment,
+                'total_payment' => $request->input('total_payment'),
+
             ]);
 
             return view('pages.user.home.success')->with('success', 'Waralaba berhasil dibuat.');

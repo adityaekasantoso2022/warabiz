@@ -118,7 +118,7 @@
                             </div>
                             <div class="info-item">
                                 <label>Total Pembayaran</label>
-                                <p>8272772</p>
+                                <p>Rp. {{ $transaction->total_payment }}</p>
                             </div>
                             <form action="{{ route('admin.transactions.update', $transaction->uuid) }}" method="POST">
                                 @csrf

@@ -619,9 +619,7 @@
                                     rows="3"></textarea>
                                 <p class="text-sm text-secondary mt-2">Lokasi pendirian waralaba</p>
                             </div>
-
                             <br>
-
                             <!-- Input untuk metode pembayaran -->
                             <div class="form-group">
                                 <label for="payment_method" class="form-label fw-bold">
@@ -651,7 +649,7 @@
                             <input type="hidden" name="waralaba_id" value="{{ $waralaba->id }}">
                             <input type="hidden" name="waralaba_name" value="{{ $waralaba->waralaba_name }}">
                             <input type="hidden" name="user_id" value="{{ auth()->id() }}">
-
+                            <input type="hidden" name="total_payment" id="total_payment" value="{{ $totalTransfer }}">
                             <br>
 
                             <!-- Submit button -->
