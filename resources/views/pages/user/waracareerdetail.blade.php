@@ -241,9 +241,7 @@
                     <div class="job-title">{{ $career->career_title }}</div>
                     <div class="company-name">{{ $career->address }}</div>
                     <div class="skills-container">
-                        <div class="skill">Komunikasi</div>
-                        <div class="skill">Sopan</div>
-                        <div class="skill">Bertanggung Jawab</div>
+                        <div class="skill">Diposting Pada 10/01/2023 19:00</div>
                     </div>
                     <div class="description">
                         <h6 class="description-title">Profile Perusahaan</h6>
@@ -257,7 +255,9 @@
                             <li>Berpengalaman dalam desain UI/UX adalah nilai tambah.</li>
                         </ul>
                         <div class="buttons-container">
-                            <button class="register-now">Daftar</button>
+                            <button class="register-now"
+                                onclick="window.location.href='{{ route('career.daftar', ['id' => $career->id]) }}'">Daftar</button>
+
                             <button class="back-button"
                                 onclick="window.location.href='{{ route('waracareer') }}'">Kembali</button>
                         </div>

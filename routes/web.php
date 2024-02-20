@@ -40,13 +40,16 @@ Route::
 
                 Route::get('/waracareer', 'WaracareerController@getData')->name('waracareer');
                 Route::get('/career/{id}', 'WaracareerController@show')->name('career.show');
+                Route::get('/daftar/{id}', 'WaracareerController@daftar')->name('career.daftar');
+
 
                 Route::get('/warapartner', 'WarapartnerController@index')->name('warapartner');
+
                 Route::get('/home', 'HomeController@index')->name('home.index');
                 Route::get('/waralaba/{id}', [WaralabaController::class, 'show'])->name("waralaba");
                 Route::get('/waralaba/{id}/checkout', [WaralabaController::class, 'checkout'])->name("checkout");
-                Route::get('/waralaba/{id}/checkout/submit', [WaralabaController::class, 'show3'])->name("payment"); //yang lama
-                Route::post('/waralaba/{id}/checkout/submit', [TransactionController::class, 'store']); //yang lama
+                Route::get('/waralaba/{id}/checkout/submit', [WaralabaController::class, 'show3'])->name("payment"); 
+                Route::post('/waralaba/{id}/checkout/submit', [TransactionController::class, 'store']); 
                 Route::get('/sukses', 'SuksesController@index')->name('sukses');
                 Route::post('/transaction/store', [TransactionController::class, 'store'])->name('transaction');
                 Route::get('/transaction/history', [TransactionController::class, 'transactionHistory'])->name('transaction.history');

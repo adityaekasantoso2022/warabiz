@@ -28,4 +28,16 @@ class WaracareerController extends Controller
         $data = WaraCareer::all();
         return view('pages.user.waracareer',['data' => $data]);
     }
+
+    public function daftar($id)
+    {
+        $career = WaraCareer::find($id);
+
+        if (Auth::check()) {
+            return view('pages.user.waracareerdaftar', [
+            ]);
+        }
+
+        return view('pages.user.waracareerdaftar', compact('career'));
+    }
 }

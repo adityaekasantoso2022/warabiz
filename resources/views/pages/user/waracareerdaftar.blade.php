@@ -1,4 +1,4 @@
-<x-user-layout title="Checkout" active="checkout">
+<x-user-layout title="Daftar Career" active="waracareer-daftar">
     @push('addonStyle')
     <style>
         body {
@@ -124,18 +124,6 @@
                                 </div>
                                 <div class="col-lg-6 p-0 ps-lg-4">
                                     <div class="form-group">
-                                        <label for="birthday" class="form-label fw-bold">
-                                            <p>Tanggal Lahir <span style="color: red;">*</span></p>
-                                        </label>
-                                        <input type="date" name="birthday" id="birthday"
-                                            class="form-control border px-2 py-1 rounded-3 shadow-none" required>
-                                        <p class="text-sm text-secondary mt-2">Contoh: 28/01/1997</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row m-0 mt-4">
-                                <div class="col-lg-6 p-0">
-                                    <div class="form-group">
                                         <label for="gender" class="form-label fw-bold">
                                             <p>Jenis Kelamin <span style="color: red;">*</span></p>
                                         </label>
@@ -147,6 +135,19 @@
                                         </select>
                                         <p class="text-sm text-secondary mt-2">Pilih jenis kelamin Anda</p>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row m-0 mt-4">
+                                <div class="col-lg-6 p-0">
+                                <div class="form-group">
+                                        <label for="birthday" class="form-label fw-bold">
+                                            <p>Tanggal Lahir <span style="color: red;">*</span></p>
+                                        </label>
+                                        <input type="date" name="birthday" id="birthday"
+                                            class="form-control border px-2 py-1 rounded-3 shadow-none" required>
+                                        <p class="text-sm text-secondary mt-2">Contoh: 28/01/1997</p>
+                                    </div>
+
                                 </div>
                                 <div class="col-lg-6 p-0 ps-lg-4">
                                     <div class="form-group">
@@ -171,12 +172,12 @@
                             <div class="row m-0 mt-4">
                                 <div class="col-lg-6 p-0">
                                     <div class="form-group">
-                                        <label for="name" class="form-label fw-bold">
-                                            <p>Nomor KTP <span style="color: red;">*</span></p>
+                                        <label for="email" class="form-label fw-bold">
+                                            <p>Alamat Email<span style="color: red;">*</span></p>
                                         </label>
-                                        <input type="number" name="name" id="name"
+                                        <input type="email" name="email" id="email"
                                             class="form-control border px-2 py-1 rounded-3 shadow-none" required>
-                                        <p class="text-sm text-secondary mt-2">Masukan nomor KTP</p>
+                                        <p class="text-sm text-secondary mt-2">Masukan alamat email</p>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 p-0 ps-lg-4">
