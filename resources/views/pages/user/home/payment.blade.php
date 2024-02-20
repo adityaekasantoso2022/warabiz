@@ -413,6 +413,34 @@
             overflow: hidden;
             /* Menghilangkan bagian gambar yang keluar dari lingkaran */
         }
+
+        .form-check-input {
+            border: 1px solid #ccc;
+            border-radius: 1px;
+            margin-right: 5px;
+            box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ccc;
+        }
+
+        .copy-button {
+            padding: 8px;
+            background-color: #F6F6F6;
+            border: none;
+            cursor: pointer;
+            border-radius: 20%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copy-button i {
+            font-size: 1.4em;
+            color: #DADADA;
+        }
+
+
+        .copy-button:hover i {
+            color: #AEAEAE;
+        }
     </style>
     @endpush
     <section class="py-5" style="margin-top: 10px">
@@ -439,51 +467,66 @@
                             </div>
                             <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                 <div class="d-flex gap-3 align-items-center">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                        alt="BuildWith Angga">
+                                    <img src="{{ asset('assets/frontend/image/banks/BCA.png') }}" width="auto"
+                                        height="40">
                                     <div class="d-flex flex-column">
                                         <h5 class="header-title mb-1">
                                             Bank BCA
                                         </h5>
-                                        <p>72836265152526</p>
+                                        <p class="account-number">72836265152526</p>
                                     </div>
                                 </div>
+                                <button class="copy-button" onclick="copyAccountNumber(this)">
+                                    <i class="fas fa-clipboard"></i>
+                                </button>
                             </div>
+
                             <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                 <div class="d-flex gap-3 align-items-center">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                        alt="BuildWith Angga">
+                                    <img src="{{ asset('assets/frontend/image/banks/BNI.png') }}" width="auto"
+                                        height="40">
                                     <div class="d-flex flex-column">
                                         <h5 class="header-title mb-1">
                                             Bank BNI
                                         </h5>
-                                        <p>91736561522771</p>
+                                        <p class="account-number">91736561522771</p>
                                     </div>
                                 </div>
+                                <button class="copy-button" onclick="copyAccountNumber(this)">
+                                    <i class="fas fa-clipboard"></i>
+                                </button>
                             </div>
+
                             <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                 <div class="d-flex gap-3 align-items-center">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                        alt="BuildWith Angga">
+                                    <img src="{{ asset('assets/frontend/image/banks/BRI.png') }}" width="auto"
+                                        height="40">
                                     <div class="d-flex flex-column">
                                         <h5 class="header-title mb-1">
                                             Bank BRI
                                         </h5>
-                                        <p>88372615537182</p>
+                                        <p class="account-number">88372615537182</p>
                                     </div>
                                 </div>
+                                <button class="copy-button" onclick="copyAccountNumber(this)">
+                                    <i class="fas fa-clipboard"></i>
+                                </button>
                             </div>
+
                             <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                 <div class="d-flex gap-3 align-items-center">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                        alt="BuildWith Angga">
+                                    <img src="{{ asset('assets/frontend/image/banks/Mandiri.png') }}" width="auto"
+                                        height="40">
                                     <div class="d-flex flex-column">
                                         <h5 class="header-title mb-1">
                                             Bank Mandiri
                                         </h5>
-                                        <p>18827362651523</p>
+                                        <p class="account-number">18827362651523</p>
                                     </div>
                                 </div>
+                                <button class="copy-button" onclick="copyAccountNumber(this)">
+                                    <i class="fas fa-clipboard"></i>
+                                </button>
                             </div>
                         </div>
                         <br>
@@ -492,11 +535,28 @@
                                 <span>Detail Tagihan</span>
                                 <a class="btn btn text-muted" onclick="showInvoiceModal()">Lihat Detail</a>
                             </h5>
+
+
                             <script>
                                 function showInvoiceModal() {
                                     var modal = new bootstrap.Modal(document.getElementById('invoiceModal'));
                                     modal.show();
+
                                 }
+                                function copyAccountNumber(button) {
+                                    // Dapatkan nomor rekening terkait dengan tombol yang diklik
+                                    var accountNumber = button.parentElement.querySelector('.account-number').innerText;
+
+                                    // Copy nomor rekening ke clipboard
+                                    navigator.clipboard.writeText(accountNumber).then(function () {
+                                        console.log('Nomor rekening berhasil disalin: ' + accountNumber);
+                                        alert('Nomor rekening berhasil disalin: ' + accountNumber);
+                                    }, function (err) {
+                                        console.error('Gagal menyalin nomor rekening: ', err);
+                                        alert('Gagal menyalin nomor rekening. Silakan coba lagi.');
+                                    });
+                                }
+
                             </script>
                             <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                 <div class="d-flex gap-3 align-items-center">
@@ -570,7 +630,8 @@
                         <h5 class="header-title mb-0">
                             <b>Informasi Pembelian</b>
                         </h5>
-                        <form id="myForm" action="{{ route('transaction') }}" method="POST" enctype="multipart/form-data">
+                        <form id="myForm" action="{{ route('transaction') }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="fullname" class="form-label fw-bold">
@@ -612,14 +673,19 @@
                             <!-- Input untuk alamat -->
                             <div class="form-group">
                                 <label for="address" class="form-label fw-bold">
-                                    <p>Lokasi Pendirian <span style="color: red;">*</span></p>
+                                    <p>Lokasi Pendirian Waralaba <span style="color: red;">*</span></p>
                                 </label>
                                 <textarea name="address" id="address"
                                     class="form-control border px-2 py-1 rounded-3 shadow-none" required cols="30"
                                     rows="3"></textarea>
-                                <p class="text-sm text-secondary mt-2">Lokasi pendirian waralaba</p>
+                                <p class="text-sm text-secondary mt-2">Contoh: Jl. DI Panjaitan, No.128, Purwokerto,
+                                    Banyumas, Jawa Tengah</p>
                             </div>
                             <br>
+                            <h5 class="header-title mb-4">
+                                <b>Informasi Pembayaran</b>
+                            </h5>
+
                             <!-- Input untuk metode pembayaran -->
                             <div class="form-group">
                                 <label for="payment_method" class="form-label fw-bold">
@@ -641,7 +707,9 @@
                                 <label for="payment_proof" class="form-label fw-bold">
                                     <p>Bukti Pembayaran <span style="color: red;">*</span></p>
                                 </label>
-                                <input type="file" class="form-control border px-2 py-1 rounded-3 shadow-none" class="form-control" id="payment_proof" name="payment_proof" accept="file/*" required>
+                                <input type="file" class="form-control border px-2 py-1 rounded-3 shadow-none"
+                                    class="form-control" id="payment_proof" name="payment_proof" accept="file/*"
+                                    required>
                                 <p class="text-sm text-secondary mt-2">Unggah bukti pembayaran Anda di sini</p>
                             </div>
 
@@ -651,6 +719,13 @@
                             <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                             <input type="hidden" name="total_payment" id="total_payment" value="{{ $totalTransfer }}">
                             <br>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="pernyataan" required>
+                                <label class="form-check-label" for="pernyataan">
+                                    Saya menyatakan bahwa data yang saya berikan benar dan dapat dipertanggung
+                                    jawabakan.
+                                </label>
+                            </div>
 
                             <!-- Submit button -->
                             <button type="submit" class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3"
@@ -677,7 +752,7 @@
         </div>
     </section>
     <script>
-      etElement").addEventListener("submit", function (event) {
+      etElement").addEventListener("submit", function (event) 
         event.preventDefault(); // Menghentikan pengiriman formulir langsung
 
         // Menampilkan popup pesanan sedang diproses
@@ -757,7 +832,7 @@
                             </div>
                             <div class="d-flex justify-content-between">
                                 <span></span>
-                                <span>Kode Unik : ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎  ‎ ‎ ‎ ‎  ‎ ‎ ‎ ‎ ‎  {{ $uniqueCode }}</span>
+                                <span>Kode Unik : ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ {{ $uniqueCode }}</span>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <span></span>
