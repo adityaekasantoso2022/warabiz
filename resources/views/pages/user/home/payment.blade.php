@@ -490,7 +490,7 @@
                         <div class="item-pricing item-mentor d-flex flex-column gap-3">
                             <h5 class="header-title mb-3 d-flex justify-content-between align-items-center">
                                 <span>Detail Tagihan</span>
-                                <a class="btn btn text-muted" onclick="showInvoiceModal()">Lihat Invoice</a>
+                                <a class="btn btn text-muted" onclick="showInvoiceModal()">Lihat Detail</a>
                             </h5>
                             <script>
                                 function showInvoiceModal() {
@@ -714,7 +714,7 @@
                     <div class="row mb-4">
                         <div class="col-lg-8 col-12">
                             <img src="{{ asset('assets/frontend/image/logo.svg') }}" class="mb-4" height="50">
-                            <h3 class="mb-0">Invoice Pembelian Waralaba</h3>
+                            <h3 class="mb-0">Tagihan Pembayaran</h3>
                         </div>
                     </div>
                     <hr class="mb-4">
@@ -759,7 +759,7 @@
                             </div>
                             <div class="d-flex justify-content-between">
                                 <span></span>
-                                <span>Kode Unik :  {{ $uniqueCode }}</span>
+                                <span>Kode Unik : ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎  ‎ ‎ ‎ ‎  ‎ ‎ ‎ ‎ ‎  {{ $uniqueCode }}</span>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <span></span>
