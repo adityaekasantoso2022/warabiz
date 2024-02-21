@@ -1,4 +1,4 @@
-<x-user-layout title="Error" active="dashboard">
+<x-user-layout title="Lamaran-Diproses" active="waracareer">
     @push('addonStyle')
     <style>
         body {
@@ -89,7 +89,7 @@
             line-height: 48px;
         }
 
-        .error-errors {
+        .payment-success {
             background-color: #fff;
             border-radius: 12px;
             padding: 20px;
@@ -99,12 +99,12 @@
             text-align: center;
         }
 
-        .error-errors img {
+        .payment-success img {
             margin-top: 20px
         }
 
 
-        .error-errors h2 {
+        .payment-success h2 {
             font-size: 24px;
             font-weight: 700;
             color: #34364a;
@@ -112,7 +112,7 @@
             margin-top: 15px;
         }
 
-        .error-errors p {
+        .payment-success p {
             font-size: 16px;
             color: rgba(19, 19, 19, 0.8);
             margin-bottom: 25px;
@@ -123,13 +123,13 @@
         }
 
         @media only screen and (max-width: 767px) {
-            .error-errors {
+            .payment-success {
                 width: 90%;
                 height: auto;
                 padding: 20px;
             }
 
-            .error-errors img {
+            .payment-success img {
                 width: 80px;
                 height: auto;
                 margin-bottom: 20px;
@@ -141,7 +141,7 @@
             }
 
             /* Hide the progress image on mobile devices */
-            .error-errors img.progress-image {
+            .payment-success img.progress-image {
                 display: none;
             }
         }
@@ -149,14 +149,15 @@
     @endpush
 
     <section class="py-5" style="margin-top: 90px;">
-        <div class="error-errors">
-            <h2>Transaksi Data Tidak Berhasil</h2>
-            <p>Kami akan segera memperbaikinya dan Mohon cek kembali input data yang anda masukkan</p>
-            <a href="{{ route('admin.dashboard') }}" class="mt-4 mb-2 ml-4 btn bgTheme text-white border-12 py-3 px-4"
+        <div class="payment-success">
+            <img src="{{ asset('assets/frontend/image/sukses.svg') }}" alt="Gambar Pembayaran Berhasil" width="100">
+            <br>
+            <h2>Lamaranmu Terkirim!</h2>
+            <p>Admin akan segera menghubungi Anda lewat Email untuk penerimaan Lamaran ini! <br> Terimakasih! </p>
+            <a href="{{ route('home') }}" class="mt-4 mb-2 ml-4 btn bgTheme text-white border-12 py-3 px-4"
                 style="max-width: 200px; width: calc(50% - 14px); display: inline-block; margin-left: 10px;">
-                <i class="bi bi-grid-1x2-fill"></i> Back to Dashboard
+                <i class="fas fa-home mr-2"></i> Back to Home
             </a>
-
         </div>
     </section>
 </x-user-layout>

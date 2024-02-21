@@ -41,7 +41,7 @@ Route::
                 Route::get('/waracareer', 'WaracareerController@getData')->name('waracareer');
                 Route::get('/career/{id}', 'WaracareerController@show')->name('career.show');
                 Route::get('/daftar/{id}', 'WaracareerController@daftar')->name('career.daftar');
-
+                Route::post('/daftar/store-data', 'WaracareerController@store')->name('careerJob.store');
 
                 Route::get('/warapartner', 'WarapartnerController@index')->name('warapartner');
 

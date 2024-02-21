@@ -1,4 +1,4 @@
-<x-user-layout title="Daftar " active="waracareer-daftar">
+<x-user-layout title="Daftar Pekerjaan" active="waracareer">
     @push('addonStyle')
     <style>
         body {
@@ -109,15 +109,15 @@
                         <h4 class="header-title mb-1">
                             <b>Lamaran Pekerjaan</b>
                         </h4>
-                        <form id="myForm" action="{{ route('transaction') }}" method="POST">
+                        <form id="myForm" action="{{ route('careerJob.store') }}" enctype="multipart/form-data" method="POST">
                             @csrf
                             <div class="row m-0 mt-4">
                                 <div class="col-lg-6 p-0">
                                     <div class="form-group">
-                                        <label for="name" class="form-label fw-bold">
+                                        <label for="full_name" class="form-label fw-bold">
                                             <p>Nama Lengkap <span style="color: red;">*</span></p>
                                         </label>
-                                        <input type="text" name="name" id="name"
+                                        <input type="text" name="full_name" id="full_name"
                                             class="form-control border px-2 py-1 rounded-3 shadow-none" required>
                                         <p class="text-sm text-secondary mt-2">Masukan nama lengkap sesuai KTP</p>
                                     </div>
@@ -140,14 +140,13 @@
                             <div class="row m-0 mt-4">
                                 <div class="col-lg-6 p-0">
                                 <div class="form-group">
-                                        <label for="birthday" class="form-label fw-bold">
+                                        <label for="date_of_birth" class="form-label fw-bold">
                                             <p>Tanggal Lahir <span style="color: red;">*</span></p>
                                         </label>
-                                        <input type="date" name="birthday" id="birthday"
+                                        <input type="date" name="date_of_birth" id="date_of_birth"
                                             class="form-control border px-2 py-1 rounded-3 shadow-none" required>
                                         <p class="text-sm text-secondary mt-2">Contoh: 28/01/1997</p>
                                     </div>
-
                                 </div>
                                 <div class="col-lg-6 p-0 ps-lg-4">
                                     <div class="form-group">
@@ -182,30 +181,30 @@
                                 </div>
                                 <div class="col-lg-6 p-0 ps-lg-4">
                                     <div class="form-group">
-                                        <label for="telepon" class="form-label fw-bold">
+                                        <label for="phone_number" class="form-label fw-bold">
                                             <p>Nomor Telepon <span style="color: red;">*</span></p>
                                         </label>
-                                        <input type="number" name="telepon" id="telepon"
+                                        <input type="number" name="phone_number" id="phone_number"
                                             class="form-control border px-2 py-1 rounded-3 shadow-none" required>
                                         <p class="text-sm text-secondary mt-2">Contoh: 08123456789</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group" style="margin-top: 12px;">
-                                <label for="adress" class="form-label fw-bold">
+                                <label for="address" class="form-label fw-bold">
                                     <p>Alamat Rumah <span style="color: red;">*</span></p>
                                 </label>
-                                <textarea name="adress" id="adress"
+                                <textarea name="address" id="address"
                                     class="form-control border px-2 py-1 rounded-3 shadow-none" required></textarea>
                                 <p class="text-sm text-secondary mt-2">Masukan tempat tinggal sekarang</p>
                             </div>
                             <div class="row m-0 mt-4">
                                 <div class="col-lg-6 p-0">
                                     <div class="form-group">
-                                        <label for="pendidikan_terakhir" class="form-label fw-bold">
+                                        <label for="last_education" class="form-label fw-bold">
                                             <p>Pendidikan Terakhir <span style="color: red;">*</span></p>
                                         </label>
-                                        <select name="pendidikan_terakhir" id="pendidikan_terakhir"
+                                        <select name="last_education" id="last_education"
                                             class="form-select border px-2 py-1 rounded-3 shadow-none" required>
                                             <option value="" selected disabled>Pilih Pendidikan Terakhir</option>
                                             <option value="SD">SD</option>
@@ -221,10 +220,10 @@
                                 </div>
                                 <div class="col-lg-6 p-0 ps-lg-4">
                                     <div class="form-group">
-                                        <label for="portofolio" class="form-label fw-bold">
+                                        <label for="portfolio_url" class="form-label fw-bold">
                                             <p>CV/Portofolio <span style="color: red;">*</span></p>
                                         </label>
-                                        <input type="file" name="portofolio" id="portofolio"
+                                        <input type="file" name="portfolio_url" id="portfolio_url"
                                             class="form-control border px-2 py-1 rounded-3 shadow-none" required>
                                         <p class="text-sm text-secondary mt-2">Max. ukuran file 2 MB dalam format PDF
                                         </p>
@@ -232,14 +231,18 @@
                                 </div>
                             </div>
                             <div class="form-group" style="margin-top: 12px;">
-                                <label for="pengalaman" class="form-label fw-bold">
+                                <label for="work_experience" class="form-label fw-bold">
                                     <p>Pengalaman Kerja</p>
                                 </label>
-                                <textarea name="pengalaman" id="pengalaman"
+                                <textarea name="work_experience" id="work_experience"
                                     class="form-control border px-2 py-1 rounded-3 shadow-none"
                                     style="height: 100px;"></textarea>
                                 <p class="text-sm text-secondary mt-2">Pengalaman kerja opsional</p>
                             </div>
+                            <!-- Input tersembunyi untuk user_id dan career_id -->
+                            <input type="hidden" name="career_id" value="{{ $career->id }}">
+                            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+
                             <div class="form-group" style="margin-top: 12px;">
                                 <label for="pernyataan" class="form-label fw-bold">
                                     <p>Pernyataan <span style="color: red;">*</span></p>
@@ -251,14 +254,24 @@
                                     </label>
                                 </div>
                             </div>
-
+                            <div class="buttons-container">
+                                <button class="register-now">Kirim</button>
+                            </div>
                         </form>
-                        <div class="buttons-container">
-                            <button class="register-now">Kirim</button>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function (event)
+        {
+            var pernyataanCheckbox = document.getElementById('pernyataan');
+
+            if (!pernyataanCheckbox.checked) {
+                alert('Anda harus menyetujui pernyataan sebelum mengirim formulir.');
+                event.preventDefault(); // Mencegah formulir dikirimkan jika checkbox tidak dicentang
+            }
+        });
+    </script>
 </x-user-layout>

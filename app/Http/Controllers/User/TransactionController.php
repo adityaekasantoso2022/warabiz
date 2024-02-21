@@ -31,7 +31,7 @@ class TransactionController extends Controller
 
         if ($verif_payment) {
             // Unggah gambar ke Cloudinary
-            $payment = CloudinaryStorage::uploadSecureFile($verif_payment->getRealPath(), $verif_payment->getClientOriginalName());
+            $payment = CloudinaryStorage::uploadSecureFile($verif_payment, $verif_payment->getClientOriginalName());
 
             // Buat objek transaksi baru berdasarkan data yang diterima
             Transaction::create([
@@ -53,8 +53,7 @@ class TransactionController extends Controller
         } else {
             // Tangani kasus ketika $verif_payment adalah null
             $error_message = "File verifikasi pembayaran tidak ditemukan.";
-            // Contoh: keluarkan pesan kesalahan, log, atau tindakan lainnya
-            echo $error_message;
+            return view('pages.user.home.errorTransaction')->with("error", $error_message);
         }
     }
 

@@ -9,6 +9,9 @@ class WaraCareer extends Model
 {
     use HasFactory;
     protected $table = 'wara_careers';
+
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'career_title',
         'description',

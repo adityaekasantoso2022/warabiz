@@ -1,4 +1,4 @@
-<x-user-layout title="Error" active="dashboard">
+<x-user-layout title="Error" active="home">
     @push('addonStyle')
     <style>
         body {
@@ -151,10 +151,10 @@
     <section class="py-5" style="margin-top: 90px;">
         <div class="error-errors">
             <h2>Transaksi Data Tidak Berhasil</h2>
-            <p>Kami akan segera memperbaikinya dan Mohon cek kembali input data yang anda masukkan</p>
-            <a href="{{ route('admin.dashboard') }}" class="mt-4 mb-2 ml-4 btn bgTheme text-white border-12 py-3 px-4"
+            <p>Mohon cek kembali input data yang anda Masukkan</p>
+            <a href="{{ route('home') }}" class="mt-4 mb-2 ml-4 btn bgTheme text-white border-12 py-3 px-4"
                 style="max-width: 200px; width: calc(50% - 14px); display: inline-block; margin-left: 10px;">
-                <i class="bi bi-grid-1x2-fill"></i> Back to Dashboard
+                <i class="bi bi-grid-1x2-fill"></i> Back to Home
             </a>
 
         </div>

@@ -739,20 +739,20 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Pesanan Diproses</h5>
+                        <h5 class="modal-title">Terimakasih! Pesanan Diproses</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Pesanan Anda sedang diproses. Mohon tunggu sebentar...</p>
+                        <p>Pesanan Anda sedang diproses. Mohon menunggu untuk Kami verifikasi dulu ya...</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <script>
-      etElement").addEventListener("submit", function (event) 
+      getElement").addEventListener("submit", function (event)
         event.preventDefault(); // Menghentikan pengiriman formulir langsung
 
         // Menampilkan popup pesanan sedang diproses

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\CloudinaryStorage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,8 +58,12 @@ class TransactionAdminController extends Controller
 
     public function destroy($id)
     {
-        $article = Transaction::findOrFail($id);
-        $article->delete();
+        $transaction = Transaction::findOrFail($id);
+
+        // Menghapus Bukti Pembayaran
+        CloudinaryStorage::deletePayment($transaction->payment_proof);
+
+        $transaction->delete();
         return redirect()->route('admin.transactions')->with('success', 'Artikel berhasil dihapus.');
     }
 
