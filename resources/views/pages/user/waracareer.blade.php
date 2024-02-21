@@ -173,12 +173,12 @@
                         <img src="{{ $career->logo_url }}" />
                     </div>
                     <div class="job-title">{{ $career->career_title }}</div>
-                    <div class="company-name">Alfamart Tbk</div>
+                    <div class="company-name">{{ $career->company_name }}</div>
                     <div class="skills-container">
                         <div class="skill">Diposting pada {{ $career->created_at->format('d/m/Y') }}</div>
                     </div>
-                    <button class="apply" onclick="applyJob({{ $career->id }})">Apply</button>
-                    <button class="save">Save Job</button>
+                    <button class="apply" onclick="applyJob({{ $career->id }})">Daftar</button>
+                    <button class="save">Simpan</button>
                     <a href="#"></a>
                 </div>
                 @endforeach

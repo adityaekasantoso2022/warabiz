@@ -62,7 +62,7 @@
         /* Style untuk kartu artikel */
         .job-card {
             display: grid;
-            grid-template-columns: 80px auto 200px;
+            grid-template-columns: 80px auto 230px;
             grid-template-rows: 35px 10px 35px auto;
             width: 100%;
             border: 1px solid #e3e3e3;
@@ -124,15 +124,14 @@
         }
 
         .description-title {
-            font-weight: 500;
-            margin-bottom: 5px;
+            font-weight: 600;
+            margin-top: 20px;
             color: #333;
         }
 
         .description-content {
             color: #666;
             line-height: 1.6;
-            margin-bottom: 16px;
         }
 
         .description-content ul {
@@ -245,11 +244,11 @@
                     </div>
                     <div class="description">
                         <h6 class="description-title">Profile Perusahaan</h6>
-                        <p class="description-content">{{ $career->description }}.</p>
+                        <p class="description-content">{!! html_entity_decode($career->profile_company) !!}</p>
                         <h6 class="description-title">Deskripsi Pekerjaan</h6>
-                        <p class="description-content">{{ $career->description }}.</p>
+                        <p class="description-content">{!! html_entity_decode($career->description) !!}</p>
                         <h6 class="description-title">Syarat & Ketentuan:</h6>
-                        <p class="description-content">{{ $career->work_requirements }}.</p>
+                        <p class="description-content">{!! html_entity_decode($career->work_requirements) !!}</p>
                         <div class="buttons-container">
                             <button class="register-now"
                                 onclick="window.location.href='{{ route('career.daftar', ['id' => $career->id]) }}'">Daftar</button>
@@ -258,11 +257,14 @@
                         </div>
                     </div>
                     <p class="description-content"><b>Perkiraan Gaji</b><br>
-                        @if ($career->min_salary !== null && $career->max_salary !== null)
-                        {{ number_format($career->min_salary / 1000000, 0) }}-{{ number_format($career->max_salary /
-                        1000000, 0) }} Juta/bulan
-                        @else
+                        @if ($career->min_salary !== null && $career->max_salary !== null && $career->min_salary !==
+                        'Rp.' && $career->max_salary !== 'Rp.')
+                        {{ $career->min_salary }} - {{ $career->max_salary }}
+                        @elseif ($career->min_salary === null && $career->max_salary === null)
                         Gaji tidak ditampilkan
+                        @else
+                        {{ $career->min_salary !== null && $career->min_salary !== 'Rp.' ? $career->min_salary : 'Tidak
+                        ditampilkan' }} 
                         @endif
                     </p>
                 </div>

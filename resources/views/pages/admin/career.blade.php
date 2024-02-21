@@ -71,10 +71,8 @@
 
         .small-circle-img {
             width: 50px;
-            /* Ukuran gambar profil */
             height: 50px;
             border-radius: 50%;
-            /* Lingkaran */
             object-fit: contain;
         }
 
@@ -122,11 +120,9 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Logo Perusahaan</th>
-                                    <th>Gambar Perusahaan</th>
-                                    <th>Nama Pekerjaan</th>
-                                    <th>Alamat</th>
                                     <th>Nama Perusahaan</th>
+                                    <th>Posisi Pekerjaan</th>
+                                    <th>Deskripsi</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -134,13 +130,9 @@
                                 @foreach ($careers as $index => $career)
                                 <tr>
                                     <td class="text-center">{{ $index + 1 }}</td>
-                                    <td><img src="{{ asset($career->logo_url) }}" alt="Thumbnail"
-                                            class="career-thumbnail"></td>
-                                    <td><img src="{{ asset($career->image_url) }}" alt="Thumbnail"
-                                            class="career-thumbnail"></td>
-                                    <td>{{ $career->career_title }}</td>
                                     <td>{{ $career->company_name }}</td>
-                                    <td>{{ Str::limit($career->description, 135) }}</td>
+                                    <td>{{ $career->career_title }}</td>
+                                    <td>{{ Str::limit(strip_tags($career->description), 135) }}</td>
                                     <td>
                                         <div class="career-details d-flex justify-content-between align-items-center">
                                             <a href="{{ route('admin.careers.edit', $career->id) }}"
@@ -174,16 +166,16 @@
             var input, filter, table, tr, tdJobName, tdCompanyName
             input = this;
             filter = input.value.toUpperCase();
-            table = document.querySelector(".transaction-table");
+            table = document.querySelector(".career-table");
             tr = table.getElementsByTagName("tr");
 
             for (i = 0; i < tr.length; i++) {
-                tdJobName = tr[i].getElementsByTagName("td")[3]; // Kolom untuk nama perusahaan
-                tdCompanyName = tr[i].getElementsByTagName("td")[5]; // Kolom untuk Nama pekerjaan
+                tdJobName = tr[i].getElementsByTagName("td")[2]; // Kolom untuk posisi pekerjaan
+                tdCompanyName = tr[i].getElementsByTagName("td")[1]; // Kolom untuk nama perusahaan
                 if (tdJobName && tdCompanyName) {
                     txtValueName = tdJobName.textContent || tdJobName.innerText;
-                    txtValuePemesan = tdCompanyName.textContent || tdCompanyName.innerText;
-                    if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValueId.toUpperCase().indexOf(filter) > -1 || txtValuePemesan.toUpperCase().indexOf(filter) > -1) {
+                    txtValueCompanyName = tdCompanyName.textContent || tdCompanyName.innerText;
+                    if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValueCompanyName.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";
                     } else {
                         tr[i].style.display = "none";
