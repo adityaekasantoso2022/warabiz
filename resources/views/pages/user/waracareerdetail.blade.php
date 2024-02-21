@@ -222,6 +222,13 @@
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
         }
+        .container li {
+            font-size: 14px;
+        }
+        .container p {
+            font-size: 14px;
+        }
+
     </style>
     @endpush
 
