@@ -15,8 +15,9 @@ use App\Http\Controllers\Admin\CareerAdminController;
 use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Admin\BantuanAdminController;
 use App\Http\Controllers\Admin\OwnerController;
-
-
+use App\Http\Controllers\Owner\TransactionOwnerController;
+use App\Http\Controllers\Owner\WaralabaOwnerController;
+use App\Http\Controllers\Owner\CareerOwnerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,8 +84,7 @@ Route::
 
                 // Admin CRUD transaction
                 Route::get('/admin/transaksi', [TransactionAdminController::class, 'index'])->name('admin.transactions');
-                Route::get('/admin/transaction/{id}', [TransactionAdminController::class, 'show'])->name('admin.transactions.show');
-                Route::get('/admin/transaction/{id}/edit', [TransactionAdminController::class, 'edit'])->name('admin.transactions.edit');
+                Route::get('/admin/invoice/{id}', [TransactionAdminController::class, 'show'])->name('admin.transactions.show');                Route::get('/admin/transaction/{id}/edit', [TransactionAdminController::class, 'edit'])->name('admin.transactions.edit');
                 Route::put('/admin/transactions/{id}', [TransactionAdminController::class, 'update'])->name('admin.transactions.update');
                 Route::delete('/admin/transactions/{id}', [TransactionAdminController::class, 'destroy'])->name('admin.transactions.destroy');
                 Route::post('/admin/transactions', [TransactionAdminController::class, 'store'])->name('admin.transactions.store');
@@ -116,5 +116,12 @@ Route::
         });
         Route::middleware(['auth', 'owner'])->group(function () {
             Route::get('/owner/dashboard', [OwnerController::class, 'dashboard'])->name('owner.dashboard');
+            Route::get('/owner/waralaba', [WaralabaOwnerController::class, 'index'])->name('owner.waralaba');
+            Route::get('/owner/waralaba/create', [WaralabaOwnerController::class, 'create'])->name('owner.waralaba.create.form');
+
+            Route::get('/owner/transaksi', [TransactionOwnerController::class, 'index'])->name('owner.transactions');
+            Route::get('/owner/career', [CareerOwnerController::class, 'index'])->name('owner.career');
+            Route::post('/owner/waralaba', [WaralabaOwnerController::class, 'store'])->name('owner.waralaba.store');
+
         });
 Auth::routes();
