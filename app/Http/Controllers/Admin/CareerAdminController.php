@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CloudinaryStorage;
+use App\Models\JobApplication;
 use Illuminate\Support\Facades\Auth;
 use App\Models\WaraCareer;
 use Illuminate\Http\Request;
@@ -70,7 +71,7 @@ class CareerAdminController extends Controller
                 'created_by' => $user->role,
             ]);
 
-            return redirect()->route('admin.career')->with('success', 'Artikel berhasil dibuat.');
+            return redirect()->route('admin.career')->with('success', 'Career berhasil dibuat.');
         }
 
         // Jika tidak ada gambar yang diunggah, kembalikan dengan pesan kesalahan
@@ -152,4 +153,69 @@ class CareerAdminController extends Controller
         return redirect()->route('admin.career')->with('success', 'Wara Career berhasil diperbarui.');
     }
 
+    public function jobAppIndex()
+    {
+        if (Auth::check()) {
+            $jobApps = JobApplication::all();
+            return view('pages.admin.jobApp', [
+                'jobApps' => $jobApps
+            ]);
+        }
+        return view('pages.admin.dashboard');
+    }
+
+    public function jobAppDetails($id)
+    {
+        // Cari Job berdasarkan UUID
+        $jobApp = JobApplication::where('application_id', $id)->first();
+
+        // Jika Job tidak ditemukan, bisa ditangani sesuai kebutuhan
+        if (!$jobApp) {
+            return redirect()->view('pages.admin.error');
+        }
+
+        if (Auth::check()) {
+            // Tampilkan halaman dengan detail Job
+            return view('pages.admin.jobAppdetail', ['jobApp' => $jobApp]);
+        }
+
+        // Jika belum login
+        return view('pages.user.home');
+    }
+
+    public function jobAppEdit($id)
+    {
+        $jobApp = JobApplication::findOrFail($id);
+        return view('pages.admin.edit.jobApp', compact('jobApp'));
+    }
+
+    // Memperbarui jobApp dalam database
+    public function jobAppUpdate(Request $request, $id)
+    {
+        // Validasi input dari form
+        $request->validate([
+            'status' => 'required',
+            // Tambahkan validasi untuk kolom-kolom lainnya sesuai kebutuhan
+        ]);
+
+        // Cari jobApp berdasarkan ID
+        $jobApp = JobApplication::findOrFail($id);
+
+        // Update data jobApp
+        $jobApp->update($request->all());
+
+        // Redirect atau berikan respons sesuai kebutuhan
+        return redirect()->route('admin.jobApp')->with('success', 'Data jobApp berhasil diperbarui');
+    }
+
+    public function jobAppDelete($id)
+    {
+        $jobApp = JobApplication::findOrFail($id);
+
+        // Menghapus Bukti Pembayaran
+        CloudinaryStorage::deletePayment($jobApp->portfolio_url);
+
+        $jobApp->delete();
+        return redirect()->route('admin.jobApp')->with('success', 'Job Application berhasil dihapus.');
+    }
 }

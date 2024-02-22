@@ -53,4 +53,8 @@ class JobApplication extends Model
                 return 'Unknown';
         }
     }
+
+    protected $casts = [
+        'application_id' => 'string',
+    ];
 }

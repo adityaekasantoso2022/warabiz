@@ -104,4 +104,9 @@ class CloudinaryStorage extends Controller
             return false;
         }
     }
+
+    public static function deletePortfolio($path){
+        $public_id = self::folder_path_job.'/'.self::path($path);
+        return cloudinary()->destroy($public_id);
+    }
 }
