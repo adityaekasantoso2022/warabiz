@@ -31,7 +31,7 @@ class TransactionController extends Controller
 
         if ($verif_payment) {
             // Unggah gambar ke Cloudinary
-            $payment = CloudinaryStorage::uploadSecureFile($verif_payment, $verif_payment->getClientOriginalName());
+            $payment = CloudinaryStorage::uploadSecureFile($verif_payment->getRealPath(), $verif_payment->getClientOriginalName());
 
             // Buat objek transaksi baru berdasarkan data yang diterima
             Transaction::create([
