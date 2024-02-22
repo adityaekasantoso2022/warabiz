@@ -4744,7 +4744,7 @@ fieldset:disabled .btn {
 }
 
 .nav-link {
-    color: #435ebe;
+    color: #009BB8;
     display: block;
     padding: .5rem 1rem;
     text-decoration: none;
@@ -4759,7 +4759,7 @@ fieldset:disabled .btn {
 
 .nav-link:focus,
 .nav-link:hover {
-    color: #364b98
+    color: #009BB8
 }
 
 .nav-link.disabled {
@@ -4813,7 +4813,7 @@ fieldset:disabled .btn {
 
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
-    background-color: #435ebe;
+    background-color: #009BB8;
     color: #fff
 }
 
@@ -20389,12 +20389,12 @@ body .bi:before {
 
 .nav-tabs .nav-link.active {
     border: none;
-    color: #435ebe;
+    color: #009BB8;
     position: relative
 }
 
 .nav-tabs .nav-link.active:after {
-    background-color: #435ebe;
+    background-color: #009BB8;
     bottom: 0;
     box-shadow: 0 2px 5px rgba(67, 94, 190, .5);
     content: "";

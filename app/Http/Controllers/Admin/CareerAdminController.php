@@ -156,15 +156,14 @@ class CareerAdminController extends Controller
     public function jobAppIndex()
     {
         if (Auth::check()) {
-            $jobApps = JobApplication::all();
+            $jobApps = JobApplication::with('career')->get(); // Memuat relasi karir
             return view('pages.admin.jobApp', [
                 'jobApps' => $jobApps
             ]);
         }
         return view('pages.admin.dashboard');
     }
-
-    public function jobAppDetails($id)
+        public function jobAppDetails($id)
     {
         // Cari Job berdasarkan UUID
         $jobApp = JobApplication::where('application_id', $id)->first();
@@ -183,12 +182,7 @@ class CareerAdminController extends Controller
         return view('pages.user.home');
     }
 
-    public function jobAppEdit($id)
-    {
-        $jobApp = JobApplication::findOrFail($id);
-        return view('pages.admin.edit.jobApp', compact('jobApp'));
-    }
-
+    
     // Memperbarui jobApp dalam database
     public function jobAppUpdate(Request $request, $id)
     {

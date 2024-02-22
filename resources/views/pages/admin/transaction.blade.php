@@ -176,7 +176,7 @@
                                             <a href="{{ route('admin.transactions.edit', ['id' => $transaction->uuid]) }}"
                                                 class="btn btn-circle btn-primary"
                                                 style="background-color: #009bb8; border: none;">
-                                                <i class="fas fa-eye" style="color: white;"></i>
+                                                <i class="fas fa-sync-alt" style="color: white;"></i>
                                             </a>
                                             <form action="{{ route('admin.transactions.destroy', $transaction->uuid) }}"
                                                 method="POST" style="display: inline-block;">

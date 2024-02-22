@@ -109,7 +109,6 @@ Route::
                 // Admin Route Job Application
                 Route::get('/admin/jobapp', [CareerAdminController::class, 'jobAppIndex'])->name('admin.jobApp');
                 Route::get('/admin/jobapp/{id}/details', [CareerAdminController::class, 'jobAppDetails'])->name('admin.jobApp.details');
-                Route::get('/admin/jobapp/{id}/edit', [CareerAdminController::class, 'jobAppEdit'])->name('admin.jobApp.edit');
                 Route::put('/admin/jobapp/{id}/update', [CareerAdminController::class, 'jobAppUpdate'])->name('admin.jobApp.update');
                 Route::delete('/admin/jobapp/{id}/delete', [CareerAdminController::class, 'jobAppDelete'])->name('admin.jobApp.delete');
 

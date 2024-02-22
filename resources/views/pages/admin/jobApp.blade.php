@@ -112,13 +112,11 @@
                             </div>
                             <div>
                                 <label for="statusFilter">Filter Status:</label>
-                                <select id="statusFilter" class="form-select">
+                                <select id="statusFilter" class="form-select" style="min-width: 250px;">
                                     <option value="">Semua</option>
-                                    <option value="Verifikasi Pembayaran">Verifikasi Pembayaran</option>
-                                    <option value="Proses Pembangunan">Proses Pembangunan</option>
-                                    <option value="Proses Pembukaan">Proses Pembukaan</option>
-                                    <option value="Selesai">Selesai</option>
-                                    <option value="Gagal">Gagal</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Diterima">Diterima</option>
+                                    <option value="Ditolak">Ditolak</option>
                                 </select>
                             </div>
                         </div>
@@ -127,16 +125,14 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>ID Lamaran Pekerjaan</th>
-                                    <th>ID Pekerjaan</th>
+                                    <th>ID Lamaran</th>
+                                    <th>Nama Perusahaan</th>
+                                    <th>Posisi Pekerjaan</th>
                                     <th>Nama Pelamar</th>
-                                    <th>Email Pelamar</th>
-                                    <th>Tanggal Lamaran Pekerjaan</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
-
                             <tbody>
                                 @php
                                     $sortedJob = $jobApps->sortByDesc('created_at');
@@ -148,10 +144,9 @@
                                     data-status="{{ $jobApp->status }}">
                                     <td>{{ ++$jobIndex }}</td>
                                     <td>LMR-{{ substr($jobApp->application_id, 0, 8) }}</td>
-                                    <td>{{ $jobApp->career_id }}</td>
+                                    <td>{{ $jobApp->career->company_name }}</td>
+                                    <td>{{ $jobApp->career->career_title }}</td>
                                     <td>{{ $jobApp->full_name }}</td>
-                                    <td>{{ $jobApp->email }}</td>
-                                    <td>{{ $jobApp->created_at->setTimezone('Asia/Jakarta')->format('d/m/Y H:i') }}</td>
                                     <td>
                                         @switch($jobApp->status)
                                             @case(30301)
@@ -170,12 +165,7 @@
                                             <a href="{{ route('admin.jobApp.details', ['id' => $jobApp->application_id]) }}"
                                                 class="btn btn-circle btn-primary"
                                                 style="background-color: #009bb8; border: none;">
-                                                <i class="fas fa-eye" style="color: white;"></i></a>
-                                            <a href="{{ route('admin.jobApp.edit', ['id' => $jobApp->application_id]) }}"
-                                                class="btn btn-circle btn-primary"
-                                                style="background-color: #FFC107; border: none;">
-                                                <i class="fas fa-edit" style="color: white;"></i>
-                                            </a>
+                                                <i class="fas fa-sync-alt" style="color: white;"></i></a>
                                             <form action="{{ route('admin.jobApp.delete', $jobApp->application_id) }}"
                                                 method="POST" style="display: inline-block;">
                                                 @csrf
@@ -197,6 +187,7 @@
         </div>
     </section>
 
+    @push('addonScript')
     <script>
         document.getElementById("searchInput").addEventListener("input", function () {
             var input, filter, table, tr, tdName, tdId, tdFullname, i, txtValueName, txtValueId, txtValuePemesan;
@@ -229,7 +220,7 @@
             tr = table.getElementsByTagName("tr");
 
             for (i = 0; i < tr.length; i++) {
-                tdStatus = tr[i].getElementsByTagName("td")[6]; // Kolom untuk status transaksi
+                tdStatus = tr[i].getElementsByTagName("td")[5]; // Kolom untuk status transaksi
                 if (tdStatus) {
                     txtValueStatus = tdStatus.textContent || tdStatus.innerText;
                     if (filter === '' || txtValueStatus.toUpperCase().indexOf(filter) > -1) {
@@ -241,4 +232,5 @@
             }
         });
     </script>
+    @endpush
 </x-admin-layout>
