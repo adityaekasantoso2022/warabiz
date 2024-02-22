@@ -33,7 +33,8 @@ class Waralaba extends Model
         'rating',
         'concept',
         'concept_size',
-        'created_at'
+        'created_at',
+        'created_by'
     ];
 
     public function isEmpty()
@@ -62,6 +63,12 @@ class Waralaba extends Model
         });
     }
 
+    //Menampilkan nama pemilik waralaba di detail waralaba
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+    
     // public function home()
     // {
     //     return $this->hasMany(Home::class, 'category_id', 'id');

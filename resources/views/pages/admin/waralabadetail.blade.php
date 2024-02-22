@@ -100,11 +100,23 @@
                             </div>
 
                             <div class="info-item">
-                                <label>Badan Hukum</label>
-                                <p>PT. {{ $waralaba->waralaba_name }}</p>
+                                <label>Dibuat Oleh</label>
+                                @php
+                                try {
+                                $creatorName = $waralaba->creator->name;
+                                } catch (\Exception $e) {
+                                $creatorName = null;
+                                }
+                                @endphp
+                            
+                                @if ($creatorName)
+                                <p>{{ $creatorName }}</p>
+                                @else
+                                <p>Dibuat oleh admin</p>
+                                @endif
                             </div>
                             <div class="info-item">
-                                <label>Tahun Berdiri:</label>
+                                <label>Tahun Berdiri</label>
                                 <p>{{ \Carbon\Carbon::parse($waralaba->since)->translatedFormat('d F Y') }}</p>
                             </div>
                             <div class="info-item">
@@ -128,7 +140,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Konsep Bisnis</h5>
                             <div class="info-item">
-                                <label>Nama Waralaba</label>
+                                <label>Konsep Waralana</label>
                                 <p>{{ $waralaba->concept }}</p>
                             </div>
                             <div class="info-item">
@@ -172,7 +184,7 @@
                                         <td>{{ $transaction->created_at->format('d/m/Y H:i') }}</td>
                                         <td>{{ $transaction->fullname }}</td>
                                         <td>
-                                            <a href="{{ route('admin.transactions.show', ['id' => $transaction->uuid]) }}"
+                                            <a href="{{ route('admin.transactions.edit', ['id' => $transaction->uuid]) }}"
                                                 class="btn btn-circle btn-primary"
                                                 style="background-color: #009bb8; border: none;">
                                                 <i class="fas fa-eye" style="color: white;"></i>

@@ -110,7 +110,8 @@
                             <h5 class="card-title">Konfirmasi Pembayaran</h5>
                             <div class="info-item">
                                 <label>Tanggal Transaksi</label>
-                                <p>{{ $transaction->created_at->setTimezone('Asia/Jakarta')->format('d/m/Y H:i') }} WIB</p>
+                                <p>{{ $transaction->created_at->setTimezone('Asia/Jakarta')->format('d/m/Y H:i') }} WIB
+                                </p>
                             </div>
                             <div class="info-item">
                                 <label>Metode Pembayaran</label>
@@ -127,14 +128,12 @@
                                 <div class="mb-3">
                                     <label for="status" class="form-label">Status</label>
                                     <select class="form-control" id="status" name="status">
-                                        <option value="0" {{ $transaction->status == 0 ? 'selected' : '' }}>Verfikasi
-                                            Pembayaran
-                                        </option>
+                                        <option value="0" {{ $transaction->status == 0 ? 'selected' : '' }}>Verifikasi
+                                            Pembayaran</option>
                                         <option value="1" {{ $transaction->status == 1 ? 'selected' : '' }}>Pembangunan
                                         </option>
                                         <option value="2" {{ $transaction->status == 2 ? 'selected' : ''}}>Pembukaan
-                                            Waralaba
-                                        </option>
+                                            Waralaba</option>
                                         <option value="3" {{ $transaction->status == 3 ? 'selected' : ''}}>Selesai
                                         </option>
                                         <option value="4" {{ $transaction->status == 4 ? 'selected' : ''}}>Gagal
@@ -142,6 +141,10 @@
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Update</button>
+                                @if ($transaction->status == 3)
+                                <a href="{{ route('admin.transactions.show', ['id' => $transaction->uuid]) }}"
+                                    class="btn btn-success">Unduh Invoice</a>
+                                @endif
                             </form>
                         </div>
                     </div>

@@ -126,12 +126,8 @@
                                 </td>
                                 <td>
                                     <div class="transaction-details transaction-buttons-container d-flex justify-content-between">
-                                        <a href="{{ route('admin.transactions.show', ['id' => $transaction->uuid]) }}" class="btn btn-circle btn-primary" style="background-color: #009bb8; border: none;">
+                                        <a href="{{ route('admin.transactions.edit', ['id' => $transaction->uuid]) }}" class="btn btn-circle btn-primary" style="background-color: #009bb8; border: none;">
                                             <i class="fas fa-eye" style="color: white;"></i>
-                                        </a>
-                                        <span style="width: 5px;"></span>
-                                        <a href="{{ route('admin.transactions.edit', ['id' => $transaction->uuid]) }}" class="btn btn-circle btn-warning" style="background-color: #FFC107; border: none;">
-                                            <i class="fas fa-edit" style="color: white;"></i>
                                         </a>
                                     </div>
                                 </td>

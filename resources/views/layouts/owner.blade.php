@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="{{ asset('assets/backend/css/pages/datatables.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/css/shared/iconly.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/css/pages/lightbox.css') }}">
-
     @stack('addonStyle')
 
     <meta name="description" content="">
@@ -22,8 +21,8 @@
 
 <body>
     <div id="app">
-        <div id="main">
-            <x-owner.sidebar active="{{ $active }}" />
+        @include('components.owner.navbar')
+        <div class="content-wrapper container">
             {{ $slot }}
         </div>
     </div>

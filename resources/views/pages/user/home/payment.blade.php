@@ -717,7 +717,7 @@
                             <input type="hidden" name="waralaba_id" value="{{ $waralaba->id }}">
                             <input type="hidden" name="waralaba_name" value="{{ $waralaba->waralaba_name }}">
                             <input type="hidden" name="user_id" value="{{ auth()->id() }}">
-                            <input type="hidden" name="total_payment" id="total_payment" value="{{ $totalTransfer }}">
+                            <input type="hidden" name="total_payment" id="total_payment" value="{{ $totalTransferWithoutDot = str_replace('.', '', $totalTransfer)}}">
                             <br>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="pernyataan" required>
@@ -752,7 +752,7 @@
         </div>
     </section>
     <script>
-      getElement").addEventListener("submit", function (event)
+      getElement.addEventListener("submit", function (event))
         event.preventDefault(); // Menghentikan pengiriman formulir langsung
 
         // Menampilkan popup pesanan sedang diproses

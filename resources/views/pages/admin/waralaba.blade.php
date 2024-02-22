@@ -118,9 +118,9 @@
                                     <th>No.</th>
                                     <th>Logo</th>
                                     <th>Nama Waralaba</th>
+                                    <th>Nama Owner</th>
                                     <th>Tipe</th>
                                     <th>Harga</th>
-                                    <th>Tanggal Berdiri</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -128,19 +128,39 @@
                                 @foreach ($waralabas as $index => $waralaba)
                                 <tr>
                                     <td class="text-center">{{ $index + 1 }}</td>
-                                    <td class="text-center"><img class="small-circle-img" src="{{ $waralaba->logo }}" alt="Waralaba Image">
+                                    <td class="text-center"><img class="small-circle-img" src="{{ $waralaba->logo }}"
+                                            alt="Waralaba Image">
                                     </td>
                                     <td>{{ $waralaba->waralaba_name }}</td>
+                                    <td>
+                                        @php
+                                        try {
+                                        $creatorName = $waralaba->creator->name;
+                                        } catch (\Exception $e) {
+                                        $creatorName = null;
+                                        }
+                                        @endphp
+                                        @if ($creatorName)
+                                        <p>{{ $creatorName }}</p>
+                                        @else
+                                        <p>Dibuat oleh admin</p>
+                                        @endif
+                                    </td>
                                     <td>{{ $waralaba->concept }}</td>
                                     <td>Rp. {{ number_format(floatval($waralaba->price), 0, ',', '.') }}</td>
-                                    <td class="text-center">{{ \Carbon\Carbon::parse($waralaba->since)->format('d - M - Y') }}</td>
                                     <td class="text-center">
-                                        <div class="waralaba-details" style="display: flex; gap: 5px; align-items: center; justify-content: center;">
-                                            <a href="{{ route('admin.waralaba.show', $waralaba->id) }}" class="btn btn-circle btn-primary"
-                                                style="background-color: #009bb8; border: none;"><i class="fas fa-eye" style="color: white;"></i></a>
-                                            <a href="{{ route('admin.waralaba.edit', $waralaba->id) }}" class="btn btn-circle btn-warning"
-                                                style="background-color: #FFC107; border: none;"><i class="fas fa-edit" style="color: white;"></i></a>
-                                            <form action="{{ route('admin.waralaba.destroy', $waralaba->id) }}" method="POST">
+                                        <div class="waralaba-details"
+                                            style="display: flex; gap: 5px; align-items: center; justify-content: center;">
+                                            <a href="{{ route('admin.waralaba.show', $waralaba->id) }}"
+                                                class="btn btn-circle btn-primary"
+                                                style="background-color: #009bb8; border: none;"><i class="fas fa-eye"
+                                                    style="color: white;"></i></a>
+                                            <a href="{{ route('admin.waralaba.edit', $waralaba->id) }}"
+                                                class="btn btn-circle btn-warning"
+                                                style="background-color: #FFC107; border: none;"><i class="fas fa-edit"
+                                                    style="color: white;"></i></a>
+                                            <form action="{{ route('admin.waralaba.destroy', $waralaba->id) }}"
+                                                method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-circle btn-danger"
@@ -160,30 +180,30 @@
         </div>
     </section>
     <script>
-    document.getElementById("searchInput").addEventListener("input", function () {
-        var input, filter, table, tr, tdName, tdId, tdConcept, tdPrice, i, txtValueName, txtValueId, txtValueConcept, txtValuePrice;
-        input = this;
-        filter = input.value.toUpperCase();
-        table = document.querySelector(".waralaba-table");
-        tr = table.getElementsByTagName("tr");
+        document.getElementById("searchInput").addEventListener("input", function () {
+            var input, filter, table, tr, tdName, tdId, tdConcept, tdPrice, i, txtValueName, txtValueId, txtValueConcept, txtValuePrice;
+            input = this;
+            filter = input.value.toUpperCase();
+            table = document.querySelector(".waralaba-table");
+            tr = table.getElementsByTagName("tr");
 
-        for (i = 0; i < tr.length; i++) {
-            tdName = tr[i].getElementsByTagName("td")[2];
-            tdId = tr[i].getElementsByTagName("td")[1];
-            tdConcept = tr[i].getElementsByTagName("td")[3];
-            tdPrice = tr[i].getElementsByTagName("td")[4];
-            if (tdName || tdId || tdConcept || tdPrice) {
-                txtValueName = tdName.textContent || tdName.innerText;
-                txtValueId = tdId.textContent || tdId.innerText;
-                txtValueConcept = tdConcept.textContent || tdConcept.innerText;
-                txtValuePrice = tdPrice.textContent || tdPrice.innerText;
-                if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValueId.toUpperCase().indexOf(filter) > -1 || txtValueConcept.toUpperCase().indexOf(filter) > -1 || txtValuePrice.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
+            for (i = 0; i < tr.length; i++) {
+                tdName = tr[i].getElementsByTagName("td")[2];
+                tdId = tr[i].getElementsByTagName("td")[1];
+                tdConcept = tr[i].getElementsByTagName("td")[3];
+                tdPrice = tr[i].getElementsByTagName("td")[4];
+                if (tdName || tdId || tdConcept || tdPrice) {
+                    txtValueName = tdName.textContent || tdName.innerText;
+                    txtValueId = tdId.textContent || tdId.innerText;
+                    txtValueConcept = tdConcept.textContent || tdConcept.innerText;
+                    txtValuePrice = tdPrice.textContent || tdPrice.innerText;
+                    if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValueId.toUpperCase().indexOf(filter) > -1 || txtValueConcept.toUpperCase().indexOf(filter) > -1 || txtValuePrice.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
                 }
             }
-        }
-    });
-</script>
+        });
+    </script>
     </x-user-layout>
