@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\CloudinaryStorage;
 use App\Models\Waralaba;
+use App\Models\Transaction;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -207,6 +208,9 @@ class WaralabaAdminController extends Controller
 
         // Hapus logo dari Cloudinary
         CloudinaryStorage::delete($waralaba->logo);
+
+        Transaction::where('waralaba_id', $id)->delete();
+
 
         // Hapus gambar dari Cloudinary
         CloudinaryStorage::delete($waralaba->image_url_1);

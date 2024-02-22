@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Models\Transaction;
+
 
 
 class WaralabaOwnerController extends Controller
@@ -32,7 +34,7 @@ class WaralabaOwnerController extends Controller
             return abort(404);
         }
 
-        return view('pages.admin.waralabadetail', compact('waralaba'));
+        return view('pages.owner.waralabadetail', compact('waralaba'));
     }
 
     public function create()
@@ -126,7 +128,7 @@ class WaralabaOwnerController extends Controller
     public function edit($id)
     {
         $waralaba = Waralaba::findOrFail($id);
-        return view('pages.admin.edit.waralaba', compact('waralaba'));
+        return view('pages.owner.edit.waralaba', compact('waralaba'));
     }
 
     public function update(Request $request, $id)
@@ -196,30 +198,34 @@ class WaralabaOwnerController extends Controller
             'concept_size' => $request->input('concept_size'),
         ]);
 
-        return redirect()->route('admin.waralaba')->with('success', 'Waralaba berhasil diupdate.');
+        return redirect()->route('owner.waralaba')->with('success', 'Waralaba berhasil diupdate.');
     }
 
     public function destroy($id)
-    {
-        // Cari waralaba berdasarkan ID
-        $waralaba = Waralaba::findOrFail($id);
+{
+    // Cari waralaba berdasarkan ID
+    $waralaba = Waralaba::findOrFail($id);
 
-        // Hapus logo dari Cloudinary
-        CloudinaryStorage::delete($waralaba->logo);
+    // Hapus transaksi terkait dengan waralaba
+    Transaction::where('waralaba_id', $id)->delete();
 
-        // Hapus gambar dari Cloudinary
-        CloudinaryStorage::delete($waralaba->image_url_1);
-        CloudinaryStorage::delete($waralaba->image_url_2);
-        CloudinaryStorage::delete($waralaba->image_url_3);
-        CloudinaryStorage::delete($waralaba->image_url_4);
-        CloudinaryStorage::delete($waralaba->image_url_5);
+    // Hapus logo dari Cloudinary
+    CloudinaryStorage::delete($waralaba->logo);
 
-        // Hapus brosur dari Cloudinary
-        CloudinaryStorage::delete($waralaba->brochure_link);
+    // Hapus gambar dari Cloudinary
+    CloudinaryStorage::delete($waralaba->image_url_1);
+    CloudinaryStorage::delete($waralaba->image_url_2);
+    CloudinaryStorage::delete($waralaba->image_url_3);
+    CloudinaryStorage::delete($waralaba->image_url_4);
+    CloudinaryStorage::delete($waralaba->image_url_5);
 
-        // Hapus data waralaba dari database
-        $waralaba->delete();
+    // Hapus brosur dari Cloudinary
+    CloudinaryStorage::delete($waralaba->brochure_link);
 
-        return redirect()->route('pages.owner.waralaba')->with('success', 'Waralaba berhasil dihapus.');
-    }
+    // Hapus data waralaba dari database
+    $waralaba->delete();
+
+    return redirect()->route('owner.waralaba')->with('success', 'Waralaba berhasil dihapus beserta transaksinya.');
+}
+
 }
