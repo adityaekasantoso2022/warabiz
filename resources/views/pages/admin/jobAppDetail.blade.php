@@ -2,7 +2,9 @@
     @push('addonStyle')
     <!-- Masukkan gaya tambahan di sini -->
     <style>
-        /* Tambahkan gaya tambahan di sini */
+        body {
+            background: #dae3ec !important;
+        }
 
         .card {
             margin-bottom: 20px;

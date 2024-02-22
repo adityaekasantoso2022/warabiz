@@ -120,7 +120,8 @@
                                     <th>Nama Waralaba</th>
                                     <th>Tipe</th>
                                     <th>Harga</th>
-                                    <th>Tanggal Berdiri</th>
+                                    <th>Terjual</th>
+                                    <th>Deskripsi</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -133,14 +134,13 @@
                                     <td>{{ $waralaba->waralaba_name }}</td>
                                     <td>{{ $waralaba->concept }}</td>
                                     <td>Rp. {{ number_format(floatval($waralaba->price), 0, ',', '.') }}</td>
-                                    <td class="text-center">{{ \Carbon\Carbon::parse($waralaba->since)->format('d - M - Y') }}</td>
+                                    <td class="text-center">{{ $waralaba->soldCount() }}</td>
+                                    <td>{{ implode(' ', array_slice(str_word_count($waralaba->description, 1), 0, 20)) }}..</td>
                                     <td class="text-center">
                                         <div class="waralaba-details" style="display: flex; gap: 5px; align-items: center; justify-content: center;">
-                                            <a href="{{ route('admin.waralaba.show', $waralaba->id) }}" class="btn btn-circle btn-primary"
-                                                style="background-color: #009bb8; border: none;"><i class="fas fa-eye" style="color: white;"></i></a>
-                                            <a href="{{ route('admin.waralaba.edit', $waralaba->id) }}" class="btn btn-circle btn-warning"
+                                            <a href="{{ route('owner.waralaba.edit', $waralaba->id) }}" class="btn btn-circle btn-warning"
                                                 style="background-color: #FFC107; border: none;"><i class="fas fa-edit" style="color: white;"></i></a>
-                                            <form action="{{ route('admin.waralaba.destroy', $waralaba->id) }}" method="POST">
+                                            <form action="{{ route('owner.waralaba.destroy', $waralaba->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-circle btn-danger"
@@ -186,4 +186,4 @@
         }
     });
 </script>
-    </x-user-layout>
+</x-owner-layout>

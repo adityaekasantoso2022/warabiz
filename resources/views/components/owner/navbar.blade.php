@@ -6,11 +6,14 @@
                 <div class="header-top">
                     <div class="container">
                         <div class="logo">
-                            <img src="{{ asset('assets/frontend/image/logo.svg') }}" alt="logo" style="width: 130px; height: auto;">
+                            <img src="{{ asset('assets/frontend/image/logo.svg') }}" alt="logo"
+                                style="width: 130px; height: auto;">
                         </div>
                         <div class="header-top-right">
                             <div class="dropdown">
-                                <a href="#" id="topbarUserDropdown" class="user-dropdown d-flex align-items-center dropend dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
+                                <a href="#" id="topbarUserDropdown"
+                                    class="user-dropdown d-flex align-items-center dropend dropdown-toggle "
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     <div class="avatar avatar-md2">
                                         <img src="./assets/compiled/jpg/1.jpg" alt="Avatar">
                                     </div>
@@ -19,12 +22,6 @@
                                         <p class="user-dropdown-status text-sm text-muted">Owner</p>
                                     </div>
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
-                                    <li><a class="dropdown-item" href="#">My Account</a></li>
-                                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="auth-login.html">Logout</a></li>
-                                </ul>
                             </div>
 
                             <!-- Burger button responsive -->
@@ -42,40 +39,34 @@
                                     <span><i class="bi bi-grid-fill"></i> Dashboard</span>
                                 </a>
                             </li>
+
                             <li class="menu-item">
                                 <a href="{{ route('owner.waralaba') }}" class='menu-link'>
                                     <span><i class="fas fa-store"></i> Waralaba</span>
                                 </a>
                             </li>
 
-
-                            <li class="menu-item has-sub">
-                                <a href="" class='menu-link'>
-                                    <span><i class="fas fa-store"></i> Transaksi</span>
+                            <li class="menu-item">
+                                <a href="{{ route('owner.transactions') }}" class='menu-link'>
+                                    <span><i class="fas fa-exchange-alt"></i> Transaksi</span>
                                 </a>
-                                <div class="submenu">
-                                    <!-- Wrap to submenu-group-wrapper if you want 3-level submenu. Otherwise remove it. -->
-                                    <div class="submenu-group-wrapper">
-                                        <ul class="submenu-group">
-                                            <li class="submenu-item">
-                                                <a href="component-alert.html" class='submenu-link'>List Waralaba</a>
-                                            </li>
-
-                                            <li class="submenu-item">
-                                                <a href="component-badge.html" class='submenu-link'>Tambah Waralaba</a>
-                                            </li>
-
-                                            <li class="submenu-item">
-                                                <a href="component-breadcrumb.html" class='submenu-link'>Edit Waralaba</a>
-                                            </li>
-
-                                            <li class="submenu-item">
-                                                <a href="component-button.html" class='submenu-link'>Hapus Waralaba</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </li>
+                            <li class="menu-item">
+                                <a href="{{ route('owner.career') }}" class='menu-link'>
+                                    <span><i class="iconly-boldAdd-User"></i> Pekerjaan</span>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <form id="logoutForm" action="{{ url('logout') }}" method="POST" style="display: none;">
+                                    @csrf 
+                                </form>
+                                <a href="#"
+                                    onclick="event.preventDefault(); document.getElementById('logoutForm').submit();"
+                                    class='menu-link'>
+                                    <span><i class="fas fa-sign-out-alt"></i> Logout</span>
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
                 </nav>
