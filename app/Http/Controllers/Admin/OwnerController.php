@@ -19,7 +19,7 @@ class OwnerController extends Controller
         }
 
         // Jika pengguna belum login
-        return view('pages.owner.dashboard');
+        return view('pages.user.home');
     }
 
 }

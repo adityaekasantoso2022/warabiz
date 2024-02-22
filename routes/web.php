@@ -84,7 +84,8 @@ Route::
 
                 // Admin CRUD transaction
                 Route::get('/admin/transaksi', [TransactionAdminController::class, 'index'])->name('admin.transactions');
-                Route::get('/admin/invoice/{id}', [TransactionAdminController::class, 'show'])->name('admin.transactions.show');                Route::get('/admin/transaction/{id}/edit', [TransactionAdminController::class, 'edit'])->name('admin.transactions.edit');
+                Route::get('/admin/invoice/{id}', [TransactionAdminController::class, 'show'])->name('admin.transactions.show');
+                Route::get('/admin/transaction/{id}/edit', [TransactionAdminController::class, 'edit'])->name('admin.transactions.edit');
                 Route::put('/admin/transactions/{id}', [TransactionAdminController::class, 'update'])->name('admin.transactions.update');
                 Route::delete('/admin/transactions/{id}', [TransactionAdminController::class, 'destroy'])->name('admin.transactions.destroy');
                 Route::post('/admin/transactions', [TransactionAdminController::class, 'store'])->name('admin.transactions.store');
@@ -105,7 +106,12 @@ Route::
                 Route::post('/admin/careers/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroy');
                 Route::delete('/admin/careers/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroy');
                 Route::put('/admin/careers/{id}/update', [CareerAdminController::class, 'update'])->name('admin.careers.update');
-
+                // Admin Route Job Application
+                Route::get('/admin/jobapp', [CareerAdminController::class, 'jobAppIndex'])->name('admin.jobApp');
+                Route::get('/admin/jobapp/{id}/details', [CareerAdminController::class, 'jobAppDetails'])->name('admin.jobApp.details');
+                Route::get('/admin/jobapp/{id}/edit', [CareerAdminController::class, 'jobAppEdit'])->name('admin.jobApp.edit');
+                Route::put('/admin/jobapp/{id}/update', [CareerAdminController::class, 'jobAppUpdate'])->name('admin.jobApp.update');
+                Route::delete('/admin/jobapp/{id}/delete', [CareerAdminController::class, 'jobAppDelete'])->name('admin.jobApp.delete');
 
                 //Admin RUD Bantuan
                 Route::get('/admin/bantuan', [BantuanAdminController::class, 'index'])->name('admin.bantuan');
@@ -123,5 +129,5 @@ Route::
             Route::get('/owner/career', [CareerOwnerController::class, 'index'])->name('owner.career');
             Route::post('/owner/waralaba', [WaralabaOwnerController::class, 'store'])->name('owner.waralaba.store');
 
-        });
+        // });
 Auth::routes();
