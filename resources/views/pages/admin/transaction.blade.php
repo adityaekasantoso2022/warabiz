@@ -155,18 +155,21 @@
                                     <td>
                                         @switch($transaction->status)
                                             @case(0)
+                                                <span>Pending</span>
+                                                @break
+                                            @case(20202)
                                                 <span>Verifikasi Pembayaran</span>
                                                 @break
-                                            @case(1)
+                                            @case(20203)
                                                 <span>Proses Pembangunan</span>
                                                 @break
-                                            @case(2)
+                                            @case(20204)
                                                 <span>Proses Pembukaan</span>
                                                 @break
-                                            @case(3)
+                                            @case(20205)
                                                 <span>Selesai</span>
                                                 @break
-                                            @case(4)
+                                            @case(20206)
                                                 <span>Gagal</span>
                                                 @break
                                         @endswitch

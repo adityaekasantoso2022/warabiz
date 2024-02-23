@@ -101,7 +101,7 @@
                                 </div>
                                 <div class="row mb-2">
                                     <div class="col-sm-4">Tanggal Lahir</div>
-                                    <div class="col-sm-8">{{ $jobApp->date_of_birth}} </div>
+                                    <div class="col-sm-8">{{ \Carbon\Carbon::parse($jobApp->date_of_birth)->isoFormat('D MMMM YYYY', 'Do MMMM YYYY') }}</div>
                                 </div>
                                 <div class="row mb-2">
                                     <div class="col-sm-4">Agama</div>

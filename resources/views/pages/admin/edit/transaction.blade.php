@@ -119,7 +119,7 @@
                             </div>
                             <div class="info-item">
                                 <label>Total Pembayaran</label>
-                                <p>Rp. {{ $transaction->total_payment }}</p>
+                                <p>Rp. {{ number_format($transaction->total_payment, 0, ',', '.') }}</p>
                             </div>
                             <form action="{{ route('admin.transactions.update', $transaction->uuid) }}" method="POST">
                                 @csrf
@@ -128,20 +128,28 @@
                                 <div class="mb-3">
                                     <label for="status" class="form-label">Status</label>
                                     <select class="form-control" id="status" name="status">
-                                        <option value="0" {{ $transaction->status == 0 ? 'selected' : '' }}>Verifikasi
-                                            Pembayaran</option>
-                                        <option value="1" {{ $transaction->status == 1 ? 'selected' : '' }}>Pembangunan
+                                        <option value=0 {{ $transaction->status == 0 ? 'selected' : '' }}>
+                                            Pending
                                         </option>
-                                        <option value="2" {{ $transaction->status == 2 ? 'selected' : ''}}>Pembukaan
-                                            Waralaba</option>
-                                        <option value="3" {{ $transaction->status == 3 ? 'selected' : ''}}>Selesai
+                                        <option value=20202 {{ $transaction->status == 20202 ? 'selected' : '' }}>
+                                            Verifikasi Pembayaran
                                         </option>
-                                        <option value="4" {{ $transaction->status == 4 ? 'selected' : ''}}>Gagal
+                                        <option value=20203 {{ $transaction->status == 20203 ? 'selected' : '' }}>
+                                            Pembangunan
+                                        </option>
+                                        <option value=20204 {{ $transaction->status == 20204 ? 'selected' : '' }}>
+                                            Pembukaan
+                                        </option>
+                                        <option value=20205 {{ $transaction->status == 20205 ? 'selected' : '' }}>
+                                            Selesai
+                                        </option>
+                                        <option value=20206 {{ $transaction->status == 20206 ? 'selected' : '' }}>
+                                            Gagal
                                         </option>
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Update</button>
-                                @if ($transaction->status == 3)
+                                @if ($transaction->status == 20205)
                                 <a href="{{ route('admin.transactions.show', ['id' => $transaction->uuid]) }}"
                                     class="btn btn-success">Unduh Invoice</a>
                                 @endif

@@ -190,7 +190,6 @@
                                             <h5>{{ $transaction->address }}</h5>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                             <br>
@@ -201,35 +200,27 @@
                                             $status = $transaction->status;
 
                                             $steps = [
-                                                0 => ['icon' => 'check', 'text' => 'Verifikasi Pembayaran'],
-                                                1 => ['icon' => 'check', 'text' => 'Pembangunan'],
-                                                2 => ['icon' => 'check', 'text' => 'Pembukaan Waralaba'],
-                                                3 => ['icon' => 'check', 'text' => 'Selesai'],
+                                                20202 => ['icon' => 'check', 'text' => 'Verifikasi Pembayaran'],
+                                                20203 => ['icon' => 'check', 'text' => 'Pembangunan'],
+                                                20204 => ['icon' => 'check', 'text' => 'Pembukaan Waralaba'],
+                                                20205 => ['icon' => 'check', 'text' => 'Selesai'],
                                             ];
 
-                                            // Mengatur ikon dan teks berdasarkan status
                                             foreach ($steps as $step => $info) {
-                                                // Memeriksa apakah status saat ini lebih besar atau sama dengan langkah saat ini
                                                 if ($status > $step) {
-                                                    // Jika status lebih besar atau sama dengan langkah saat ini,
-                                                    // gunakan ikon centang dan kelas hijau
                                                     $iconClass = 'check-icon';
                                                     $icon = 'check-circle';
                                                     $statusText = 'Selesai';
                                                 } elseif ($status === $step) {
-                                                    // Jika status sama dengan langkah saat ini,
-                                                    // gunakan ikon spinner dan kelas biru untuk menandakan sedang dalam proses
                                                     $iconClass = 'in-progress-icon';
                                                     $icon = 'spinner';
                                                     $statusText = 'Sedang Dalam Proses';
                                                 } else {
-                                                    // Jika status lebih kecil dari langkah saat ini,
-                                                    // gunakan ikon silang dan kelas merah
                                                     $iconClass = 'non-check-icon';
                                                     $icon = 'times-circle';
                                                     $statusText = 'Belum Selesai';
                                                 }
-                                                if ($status == 3 && $step == 3) {
+                                                if ($status == 3 && $step == 20205) {
                                                     $iconClass = 'check-icon';
                                                     $icon = 'check-circle';
                                                     $statusText = 'Pesanan Selesai';
@@ -246,10 +237,10 @@
                                                             </div>
                                                         </div>
                                                     ';
-                                                    break; // Hentikan iterasi setelah menambahkan card baru
+                                                    break; 
                                                 }
-                        
-                                                if ($status == 4) {
+
+                                                if ($status == 20206) {
                                                     echo '
                                                         <div class="col-md-3">
                                                             <div class=" text-center">
@@ -261,10 +252,9 @@
                                                             </div>
                                                         </div>
                                                     ';
-                                                    break; // Hentikan iterasi setelah menambahkan card baru
+                                                    break;
                                                 }
                                     
-                                                // Mencetak kartu dengan ikon dan teks yang sesuai
                                                 echo '
                                                     <div class="col-md-3">
                                                         <div class="card text-center rounded-card">

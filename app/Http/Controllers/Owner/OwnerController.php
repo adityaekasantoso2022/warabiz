@@ -36,8 +36,16 @@ class OwnerController extends Controller
             ->select(DB::raw('SUM(waralabas.price::numeric) as total_pendapatan'))
             ->first();
 
+        $transaksiTerbaru = DB::table('transactions')
+            ->join('waralabas', 'transactions.waralaba_id', '=', 'waralabas.id')
+            ->where('waralabas.created_by', auth()->id())
+            ->orderByDesc('transactions.created_at')
+            ->select('transactions.created_at', 'waralabas.price as harga_waralaba')
+            ->first();
+
+
         if (Auth::check()) {
-            return view('pages.owner.dashboard', compact('totalWaralabaByOwner', 'totalTransactionByOwner', 'totalPendapatan', 'transactions'));
+            return view('pages.owner.dashboard', compact('totalWaralabaByOwner', 'totalTransactionByOwner', 'totalPendapatan', 'transactions', 'transaksiTerbaru'));
         }
 
         return view('pages.owner.dashboard');

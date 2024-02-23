@@ -120,11 +120,11 @@
         }
 
         .proses-verifikasi {
-            background-color: #f16336;
+            background-color: #138EE6;
         }
 
         .proses-pembangunan {
-            background-color: #3095b5;
+            background-color: #DECF4D;
         }
 
         .persiapan-pembukaan {
@@ -138,6 +138,10 @@
         .ditolak {
             background-color: #cf0606;
         }
+        .pending {
+            background-color: #f16336;
+        }
+
 
         .non-check-icon {
             color: #ff5151;
@@ -206,18 +210,21 @@
                                                 <td>
                                                     @switch($transaction->status)
                                                         @case(0)
+                                                        <span class="status-label pending">Pending</span>
+                                                            @break
+                                                        @case(20202)
                                                             <span class="status-label proses-verifikasi">Verifikasi Pembayaran</span>
                                                             @break
-                                                        @case(1)
+                                                        @case(20203)
                                                             <span class="status-label proses-pembangunan">Proses Pembangunan</span>
                                                             @break
-                                                        @case(2)
-                                                            <span class="status-label persiapan-pembukaan">Proses Pembukaan Waralaba</span>
+                                                        @case(20204)
+                                                            <span class="status-label persiapan-pembukaan">Pembukaan Waralaba</span>
                                                             @break
-                                                        @case(3)
+                                                        @case(20205)
                                                             <span class="status-label selesai">Selesai</span>
                                                             @break
-                                                        @case(4)
+                                                        @case(20206)
                                                             <span class="status-label ditolak">Ditolak</span>
                                                             @break
                                                     @endswitch

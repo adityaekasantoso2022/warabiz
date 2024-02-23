@@ -38,13 +38,15 @@
                                         Status: <strong>
                                             @if($transaction->status == 0)
                                                 PENDING
-                                            @elseif($transaction->status == 1)
+                                            @elseif($transaction->status == 20202)
                                                 PENDING
-                                            @elseif($transaction->status == 2)
+                                            @elseif($transaction->status == 20203)
                                                 PENDING
-                                            @elseif($transaction->status == 3)
+                                            @elseif($transaction->status == 20204)
+                                                PENDING
+                                            @elseif($transaction->status == 20205)
                                                 SUCCESS
-                                            @elseif($transaction->status == 4)
+                                            @elseif($transaction->status == 20206)
                                                 GAGAL
                                             @else
                                                 UNKNOWN
