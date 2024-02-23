@@ -48,7 +48,7 @@
                             <div class="mb-3">
                                 <label for="category_id" class="form-label">Kategori</label>
                                 <select class="form-control" id="category_id" name="category_id" required>
-                                <option value="" disabled selected>Pilih kategori Waralaba</option>
+                                    <option value="" disabled selected>Pilih kategori Waralaba</option>
                                     <option value=10101>Makanan dan Minuman</option>
                                     <option value=10102>Pendidikan</option>
                                     <option value=10103>Ritel</option>
@@ -106,12 +106,12 @@
                                 <label for="since" class="form-label">Tanggal Berdiri Waralaba</label>
                                 <input type="date" class="form-control" id="since" name="since" required>
                             </div>
-
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="outlet_total" class="form-label">Total Outlet</label>
-                                <input type="number" class="form-control" id="outlet_total" name="outlet_total" required>
+                                <input type="number" class="form-control" id="outlet_total" name="outlet_total"
+                                    required>
                             </div>
                             <div class="mb-3">
                                 <label for="license_duration" class="form-label">Durasi Lisensi</label>
@@ -162,6 +162,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Tambahkan tombol submit dan checkbox pernyataan -->
                     <div class="form-check" style="margin-top: 20px;">
                         <input class="form-check-input" type="checkbox" id="pernyataan" required>
                         <label class="form-check-label" for="pernyataan">

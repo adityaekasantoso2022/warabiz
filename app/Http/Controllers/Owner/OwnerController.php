@@ -44,9 +44,6 @@ class OwnerController extends Controller
             ->select(DB::raw('SUM(waralabas.price::numeric) as total_pendapatan'))
             ->first();
 
-        // Penanganan jika $totalPendapatan null
-        $totalPendapatanFormatted = $totalPendapatan ? number_format((float) $totalPendapatan->total_pendapatan, 2) : '';
-
         $transaksiTerbaru = DB::table('transactions')
             ->join('waralabas', 'transactions.waralaba_id', '=', 'waralabas.id')
             ->where('waralabas.created_by', auth()->id())
@@ -54,14 +51,13 @@ class OwnerController extends Controller
             ->select('transactions.created_at', 'waralabas.price as harga_waralaba')
             ->first();
 
-        // Penanganan jika $transaksiTerbaru null
-        $hargaWaralabaFormatted = $transaksiTerbaru ? number_format((float) $transaksiTerbaru->harga_waralaba, 2) : '';
 
         if (Auth::check()) {
-            return view('pages.owner.dashboard', compact('totalWaralabaByOwner', 'totalTransactionByOwner', 'totalPendapatanFormatted', 'transactions', 'transaksiTerbaru', 'totalJobsByOwner', 'totalApplicantsByOwner', 'hargaWaralabaFormatted'));
+            return view('pages.owner.dashboard', compact('totalWaralabaByOwner', 'totalTransactionByOwner', 'totalPendapatan', 'transactions', 'transaksiTerbaru', 'totalJobsByOwner', 'totalApplicantsByOwner'));
         }
 
         return view('pages.owner.dashboard');
     }
 
 }
+

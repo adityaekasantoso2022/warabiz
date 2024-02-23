@@ -102,103 +102,109 @@
                     </div>
                 </div>
 
-                <div class="row justify-content-center">
-                    <div class="transaction-list">
-                        <div class="search-bar mb-3 d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <span>Cari Transaksi: ‎ ‎ </span>
-                                <input type="text" id="searchInput"
-                                    class="form-control border px-2 py-1 rounded-3 shadow-none ml-2">
-                            </div>
-                            <div>
-                                <label for="statusFilter">Filter Status:</label>
-                                <select id="statusFilter" class="form-select">
-                                    <option value="">Semua</option>
-                                    <option value="Verifikasi Pembayaran">Verifikasi Pembayaran</option>
-                                    <option value="Proses Pembangunan">Proses Pembangunan</option>
-                                    <option value="Proses Pembukaan">Proses Pembukaan</option>
-                                    <option value="Selesai">Selesai</option>
-                                    <option value="Gagal">Gagal</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <table class="transaction-table">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>ID Transaksi</th>
-                                    <th>Nama Waralaba</th>
-                                    <th>Nama Pemesan</th>
-                                    <th>Tanggal Transaksi</th>
-                                    <th>Pembayaran</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                @php
-                                    $sortedTransactions = $transactions->sortByDesc('created_at');
-                                    $transactionIndex = 0; // Inisialisasi nomor urut transaksi
-                                @endphp
-
-                                @foreach($sortedTransactions as $transaction)
-                                <tr class="transaction-row"
-                                    data-status="{{ $transaction->status }}">
-                                    <td>{{ ++$transactionIndex }}</td>
-                                    <td>TRX-{{ substr($transaction->uuid, 2, 6) }}</td>
-                                    <td>{{ $transaction->waralaba_name }}</td>
-                                    <td>{{ $transaction->fullname }}</td>
-                                    <td>{{ $transaction->created_at->setTimezone('Asia/Jakarta')->format('d/m/Y H:i') }}</td>
-                                    <td>{{ $transaction->payment_method }}</td>
-                                    <td>
-                                        @switch($transaction->status)
-                                            @case(0)
-                                                <span>Pending</span>
-                                                @break
-                                            @case(20202)
-                                                <span>Verifikasi Pembayaran</span>
-                                                @break
-                                            @case(20203)
-                                                <span>Proses Pembangunan</span>
-                                                @break
-                                            @case(20204)
-                                                <span>Proses Pembukaan</span>
-                                                @break
-                                            @case(20205)
-                                                <span>Selesai</span>
-                                                @break
-                                            @case(20206)
-                                                <span>Gagal</span>
-                                                @break
-                                        @endswitch
-                                    </td>
-                                    <td>
-                                        <div class="transaction-details transaction-buttons-container">
-                                        <a href="{{ route('owner.transactions.edit', ['id' => $transaction->uuid]) }}"
-                                                class="btn btn-circle btn-primary"
-                                                style="background-color: #009bb8; border: none;">
-                                                <i class="fas fa-sync-alt" style="color: white;"></i>
-                                            </a>
-
-                                            <form action="{{ route('owner.transactions.destroy', $transaction->uuid) }}"
-                                                method="POST" style="display: inline-block;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-circle btn-danger"
-                                                    style="background-color: #F44336; border: none;">
-                                                    <i class="fas fa-trash-alt" style="color: white;"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                @if ($transactions->isEmpty())
+                    <div class="row justify-content-center">
+                        <p>Belum ada transaksi</p>
                     </div>
-                </div>
+                @else
+                    <div class="row justify-content-center">
+                        <div class="transaction-list">
+                            <div class="search-bar mb-3 d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <span>Cari Transaksi: ‎ ‎ </span>
+                                    <input type="text" id="searchInput"
+                                        class="form-control border px-2 py-1 rounded-3 shadow-none ml-2">
+                                </div>
+                                <div>
+                                    <label for="statusFilter">Filter Status:</label>
+                                    <select id="statusFilter" class="form-select">
+                                        <option value="">Semua</option>
+                                        <option value="Verifikasi Pembayaran">Verifikasi Pembayaran</option>
+                                        <option value="Proses Pembangunan">Proses Pembangunan</option>
+                                        <option value="Proses Pembukaan">Proses Pembukaan</option>
+                                        <option value="Selesai">Selesai</option>
+                                        <option value="Gagal">Gagal</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <table class="transaction-table">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>ID Transaksi</th>
+                                        <th>Nama Waralaba</th>
+                                        <th>Nama Pemesan</th>
+                                        <th>Tanggal Transaksi</th>
+                                        <th>Pembayaran</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @php
+                                        $sortedTransactions = $transactions->sortByDesc('created_at');
+                                        $transactionIndex = 0; // Inisialisasi nomor urut transaksi
+                                    @endphp
+
+                                    @foreach($sortedTransactions as $transaction)
+                                    <tr class="transaction-row"
+                                        data-status="{{ $transaction->status }}">
+                                        <td>{{ ++$transactionIndex }}</td>
+                                        <td>TRX-{{ substr($transaction->uuid, 2, 6) }}</td>
+                                        <td>{{ $transaction->waralaba_name }}</td>
+                                        <td>{{ $transaction->fullname }}</td>
+                                        <td>{{ $transaction->created_at->setTimezone('Asia/Jakarta')->format('d/m/Y H:i') }}</td>
+                                        <td>{{ $transaction->payment_method }}</td>
+                                        <td>
+                                            @switch($transaction->status)
+                                                @case(0)
+                                                    <span>Pending</span>
+                                                    @break
+                                                @case(20202)
+                                                    <span>Verifikasi Pembayaran</span>
+                                                    @break
+                                                @case(20203)
+                                                    <span>Proses Pembangunan</span>
+                                                    @break
+                                                @case(20204)
+                                                    <span>Proses Pembukaan</span>
+                                                    @break
+                                                @case(20205)
+                                                    <span>Selesai</span>
+                                                    @break
+                                                @case(20206)
+                                                    <span>Gagal</span>
+                                                    @break
+                                            @endswitch
+                                        </td>
+                                        <td>
+                                            <div class="transaction-details transaction-buttons-container">
+                                                <a href="{{ route('owner.transactions.edit', ['id' => $transaction->uuid]) }}"
+                                                    class="btn btn-circle btn-primary"
+                                                    style="background-color: #009bb8; border: none;">
+                                                    <i class="fas fa-sync-alt" style="color: white;"></i>
+                                                </a>
+
+                                                <form action="{{ route('owner.transactions.destroy', $transaction->uuid) }}"
+                                                    method="POST" style="display: inline-block;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-circle btn-danger"
+                                                        style="background-color: #F44336; border: none;">
+                                                        <i class="fas fa-trash-alt" style="color: white;"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </section>
@@ -247,4 +253,4 @@
             }
         });
     </script>
-</x-admin-layout>
+</x-owner-layout>

@@ -8,10 +8,8 @@
     @endpush
 
     <?php
-    $totalPendapatanValue = isset($totalPendapatan) ? $totalPendapatan->total_pendapatan : 0;
-    $transaksiTerbaruValue = isset($transaksiTerbaru) ? $transaksiTerbaru->harga_waralaba : 0;
-
-
+$totalPendapatanValue = $totalPendapatan->total_pendapatan ?? 0;
+$transaksiTerbaruValue = $transaksiTerbaru->harga_waralaba ?? 0;
     ?>
 
     <div class="page-heading"></div>
@@ -106,13 +104,15 @@
                 </div>
             </div>
             <div class="col-12 col-lg-3">
-            <div class="card">
+                <div class="card">
                     <div class="card-body px-4">
                         <div class="d-flex align-items-center">
                             <div class="ms-3 name">
                                 <h6 class="text-muted font-semibold">Total Pendapatan</h6>
-                                <h6 class="font-extrabold">Rp. {{ number_format($totalPendapatanValue, 0, ',', '.')}}</h6>
-                                <small class="font-bold" style="color: green;">+ Rp. {{ number_format($transaksiTerbaruValue, 0, ',', '.')}}</small>
+                                <h6 class="font-extrabold">Rp. {{ number_format($totalPendapatanValue, 0, ',', '.')}}
+                                </h6>
+                                <small class="font-bold" style="color: green;">+ Rp. {{
+                                    number_format($transaksiTerbaruValue, 0, ',', '.')}}</small>
                             </div>
                         </div>
                     </div>
@@ -123,12 +123,19 @@
                         <h4>Transaksi Terbaru</h4>
                     </div>
                     <div class="card-content pb-4">
+                        @if($transactions->isEmpty())
+                        <div class="recent-message d-flex px-4 py-3 justify-content-center">
+                            <p>Belum ada transaksi</p>
+                        </div>
+                        @else
                         @foreach($transactions->sortByDesc('created_at')->take(5) as $transaction)
                         <div class="recent-message d-flex px-4 py-3">
                             <div class="avatar avatar-lg">
                                 <div class="avatar bg-warning">
-                                    <span class="avatar-content">{{ strtoupper(substr($transaction->user->name, 0, 2)) }}</span>
-                                    <span class="avatar-status {{ $transaction->status === null ? 'bg-danger' : 'bg-success' }}"></span>
+                                    <span class="avatar-content">{{ strtoupper(substr($transaction->user->name, 0, 2))
+                                        }}</span>
+                                    <span
+                                        class="avatar-status {{ $transaction->status === null ? 'bg-danger' : 'bg-success' }}"></span>
                                 </div>
                             </div>
                             <div class="name ms-4">
@@ -137,8 +144,10 @@
                             </div>
                         </div>
                         @endforeach
+                        @endif
                         <div class="px-4">
-                        <a href="{{ route('owner.transactions') }}" class="btn btn-block btn-xl btn-light-primary font-bold mt-3">Lainnya</a>
+                            <a href="{{ route('owner.transactions') }}"
+                                class="btn btn-block btn-xl btn-light-primary font-bold mt-4">Lainnya</a>
                         </div>
                     </div>
                 </div>

@@ -48,7 +48,7 @@
             margin-bottom: 20px;
         }
 
-        #searchInput {
+        #searchInput1, #searchInput2 {
             width: 200px;
             margin-right: 5px;
         }
@@ -79,44 +79,48 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="career-list">
+                    @if ($careers->isEmpty())
+                            <p>Belum ada pekerjaan</p>
+                        @else
                         <div class="search-bar mb-3">
                             <div class="d-flex align-items-center">
                                 <input type="text" id="searchInput1" class="form-control border px-2 py-1 rounded-3 shadow-none ml-2" placeholder="Cari Pekerjaan">
                             </div>
                         </div>
-                        <table class="career-table">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Nama Perusahaan</th>
-                                    <th>Posisi Pekerjaan</th>
-                                    <th>Deskripsi</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($careers as $index => $career)
-                                <tr>
-                                    <td class="text-center">{{ $index + 1 }}</td>
-                                    <td>{{ $career->company_name }}</td>
-                                    <td>{{ $career->career_title }}</td>
-                                    <td>{{ Str::limit(strip_tags($career->description), 135) }}</td>
-                                    <td>
-                                        <div class="d-flex justify-content-center">
-                                            <a href="{{ route('owner.careers.edit', $career->id) }}" class="btn btn-warning me-2" style="background-color: #FFC107; border: none;">
-                                                <i class="fas fa-edit" style="color: white;"></i>
-                                            </a>
-                                            <form action="{{ route('owner.careers.destroy', $career->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" style="background-color: #F44336; border: none;"><i class="fas fa-trash-alt" style="color: white;"></i></button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                            <table class="career-table">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Nama Perusahaan</th>
+                                        <th>Posisi Pekerjaan</th>
+                                        <th>Deskripsi</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($careers as $index => $career)
+                                    <tr>
+                                        <td class="text-center">{{ $index + 1 }}</td>
+                                        <td>{{ $career->company_name }}</td>
+                                        <td>{{ $career->career_title }}</td>
+                                        <td>{{ Str::limit(strip_tags($career->description), 135) }}</td>
+                                        <td>
+                                            <div class="d-flex justify-content-center">
+                                                <a href="{{ route('owner.careers.edit', $career->id) }}" class="btn btn-warning me-2" style="background-color: #FFC107; border: none;">
+                                                    <i class="fas fa-edit" style="color: white;"></i>
+                                                </a>
+                                                <form action="{{ route('owner.careers.destroy', $career->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger" style="background-color: #F44336; border: none;"><i class="fas fa-trash-alt" style="color: white;"></i></button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -133,70 +137,74 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-12">
+                        @if ($jobApps->isEmpty())
+                            <p>Belum ada pelamar</p>
+                        @else
                         <div class="search-bar mb-3">
                             <div class="d-flex align-items-center">
                                 <input type="text" id="searchInput2" class="form-control border px-2 py-1 rounded-3 shadow-none ml-2" placeholder="Cari Pelamar">
                             </div>
                         </div>
-                        <div class="row justify-content-center">
-                            <div class="career-list">
-                                <table class="career-table">
-                                    <thead>
-                                        <tr>
-                                            <th>No.</th>
-                                            <th>ID Lamaran</th>
-                                            <th>Nama Pelamar</th>
-                                            <th>Posisi Pekerjaan</th>
-                                            <th>Tanggal Dibuat</th>
-                                            <th>Status</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php
-                                        $sortedJob = $jobApps->sortByDesc('created_at');
-                                        $jobIndex = 0;
-                                        @endphp
-                                        @foreach($sortedJob as $jobApp)
-                                        <tr class="jobApp-row" data-status="{{ $jobApp->status }}">
-                                            <td class="text-center">{{ ++$jobIndex }}</td>
-                                            <td>LMR-{{ substr($jobApp->application_id, 0, 8) }}</td>
-                                            <td>{{ $jobApp->full_name }}</td>
-                                            <td>{{ $jobApp->career->career_title }}</td>
-                                            <td class="text-center">{{ \Carbon\Carbon::parse($jobApp->created_at)->format('d/m/Y H:i') }}</td>
-                                            <td class="text-center">
-                                                @switch($jobApp->status)
-                                                @case(30301)
-                                                <span>Ditolak</span>
-                                                @break
-                                                @case(30302)
-                                                <span>Pending</span>
-                                                @break
-                                                @case(30303)
-                                                <span>Diterima</span>
-                                                @break
-                                                @endswitch
-                                            </td>
-                                            <td>
-                                                <div class="d-flex justify-content-center">
-                                                    <a href="{{ route('owner.jobApp.details', ['id' => $jobApp->application_id]) }}" class="btn btn-primary me-2">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>
-                                                    <form action="{{ route('owner.jobApp.delete', $jobApp->application_id) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger">
-                                                            <i class="fas fa-trash-alt"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                            <div class="row justify-content-center">
+                                <div class="career-list">
+                                    <table class="career-table">
+                                        <thead>
+                                            <tr>
+                                                <th>No.</th>
+                                                <th>ID Lamaran</th>
+                                                <th>Nama Pelamar</th>
+                                                <th>Posisi Pekerjaan</th>
+                                                <th>Tanggal Dibuat</th>
+                                                <th>Status</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                            $sortedJob = $jobApps->sortByDesc('created_at');
+                                            $jobIndex = 0;
+                                            @endphp
+                                            @foreach($sortedJob as $jobApp)
+                                            <tr class="jobApp-row" data-status="{{ $jobApp->status }}">
+                                                <td class="text-center">{{ ++$jobIndex }}</td>
+                                                <td>LMR-{{ substr($jobApp->application_id, 0, 8) }}</td>
+                                                <td>{{ $jobApp->full_name }}</td>
+                                                <td>{{ $jobApp->career->career_title }}</td>
+                                                <td class="text-center">{{ \Carbon\Carbon::parse($jobApp->created_at)->format('d/m/Y H:i') }}</td>
+                                                <td class="text-center">
+                                                    @switch($jobApp->status)
+                                                    @case(30301)
+                                                    <span>Ditolak</span>
+                                                    @break
+                                                    @case(30302)
+                                                    <span>Pending</span>
+                                                    @break
+                                                    @case(30303)
+                                                    <span>Diterima</span>
+                                                    @break
+                                                    @endswitch
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex justify-content-center">
+                                                        <a href="{{ route('owner.jobApp.details', ['id' => $jobApp->application_id]) }}" class="btn btn-primary me-2">
+                                                            <i class="fas fa-eye"></i>
+                                                        </a>
+                                                        <form action="{{ route('owner.jobApp.delete', $jobApp->application_id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
