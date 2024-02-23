@@ -26,22 +26,23 @@ class CareerOwnerController extends Controller
     {
         // Mendapatkan user_id yang saat ini masuk
         $user_id = Auth::id();
-    
+
         // Mengambil data karir yang dibuat oleh pengguna dengan user_id tertentu
         $careerId = WaraCareer::where('created_by', $user_id)->pluck('id');
-    
+
         // Mengambil data karir yang memiliki id yang ada di dalam array $careerIds
         $careers = WaraCareer::whereIn('id', $careerId)->get();
 
         $jobApps = JobApplication::join('wara_careers', 'job_applications.career_id', '=', 'wara_careers.id')
-                            ->where('wara_careers.created_by', $user_id)
-                            ->get();
-    
+            ->where('wara_careers.created_by', $user_id)
+            ->get();
+
         return view('pages.owner.career', [
-            'careers' => $careers, 'jobApps' => $jobApps
+            'careers' => $careers,
+            'jobApps' => $jobApps
         ]);
     }
-        public function create()
+    public function create()
     {
         return view('pages.owner.create.career');
     }
@@ -98,7 +99,7 @@ class CareerOwnerController extends Controller
         // Kirim data karier ke view untuk diedit
         return view('pages.owner.edit.career', compact('career'));
     }
-    
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -142,12 +143,68 @@ class CareerOwnerController extends Controller
     }
     public function destroy($id)
     {
+        // Temukan entri karier berdasarkan ID
         $career = WaraCareer::findOrFail($id);
 
+        // Hapus semua aplikasi pekerjaan yang terkait dengan karier yang akan dihapus
+        JobApplication::where('career_id', $career->id)->delete();
+
+        // Hapus gambar dari penyimpanan Cloudinary
         CloudinaryStorage::delete($career->image_url);
         CloudinaryStorage::delete($career->logo_url);
 
+        // Hapus entri karier dari database
         $career->delete();
+
+        // Redirect dengan pesan sukses
         return redirect()->route('owner.career')->with('success', 'Pekerjaan berhasil dihapus.');
     }
+    public function jobAppDetails($id)
+    {
+        // Cari Job berdasarkan UUID
+        $jobApp = JobApplication::where('application_id', $id)->first();
+
+        // Jika Job tidak ditemukan, bisa ditangani sesuai kebutuhan
+        if (!$jobApp) {
+            return redirect()->view('pages.owner.error');
+        }
+
+        if (Auth::check()) {
+            // Tampilkan halaman dengan detail Job
+            return view('pages.owner.jobAppdetail', ['jobApp' => $jobApp]);
+        }
+
+        // Jika belum login
+        return view('pages.user.home');
+    }
+
+    public function jobAppUpdate(Request $request, $id)
+    {
+        // Validasi input dari form
+        $request->validate([
+            'status' => 'required',
+            // Tambahkan validasi untuk kolom-kolom lainnya sesuai kebutuhan
+        ]);
+
+        // Cari jobApp berdasarkan ID
+        $jobApp = JobApplication::findOrFail($id);
+
+        // Update data jobApp
+        $jobApp->update($request->all());
+
+        // Redirect atau berikan respons sesuai kebutuhan
+        return redirect()->route('owner.career')->with('success', 'Data jobApp berhasil diperbarui');
+    }
+
+    public function jobAppDelete($id)
+    {
+        $jobApp = JobApplication::findOrFail($id);
+
+        // Menghapus Bukti Pembayaran
+        CloudinaryStorage::deletePayment($jobApp->portfolio_url);
+
+        $jobApp->delete();
+        return redirect()->route('owner.jobApp')->with('success', 'Job Application berhasil dihapus.');
+    }
+
 }

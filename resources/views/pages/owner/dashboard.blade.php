@@ -66,7 +66,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Jumlah Pekerjaan</h6>
-                                        <h6 class="font-extrabold mb-0">100</h6>
+                                        <h6 class="font-extrabold mb-0">{{$totalJobsByOwner}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                         <h6 class="text-muted font-semibold">Jumlah Pelamar</h6>
-                                        <h6 class="font-extrabold mb-0">100</h6>
+                                        <h6 class="font-extrabold mb-0">{{$totalApplicantsByOwner}}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -138,12 +138,10 @@
                         </div>
                         @endforeach
                         <div class="px-4">
-                            <button class='btn btn-block btn-xl btn-light-primary font-bold mt-3'>Lainnya</button>
+                        <a href="{{ route('owner.transactions') }}" class="btn btn-block btn-xl btn-light-primary font-bold mt-3">Lainnya</a>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </section>
     </div>

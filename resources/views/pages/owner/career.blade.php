@@ -137,15 +137,6 @@
                             <div class="d-flex align-items-center">
                                 <input type="text" id="searchInput2" class="form-control border px-2 py-1 rounded-3 shadow-none ml-2" placeholder="Cari Pelamar">
                             </div>
-                            <div>
-                                <label for="statusFilter">Filter Status:</label>
-                                <select id="statusFilter" class="form-select" style="min-width: 250px;">
-                                    <option value="">Semua</option>
-                                    <option value="Ditolak">Ditolak</option>
-                                    <option value="Pending">Pending</option>
-                                    <option value="Diterima">Diterima</option>
-                                </select>
-                            </div>
                         </div>
                         <div class="row justify-content-center">
                             <div class="career-list">
@@ -154,8 +145,8 @@
                                         <tr>
                                             <th>No.</th>
                                             <th>ID Lamaran</th>
-                                            <th>Posisi Pekerjaan</th>
                                             <th>Nama Pelamar</th>
+                                            <th>Posisi Pekerjaan</th>
                                             <th>Tanggal Dibuat</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
@@ -170,8 +161,8 @@
                                         <tr class="jobApp-row" data-status="{{ $jobApp->status }}">
                                             <td class="text-center">{{ ++$jobIndex }}</td>
                                             <td>LMR-{{ substr($jobApp->application_id, 0, 8) }}</td>
-                                            <td>{{ $jobApp->career->career_title }}</td>
                                             <td>{{ $jobApp->full_name }}</td>
+                                            <td>{{ $jobApp->career->career_title }}</td>
                                             <td class="text-center">{{ \Carbon\Carbon::parse($jobApp->created_at)->format('d/m/Y H:i') }}</td>
                                             <td class="text-center">
                                                 @switch($jobApp->status)
@@ -188,10 +179,10 @@
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-center">
-                                                    <a href="{{ route('admin.jobApp.details', ['id' => $jobApp->application_id]) }}" class="btn btn-primary me-2">
-                                                        <i class="fas fa-sync-alt"></i>
+                                                    <a href="{{ route('owner.jobApp.details', ['id' => $jobApp->application_id]) }}" class="btn btn-primary me-2">
+                                                        <i class="fas fa-eye"></i>
                                                     </a>
-                                                    <form action="{{ route('admin.jobApp.delete', $jobApp->application_id) }}" method="POST">
+                                                    <form action="{{ route('owner.jobApp.delete', $jobApp->application_id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger">
@@ -211,36 +202,17 @@
             </div>
         </div>
     </section>
-
     <script>
-        // Fungsi pencarian di Bagian Daftar Pekerjaan
-        document.getElementById('searchInput1').addEventListener('keyup', function() {
-            const searchText = this.value.toLowerCase();
-            const rows = document.querySelectorAll('.career-table tbody tr');
+    // Fungsi pencarian di Bagian Daftar Pekerjaan
+    document.getElementById('searchInput1').addEventListener('keyup', function() {
+        const searchText = this.value.toLowerCase();
+        const rows = document.querySelectorAll('.career-table tbody tr');
 
-            rows.forEach(row => {
-                const text = row.textContent.toLowerCase();
-                row.style.display = text.includes(searchText) ? '' : 'none';
-            });
+        rows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(searchText) ? '' : 'none';
         });
-
-        // Fungsi pencarian dan filter status di Bagian Daftar Pelamar
-        document.getElementById('searchInput2').addEventListener('keyup', filterJobApps);
-        document.getElementById('statusFilter').addEventListener('change', filterJobApps);
-
-        function filterJobApps() {
-            const searchText = document.getElementById('searchInput2').value.toLowerCase();
-            const statusFilter = document.getElementById('statusFilter').value.toLowerCase();
-            const rows = document.querySelectorAll('.career-table tbody tr');
-
-            rows.forEach(row => {
-                const text = row.textContent.toLowerCase();
-                const status = row.dataset.status.toLowerCase();
-                const isMatchSearchText = text.includes(searchText);
-                const isMatchStatus = statusFilter === '' || status === statusFilter.toLowerCase();
-
-                row.style.display = isMatchSearchText && isMatchStatus ? '' : 'none';
-            });
-        }
-    </script>
+    });    
+    
+</script>
 </x-owner-layout>

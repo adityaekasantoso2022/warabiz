@@ -106,6 +106,7 @@ Route::
                 Route::post('/admin/careers/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroy');
                 Route::delete('/admin/careers/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroy');
                 Route::put('/admin/careers/{id}/update', [CareerAdminController::class, 'update'])->name('admin.careers.update');
+
                 // Admin Route Job Application
                 Route::get('/admin/jobapp', [CareerAdminController::class, 'jobAppIndex'])->name('admin.jobApp');
                 Route::get('/admin/jobapp/{id}/details', [CareerAdminController::class, 'jobAppDetails'])->name('admin.jobApp.details');
@@ -147,5 +148,10 @@ Route::
             Route::post('/owner/careers/{id}', [CareerOwnerController::class, 'destroy'])->name('owner.careers.destroy');
             Route::delete('/owner/careers/{id}', [CareerOwnerController::class, 'destroy'])->name('owner.careers.destroy');
             Route::put('/owner/careers/{id}/update', [CareerOwnerController::class, 'update'])->name('owner.careers.update');
+
+
+            Route::get('/owner/jobapp/{id}/details', [CareerOwnerController::class, 'jobAppDetails'])->name('owner.jobApp.details');
+            Route::delete('/owner/jobapp/{id}/delete', [CareerOwnerController::class, 'jobAppDelete'])->name('owner.jobApp.delete');
+            Route::put('/owner/jobapp/{id}/update', [CareerOwnerController::class, 'jobAppUpdate'])->name('owner.jobApp.update');
         });
 Auth::routes();

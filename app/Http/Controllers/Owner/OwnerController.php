@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Owner;
 
+use App\Models\JobApplication;
+use App\Models\WaraCareer;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
@@ -21,9 +23,15 @@ class OwnerController extends Controller
                 ->where('created_by', auth()->id());
         })->get();
 
-        // Menghitung jumlah transaksi 
         $totalTransactionByOwner = Transaction::whereIn('waralaba_id', function ($query) {
             $query->select('id')->from('waralabas')->where('created_by', Auth::id());
+        })->count();
+
+        $totalJobsByOwner = WaraCareer::where('created_by', Auth::id())->count();
+
+        $ownerId = Auth::id();
+        $totalApplicantsByOwner = JobApplication::whereHas('career', function ($query) use ($ownerId) {
+            $query->where('created_by', $ownerId);
         })->count();
 
         $totalPendapatan = DB::table('transactions')
@@ -45,7 +53,7 @@ class OwnerController extends Controller
 
 
         if (Auth::check()) {
-            return view('pages.owner.dashboard', compact('totalWaralabaByOwner', 'totalTransactionByOwner', 'totalPendapatan', 'transactions', 'transaksiTerbaru'));
+            return view('pages.owner.dashboard', compact('totalWaralabaByOwner', 'totalTransactionByOwner', 'totalPendapatan', 'transactions', 'transaksiTerbaru', 'totalJobsByOwner', 'totalApplicantsByOwner'));
         }
 
         return view('pages.owner.dashboard');
