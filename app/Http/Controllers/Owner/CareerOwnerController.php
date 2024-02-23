@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CloudinaryStorage;
 use Illuminate\Http\Request;
+use App\Models\JobApplication;
 
 
 class CareerOwnerController extends Controller
@@ -27,13 +28,17 @@ class CareerOwnerController extends Controller
         $user_id = Auth::id();
     
         // Mengambil data karir yang dibuat oleh pengguna dengan user_id tertentu
-        $careerIds = WaraCareer::where('created_by', $user_id)->pluck('id');
+        $careerId = WaraCareer::where('created_by', $user_id)->pluck('id');
     
         // Mengambil data karir yang memiliki id yang ada di dalam array $careerIds
-        $careers = WaraCareer::whereIn('id', $careerIds)->get();
+        $careers = WaraCareer::whereIn('id', $careerId)->get();
+
+        $jobApps = JobApplication::join('wara_careers', 'job_applications.career_id', '=', 'wara_careers.id')
+                            ->where('wara_careers.created_by', $user_id)
+                            ->get();
     
         return view('pages.owner.career', [
-            'careers' => $careers
+            'careers' => $careers, 'jobApps' => $jobApps
         ]);
     }
         public function create()
