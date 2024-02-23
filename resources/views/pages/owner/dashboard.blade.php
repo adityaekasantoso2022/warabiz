@@ -8,8 +8,8 @@
     @endpush
 
     <?php
-    $totalPendapatanValue = $totalPendapatan->total_pendapatan;
-    $transaksiTerbaruValue = $transaksiTerbaru->harga_waralaba;
+    $totalPendapatanValue = isset($totalPendapatan) ? $totalPendapatan->total_pendapatan : 0;
+    $transaksiTerbaruValue = isset($transaksiTerbaru) ? $transaksiTerbaru->harga_waralaba : 0;
 
 
     ?>
