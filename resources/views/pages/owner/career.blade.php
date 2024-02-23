@@ -102,7 +102,7 @@
                         <h3>Daftar Pekerjaan</h3>
                     </div>
                     <div class="col-md-6 text-end">
-                        <a href="{{ route('admin.career.create') }}" class="btn btn-primary">Tambah Karier</a>
+                        <a href="{{ route('owner.career.create') }}" class="btn btn-primary">Tambah Karier</a>
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -133,13 +133,13 @@
                                     <td>{{ Str::limit(strip_tags($career->description), 135) }}</td>
                                     <td>
                                         <div class="career-details d-flex justify-content-between align-items-center">
-                                            <a href="{{ route('admin.careers.edit', $career->id) }}"
+                                            <a href="{{ route('owner.careers.edit', $career->id) }}"
                                                 class="btn btn-circle btn-warning"
                                                 style="background-color: #FFC107; border: none;">
                                                 <i class="fas fa-edit" style="color: white;"></i>
                                             </a>
                                             <span style="width: 5px;"></span>
-                                            <form action="{{ route('admin.careers.destroy', $career->id) }}"
+                                            <form action="{{ route('owner.careers.destroy', $career->id) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')

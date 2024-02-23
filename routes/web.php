@@ -123,9 +123,10 @@ Route::
             Route::get('/owner/dashboard', [OwnerController::class, 'dashboard'])->name('owner.dashboard');
 
             Route::get('/owner/waralaba', [WaralabaOwnerController::class, 'index'])->name('owner.waralaba');
+            Route::post('/owner/waralaba', [WaralabaOwnerController::class, 'store'])->name('owner.waralaba.store');
             Route::get('/owner/waralaba/create', [WaralabaOwnerController::class, 'create'])->name('owner.waralaba.create.form');
             Route::get('/owner/waralaba/{id}/edit', [WaralabaOwnerController::class, 'edit'])->name('owner.waralaba.edit');
-            Route::put('/owner/careers/{id}/update', [WaralabaOwnerController::class, 'update'])->name('owner.waralaba.update');
+            Route::put('/owner/waralaba/{id}/update', [WaralabaOwnerController::class, 'update'])->name('owner.waralaba.update');
             Route::delete('/owner/waralaba/delete/{id}', [WaralabaOwnerController::class, 'destroy'])->name('owner.waralaba.destroy');
 
 
@@ -140,7 +141,11 @@ Route::
 
 
             Route::get('/owner/career', [CareerOwnerController::class, 'index'])->name('owner.career');
-            Route::post('/owner/waralaba', [WaralabaOwnerController::class, 'store'])->name('owner.waralaba.store');
-
+            Route::get('/owner/careers/create', [CareerOwnerController::class, 'create'])->name('owner.career.create');
+            Route::post('/owner/careers', [CareerOwnerController::class, 'store'])->name('owner.careers.store');
+            Route::get('/owner/careers/{id}/edit', [CareerOwnerController::class, 'edit'])->name('owner.careers.edit');
+            Route::post('/owner/careers/{id}', [CareerOwnerController::class, 'destroy'])->name('owner.careers.destroy');
+            Route::delete('/owner/careers/{id}', [CareerOwnerController::class, 'destroy'])->name('owner.careers.destroy');
+            Route::put('/owner/careers/{id}/update', [CareerOwnerController::class, 'update'])->name('owner.careers.update');
         });
 Auth::routes();
