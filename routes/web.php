@@ -132,6 +132,13 @@ Route::
 
 
             Route::get('/owner/transaksi', [TransactionOwnerController::class, 'index'])->name('owner.transactions');
+            Route::get('/owner/invoice/{id}', [TransactionOwnerController::class, 'show'])->name('owner.transactions.show');
+            Route::get('/owner/transaction/{id}/edit', [TransactionOwnerController::class, 'edit'])->name('owner.transactions.edit');
+            Route::put('/owner/transactions/{id}', [TransactionOwnerController::class, 'update'])->name('owner.transactions.update');
+            Route::delete('/owner/transactions/{id}', [TransactionOwnerController::class, 'destroy'])->name('owner.transactions.destroy');
+            Route::post('/owner/transactions', [TransactionOwnerController::class, 'store'])->name('owner.transactions.store');
+
+
             Route::get('/owner/career', [CareerOwnerController::class, 'index'])->name('owner.career');
             Route::post('/owner/waralaba', [WaralabaOwnerController::class, 'store'])->name('owner.waralaba.store');
 

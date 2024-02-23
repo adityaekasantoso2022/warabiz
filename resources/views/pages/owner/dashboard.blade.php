@@ -112,7 +112,7 @@
                             <div class="ms-3 name">
                                 <h6 class="text-muted font-semibold">Total Pendapatan</h6>
                                 <h6 class="font-extrabold">Rp. {{ number_format($totalPendapatanValue, 0, ',', '.')}}</h6>
-                                <small class="font-bold" style="color: green;">+{{ number_format($transaksiTerbaruValue, 0, ',', '.')}}</small>
+                                <small class="font-bold" style="color: green;">+ Rp. {{ number_format($transaksiTerbaruValue, 0, ',', '.')}}</small>
                             </div>
                         </div>
                     </div>

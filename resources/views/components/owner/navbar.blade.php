@@ -10,24 +10,19 @@
                                 style="width: 130px; height: auto;">
                         </div>
                         <div class="header-top-right">
-                            <div class="dropdown">
-                                <a href="#" id="topbarUserDropdown"
-                                    class="user-dropdown d-flex align-items-center dropend dropdown-toggle "
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <div class="avatar avatar-md2">
-                                        <img src="./assets/compiled/jpg/1.jpg" alt="Avatar">
+                            <div class="user-dropdown d-flex align-items-center dropend dropdown-toggle "
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="avatar avatar-md2">
+                                    <div class="avatar" style="background-color: #0089A3; margin-right: 0.75rem;">
+                                        <span class="avatar-content">{{ strtoupper(substr(Auth::user()->name, 0, 2))
+                                            }}</span>
                                     </div>
-                                    <div class="text">
-                                        <h6 class="user-dropdown-name">{{ Auth::user()->name }}</h6>
-                                        <p class="user-dropdown-status text-sm text-muted">Owner</p>
-                                    </div>
-                                </a>
+                                </div>
+                                <div class="text">
+                                    <h6 class="user-dropdown-name">{{ Auth::user()->name }}</h6>
+                                    <p class="user-dropdown-status text-sm text-muted">Owner</p>
+                                </div>
                             </div>
-
-                            <!-- Burger button responsive -->
-                            <a href="#" class="burger-btn d-block d-xl-none">
-                                <i class="bi bi-justify fs-3"></i>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -58,7 +53,7 @@
                             </li>
                             <li class="menu-item">
                                 <form id="logoutForm" action="{{ url('logout') }}" method="POST" style="display: none;">
-                                    @csrf 
+                                    @csrf
                                 </form>
                                 <a href="#"
                                     onclick="event.preventDefault(); document.getElementById('logoutForm').submit();"

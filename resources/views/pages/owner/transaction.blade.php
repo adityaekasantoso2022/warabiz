@@ -176,18 +176,13 @@
                                     </td>
                                     <td>
                                         <div class="transaction-details transaction-buttons-container">
-                                        <a href="{{ route('admin.transactions.edit', ['id' => $transaction->uuid]) }}"
+                                        <a href="{{ route('owner.transactions.edit', ['id' => $transaction->uuid]) }}"
                                                 class="btn btn-circle btn-primary"
                                                 style="background-color: #009bb8; border: none;">
                                                 <i class="fas fa-edit" style="color: white;"></i>
                                             </a>
 
-                                            <a href="{{ route('admin.transactions.show', ['id' => $transaction->uuid]) }}"
-                                                class="btn btn-circle btn-warning"
-                                                style="background-color: #FFC107; border: none;">
-                                                <i class="fas fa-download" style="color: white;"></i>
-                                            </a>
-                                            <form action="{{ route('admin.transactions.destroy', $transaction->uuid) }}"
+                                            <form action="{{ route('owner.transactions.destroy', $transaction->uuid) }}"
                                                 method="POST" style="display: inline-block;">
                                                 @csrf
                                                 @method('DELETE')
