@@ -204,7 +204,7 @@ class CareerOwnerController extends Controller
         CloudinaryStorage::deletePayment($jobApp->portfolio_url);
 
         $jobApp->delete();
-        return redirect()->route('owner.jobApp')->with('success', 'Job Application berhasil dihapus.');
+        return redirect()->route('owner.career')->with('success', 'Job Application berhasil dihapus.');
     }
 
 }
