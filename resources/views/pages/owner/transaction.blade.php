@@ -179,7 +179,7 @@
                                         <a href="{{ route('owner.transactions.edit', ['id' => $transaction->uuid]) }}"
                                                 class="btn btn-circle btn-primary"
                                                 style="background-color: #009bb8; border: none;">
-                                                <i class="fas fa-edit" style="color: white;"></i>
+                                                <i class="fas fa-sync-alt" style="color: white;"></i>
                                             </a>
 
                                             <form action="{{ route('owner.transactions.destroy', $transaction->uuid) }}"
