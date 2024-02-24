@@ -141,7 +141,7 @@
                                                 <i class="fas fa-edit" style="color: white;"></i>
                                             </a>
                                             <span style="width: 5px;"></span>
-                                            <form action="{{ route('admin.careers.destroy', $career->id) }}"
+                                            <form action="{{ route('admin.careers.destroys', $career->id) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')

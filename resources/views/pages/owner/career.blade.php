@@ -109,7 +109,7 @@
                                                 <a href="{{ route('owner.careers.edit', $career->id) }}" class="btn btn-warning me-2" style="background-color: #FFC107; border: none;">
                                                     <i class="fas fa-edit" style="color: white;"></i>
                                                 </a>
-                                                <form action="{{ route('owner.careers.destroy', $career->id) }}" method="POST">
+                                                <form action="{{ route('owner.careers.destroys', $career->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger" style="background-color: #F44336; border: none;"><i class="fas fa-trash-alt" style="color: white;"></i></button>

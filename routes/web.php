@@ -104,7 +104,7 @@ Route::
                 Route::post('/admin/careers', [CareerAdminController::class, 'store'])->name('admin.careers.store');
                 Route::get('/admin/careers/{id}/edit', [CareerAdminController::class, 'edit'])->name('admin.careers.edit');
                 Route::post('/admin/careers/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroy');
-                Route::delete('/admin/careers/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroy');
+                Route::delete('/admin/careers/{id}', [CareerAdminController::class, 'destroy'])->name('admin.careers.destroys');
                 Route::put('/admin/careers/{id}/update', [CareerAdminController::class, 'update'])->name('admin.careers.update');
 
                 // Admin Route Job Application
@@ -146,7 +146,7 @@ Route::
             Route::post('/owner/careers', [CareerOwnerController::class, 'store'])->name('owner.careers.store');
             Route::get('/owner/careers/{id}/edit', [CareerOwnerController::class, 'edit'])->name('owner.careers.edit');
             Route::post('/owner/careers/{id}', [CareerOwnerController::class, 'destroy'])->name('owner.careers.destroy');
-            Route::delete('/owner/careers/{id}', [CareerOwnerController::class, 'destroy'])->name('owner.careers.destroy');
+            Route::delete('/owner/careers/{id}', [CareerOwnerController::class, 'destroy'])->name('owner.careers.destroys');
             Route::put('/owner/careers/{id}/update', [CareerOwnerController::class, 'update'])->name('owner.careers.update');
 
 
