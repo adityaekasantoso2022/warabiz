@@ -12,37 +12,23 @@ use App\Models\JobApplication;
 
 class CareerOwnerController extends Controller
 {
-    // public function index()
-    // {
-    //     if (Auth::check()) {
-    //         $careers = WaraCareer::all();
-    //         return view('pages.owner.career', [
-    //             'careers' => $careers
-    //         ]);
-    //     }
-    //     return view('pages.user.home');
-    // }
     public function index()
     {
         // Mendapatkan user_id yang saat ini masuk
         $user_id = Auth::id();
-
+    
         // Mengambil data karir yang dibuat oleh pengguna dengan user_id tertentu
-        $careerId = WaraCareer::where('created_by', $user_id)->pluck('id');
-
-        // Mengambil data karir yang memiliki id yang ada di dalam array $careerIds
-        $careers = WaraCareer::whereIn('id', $careerId)->get();
-
-        $jobApps = JobApplication::join('wara_careers', 'job_applications.career_id', '=', 'wara_careers.id')
-            ->where('wara_careers.created_by', $user_id)
-            ->get();
-
+        $careers = WaraCareer::where('created_by', $user_id)->get();
+    
+        // Mengambil data aplikasi pekerjaan yang terkait dengan karir yang dibuat oleh pengguna
+        $jobApps = JobApplication::whereIn('career_id', $careers->pluck('id'))->get();
+    
         return view('pages.owner.career', [
             'careers' => $careers,
             'jobApps' => $jobApps
         ]);
     }
-    public function create()
+        public function create()
     {
         return view('pages.owner.create.career');
     }

@@ -152,8 +152,8 @@
         <div class="payment-success">
             <img src="{{ asset('assets/frontend/image/sukses.svg') }}" alt="Gambar Pembayaran Berhasil" width="100">
             <br>
-            <h2>Lamaranmu Terkirim!</h2>
-            <p>Admin akan segera menghubungi Anda lewat Email untuk penerimaan Lamaran ini! <br> Terimakasih! </p>
+            <h2>Lamaranmu Berhasil Terkirim</h2>
+            <p>Kami akan segera menghubungi Anda melalui Email <br> untuk informasi selanjutnya! </p>
             <a href="{{ route('home') }}" class="mt-4 mb-2 ml-4 btn bgTheme text-white border-12 py-3 px-4"
                 style="max-width: 200px; width: calc(50% - 14px); display: inline-block; margin-left: 10px;">
                 <i class="fas fa-home mr-2"></i> Back to Home
