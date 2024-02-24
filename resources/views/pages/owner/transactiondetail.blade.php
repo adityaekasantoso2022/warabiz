@@ -2,15 +2,13 @@
     @push('addonStyle')
     <style>
         body {
-            background: #dae3ec !important;
+            background: #EDF2F7 !important;
         }
 
-        /* Menyembunyikan navbar saat mencetak */
         .navbar {
             display: none;
         }
 
-        /* Menampilkan kembali navbar saat tidak mencetak */
         @media screen {
             .navbar {
                 display: block;

@@ -1,8 +1,10 @@
 <x-owner-layout title="Edit Transaksi" active="transaksi">
     @push('addonStyle')
-    <!-- Masukkan gaya tambahan di sini -->
     <style>
-        /* Tambahkan gaya tambahan di sini */
+        
+        body {
+            background: #EDF2F7 !important;
+        }
 
         .card {
             margin-bottom: 20px;

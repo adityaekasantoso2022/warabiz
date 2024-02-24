@@ -1,9 +1,8 @@
 <x-owner-layout title="Detail Lamaran - {{ $jobApp->application_id }}" active="lamaran pekerjaan">
     @push('addonStyle')
-    <!-- Masukkan gaya tambahan di sini -->
     <style>
         body {
-            background: #dae3ec !important;
+            background: #EDF2F7 !important;
         }
 
         .card {

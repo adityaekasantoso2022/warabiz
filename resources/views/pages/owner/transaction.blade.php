@@ -1,9 +1,8 @@
 <x-owner-layout title="Transaksi" active="transaksi" style="margin-top: 0;">
     @push('addonStyle')
     <style>
-        /* CSS Styles */
         body {
-            background: #dae3ec !important;
+            background: #EDF2F7 !important;
         }
 
         .waralaba-card {
