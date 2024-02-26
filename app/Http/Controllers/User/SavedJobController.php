@@ -20,37 +20,14 @@ class SavedJobController extends Controller
         // Retrieve job applications for the user
         $appliedCareers = JobApplication::where('user_id', $userId)->get();
 
-        // Retrieve distinct career_ids from saved jobs
-        $distinctSavedJobIds = SavedJob::where('user_id', $userId)->distinct('career_id')->pluck('career_id');
-
         // Retrieve saved jobs for the user with related career information
-        $savedJobs = SavedJob::where('user_id', $userId)->with('career')->get();
+        $savedJobs = SavedJob::where('user_id', $userId)
+        ->where('is_saved', true)
+        ->with('career')
+        ->get();
 
         return view('pages.user.applications', compact('appliedCareers', 'savedJobs'));
     }
-
-    public function create()
-    {
-        return view('saved-jobs.create');
-    }
-
-    // public function saveJob(Request $request, $careerId)
-    // {
-    //     // Validasi jika diperlukan
-    //     $request->validate([
-    //         'user_id' => 'required',
-    //         'is_saved' => 'required|boolean',
-    //     ]);
-
-    //     // Simpan data ke dalam tabel saved_jobs
-    //     SavedJob::create([
-    //         'user_id' => auth()->id(),
-    //         'career_id' => $careerId,
-    //         'is_saved' => $request->is_saved,
-    //     ]);
-
-    //     return redirect()->back()->with('success', 'Pekerjaan disimpan.');
-    // }
 
     public function saveJob(Request $request, $careerId)
     {
