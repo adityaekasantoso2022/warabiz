@@ -151,7 +151,7 @@
                                     <tr class="transaction-row"
                                         data-status="{{ $transaction->status }}">
                                         <td>{{ ++$transactionIndex }}</td>
-                                        <td>TRX-{{ substr($transaction->uuid, 2, 6) }}</td>
+                                        <td>TRX-{{ strtoupper(substr($transaction->uuid, 2, 6)) }}</td>
                                         <td>{{ $transaction->waralaba_name }}</td>
                                         <td>{{ $transaction->fullname }}</td>
                                         <td>{{ $transaction->created_at->setTimezone('Asia/Jakarta')->format('d/m/Y H:i') }}</td>

@@ -48,11 +48,6 @@ class WaralabaOwnerController extends Controller
         // Validasi input
         $request->validate([
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image_url_1' => 'required',
-            'image_url_2' => 'required',
-            'image_url_3' => 'required',
-            'image_url_4' => 'required',
-            'image_url_5' => 'required',
             'category_id' => 'required',
             'waralaba_name' => 'required',
             'price' => 'required',
@@ -122,7 +117,7 @@ class WaralabaOwnerController extends Controller
         }
 
         // Tangani kasus di mana $image null (tidak ada file yang diunggah)
-        return view('pages.owner.error')->with('error', 'Gambar tidak valid.');
+        return view('pages.error.error404')->with('error', 'Gambar tidak valid.');
     }
 
     public function edit($id)
@@ -149,12 +144,11 @@ class WaralabaOwnerController extends Controller
             'rating' => 'required',
             'concept' => 'required',
             'concept_size' => 'required',
-
         ]);
-
+    
         // Cari waralaba berdasarkan ID
         $waralaba = Waralaba::findOrFail($id);
-
+    
         // Gunakan 'image_url' daripada 'image' pada baris berikut
         $logo = $request->file('logo');
         $image1 = $request->file('image_url_1');
@@ -163,7 +157,7 @@ class WaralabaOwnerController extends Controller
         $image4 = $request->file('image_url_4');
         $image5 = $request->file('image_url_5');
         $brochure = $request->file('brochure_link');
-
+    
         // Periksa apakah file baru dipilih, jika tidak, gunakan file yang sudah ada
         $logoPath = $logo ? CloudinaryStorage::replace($waralaba->logo, $logo->getRealPath(), $logo->getClientOriginalName()) : $waralaba->logo;
         $image1Path = $image1 ? CloudinaryStorage::replace($waralaba->image_url_1, $image1->getRealPath(), $image1->getClientOriginalName()) : $waralaba->image_url_1;
@@ -172,8 +166,7 @@ class WaralabaOwnerController extends Controller
         $image4Path = $image4 ? CloudinaryStorage::replace($waralaba->image_url_4, $image4->getRealPath(), $image4->getClientOriginalName()) : $waralaba->image_url_4;
         $image5Path = $image5 ? CloudinaryStorage::replace($waralaba->image_url_5, $image5->getRealPath(), $image5->getClientOriginalName()) : $waralaba->image_url_5;
         $brochurePath = $brochure ? CloudinaryStorage::replace($waralaba->brochure_link, $brochure->getRealPath(), $brochure->getClientOriginalName()) : $waralaba->brochure_link;
-
-
+    
         // Update data waralaba berdasarkan data yang diterima
         $waralaba->update([
             'logo' => $logoPath,
@@ -197,11 +190,10 @@ class WaralabaOwnerController extends Controller
             'concept' => $request->input('concept'),
             'concept_size' => $request->input('concept_size'),
         ]);
-
+    
         return redirect()->route('owner.waralaba')->with('success', 'Waralaba berhasil diupdate.');
     }
-
-    public function destroy($id)
+        public function destroy($id)
 {
     // Cari waralaba berdasarkan ID
     $waralaba = Waralaba::findOrFail($id);

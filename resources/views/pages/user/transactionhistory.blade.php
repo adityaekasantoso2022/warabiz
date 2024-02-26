@@ -203,7 +203,7 @@
                                         @foreach($transactions->sortByDesc('created_at') as $index => $transaction)
                                             <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                                <td>TRX-{{ substr($transaction->uuid, 2, 6) }}</td>
+                                                <td>TRX-{{ strtoupper(substr($transaction->uuid, 2, 6)) }}</td>
                                                 <td>{{ $transaction->waralaba_name }}</td>
                                                 <td>{{ $transaction->created_at->setTimezone('Asia/Jakarta')->format('d-m-Y H:i:s') }}</td>
                                                 <td>Bank {{ $transaction->payment_method }}</td>

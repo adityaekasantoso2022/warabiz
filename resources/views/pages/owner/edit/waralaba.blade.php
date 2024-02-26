@@ -2,7 +2,7 @@
     @push('addonStyle')
     <style>
         body {
-            background: #EDF2F7 !important;
+            background: #dae3ec !important;
         }
 
         .waralaba-card {

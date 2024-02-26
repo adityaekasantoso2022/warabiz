@@ -151,7 +151,7 @@
                                 <button type="submit" class="btn btn-primary">Update</button>
                                 @if ($transaction->status == 20205)
                                 <a href="{{ route('admin.transactions.show', ['id' => $transaction->uuid]) }}"
-                                    class="btn btn-success">Unduh Invoice</a>
+                                    class="btn btn-success">Unduh Dokumen</a>
                                 @endif
                             </form>
                         </div>

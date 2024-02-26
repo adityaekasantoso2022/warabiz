@@ -139,7 +139,7 @@ $transaksiTerbaruValue = $transaksiTerbaru->harga_waralaba ?? 0;
                                 </div>
                             </div>
                             <div class="name ms-4">
-                                <b>TRX-{{ substr($transaction->uuid, 2, 6) }}</b>
+                                <b>TRX-{{ strtoupper(substr($transaction->uuid, 2, 6)) }}</b>
                                 <p class="text-muted mb-0">{{ $transaction->created_at->format('d/m/Y H:i') }} WIB</p>
                             </div>
                         </div>

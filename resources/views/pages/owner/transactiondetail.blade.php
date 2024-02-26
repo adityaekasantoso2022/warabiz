@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="col-lg-4 text-right col-12">
                                     <p class="mb-0 mt-2">
-                                        ID Transaksi: TRX-{{ substr($transaction->uuid, 2, 6) }}
+                                        ID Transaksi: TRX-{{ strtoupper(substr($transaction->uuid, 2, 6)) }}
                                     </p>
                                     <p>
                                         Status: <strong>
