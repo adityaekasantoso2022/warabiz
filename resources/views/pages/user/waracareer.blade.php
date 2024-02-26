@@ -148,6 +148,18 @@
             z-index: 2;
         }
 
+        form {
+            grid-area: 3 / 3 / 4 / 5; /* Tempatkan form pada posisi yang benar */
+            display: flex;
+            align-items: flex-end; /* Sesuaikan agar form berada di bagian bawah kontainer */
+            padding-top: 10px;
+        }
+
+        form button {
+            margin-top: 10px; /* Sesuaikan margin sesuai kebutuhan */
+            margin-left: 100px
+        }
+
         .save {
             grid-area: 3 / 3 / 4 / 4;
             background-color: #fff;
@@ -178,8 +190,25 @@
                         <div class="skill">Diposting pada {{ $career->created_at->format('d/m/Y') }}</div>
                     </div>
                     <button class="apply" onclick="applyJob({{ $career->id }})">Daftar</button>
-                    <button class="save">Simpan</button>
-                    <a href="#"></a>
+                    <form action="{{ route('save.job', $career->id) }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+
+                        @php
+                            // Retrieve the SavedJob record for the current user and career
+                            $savedJob = auth()->user()->savedJobs()->where('career_id', $career->id)->first();
+                        @endphp
+
+                        @if($savedJob && $savedJob->is_saved)
+                            <!-- If is_saved is true, show "Batalkan" button -->
+                            <input type="hidden" name="is_saved" value="0">
+                            <button type="submit" class="save" style="background-color: #9c0d0d; color: #fff;">Batalkan</button>
+                        @else
+                            <!-- If is_saved is false, show "Simpan" button -->
+                            <input type="hidden" name="is_saved" value="1">
+                            <button type="submit" class="save">Simpan</button>
+                        @endif
+                    </form>
                 </div>
                 @endforeach
             </div>

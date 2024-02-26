@@ -18,6 +18,7 @@ use App\Http\Controllers\Owner\OwnerController;
 use App\Http\Controllers\Owner\TransactionOwnerController;
 use App\Http\Controllers\Owner\WaralabaOwnerController;
 use App\Http\Controllers\Owner\CareerOwnerController;
+use App\Http\Controllers\User\SavedJobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,8 @@ Route::
                 Route::get('/career/{id}', 'WaracareerController@show')->name('career.show');
                 Route::get('/daftar/{id}', 'WaracareerController@daftar')->name('career.daftar');
                 Route::post('/daftar/store-data', 'WaracareerController@store')->name('careerJob.store');
+                Route::post('/save-job/{careerId}', [SavedJobController::class, 'saveJob'])->name('save.job');
+                Route::get('/user/applications/{userId}', [SavedJobController::class, 'history'])->name('job.applications');
 
                 Route::get('/warapartner', 'WarapartnerController@index')->name('warapartner');
 
@@ -84,7 +87,7 @@ Route::
 
                 // Admin CRUD transaction
                 Route::get('/admin/transaksi', [TransactionAdminController::class, 'index'])->name('admin.transactions');
-                Route::get('/admin/invoice/{id}', [TransactionAdminController::class, 'show'])->name('admin.transactions.show');                
+                Route::get('/admin/invoice/{id}', [TransactionAdminController::class, 'show'])->name('admin.transactions.show');
                 Route::get('/admin/transaction/{id}/edit', [TransactionAdminController::class, 'edit'])->name('admin.transactions.edit');
                 Route::put('/admin/transactions/{id}', [TransactionAdminController::class, 'update'])->name('admin.transactions.update');
                 Route::delete('/admin/transactions/{id}', [TransactionAdminController::class, 'destroy'])->name('admin.transactions.destroy');

@@ -32,6 +32,11 @@ class User extends Authenticatable
         return $this->role === 'owner';
     }
 
+    public function savedJobs()
+    {
+        return $this->hasMany(SavedJob::class, 'user_id');
+    }
+
     public function transactions()
     {
         return $this->hasMany(Transaction::class);

@@ -69,10 +69,17 @@
                             <a href="{{ route('transaction.history') }}"
                                 class="dropdown-item bg-white btn baseColor rounded-0 fw-bold text-dark d-flex align-items-center m-0 py-3 shadow-none">
                                 <p class="me-3"><i class="fas fa-history text-dark"></i></p>
-                                <p class="text-sm text-dark"> Transaksi</p>
+                                <p class="text-sm text-dark">Transaksi</p>
                             </a>
                         </li>
-
+                        <li>
+                            <a href="{{ route('job.applications', auth()->id()) }}"
+                                class="dropdown-item bg-white btn baseColor rounded-0 fw-bold text-dark d-flex align-items-center m-0 py-3 shadow-none">
+                                <p class="me-3"><i class="fas fa-history text-dark"></i></p>
+                                <p class="text-sm text-dark">Pekerjaan</p>
+                            </a>
+                        </li>
+                        <hr>
                         <li>
                             <form action="{{ url('logout') }}" method="post">
                                 @csrf

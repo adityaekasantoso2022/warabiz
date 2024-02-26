@@ -60,6 +60,6 @@ class JobApplication extends Model
 
     public function career()
     {
-        return $this->belongsTo(WaraCareer::class, 'career_id'); // pastikan 'career_id' adalah nama kolom kunci asing di tabel job_applications
+        return $this->belongsTo(WaraCareer::class, 'career_id');
     }
 }
