@@ -35,7 +35,23 @@
                             <div class="row mt-4">
                                 <div class="col-lg-8 col-12">
                                     <img src="{{ asset('assets/frontend/image/logo.svg') }}" class="mb-4" height="40">
-                                    <h3 class="mb-1">Invoice Pembelian Waralaba</h3>
+                                    <h3 class="mb-2">Invoice Pembelian Waralaba</h3>
+                                    <div class="row mb-1">
+                                        <div class="col-lg-6 col-12">
+                                            <p class="mb-0">
+                                                <strong>PT. Warabisnis Technology</strong>
+                                            </p>
+                                            <p class="mb-0">
+                                                Banyumas, Jawa Tengah, Indonesia
+                                            </p>
+                                            <p class="mb-0">
+                                                (081) 572663773
+                                            </p>
+                                            <p class="mt-2">
+                                                <?= date('d F Y'); ?>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-lg-4 text-right col-12">
                                     <p class="mb-0 mt-2">
@@ -60,30 +76,16 @@
                                             @endif
                                         </strong>
                                     </p>
-                                    <p class="mt-1">
-                                        <?= date('d F Y'); ?>
-                                    </p>
-
                                 </div>
-                            </div>
-                            <div class="row mb-4">
-                                <div class="col-lg-6 col-12">
-                                    <p class="mb-0">
-                                        <strong>PT. Warabisnis Technology</strong>
-                                    </p>
-                                    <p class="mb-3">
-                                        Banyumas, Jawa Tengah, Indonesia
-                                    </p>
-                                </div>
-                                <div class="col-lg-6 col-12 text-right">
+                                <div class="col-lg-6">
                                     <p class="mb-0 text-blue">
                                         Kepada:
                                     </p>
                                     <p class="mb-0">
-                                        <strong>{{ $transaction->user->name }}</strong>
+                                        <strong>{{ $transaction->fullname }}</strong>
                                     </p>
                                     <p class="mb-0">
-                                        {{ $transaction->user->email }}
+                                        {{ $transaction->email }}
                                     </p>
                                 </div>
                             </div>
@@ -111,16 +113,29 @@
                                     </table>
                                     <div class="d-flex justify-content-between mt-3">
                                         <span></span>
-                                        <span>Biaya Layanan :&nbsp;&nbsp;Rp. 100.000</span>
+                                        <span style="position: relative;">
+                                            <img src="{{ asset('assets/frontend/image/lunas.png') }}" alt="Lunas Stamp"
+                                                style="width: 110px; height: auto; position: absolute; left: -100px; top: 0; opacity: 0.2; transform: rotate(15deg);">
+                                        </span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span></span>
+                                        <span>Metode Pembayaran
+                                            :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bank {{
+                                            $transaction->payment_method }}</span>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between">
+                                        <span></span>
+                                        <span>Biaya Layanan
+                                            :&nbsp;&nbsp;&nbsp; Rp. 100.000</span>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <span></span>
                                         <span>Kode Unik
-                                            :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{
-                                            substr($transaction->total_payment,
-                                            -3) }}</span>
+                                            :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{
+                                            substr($transaction->total_payment, -3) }}</span>
                                     </div>
-
                                     @php
                                     $totalPayment = $transaction->waralaba->price + 100000;
                                     @endphp
@@ -143,7 +158,7 @@
                                             <div class="col-lg-8 col-12">
                                                 <img src="{{ asset('assets/frontend/image/logo.svg') }}"
                                                     class="mb-4 mt-3" height="40">
-                                                <h3 class="mb-1">Surat Perjanjian Kerjasama</h3>
+                                                <h3 class="mb-2">Surat Perjanjian Kerjasama</h3>
                                             </div>
                                         </div>
                                         <div class="row mb-4">
@@ -234,7 +249,7 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center mt-3 mb-2">
+            <div class="text-center mt-3 mb-3">
                 <button onclick="printInvoice()" class="btn btn-dark">Unduh</button>
             </div>
         </div>

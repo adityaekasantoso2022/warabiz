@@ -3,9 +3,9 @@
     <style>
         /* Style untuk latar belakang dan elemen-elemen lainnya */
         body {
-            background: #dae3ec !important;
+            background: #ffffff !important;
         }
-
+    
         .navbar .navbar-nav a:hover.btn-signup {
             color: white !important;
         }
@@ -63,6 +63,7 @@
             grid-template-columns: 80px auto 100px;
             grid-template-rows: 35px 10px 35px;
             width: 640px;
+            height: 135px;
             border-top: 1px solid #e3e3e3;
             border-bottom: 1px solid #e3e3e3;
             padding: 24px;
@@ -70,7 +71,8 @@
             margin-bottom: 20px;
             margin-right: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            border:none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .job-card:hover,
@@ -103,8 +105,8 @@
             grid-area: 1 / 2 / 2 / 3;
             font-size: 16px;
             align-self: start;
-            font-weight: 500;
-            margin-top: 5px;
+            font-weight: 600;
+            margin-top: 6px;
             padding: 0 24px;
         }
 
@@ -113,25 +115,7 @@
             align-self: center;
             font-size: 14px;
             color: #777;
-            margin-bottom: 5px;
             padding: 0 24px;
-        }
-
-        .skills-container {
-            grid-area: 3 / 2 / 4 / 3;
-            align-self: center;
-            padding-top: 10px;
-            padding: 0 24px;
-        }
-
-        .skill {
-            display: inline;
-            color: #00a6c2;
-            border-radius: 2px;
-            background-color: rgba(0, 166, 194, .05);
-            border: 1px solid rgba(0, 166, 194, .15);
-            padding: 5px 8px;
-            font-size: 12px;
         }
 
         .apply {
@@ -149,14 +133,17 @@
         }
 
         form {
-            grid-area: 3 / 3 / 4 / 5; /* Tempatkan form pada posisi yang benar */
+            grid-area: 3 / 3 / 4 / 5;
+            /* Tempatkan form pada posisi yang benar */
             display: flex;
-            align-items: flex-end; /* Sesuaikan agar form berada di bagian bawah kontainer */
+            align-items: flex-end;
+            /* Sesuaikan agar form berada di bagian bawah kontainer */
             padding-top: 10px;
         }
 
         form button {
-            margin-top: 10px; /* Sesuaikan margin sesuai kebutuhan */
+            margin-top: 10px;
+            /* Sesuaikan margin sesuai kebutuhan */
             margin-left: 100px
         }
 
@@ -172,6 +159,22 @@
             font-size: 14px;
             padding: 6px 12px;
             z-index: 2;
+            transition: background-color 0.3s ease;
+            /* Transisi untuk perubahan warna latar belakang */
+        }
+
+        .save:hover {
+            background-color: #f0f0f0;
+            /* Warna latar belakang saat hover */
+        }
+        .salary {
+            grid-area: 5 / 2 / 3 / 3;
+            align-self: center;
+            font-size: 14px;
+            color: #000000;
+            font-weight: 550;
+            margin-top: 6px;
+            padding: 0 24px;
         }
     </style>
     @endpush
@@ -186,29 +189,28 @@
                     </div>
                     <div class="job-title">{{ $career->career_title }}</div>
                     <div class="company-name">{{ $career->company_name }}</div>
-                    <div class="skills-container">
-                        <div class="skill">Diposting pada {{ $career->created_at->format('d/m/Y') }}</div>
-                    </div>
-                    <button class="apply" onclick="applyJob({{ $career->id }})">Daftar</button>
-                    <form action="{{ route('save.job', $career->id) }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
-
-                        @php
+                    <div class="salary"><p>{{ $career->min_salary }} - {{ $career->max_salary }}</p></div>
+                    <div class="button-container">
+                        <button class="apply" onclick="applyJob({{ $career->id }})">Daftar</button>
+                        <form action="{{ route('save.job', $career->id) }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+                            @php
                             // Retrieve the SavedJob record for the current user and career
                             $savedJob = auth()->user()->savedJobs()->where('career_id', $career->id)->first();
-                        @endphp
-
-                        @if($savedJob && $savedJob->is_saved)
+                            @endphp
+                            @if($savedJob && $savedJob->is_saved)
                             <!-- If is_saved is true, show "Batalkan" button -->
                             <input type="hidden" name="is_saved" value="0">
-                            <button type="submit" class="save" style="background-color: #9c0d0d; color: #fff;">Batalkan</button>
-                        @else
+                            <button type="submit" class="save"
+                                style="background-color: #cf0606; color: #fff; border: none; margin-left: 0;">Batalkan</button>
+                            @else
                             <!-- If is_saved is false, show "Simpan" button -->
                             <input type="hidden" name="is_saved" value="1">
-                            <button type="submit" class="save">Simpan</button>
-                        @endif
-                    </form>
+                            <button type="submit" class="save" style="margin-left: 0;">Simpan</button>
+                            @endif
+                        </form>
+                    </div>
                 </div>
                 @endforeach
             </div>

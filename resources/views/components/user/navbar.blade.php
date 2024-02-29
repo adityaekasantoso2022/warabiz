@@ -1,9 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light position-fixed top-0 w-100 py-lg-3">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset('assets/frontend/image/logo.svg') }}" class="mb-1" alt="logo-warabiz">
+        <img src="{{ asset('assets/frontend/image/logo.svg') }}" alt="logo-warabiz" style="width: 180px; height: auto;">
         </a>
-
         @guest
         <!-- Display when the user is a guest -->
         <div class="navbar-nav d-lg-flex d-none">
@@ -18,7 +17,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav mx-auto mt-2 mt-lg-0">
+            <div class="navbar-nav mx-auto  mt-lg-0">
                 <a class="nav-link me-4 {{ $active == 'home' ? 'active' : '' }}"
                     href="{{ route('home.index') }}">Home</a>
                 <a class="nav-link me-4 {{ $active == 'waraedu' ? 'active' : '' }}"

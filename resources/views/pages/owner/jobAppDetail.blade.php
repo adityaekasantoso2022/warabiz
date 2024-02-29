@@ -72,7 +72,7 @@
                                 <p class='my-2'>
                                 <div class="row mb-2">
                                     <div class="col-sm-4">ID Lamaran</div>
-                                    <div class="col-sm-8">LMR-{{ substr($jobApp->application_id, 2, 6) }}</div>
+                                    <div class="col-sm-8"><td>{{ strtoupper('LMR-' . substr($jobApp->application_id, 0, 8)) }}</td></div>
                                 </div>
                                 <div class="row mb-2">
                                     <div class="col-sm-4">Waktu Dibuat</div>

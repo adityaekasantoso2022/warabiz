@@ -1,4 +1,4 @@
-<x-admin-layout title="Lamaran Pekerjaan" active="lamaran pekerjaan" style="margin-top: 0;">
+<x-admin-layout title="Lamaran Pekerjaan" active="lamaran pekerjaan">
     @push('addonStyle')
     <style>
         /* CSS Styles */
@@ -11,8 +11,6 @@
             border-radius: 14px;
             color: #34364a;
             padding: 30px;
-            overflow-x: auto;
-            overflow-y: auto;
         }
 
         .jobApp-table {
@@ -101,7 +99,6 @@
                         <h3>Daftar Lamaran Pekerjaan</h3>
                     </div>
                 </div>
-
                 <div class="row justify-content-center">
                     <div class="jobApp-list">
                         <div class="search-bar mb-3 d-flex justify-content-between align-items-center">
@@ -120,7 +117,6 @@
                                 </select>
                             </div>
                         </div>
-
                         <table class="jobApp-table">
                             <thead>
                                 <tr>
@@ -143,7 +139,7 @@
                                 <tr class="jobApp-row"
                                     data-status="{{ $jobApp->status }}">
                                     <td>{{ ++$jobIndex }}</td>
-                                    <td>LMR-{{ substr($jobApp->application_id, 0, 8) }}</td>
+                                    <td>{{ strtoupper('LMR-' . substr($jobApp->application_id, 0, 8)) }}</td>
                                     <td>{{ $jobApp->career->company_name }}</td>
                                     <td>{{ $jobApp->career->career_title }}</td>
                                     <td>{{ $jobApp->full_name }}</td>

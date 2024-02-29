@@ -1,4 +1,4 @@
-<x-user-layout title="Riwayat Transaksi" active="riwayat-transaksi">
+<x-user-layout title="Riwayat Waracareer" active="riwayat-transaksi">
     @push('addonStyle')
     <style>
         body {
@@ -58,19 +58,21 @@
             line-height: 48px;
         }
 
-        .bantuan-card {
+        .job-card {
             background: #fff;
-            border-radius: 14px;
+            border-radius: 12px;
             color: #34364a;
-            padding: 30px;
+            padding: 28px;
             margin-bottom: 20px;
             overflow-x: auto;
             overflow-y: auto;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
         }
 
         .transaction-table {
             width: 100%;
-            margin-top: 10px;
             border-collapse: collapse;
         }
 
@@ -78,11 +80,13 @@
         .transaction-table td {
             border: 1px solid #ddd;
             padding: 8px;
-            text-align: center;
+            font-size: 15px;
+            text-align: left;
         }
 
         .transaction-table th {
             background-color: #f2f2f2;
+            text-align: center;
         }
 
         .transaction-table tr:nth-child(even) {
@@ -93,23 +97,15 @@
             background-color: #f2f2f2;
         }
 
-        .search-bar {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
+        .header-title {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .header-description {
             margin-bottom: 20px;
         }
-
-        #searchInput {
-            width: 200px;
-            margin-right: 5px;
-        }
-
-        #searchButton {
-            max-width: 80px;
-            padding: 6px 12px;
-        }
-
         .status-label {
             display: inline-block;
             padding: 6px 10px;
@@ -118,106 +114,101 @@
             font-weight: bold;
             color: white;
         }
-
-        .proses-verifikasi {
-            background-color: #138EE6;
-        }
-
-        .proses-pembangunan {
-            background-color: #DECF4D;
-        }
-
-        .persiapan-pembukaan {
-            background-color: #0578ff;
-        }
-
-        .selesai {
-            background-color: #009d64;
-        }
-
-        .ditolak {
-            background-color: #cf0606;
-        }
         .pending {
             background-color: #f16336;
         }
 
-
-        .non-check-icon {
-            color: #ff5151;
-            font-size: 30px;
-            margin-bottom: 15px;
+        .diterima {
+            background-color: #009d64;
         }
-
-        @media screen and (max-width: 576px) {
-            .search-bar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            #searchInput {
-                width: 100%;
-                margin: 5px 0;
-            }
+        .ditolak {
+            background-color: #cf0606;
         }
     </style>
     @endpush
-    <section class="py-5" style="margin-top: 10px">
-        <div class="container">
-            <div class="mt-5 row pricing testimonials mentors checkout gy-4" id="reviews">
-                <div class="bantuan-card">
-                    <!-- Display job applications -->
-                    <h2>Job Applications</h2>
-                    <table class="transaction-table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <!-- Add more table headers as needed -->
-                                <th>Job Title</th>
-                                <th>Company Name</th>
-                                <th>Application Date</th>
-                                <!-- Add more headers as needed -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($appliedCareers as $index => $appliedCareer)
-                                <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <!-- Replace these with actual attributes from your JobApplication model -->
-                                    <td>{{ $appliedCareer->job_title }}</td>
-                                    <td>{{ $appliedCareer->company_name }}</td>
-                                    <td>{{ $appliedCareer->created_at->format('d-m-Y H:i:s') }}</td>
-                                    <!-- Add more cells with actual attributes -->
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
 
-                    <!-- Display saved jobs -->
-                    <h2>Saved Jobs</h2>
-                    <table class="transaction-table">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <!-- Add more table headers as needed -->
-                                <th>Saved Job Title</th>
-                                <th>Saved Company Name</th>
-                                <th>Saved Date</th>
-                                <!-- Add more headers as needed -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($savedJobs as $index => $savedJob)
+    <section class="py-5" style="margin-top: 20px">
+        <div class="container">
+            <div class="mt-5 row gy-4">
+                <div class="col-md-7">
+                    <div class="job-card">
+                        <h2 class="header-title">Lamaran Anda</h2>
+                        <p class="header-description">Temukan lama pekerjaan yang anda daftar</p>
+                        <table class="transaction-table">
+                            <thead>
                                 <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $savedJob->career->career_title }}</td>
-                                    <td>{{ $savedJob->career->company_name }}</td>
-                                    <td>{{ $savedJob->created_at->format('d-m-Y H:i:s') }}</td>
-                                    <!-- Add more cells with actual attributes -->
+                                    <th>No.</th>
+                                    <th>ID Lamaran</th>
+                                    <th>Nama Perusahaan</th>
+                                    <th>Posisi Pekerjaan</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach($appliedCareers as $index => $appliedCareer)
+                                <tr>
+                                    <td style="text-align: center;">{{ $index + 1 }}</td>
+                                    <td>{{ strtoupper('LMR-' . substr($appliedCareer->application_id, 0, 8)) }}</td>
+                                    <td>{{ $appliedCareer->career->company_name }}</td>
+                                    <td>{{ $appliedCareer->career->career_title }}</td>
+                                    <td style="text-align: center;">
+                                        @switch($appliedCareer->status)
+                                            @case(30301)
+                                                <span class="status-label ditolak">Ditolak</span>
+                                                @break
+                                            @case(30302)
+                                                <span class="status-label pending">Pending</span>
+                                                @break
+                                            @case(30303)
+                                                <span class="status-label diterima">Diterima</span>
+                                                @break
+                                        @endswitch
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <div class="transaction-details">
+                                            <a href="#" class="btn btn-circle btn-primary" style="background-color: #009bb8; border: none;">
+                                                <i class="fas fa-info-circle" style="color: white;"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="job-card">
+                        <h2 class="header-title">Pekerjaan Disimpan</h2>
+                        <p class="header-description">Temukan pekerjaan yang anda simpan</p>
+                        <table class="transaction-table">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Nama Perusahaan</th>
+                                    <th>Posis Pekerjaan</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($savedJobs as $index => $savedJob)
+                                <tr>
+                                    <td style="text-align: center;">{{ $index + 1 }}</td>
+                                    <td>{{ $savedJob->career->company_name }}</td>
+                                    <td>{{ $savedJob->career->career_title }}</td>
+                                    <td style="text-align: center;">
+                                        <div class="transaction-details">
+                                            <a href="{{ route('career.show', $savedJob->career->id) }}" class="btn btn-circle btn-primary" style="background-color: #009bb8; border: none;">
+                                                <i class="fas fa-eye" style="color: white;"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

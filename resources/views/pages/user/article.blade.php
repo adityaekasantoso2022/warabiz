@@ -91,7 +91,7 @@
         }
 
         .articel .content p {
-            font-size: 16px;
+            font-size: 14px;
             margin-top:20px;
             margin-bottom:15px;
 
@@ -148,7 +148,7 @@
         }
 
         .card-body {
-            padding: 20px;
+            padding: 24px;
         }
 
         .read-more-link {
@@ -235,7 +235,7 @@
                         <img src="{{ $otherArticle->image_url }}" class="card-img-top" alt="gambar">
                         </a>
                             <div class="card-body">
-                                <h5 class="card-title">{{ $otherArticle->title }}</h5>
+                                <h6 class="card-title">{{ $otherArticle->title }}</h6>
                                 <p class="card-text">{{ Str::limit(strip_tags($otherArticle->article), 170) }}..</p>
                             </div>
                         </div>

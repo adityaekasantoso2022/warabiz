@@ -1,89 +1,243 @@
-<section class="h-100 w-100 mb-0" style="box-sizing: border-box; background-color: #0A2540; margin-bottom: 0 !important;">
-    <div class="footer-2-3 container-xxl mx-auto position-relative p-0" style="font-family: 'Poppins', sans-serif">
-        <div class="list-footer">
-            <div class="row gap-md-0 gap-3">
-                <div class="col-lg-4 col-md-6">
-                    <div class="list-space">
-                        <img src="{{ asset('assets/frontend/image/logo.svg') }}" alt="footer" width="150" class="mb-4">
-                        <p class="footer-text-title text-white">
-                            PT. Warabisnis Technology <br>
-                            <p class="text-white">
-                                Jl. DI Panjaitan, NO. 128 Purwokerto <br>
-                                Jawa Tengah, Indonesia<br>
-                                <a href="tel:+6281575332411" class="text-white">+62 8157 533 2411</a>
-                            </p>
-                        </p>
+<style>
+    body {
+    background: #fbfbfd;
+}
+
+.new_footer_area {
+    background: #fbfbfd;
+}
+
+
+.new_footer_top {
+    padding: 120px 0px 270px;
+    position: relative;
+      overflow-x: hidden;
+}
+.new_footer_area .footer_bottom {
+    padding-top: 5px;
+    padding-bottom: 50px;
+}
+.footer_bottom {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    color: #7f88a6;
+}
+.new_footer_top .company_widget p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 28px;
+    color: #6a7695;
+    margin-bottom: 20px;
+}
+.new_footer_top .company_widget .f_subscribe_two .btn_get {
+    border-width: 1px;
+    margin-top: 20px;
+}
+a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+
+
+.new_footer_top .f_widget.about-widget .f_list li a:hover {
+    color: #0089A3;
+}
+.new_footer_top .f_widget.about-widget .f_list li {
+    margin-bottom: 11px;
+}
+.f_widget.about-widget .f_list li:last-child {
+    margin-bottom: 0px;
+}
+.f_widget.about-widget .f_list li {
+    margin-bottom: 15px;
+}
+.f_widget.about-widget .f_list {
+    margin-bottom: 0px;
+}
+.new_footer_top .f_social_icon a {
+    width: 44px;
+    height: 44px;
+    line-height: 43px;
+    background: transparent;
+    border: 1px solid #e2e2eb;
+    font-size: 24px;
+}
+.f_social_icon a {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    font-size: 14px;
+    line-height: 45px;
+    color: #858da8;
+    display: inline-block;
+    background: #ebeef5;
+    text-align: center;
+    -webkit-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+.ti-facebook:before {
+    content: "\e741";
+}
+.ti-twitter-alt:before {
+    content: "\e74b";
+}
+.ti-vimeo-alt:before {
+    content: "\e74a";
+}
+.ti-pinterest:before {
+    content: "\e731";
+}
+
+.new_footer_top .f_social_icon a:hover {
+    background: #0089A3;
+    border-color: #0089A3;
+  color:white;
+}
+.new_footer_top .f_social_icon a + a {
+    margin-left: 4px;
+}
+.new_footer_top .f-title {
+    margin-bottom: 30px;
+    color: #263b5e;
+}
+.f_600 {
+    font-weight: 600;
+}
+.f_size_18 {
+    font-size: 18px;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #4b505e;
+}
+.new_footer_top .f_widget.about-widget .f_list li a {
+    color: #6a7695;
+}
+
+
+.new_footer_top .footer_bg {
+    position: absolute;
+    bottom: 0;
+    background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigB8iI5tb8WSVBuVUGc9UjjB8O0708X7Fdic_4O1LT4CmLHoiwhanLXiRhe82yw0R7LgACQ2IhZaTY0hhmGi0gYp_Ynb49CVzfmXtYHUVKgXXpWvJ_oYT8cB4vzsnJLe3iCwuzj-w6PeYq_JaHmy_CoGoa6nw0FBo-2xLdOPvsLTh_fmYH2xhkaZ-OGQ/s16000/footer_bg.png") no-repeat scroll center 0;
+    width: 100%;
+    height: 266px;
+}
+
+.new_footer_top .footer_bg .footer_bg_one {
+    background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEia0PYPxwT5ifToyP3SNZeQWfJEWrUENYA5IXM6sN5vLwAKvaJS1pQVu8mOFFUa_ET4JuHNTFAxKURFerJYHDUWXLXl1vDofYXuij45JZelYOjEFoCOn7E6Vxu0fwV7ACPzArcno1rYuVxGB7JY6G7__e4_KZW4lTYIaHSLVaVLzklZBLZnQw047oq5-Q/s16000/volks.gif") no-repeat center center;
+    width: 330px;
+    height: 105px;
+  background-size:100%;
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    -webkit-animation: myfirst 22s linear infinite;
+    animation: myfirst 22s linear infinite;
+}
+
+.new_footer_top .footer_bg .footer_bg_two {
+    background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyLGwEUVwPK6Vi8xXMymsc-ZXVwLWyXhogZxbcXQYSY55REw_0D4VTQnsVzCrL7nsyjd0P7RVOI5NKJbQ75koZIalD8mqbMquP20fL3DxsWngKkOLOzoOf9sMuxlbyfkIBTsDw5WFUj-YJiI50yzgVjF8cZPHhEjkOP_PRTQXDHEq8AyWpBiJdN9SfQA/s16000/cyclist.gif") no-repeat center center;
+    width: 88px;
+    height: 100px;
+  background-size:100%;
+    bottom: 0;
+    left: 38%;
+    position: absolute;
+    -webkit-animation: myfirst 30s linear infinite;
+    animation: myfirst 30s linear infinite;
+}
+
+
+
+@-moz-keyframes myfirst {
+  0% {
+    left: -25%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@-webkit-keyframes myfirst {
+  0% {
+    left: -25%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes myfirst {
+  0% {
+    left: -25%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+</style>
+
+<footer class="new_footer_area bg_color">
+    <div class="new_footer_top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s">
+                        <h3 class="f-title f_600 t_color f_size_18">Tentang Kami</h3>
+                        <p>Warabiz adalah platform inovatif yang menyediakan layanan lengkap untuk memfasilitasi transaksi jual beli waralaba secara online.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h2 class="footer-text-title text-white">Tautan</h2>
-                    <ul class="list-unstyled">
-                        <li class="list-space">
-                            <a href="{{ route('home') }}" class="list-menu">Home</a>
-                        </li>
-                        <li class="list-space">
-                            <a href="#" class="list-menu">Transaksi</a>
-                        </li>
-                        <li class="list-space">
-                            <a href="{{ route('bantuan') }}" class="list-menu">Bantuan</a>
-                        </li>
-                    </ul>
+                    <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s">
+                        <h3 class="f-title f_600 t_color f_size_18">Fitur Utama</h3>
+                        <ul class="list-unstyled f_list">
+                            <li><a href="{{ route('home.index') }}">Waralaba</a></li>
+                            <li><a href="{{ route('waraedu') }}">WaraEdu</a></li>
+                            <li><a href="{{ route('waracareer') }}">WaraCareer</a></li>
+                            <li><a href="{{ route('warapartner') }}">WaraPartner</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h2 class="footer-text-title text-white">Waralaba</h2>
-                    <ul class="list-unstyled">
-                        <li class="list-space">
-                            <a href="#" class="list-menu">Mie Gacoan</a>
-                        </li>
-                        <li class="list-space">
-                            <a href="#" class="list-menu">Teh Desa</a>
-                        </li>
-                        <li class="list-space">
-                            <a href="#" class="list-menu">Burger Bangor</a>
-                        </li>
-                        <li class="list-space">
-                            <a href="#" class="list-menu">Mixue</a>
-                        </li>
-                    </ul>
+                    <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s">
+                        <h3 class="f-title f_600 t_color f_size_18">Bantuan</h3>
+                        <ul class="list-unstyled f_list">
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Term &amp; Conditions</a></li>
+                            <li><a href="#">Reporting</a></li>
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">Support Policy</a></li>
+                            <li><a href="#">Privacy</a></li>
+                        </ul>
+                    </div>
                 </div>
-
-                <div class="col-lg-2 col-md-6">
-                    <h2 class="footer-text-title text-white">Follow Us</h2>
-                    <ul class="list-unstyled">
-                    <li class="list-space">
-                            <a href="#" class="list-menu">
-                                <i class="fab fa-instagram"></i> Instagram
-                            </a>
-                        </li>
-
-                        <li class="list-space">
-                            <a href="#" class="list-menu">
-                                <i class="fab fa-facebook"></i> Facebook
-                            </a>
-                        </li>
-                        <li class="list-space">
-                            <a href="#" class="list-menu">
-                                <i class="fab fa-twitter"></i> Twitter
-                            </a>
-                        </li>
-                        <li class="list-space">
-                            <a href="#" class="list-menu">
-                                <i class="fab fa-youtube"></i> Youtube
-                            </a>
-                        </li>
-                    </ul>
+                <div class="col-lg-3 col-md-6">
+                    <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s">
+                        <h3 class="f-title f_600 t_color f_size_18">Media Sosial</h3>
+                        <div class="f_social_icon">
+                            <a href="#" class="fab fa-facebook"></a>
+                            <a href="#" class="fab fa-twitter"></a>
+                            <a href="#" class="fab fa-linkedin"></a>
+                            <a href="#" class="fab fa-pinterest"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="border-color info-footer">
-            <div class="mx-auto d-flex flex-column flex-lg-row align-items-center footer-info-space gap-4">
-                <div class="d-flex title-font font-medium align-items-center gap-4"></div>
-                <nav class="mx-auto d-flex flex-wrap align-items-center justify-content-center text-center">
-                    <p style="margin: 0">Copyright © 2024 Warabiz <br> By PT. Warabisnis Technology Indonesia</p>
-                </nav>
-                <nav class="d-flex flex-lg-row flex-column align-items-center justify-content-center"></nav>
+        <div class="footer_bg">
+            <div class="footer_bg_one"></div>
+            <div class="footer_bg_two"></div>
+        </div>
+    </div>
+    <div class="footer_bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-sm-7">
+                    <p class="mb-0 f_400">© PT. Warabisnis Technology. 2024 All rights reserved.</p> 
+                </div>
             </div>
         </div>
     </div>
-</section>
+</footer>
