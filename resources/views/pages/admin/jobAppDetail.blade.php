@@ -3,7 +3,7 @@
     <!-- Masukkan gaya tambahan di sini -->
     <style>
         body {
-            background: #dae3ec !important;
+            background: #FEFEFE !important;
         }
 
         .card {

@@ -2,7 +2,7 @@
     @push('addonStyle')
     <style>
         body {
-            background: #dae3ec !important;
+            background: #FEFEFE !important;
         }
     </style>
     @endpush

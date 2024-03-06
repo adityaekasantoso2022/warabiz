@@ -2,7 +2,7 @@
     @push('addonStyle')
     <style>
         body {
-            background: #dae3ec !important;
+            background: #F2F5FC !important;
         }
 
         .navbar .navbar-nav a:hover.btn-signup {
@@ -103,7 +103,7 @@
         .waralaba-card-responsive {
             background: #fff;
             border: none;
-            border-radius: 14px;
+            border-radius: 10px;
             box-sizing: border-box;
             color: #34364a;
             display: flex;
@@ -116,7 +116,7 @@
 
         .pricing .item-pricing {
             background: #fff;
-            border-radius: 16px;
+            border-radius: 10px;
             padding: 30px;
         }
 
@@ -218,7 +218,7 @@
         }
 
         .embed-responsive iframe {
-            border-radius: 16px;
+            border-radius: 10px;
             width: 100%;
             height: 25vh;
         }
