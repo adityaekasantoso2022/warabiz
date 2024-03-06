@@ -423,7 +423,7 @@
 
         .copy-button {
             padding: 8px;
-            background-color: #F6F6F6;
+            background-color: #4BA5B2;
             border: none;
             cursor: pointer;
             border-radius: 20%;
@@ -434,24 +434,23 @@
 
         .copy-button i {
             font-size: 1.4em;
-            color: #DADADA;
+            color: #ffffff;
         }
 
 
         .copy-button:hover i {
-            color: #AEAEAE;
+            color: #F7F6F6;
         }
     </style>
     @endpush
     <section class="py-5" style="margin-top: 10px">
         <div class="container">
-            <div class="mt-5 row pricing testimonials mentors checkout gy-4" id="reviews">
+            <div class="mt-5 row pricing testimonials mentors checkout gy-4">
                 <div class="col-lg-5 col-md-6 col-12">
                     <div class="payment-details">
                         <div class="item-pricing item-mentor d-flex flex-column gap-3">
                             <div class="custom-payment-info">
                                 <h5><i class="fas fa-info-circle"></i></h5>
-
                                 <p>
                                     Lakukan pembayaran sesuai nominal yang tertera</b>
                                 </p>

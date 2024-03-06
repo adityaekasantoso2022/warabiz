@@ -1,338 +1,320 @@
 <x-user-layout title="Detail Waralaba - {{ $waralaba->waralaba_name }}" active="detail">
     @push('addonStyle')
     <style>
-        body {
-            background: #F2F5FC !important;
-        }
+    body {
+        background: #fafafa !important;
+    }
 
-        .navbar .navbar-nav a:hover.btn-signup {
-            color: white !important;
-        }
+    .navbar .navbar-nav a:hover.btn-signup {
+        color: white !important;
+    }
 
-        .navbar .navbar-nav a:hover {
-            color: #131313 !important;
-        }
+    .navbar .navbar-nav a:hover {
+        color: #131313 !important;
+    }
 
-        .navbar .navbar-nav .active {
-            color: #131313 !important;
-        }
+    .navbar .navbar-nav .active {
+        color: #131313 !important;
+    }
 
-        .profil-name {
-            color: #131313
+    .profil-name {
+        color: #131313
+    }
+
+    .hero {
+        background: none !important;
+
+        margin-bottom: -33px !important;
+        height: 80vh !important;
+    }
+
+    .hero p {
+        font-weight: 400;
+        font-size: 16px;
+        color: rgba(19, 19, 19, 0.8);
+        margin: 0px !important
+    }
+
+    .hero .hero-text {
+        color: #34364a;
+        font-size: 68px;
+        font-weight: 700;
+        line-height: 78px;
+
+
+    }
+
+    .hero .btn-cta {
+        background: #4F94D7;
+        border-radius: 12px;
+        color: white;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        padding: 12px 32px;
+        /* identical to box height, or 24px */
+    }
+
+    .img-header {
+        position: absolute;
+        top: 1;
+        right: 0px;
+        z-index: -1;
+    }
+
+    .navbar-expand-lg {
+        background-color: white !important;
+        box-shadow: -1.5px 4px 16px rgb(118 126 148 / 20%);
+        transition: background-color 200ms linear;
+    }
+
+    .benefit {
+        background: #03173C;
+        padding: 20px 0px;
+    }
+
+
+
+    @media (min-width: 767px) {
+
+        .benefit {
+
+            padding: 60px 0px;
         }
 
         .hero {
             background: none !important;
-
+            margin-top: 75px;
             margin-bottom: -33px !important;
             height: 80vh !important;
         }
 
-        .hero p {
-            font-weight: 400;
-            font-size: 16px;
-            color: rgba(19, 19, 19, 0.8);
-            margin: 0px !important
-        }
+    }
 
-        .hero .hero-text {
-            color: #34364a;
-            font-size: 68px;
-            font-weight: 700;
-            line-height: 78px;
+    .header-primary {
+        color: #34364a;
+        font-size: 38px;
+        font-weight: 700;
+        line-height: 48px;
+    }
 
+    .card-container,
+    .waralaba-card,
+    .waralaba-card-responsive {
+        background: #fff;
+        border: none;
+        border-radius: 14px;
+        box-sizing: border-box;
+        color: #34364a;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        padding: 30px;
+        position: relative;
+        row-gap: 24px;
+    }
 
-        }
+    .pricing .item-pricing {
+        background: #fff;
+        border-radius: 16px;
+        padding: 30px;
+    }
 
-        .hero .btn-cta {
-            background: #4F94D7;
-            border-radius: 12px;
-            color: white;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 150%;
-            padding: 12px 32px;
-            /* identical to box height, or 24px */
-        }
+    .waralaba-card .waralaba-detail .waralaba-name,
+    .waralaba-card-responsive .waralaba-detail .waralaba-name,
+    .line-clamp,
+    .line-clamp-1 {
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        overflow: hidden;
+    }
 
-        .img-header {
-            position: absolute;
-            top: 1;
-            right: 0px;
-            z-index: -1;
-        }
+    .waralaba-card .waralaba-detail .waralaba-name {
+        color: #34364a;
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        line-height: 30px;
+        min-height: 10px;
+        position: relative;
+        z-index: 80 !important;
+    }
 
-        .navbar-expand-lg {
-            background-color: white !important;
-            box-shadow: -1.5px 4px 16px rgb(118 126 148 / 20%);
-            transition: background-color 200ms linear;
-        }
+    .waralaba-card .waralaba-footer {
+        align-items: baseline;
+        display: flex;
+        gap: 4px;
+        justify-content: space-between;
+    }
 
-        .benefit {
-            background: #03173C;
-            padding: 20px 0px;
-        }
-
-
-
-        @media (min-width: 767px) {
-
-            .benefit {
-
-                padding: 60px 0px;
-            }
-
-            .hero {
-                background: none !important;
-                margin-top: 75px;
-                margin-bottom: -33px !important;
-                height: 80vh !important;
-            }
-
-        }
-
-        .header-primary {
-            color: #34364a;
-            font-size: 38px;
-            font-weight: 700;
-            line-height: 48px;
-        }
-
-        .card-container,
-        .waralaba-card,
-        .waralaba-card-responsive {
-            background: #fff;
-            border: none;
-            border-radius: 10px;
-            box-sizing: border-box;
-            color: #34364a;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            padding: 30px;
-            position: relative;
-            row-gap: 24px;
-        }
-
-        .pricing .item-pricing {
-            background: #fff;
-            border-radius: 10px;
-            padding: 30px;
-        }
-
-        .waralaba-card .waralaba-detail .waralaba-name,
-        .waralaba-card-responsive .waralaba-detail .waralaba-name,
-        .line-clamp,
-        .line-clamp-1 {
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            display: -webkit-box;
-            overflow: hidden;
-        }
-
-        .waralaba-card .waralaba-detail .waralaba-name {
-            color: #34364a;
-            font-size: 20px !important;
-            font-weight: 700 !important;
-            line-height: 30px;
-            min-height: 10px;
-            position: relative;
-            z-index: 80 !important;
-        }
-
-        .waralaba-card .waralaba-footer {
-            align-items: baseline;
-            display: flex;
-            gap: 4px;
-            justify-content: space-between;
-        }
-
-        .waralaba-card .waralaba-footer .star-rating {
-            align-items: flex-start;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2px;
-        }
+    .waralaba-card .waralaba-footer .star-rating {
+        align-items: flex-start;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2px;
+    }
 
 
-        @media only screen and (min-width: 768px) and (max-width: 1250px) {
-            .waralaba-card .waralaba-footer .star-rating img {
-                width: 20px !important;
-            }
-        }
-
+    @media only screen and (min-width: 768px) and (max-width: 1250px) {
         .waralaba-card .waralaba-footer .star-rating img {
-            margin-top: 5px;
-            width: 18px;
+            width: 20px !important;
         }
+    }
 
-        .checkout .payment-details .header-title {
-            color: #34364a;
-            font-size: 17px;
-            font-weight: 700;
-            margin: 0 0 16px;
-        }
+    .waralaba-card .waralaba-footer .star-rating img {
+        margin-top: 5px;
+        width: 18px;
+    }
 
-
-        .checkout .payment-details .title {
-            color: #34364a;
-            float: left;
-            font-size: 16px !important;
-            font-weight: 400;
-            margin: 0;
-        }
-
-        .checkout .payment-details .value {
-            color: #34364a;
-            float: right;
-            font-size: 16px;
-            font-weight: 400;
-            margin: 0;
-        }
-
-        .clear {
-            clear: both;
-        }
-
-        .embed-responsive {
-            display: block;
-            height: 25vh;
-            overflow: hidden;
-            padding: 0;
-            position: relative;
-            width: 100% !important;
-        }
-
-        .foto-iframe {
-            border-radius: 5px;
-            transition: all .3s;
-            height: 175px;
-
-        }
+    .checkout .payment-details .header-title {
+        color: #34364a;
+        font-size: 17px;
+        font-weight: 700;
+        margin: 0 0 16px;
+    }
 
 
+    .checkout .payment-details .title {
+        color: #34364a;
+        float: left;
+        font-size: 16px !important;
+        font-weight: 400;
+        margin: 0;
+    }
 
-        .embed-responsive:before {
-            content: "";
-            display: block;
-        }
+    .checkout .payment-details .value {
+        color: #34364a;
+        float: right;
+        font-size: 16px;
+        font-weight: 400;
+        margin: 0;
+    }
 
-        .embed-responsive iframe {
-            border-radius: 10px;
-            width: 100%;
-            height: 25vh;
-        }
+    .clear {
+        clear: both;
+    }
+
+    .embed-responsive {
+        display: block;
+        height: 25vh;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        width: 100% !important;
+    }
+
+    .foto-iframe {
+        border-radius: 5px;
+        transition: all .3s;
+        height: 175px;
+
+    }
 
 
-        .plyr__foto-embed img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
 
-        .text-green {
-            color: #22c58b !important;
-        }
+    .embed-responsive:before {
+        content: "";
+        display: block;
+    }
 
-        .border-theme {
-            border: 2px solid var(--limeColor);
-        }
+    .embed-responsive iframe {
+        border-radius: 16px;
+        width: 100%;
+        height: 25vh;
+    }
 
-        .bg-theme-light {
-            background-color: #e9fff0d2;
-        }
 
-        .form-select {
+    .plyr__foto-embed img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 
-            border: 1px solid #ced4da !important;
-            padding: 0.375rem 2.25rem 0.375rem 0.75rem !important;
+    .text-green {
+        color: #22c58b !important;
+    }
 
-        }
+    .border-theme {
+        border: 2px solid var(--limeColor);
+    }
 
-        .share-button {
-            background-color: #05A8B4;
-            /* Warna hijau muda */
-            border: none;
-            border-radius: 50%;
-            /* Membuat tombol berbentuk lingkaran */
-            width: 36px;
-            /* Ukuran tombol */
-            height: 36px;
-            bottom: 20px;
-            right: 20px;
-        }
+    .bg-theme-light {
+        background-color: #e9fff0d2;
+    }
 
-        .share-button i {
-            color: #000;
-            /* Warna ikon */
-            font-size: 20px;
-            /* Sesuaikan dengan ukuran yang diinginkan */
-        }
+    .form-select {
 
-        .custom-btn {
-            background-color: #05A8B4;
-            /* Warna latar belakang */
-            color: white;
-            /* Warna teks */
-            padding: 14px 24px;
-            /* Tinggi dan lebar tombol */
-            border: none;
-            /* Menghilangkan border */
-            border-radius: 30px;
-            /* Sudut melengkung */
-            display: inline-block;
-            /* Tampilan inline */
-            text-decoration: none;
-            /* Menghilangkan garis bawah pada tautan */
-            transition: background-color 0.3s ease;
-            /* Efek transisi saat hover */
-        }
+        border: 1px solid #ced4da !important;
+        padding: 0.375rem 2.25rem 0.375rem 0.75rem !important;
 
-        .custom-btn:hover {
-            background-color: #05A8B4;
-            /* Warna latar belakang saat hover */
-            color: white;
-            /* Warna teks saat hover */
-        }
+    }
 
-        .embed-responsive {
-            position: relative;
-            /* Tetapkan posisi relatif pada kontainer foto */
-        }
+    .share-button {
+        background-color: #05A8B4;
+        border: none;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        bottom: 20px;
+        right: 20px;
+    }
 
-        .logo {
-            width: 100px;
-            /* Sesuaikan lebar sesuai kebutuhan */
-            height: auto;
-            /* Mencegah distorsi gambar */
-            border-radius: 5px;
-        }
+    .share-button i {
+        color: #000;
+        font-size: 20px;
+    }
 
-        .img-container {
-            width: 100%;
-            padding-top: 100%;
-            /* Maintain 1:1 aspect ratio */
-            position: relative;
-            overflow: hidden;
-        }
+    .custom-btn {
+        background-color: #05A8B4;
+        color: white;
+        padding: 14px 24px;
+        border: none;
+        border-radius: 30px;
+        display: inline-block;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
 
-        .img-container img {
-            position: absolute;
-            width: auto;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
+    .custom-btn:hover {
+        background-color: #05A8B4;
+        color: white;
+    }
 
-        .waralaba-card img.small-circle-img {
-            width: auto;
-            height: 40px;
-        }
+    .embed-responsive {
+        position: relative;
+    }
 
-        .d-flex.flex-column h6,
-        .d-flex.flex-column p {
-            margin: 0;
-        }
+    .logo {
+        width: 100px;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .img-container {
+        width: 100%;
+        padding-top: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .img-container img {
+        position: absolute;
+        width: auto;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .waralaba-card img.small-circle-img {
+        width: auto;
+        height: 40px;
+    }
+
+    .d-flex.flex-column h6,
+    .d-flex.flex-column p {
+        margin: 0;
+    }
     </style>
     @endpush
     <section class="py-5" style="margin-top: 10px">
@@ -359,13 +341,13 @@
                                                     @for ($i = 0; $i < $waralaba->rating; $i++)
                                                         <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
                                                             alt="ic_star">
-                                                    @endfor
+                                                        @endfor
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <button onclick="copyPageURL()" class="share-button">
-                                        <i class="fas fa-share" style="color: white;"></i>
+                                    <i class="fas fa-share-alt" style="color: white;"></i>
                                     </button>
                                 </div>
                             </div>
@@ -404,7 +386,8 @@
                                             <h5 class="header-title mb-1">
                                                 Tahun Berdiri
                                             </h5>
-                                            <p>{{ \Carbon\Carbon::parse($waralaba->since)->translatedFormat('d F Y') }}</p>
+                                            <p>{{ \Carbon\Carbon::parse($waralaba->since)->translatedFormat('d F Y') }}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -432,7 +415,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a id="downloadLink" href="{{ $waralaba->brochure_link }}" class="mt-2 mb-2 btn btn-outline-dark custom-btn">
+                                <a id="downloadLink" href="{{ $waralaba->brochure_link }}"
+                                    class="mt-2 mb-2 btn btn-outline-dark custom-btn">
                                     <i class="fas fa-download me-2"></i> Unduh Brosur
                                 </a>
                             </div>
@@ -503,25 +487,55 @@
                         <div class="item-pricing item-mentor d-flex flex-column gap-3">
                             <p class="title"><b>Galeri Waralaba</b></p>
                             <div class="row">
-                                <div class="col-3">
-                                    <div class="img-container">
-                                        <img src="{{ $waralaba->image_url_2 }}" alt="Waralaba 1" class="img-thumbnail">
+                                <div id="carouselKategori" class="carousel slide">
+                                    <div class="carousel-inner">
+                                        <?php
+        $imageUrls = [
+            $waralaba->image_url_1,
+            $waralaba->image_url_2,
+            $waralaba->image_url_3,
+            $waralaba->image_url_4,
+            $waralaba->image_url_1,
+            $waralaba->image_url_2,
+            $waralaba->image_url_3,
+            $waralaba->image_url_4,
+
+        ];
+
+        // Memecah daftar kategori menjadi kelompok empat
+        $categoryChunks = array_chunk($imageUrls, 4);
+        ?>
+                                        <?php $active = true; ?>
+                                        @foreach ($categoryChunks as $chunk)
+                                        <div class="carousel-item @if($active) active @endif">
+                                            <div class="container">
+                                                <div class="row">
+                                                    @foreach ($chunk as $category)
+                                                    <div class="col">
+                                                        <div class="category-item"
+                                                            style="width: 100%; height: 100%; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
+                                                            <img src="{{ $category }}" alt="Kategori"
+                                                                style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php    $active = false; ?>
+                                        @endforeach
                                     </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="img-container">
-                                        <img src="{{ $waralaba->image_url_3 }}" alt="Waralaba 2" class="img-thumbnail">
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="img-container">
-                                        <img src="{{ $waralaba->image_url_4 }}" alt="Waralaba 3" class="img-thumbnail">
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="img-container">
-                                        <img src="{{ $waralaba->image_url_5 }}" alt="Waralaba 4" class="img-thumbnail">
-                                    </div>
+                                    <button class="carousel-control-prev" type="button"
+                                        data-bs-target="#carouselKategori" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button"
+                                        data-bs-target="#carouselKategori" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+
                                 </div>
                             </div>
                             <p class="title"><b>Konsep Bisnis</b></p>
@@ -559,31 +573,31 @@
 
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script>
-    function copyPageURL() {
-        var dummy = document.createElement('input');
-        var currentURL = window.location.href;
+function copyPageURL() {
+    var dummy = document.createElement('input');
+    var currentURL = window.location.href;
 
-        document.body.appendChild(dummy);
-        dummy.value = currentURL;
-        dummy.select();
-        document.execCommand('copy');
-        document.body.removeChild(dummy);
+    document.body.appendChild(dummy);
+    dummy.value = currentURL;
+    dummy.select();
+    document.execCommand('copy');
+    document.body.removeChild(dummy);
 
-        alert('Tautan  {{ $waralaba->waralaba_name }} berhasil disalin.');
-    }
+    alert('Tautan  {{ $waralaba->waralaba_name }} berhasil disalin.');
+}
 
-    document.getElementById('downloadLink').addEventListener('click', function(event) {
-        event.preventDefault();
+document.getElementById('downloadLink').addEventListener('click', function(event) {
+    event.preventDefault();
 
-        var brochureLink = this.getAttribute('href');
+    var brochureLink = this.getAttribute('href');
 
-        // Membuka tab baru dengan link brosur
-        var newTab = window.open(brochureLink, '_blank');
+    // Membuka tab baru dengan link brosur
+    var newTab = window.open(brochureLink, '_blank');
 
-        // Menunggu sebentar sebelum memicu unduhan
-        setTimeout(function() {
-            // Memicu unduhan di tab baru
-            newTab.location.href = brochureLink;
-        }, 500);
-    });
+    // Menunggu sebentar sebelum memicu unduhan
+    setTimeout(function() {
+        // Memicu unduhan di tab baru
+        newTab.location.href = brochureLink;
+    }, 500);
+});
 </script>
