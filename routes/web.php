@@ -48,6 +48,7 @@ Route::
                 Route::get('/user/applications/{userId}', [SavedJobController::class, 'history'])->name('job.applications');
 
                 Route::get('/warapartner', 'WarapartnerController@index')->name('warapartner');
+                Route::post('/warapartner', 'WarapartnerController@store')->name('verified.warapartner');
 
                 Route::get('/home', 'HomeController@index')->name('home.index');
                 Route::get('/waralaba/{id}', [WaralabaController::class, 'show'])->name("waralaba");

@@ -13,6 +13,8 @@ class CloudinaryStorage extends Controller
     private const folder_payment_path = 'warabiz-payment';
     private const folder_path_job = 'warabiz-job';
 
+    private const owner_verif_folder = 'warabiz-warapartner';
+
     public static function path($path){
         return pathinfo($path, PATHINFO_FILENAME);
     }
@@ -66,6 +68,19 @@ class CloudinaryStorage extends Controller
         return $result;
     }
 
+    public static function uploadOwnerVerification($file, $filename)
+    {
+        $newFilename = str_replace(' ', '_', $filename);
+        $public_id = date('Y-m-d_His') . '_' . $newFilename;
+        $result = cloudinary()->upload($file, [
+            "public_id" => self::path($public_id),
+            "folder"    => self::owner_verif_folder,
+            "type"        => "private",
+        ])->getSecurePath();
+
+        return $result;
+    }
+
     public static function replace($path, $image, $public_id){
         self::delete($path);
         return self::upload($image, $public_id);
@@ -93,7 +108,6 @@ class CloudinaryStorage extends Controller
                 return false;
             }
         } catch (\Exception $e) {
-            // Tangani eksepsi jika terjadi kesalahan dalam penghapusan
             // Misalnya, log kesalahan atau berikan pesan kesalahan yang lebih spesifik
             Log::error('Error deleting payment file: ' . $e->getMessage());
 

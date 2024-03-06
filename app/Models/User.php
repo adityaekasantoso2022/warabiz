@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Faq::class);
     }
+
+    public function verifiedOwners(): HasMany
+    {
+        return $this->hasMany(Faq::class);
+    }
 }
