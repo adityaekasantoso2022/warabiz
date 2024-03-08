@@ -1,446 +1,446 @@
 <x-user-layout title="Checkout" active="checkout">
     @push('addonStyle')
     <style>
-        body {
-            background: #FEFEFE !important;
-        }
+    body {
+        background: #fbfbfb !important;
+    }
 
-        .navbar .navbar-nav a:hover.btn-signup {
-            color: white !important;
-        }
+    .navbar .navbar-nav a:hover.btn-signup {
+        color: white !important;
+    }
 
-        .navbar .navbar-nav a:hover {
-            color: #131313 !important;
-        }
+    .navbar .navbar-nav a:hover {
+        color: #131313 !important;
+    }
 
-        .navbar .navbar-nav .active {
-            color: #131313 !important;
-        }
+    .navbar .navbar-nav .active {
+        color: #131313 !important;
+    }
 
-        .profil-name {
-            color: #131313
+    .profil-name {
+        color: #131313
+    }
+
+    .hero {
+        background: none !important;
+        margin-bottom: -33px !important;
+        height: 80vh !important;
+    }
+
+    .hero p {
+        font-weight: 400;
+        font-size: 16px;
+        color: rgba(19, 19, 19, 0.8);
+        margin: 0px !important;
+    }
+
+    .hero .hero-text {
+        color: #34364a;
+        font-size: 68px;
+        font-weight: 700;
+        line-height: 78px;
+    }
+
+    .hero .btn-cta {
+        background: #4F94D7;
+        border-radius: 12px;
+        color: white;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        padding: 12px 32px;
+    }
+
+    .img-header {
+        position: absolute;
+        top: 1;
+        right: 0px;
+        z-index: -1;
+    }
+
+    .navbar-expand-lg {
+        background-color: white !important;
+        box-shadow: -1.5px 4px 16px rgb(118 126 148 / 20%);
+        transition: background-color 200ms linear;
+    }
+
+    .benefit {
+        background: #03173C;
+        padding: 20px 0px;
+    }
+
+    @media (min-width: 767px) {
+        .benefit {
+            padding: 60px 0px;
         }
 
         .hero {
             background: none !important;
+            margin-top: 75px;
             margin-bottom: -33px !important;
             height: 80vh !important;
         }
+    }
 
-        .hero p {
-            font-weight: 400;
-            font-size: 16px;
-            color: rgba(19, 19, 19, 0.8);
-            margin: 0px !important;
-        }
+    .header-primary {
+        color: #34364a;
+        font-size: 38px;
+        font-weight: 700;
+        line-height: 48px;
+    }
 
-        .hero .hero-text {
-            color: #34364a;
-            font-size: 68px;
-            font-weight: 700;
-            line-height: 78px;
-        }
+    .card-container,
+    .course-card,
+    .course-card-responsive {
+        background: #fff;
+        border: none;
+        border-radius: 14px;
+        box-sizing: border-box;
+        color: #34364a;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 30px;
+        position: relative;
+        row-gap: 24px;
+    }
 
-        .hero .btn-cta {
-            background: #4F94D7;
-            border-radius: 12px;
-            color: white;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 150%;
-            padding: 12px 32px;
-        }
+    .pricing .item-pricing {
+        background: #fff;
+        border-radius: 16px;
+        padding: 30px;
+    }
 
-        .img-header {
-            position: absolute;
-            top: 1;
-            right: 0px;
-            z-index: -1;
-        }
+    .course-card .course-detail .course-name,
+    .course-card-responsive .course-detail .course-name,
+    .line-clamp,
+    .line-clamp-1 {
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        overflow: hidden;
+    }
 
-        .navbar-expand-lg {
-            background-color: white !important;
-            box-shadow: -1.5px 4px 16px rgb(118 126 148 / 20%);
-            transition: background-color 200ms linear;
-        }
+    .course-card .course-detail .course-name {
+        color: #34364a;
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        line-height: 30px;
+        min-height: 10px;
+        position: relative;
+        z-index: 80 !important;
+    }
 
-        .benefit {
-            background: #03173C;
-            padding: 20px 0px;
-        }
+    .course-card .course-footer {
+        align-items: baseline;
+        display: flex;
+        gap: 4px;
+        justify-content: space-between;
+    }
 
-        @media (min-width: 767px) {
-            .benefit {
-                padding: 60px 0px;
-            }
+    .course-card .course-footer .star-rating {
+        align-items: flex-start;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2px;
+    }
 
-            .hero {
-                background: none !important;
-                margin-top: 75px;
-                margin-bottom: -33px !important;
-                height: 80vh !important;
-            }
-        }
-
-        .header-primary {
-            color: #34364a;
-            font-size: 38px;
-            font-weight: 700;
-            line-height: 48px;
-        }
-
-        .card-container,
-        .course-card,
-        .course-card-responsive {
-            background: #fff;
-            border: none;
-            border-radius: 14px;
-            box-sizing: border-box;
-            color: #34364a;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            padding: 30px;
-            position: relative;
-            row-gap: 24px;
-        }
-
-        .pricing .item-pricing {
-            background: #fff;
-            border-radius: 16px;
-            padding: 30px;
-        }
-
-        .course-card .course-detail .course-name,
-        .course-card-responsive .course-detail .course-name,
-        .line-clamp,
-        .line-clamp-1 {
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            display: -webkit-box;
-            overflow: hidden;
-        }
-
-        .course-card .course-detail .course-name {
-            color: #34364a;
-            font-size: 20px !important;
-            font-weight: 700 !important;
-            line-height: 30px;
-            min-height: 10px;
-            position: relative;
-            z-index: 80 !important;
-        }
-
-        .course-card .course-footer {
-            align-items: baseline;
-            display: flex;
-            gap: 4px;
-            justify-content: space-between;
-        }
-
-        .course-card .course-footer .star-rating {
-            align-items: flex-start;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2px;
-        }
-
-        @media only screen and (min-width: 768px) and (max-width: 1250px) {
-            .course-card .course-footer .star-rating img {
-                width: 20px !important;
-            }
-        }
-
+    @media only screen and (min-width: 768px) and (max-width: 1250px) {
         .course-card .course-footer .star-rating img {
-            width: 24px;
+            width: 20px !important;
         }
+    }
 
-        .checkout .payment-details .header-title {
-            color: #34364a;
-            font-size: 17px;
-            font-weight: 700;
-            margin: 0 0 16px;
-        }
+    .course-card .course-footer .star-rating img {
+        width: 24px;
+    }
 
-        .checkout .payment-details .item {
-            margin-bottom: 16px;
-        }
+    .checkout .payment-details .header-title {
+        color: #34364a;
+        font-size: 17px;
+        font-weight: 700;
+        margin: 0 0 16px;
+    }
 
-        .checkout .payment-details .title {
-            color: #34364a;
-            float: left;
-            font-size: 16px !important;
-            font-weight: 400;
-            margin: 0;
-        }
+    .checkout .payment-details .item {
+        margin-bottom: 16px;
+    }
 
-        .checkout .payment-details .value {
-            color: #34364a;
-            float: right;
-            font-size: 16px;
-            font-weight: 400;
-            margin: 0;
-        }
+    .checkout .payment-details .title {
+        color: #34364a;
+        float: left;
+        font-size: 16px !important;
+        font-weight: 400;
+        margin: 0;
+    }
 
-        .clear {
-            clear: both;
-        }
+    .checkout .payment-details .value {
+        color: #34364a;
+        float: right;
+        font-size: 16px;
+        font-weight: 400;
+        margin: 0;
+    }
 
-        .embed-responsive {
-            display: block;
-            height: 25vh;
-            overflow: hidden;
-            padding: 0;
-            position: relative;
-            width: 100% !important;
-        }
+    .clear {
+        clear: both;
+    }
 
-        .video-iframe {
-            border-radius: 16px;
-            transition: all .3s;
-        }
+    .embed-responsive {
+        display: block;
+        height: 25vh;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        width: 100% !important;
+    }
 
-        .embed-responsive:before {
-            content: "";
-            display: block;
-        }
+    .video-iframe {
+        border-radius: 16px;
+        transition: all .3s;
+    }
 
-        .embed-responsive iframe {
-            border-radius: 16px;
-            width: 100%;
-            height: 25vh;
-        }
+    .embed-responsive:before {
+        content: "";
+        display: block;
+    }
 
-        .plyr__video-embed {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-        }
+    .embed-responsive iframe {
+        border-radius: 16px;
+        width: 100%;
+        height: 25vh;
+    }
 
-        .text-green {
-            color: #22c58b !important;
-        }
+    .plyr__video-embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
 
-        .border-theme {
-            border: 2px solid var(--limeColor);
-        }
+    .text-green {
+        color: #22c58b !important;
+    }
 
-        .bg-theme-light {
-            background-color: #e9fff0d2;
-        }
+    .border-theme {
+        border: 2px solid var(--limeColor);
+    }
 
-        .small-circle-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+    .bg-theme-light {
+        background-color: #e9fff0d2;
+    }
 
-        .form-select {
-            border: 1px solid #ced4da !important;
-            padding: 0.375rem 2.25rem 0.375rem 0.75rem !important;
-        }
+    .small-circle-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
 
-        .form-control {
-            border-radius: 8px;
-            /* Atur sudut bulat */
-            border: 2px solid #CED4DA;
-            /* Warna border abu-abu dan ketebalan 8px */
-            padding: 10px 15px;
-            /* Atur padding sesuai kebutuhan Anda */
-            font-size: 16px;
-            /* Atur ukuran font sesuai kebutuhan Anda */
-            line-height: 1.5;
-            /* Sesuaikan dengan kebutuhan Anda */
-            color: #495057;
-            /* Warna teks */
-            background-color: #FFFFFF;
-            /* Warna latar belakang */
-            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-            width: 100%;
-            /* Menyesuaikan lebar form-control dengan parentnya */
-        }
+    .form-select {
+        border: 1px solid #ced4da !important;
+        padding: 0.375rem 2.25rem 0.375rem 0.75rem !important;
+    }
 
-        /* Style saat form-control mendapat fokus */
-        .form-control:focus {
-            border-color: #4F94D7;
-            /* Ganti warna border saat mendapat fokus */
-            outline: 0;
-            /* Hapus outline */
-            box-shadow: 0 0 0 0.25rem rgba(79, 148, 215, 0.25);
-            /* Efek shadow saat mendapat fokus */
-        }
+    .form-control {
+        border-radius: 8px;
+        /* Atur sudut bulat */
+        border: 2px solid #CED4DA;
+        /* Warna border abu-abu dan ketebalan 8px */
+        padding: 10px 15px;
+        /* Atur padding sesuai kebutuhan Anda */
+        font-size: 16px;
+        /* Atur ukuran font sesuai kebutuhan Anda */
+        line-height: 1.5;
+        /* Sesuaikan dengan kebutuhan Anda */
+        color: #495057;
+        /* Warna teks */
+        background-color: #FFFFFF;
+        /* Warna latar belakang */
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        width: 100%;
+        /* Menyesuaikan lebar form-control dengan parentnya */
+    }
 
-        /* Gaya label */
-        .form-label {
-            display: block;
-            /* Menjadikan label sebagai block element */
-            margin-bottom: 5px;
-            /* Memberikan margin bawah agar tidak rapat dengan input */
-            font-weight: bold;
-            /* Memberikan ketebalan pada teks label */
-        }
+    /* Style saat form-control mendapat fokus */
+    .form-control:focus {
+        border-color: #4F94D7;
+        /* Ganti warna border saat mendapat fokus */
+        outline: 0;
+        /* Hapus outline */
+        box-shadow: 0 0 0 0.25rem rgba(79, 148, 215, 0.25);
+        /* Efek shadow saat mendapat fokus */
+    }
 
-        .custom-payment-info {
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            border: 1px solid #4F94D7;
-            background-color: ##f9ffff;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-        }
+    /* Gaya label */
+    .form-label {
+        display: block;
+        /* Menjadikan label sebagai block element */
+        margin-bottom: 5px;
+        /* Memberikan margin bawah agar tidak rapat dengan input */
+        font-weight: bold;
+        /* Memberikan ketebalan pada teks label */
+    }
 
-        .custom-payment-info h5 {
-            margin: 0;
-            margin-right: 1rem;
-            color: #4F94D7;
-        }
+    .custom-payment-info {
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        border: 1px solid #4F94D7;
+        background-color: ##f9ffff;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+    }
 
-        .custom-payment-info p {
-            font-weight: bold;
-            color: #343a40;
-        }
+    .custom-payment-info h5 {
+        margin: 0;
+        margin-right: 1rem;
+        color: #4F94D7;
+    }
 
-        /* CSS untuk membuat modal responsif */
+    .custom-payment-info p {
+        font-weight: bold;
+        color: #343a40;
+    }
+
+    /* CSS untuk membuat modal responsif */
+    .modal-dialog {
+        max-width: 60%;
+        margin: 1.75rem auto;
+    }
+
+    .modal-content {
+        border: none;
+        border-radius: 0.5rem;
+    }
+
+    .modal-body {
+        padding: 2rem;
+        background-color: #ffffff;
+        /* Ganti latar belakang menjadi putih */
+    }
+
+    .invoice-box img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+
+    /* Tambahkan media queries untuk responsivitas */
+    @media (max-width: 576px) {
         .modal-dialog {
-            max-width: 60%;
-            margin: 1.75rem auto;
-        }
-
-        .modal-content {
-            border: none;
-            border-radius: 0.5rem;
-        }
-
-        .modal-body {
-            padding: 2rem;
-            background-color: #ffffff;
-            /* Ganti latar belakang menjadi putih */
-        }
-
-        .invoice-box img {
             max-width: 100%;
-            height: auto;
-            margin-bottom: 1rem;
         }
+    }
 
-        /* Tambahkan media queries untuk responsivitas */
-        @media (max-width: 576px) {
-            .modal-dialog {
-                max-width: 100%;
-            }
-        }
+    /* Gaya CSS untuk checkbox dan pernyataan */
+    .custom-checkbox {
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+    }
 
-        /* Gaya CSS untuk checkbox dan pernyataan */
-        .custom-checkbox {
-            display: inline-block;
-            vertical-align: middle;
-            cursor: pointer;
-        }
+    .custom-checkbox input[type="checkbox"] {
+        display: none;
+    }
 
-        .custom-checkbox input[type="checkbox"] {
-            display: none;
-        }
+    .checkmark {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
 
-        .checkmark {
-            position: relative;
-            display: inline-block;
-            width: 20px;
-            height: 20px;
+        /* Sesuaikan ukuran kotak centang dengan kebutuhan Anda */
+        background-color: #fff;
+        border: 1px solid #ccc;
+    }
 
-            /* Sesuaikan ukuran kotak centang dengan kebutuhan Anda */
-            background-color: #fff;
-            border: 1px solid #ccc;
-        }
+    /* Gaya CSS untuk kotak centang saat tercentang */
+    .custom-checkbox input[type="checkbox"]:checked+.checkmark {
+        background-color: #429488;
+        /* Warna latar belakang saat tercentang */
+        border-color: #429488;
+        /* Warna border saat tercentang */
+    }
 
-        /* Gaya CSS untuk kotak centang saat tercentang */
-        .custom-checkbox input[type="checkbox"]:checked+.checkmark {
-            background-color: #429488;
-            /* Warna latar belakang saat tercentang */
-            border-color: #429488;
-            /* Warna border saat tercentang */
-        }
+    /* Gaya CSS untuk tanda centang */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
 
-        /* Gaya CSS untuk tanda centang */
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-        }
+    /* Gaya CSS untuk tanda centang saat tercentang */
+    .custom-checkbox input[type="checkbox"]:checked+.checkmark:after {
+        display: block;
+    }
 
-        /* Gaya CSS untuk tanda centang saat tercentang */
-        .custom-checkbox input[type="checkbox"]:checked+.checkmark:after {
-            display: block;
-        }
+    /* Gaya CSS untuk tanda centang */
+    .checkmark:after {
+        left: 7px;
+        /* Sesuaikan posisi tanda centang dengan kebutuhan Anda */
+        top: 3px;
+        /* Sesuaikan posisi tanda centang dengan kebutuhan Anda */
+        width: 5px;
+        /* Sesuaikan ukuran tanda centang dengan kebutuhan Anda */
+        height: 10px;
+        /* Sesuaikan ukuran tanda centang dengan kebutuhan Anda */
+        border: solid #fff;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
 
-        /* Gaya CSS untuk tanda centang */
-        .checkmark:after {
-            left: 7px;
-            /* Sesuaikan posisi tanda centang dengan kebutuhan Anda */
-            top: 3px;
-            /* Sesuaikan posisi tanda centang dengan kebutuhan Anda */
-            width: 5px;
-            /* Sesuaikan ukuran tanda centang dengan kebutuhan Anda */
-            height: 10px;
-            /* Sesuaikan ukuran tanda centang dengan kebutuhan Anda */
-            border: solid #fff;
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-        }
-
-        /* Gaya CSS untuk pernyataan */
-        .statement {
-            display: inline-block;
-            vertical-align: middle;
-            margin-left: 10px;
-            /* Sesuaikan margin kiri dengan kebutuhan Anda */
-            font-size: 16px;
-            /* Sesuaikan ukuran teks dengan kebutuhan Anda */
-        }
+    /* Gaya CSS untuk pernyataan */
+    .statement {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+        /* Sesuaikan margin kiri dengan kebutuhan Anda */
+        font-size: 16px;
+        /* Sesuaikan ukuran teks dengan kebutuhan Anda */
+    }
 
 
-        .small-circle-img {
-            width: 50px;
-            /* Sesuaikan lebar lingkaran sesuai kebutuhan */
-            height: 50px;
-            /* Sesuaikan tinggi lingkaran sesuai kebutuhan */
-            object-fit: contain;
-            /* Membuat gambar tetap proporsional dan terlihat sepenuhnya di dalam lingkaran */
-            border-radius: 50%;
-            /* Membuat gambar menjadi lingkaran */
-            overflow: hidden;
-            /* Menghilangkan bagian gambar yang keluar dari lingkaran */
-        }
+    .small-circle-img {
+        width: 50px;
+        /* Sesuaikan lebar lingkaran sesuai kebutuhan */
+        height: 50px;
+        /* Sesuaikan tinggi lingkaran sesuai kebutuhan */
+        object-fit: contain;
+        /* Membuat gambar tetap proporsional dan terlihat sepenuhnya di dalam lingkaran */
+        border-radius: 50%;
+        /* Membuat gambar menjadi lingkaran */
+        overflow: hidden;
+        /* Menghilangkan bagian gambar yang keluar dari lingkaran */
+    }
 
-        .form-check-input {
-            border: 1px solid #ccc;
-            border-radius: 1px;
-            margin-right: 5px;
-            box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ccc;
-        }
+    .form-check-input {
+        border: 1px solid #ccc;
+        border-radius: 1px;
+        margin-right: 5px;
+        box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ccc;
+    }
 
-        .copy-button {
-            padding: 8px;
-            background-color: #4BA5B2;
-            border: none;
-            cursor: pointer;
-            border-radius: 20%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .copy-button {
+        padding: 8px;
+        background-color: #4BA5B2;
+        border: none;
+        cursor: pointer;
+        border-radius: 20%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-        .copy-button i {
-            font-size: 1.4em;
-            color: #ffffff;
-        }
+    .copy-button i {
+        font-size: 1.4em;
+        color: #ffffff;
+    }
 
 
-        .copy-button:hover i {
-            color: #F7F6F6;
-        }
+    .copy-button:hover i {
+        color: #F7F6F6;
+    }
     </style>
     @endpush
     <section class="py-5" style="margin-top: 10px">
@@ -537,25 +537,25 @@
 
 
                             <script>
-                                function showInvoiceModal() {
-                                    var modal = new bootstrap.Modal(document.getElementById('invoiceModal'));
-                                    modal.show();
+                            function showInvoiceModal() {
+                                var modal = new bootstrap.Modal(document.getElementById('invoiceModal'));
+                                modal.show();
 
-                                }
-                                function copyAccountNumber(button) {
-                                    // Dapatkan nomor rekening terkait dengan tombol yang diklik
-                                    var accountNumber = button.parentElement.querySelector('.account-number').innerText;
+                            }
 
-                                    // Copy nomor rekening ke clipboard
-                                    navigator.clipboard.writeText(accountNumber).then(function () {
-                                        console.log('Nomor rekening berhasil disalin: ' + accountNumber);
-                                        alert('Nomor rekening berhasil disalin: ' + accountNumber);
-                                    }, function (err) {
-                                        console.error('Gagal menyalin nomor rekening: ', err);
-                                        alert('Gagal menyalin nomor rekening. Silakan coba lagi.');
-                                    });
-                                }
+                            function copyAccountNumber(button) {
+                                // Dapatkan nomor rekening terkait dengan tombol yang diklik
+                                var accountNumber = button.parentElement.querySelector('.account-number').innerText;
 
+                                // Copy nomor rekening ke clipboard
+                                navigator.clipboard.writeText(accountNumber).then(function() {
+                                    console.log('Nomor rekening berhasil disalin: ' + accountNumber);
+                                    alert('Nomor rekening berhasil disalin: ' + accountNumber);
+                                }, function(err) {
+                                    console.error('Gagal menyalin nomor rekening: ', err);
+                                    alert('Gagal menyalin nomor rekening. Silakan coba lagi.');
+                                });
+                            }
                             </script>
                             <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                 <div class="d-flex gap-3 align-items-center">
@@ -716,7 +716,8 @@
                             <input type="hidden" name="waralaba_id" value="{{ $waralaba->id }}">
                             <input type="hidden" name="waralaba_name" value="{{ $waralaba->waralaba_name }}">
                             <input type="hidden" name="user_id" value="{{ auth()->id() }}">
-                            <input type="hidden" name="total_payment" id="total_payment" value="{{ $totalTransferWithoutDot = str_replace('.', '', $totalTransfer)}}">
+                            <input type="hidden" name="total_payment" id="total_payment"
+                                value="{{ $totalTransferWithoutDot = str_replace('.', '', $totalTransfer)}}">
                             <br>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="pernyataan" required>
@@ -728,7 +729,14 @@
 
                             <!-- Submit button -->
                             <button type="submit" class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3"
-                                id="submitButton">Kirim</button>
+                                id="submitButton" disabled>Kirim</button>
+
+                            <script>
+                            document.getElementById('pernyataan').addEventListener('change', function() {
+                                var button = document.getElementById('submitButton');
+                                button.disabled = !this.checked;
+                            });
+                            </script>
                         </form>
                     </div>
                 </div>
@@ -751,24 +759,23 @@
         </div>
     </section>
     <script>
-      getElement.addEventListener("submit", function (event))
-        event.preventDefault(); // Menghentikan pengiriman formulir langsung
+    getElement.addEventListener("submit", function(event))
+    event.preventDefault(); // Menghentikan pengiriman formulir langsung
 
-        // Menampilkan popup pesanan sedang diproses
-        $('#processingPopup').modal('show');
+    // Menampilkan popup pesanan sedang diproses
+    $('#processingPopup').modal('show');
 
-        // Lakukan pengiriman formulir menggunakan AJAX
-        var formData = new FormData(this);
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", this.action, true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Jika pengiriman berhasil, redirect ke halaman lain
-                window.location.href = "{{ route('sukses') }}";
-            }
-        };
-        xhr.send(formData);
-
+    // Lakukan pengiriman formulir menggunakan AJAX
+    var formData = new FormData(this);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", this.action, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Jika pengiriman berhasil, redirect ke halaman lain
+            window.location.href = "{{ route('sukses') }}";
+        }
+    };
+    xhr.send(formData);
     </script>
 </x-user-layout>
 

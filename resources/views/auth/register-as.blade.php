@@ -2,7 +2,7 @@
     @push('addonStyle')
     <style>
         body {
-            background: #FEFEFE !important;
+            background: #fbfbfb !important;
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;

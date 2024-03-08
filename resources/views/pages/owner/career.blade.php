@@ -1,7 +1,7 @@
 <x-owner-layout title="Career" active="career" style="margin-top: 0;">
     <style>
         body {
-            background: #EDF2F7 !important;
+            background: #fbfbfb !important;
         }
 
         .career-card {

@@ -2,7 +2,7 @@
     @push('addonStyle')
     <style>
     body {
-        background: #FEFEFE !important;
+        background: #fbfbfb !important;
     }
 
     .navbar .navbar-nav a:hover.btn-signup {

@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light position-fixed top-0 w-100 py-lg-3">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
-        <img src="{{ asset('assets/frontend/image/logo.svg') }}" alt="logo-warabiz" style="width: 180px; height: auto;">
+            <img src="{{ asset('assets/frontend/image/logo.svg') }}" alt="logo-warabiz"
+                style="width: 180px; height: auto;">
         </a>
         @guest
         <!-- Display when the user is a guest -->
@@ -39,13 +40,21 @@
                     <button
                         class="btn fw-bold text-white d-flex align-items-center p-0 shadow-none drdwn nav-link dropdown-toggle"
                         type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                        <p class="profil-name">{{ Str::limit(Auth::user()->name, 20, '') }}</p>
+                        <div class="avatar avatar-md2">
+                            <a href="{{ route('owner.profile') }}">
+                                <div class="avatar"
+                                    style="background-color: #0089A3; margin-right: 0.75rem; position: relative;">
+                                    <span class="avatar-content"
+                                        style="color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">{{ strtoupper(substr(Auth::user()->name, 0, 2)) }}</span>
+                                </div>
+                            </a>
+                        </div>
+                        <p class="profil-name" style="margin-left: 0.5rem;">{{ Str::limit(Auth::user()->name, 20, '') }}
+                        </p>
                         @if($role === 'admin')
                         <span class="badge bg-warning text-dark ms-2">Admin</span>
                         @endif
-
                     </button>
-
                     <ul class="dropdown-menu p-0 m-0 border-0 rounded-12 shadow overflow-hidden mt-3"
                         aria-labelledby="dropdownMenu2">
                         <li>
@@ -67,14 +76,14 @@
                         <li>
                             <a href="{{ route('transaction.history') }}"
                                 class="dropdown-item bg-white btn baseColor rounded-0 fw-bold text-dark d-flex align-items-center m-0 py-3 shadow-none">
-                                <p class="me-3"><i class="fas fa-history text-dark"></i></p>
+                                <p class="me-3 circle-icon-bg"><i class="fas fa-history text-dark"></i></p>
                                 <p class="text-sm text-dark">Transaksi</p>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('job.applications', auth()->id()) }}"
                                 class="dropdown-item bg-white btn baseColor rounded-0 fw-bold text-dark d-flex align-items-center m-0 py-3 shadow-none">
-                                <p class="me-3"><i class="fas fa-history text-dark"></i></p>
+                                <p class="me-3"><i class="fas fa-briefcase text-dark"></i></p>
                                 <p class="text-sm text-dark">Pekerjaan</p>
                             </a>
                         </li>

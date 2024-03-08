@@ -2,7 +2,7 @@
     @push('addonStyle')
     <style>
         body {
-            background: #FEFEFE !important;
+            background: #fbfbfb !important;
         }
 
         .career-card {

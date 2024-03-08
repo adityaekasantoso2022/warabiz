@@ -126,6 +126,9 @@ Route::
         });
         Route::middleware(['auth', 'owner'])->group(function () {
             Route::get('/owner/dashboard', [OwnerController::class, 'dashboard'])->name('owner.dashboard');
+            Route::get('/owner/profile', [OwnerController::class, 'editProfile'])->name('owner.profile');
+            Route::put('/owner/profile', [OwnerController::class, 'updateProfile'])->name('owner.update-profile');
+
 
             Route::get('/owner/waralaba', [WaralabaOwnerController::class, 'index'])->name('owner.waralaba');
             Route::post('/owner/waralaba', [WaralabaOwnerController::class, 'store'])->name('owner.waralaba.store');
@@ -133,9 +136,6 @@ Route::
             Route::get('/owner/waralaba/{id}/edit', [WaralabaOwnerController::class, 'edit'])->name('owner.waralaba.edit');
             Route::put('/owner/waralaba/{id}/update', [WaralabaOwnerController::class, 'update'])->name('owner.waralaba.update');
             Route::delete('/owner/waralaba/delete/{id}', [WaralabaOwnerController::class, 'destroy'])->name('owner.waralaba.destroy');
-
-
-
 
             Route::get('/owner/transaksi', [TransactionOwnerController::class, 'index'])->name('owner.transactions');
             Route::get('/owner/invoice/{id}', [TransactionOwnerController::class, 'show'])->name('owner.transactions.show');

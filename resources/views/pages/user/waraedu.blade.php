@@ -3,7 +3,7 @@
     <style>
     /* Style untuk latar belakang dan elemen-elemen lainnya */
     body {
-        background: #FEFEFE !important;
+        background: #fbfbfb !important;
     }
 
     .navbar .navbar-nav a:hover.btn-signup {

@@ -9,11 +9,46 @@ use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use App\Models\Waralaba;
 use Illuminate\Support\Facades\DB;
+use App\Models\VerifiedOwner;
+use Illuminate\Http\Request;
+
+
 
 
 class OwnerController extends Controller
 {
+    public function editProfile()
+    {
+        $user = Auth::user();
+        $ownerVerified = VerifiedOwner::where('user_id', $user->id)->first(); // Mengambil data dari tabel owner_verified yang sesuai dengan user_id
+    
+        return view('pages.owner.profile', compact('user', 'ownerVerified'));
+    }
+    public function updateProfile(Request $request)
+{
+    $user = Auth::user();
+    $ownerVerified = VerifiedOwner::where('user_id', $user->id)->first();
 
+    $request->validate([
+        'company_name' => 'required|string|max:64',
+        'company_category' => 'required|string|max:64',
+        'npwp' => 'required|string|max:64',
+        'bank_name' => 'required|string|max:64', // Mengubah validasi menjadi string
+        'account_number' => 'required|string|max:64', // Mengubah validasi menjadi string
+    ]);
+
+    $ownerVerified->company_name = $request->input('company_name');
+    $ownerVerified->company_category = $request->input('company_category');
+    $ownerVerified->npwp = $request->input('npwp');
+    $ownerVerified->bank_name = $request->input('bank_name');
+    $ownerVerified->account_number = $request->input('account_number');
+
+    $ownerVerified->save();
+
+    return redirect()->route('home')->with('success', 'Profil berhasil diperbarui.');
+}
+
+    
     public function dashboard()
     {
         $totalWaralabaByOwner = Waralaba::where('created_by', Auth::id())->count();

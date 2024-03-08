@@ -3,7 +3,7 @@
     <style>
         /* Style untuk latar belakang dan elemen-elemen lainnya */
         body {
-            background: #FEFEFE !important;
+            background: #fbfbfb !important;
             font-family: Arial, sans-serif;
             font-size: 14px;
         }

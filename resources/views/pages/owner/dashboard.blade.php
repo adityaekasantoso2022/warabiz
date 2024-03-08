@@ -2,7 +2,7 @@
     @push('addonStyle')
     <style>
         body {
-            background: #EDF2F7 !important;
+            background: #fbfbfb !important;
         }
     </style>
     @endpush
@@ -108,9 +108,9 @@ $transaksiTerbaruValue = $transaksiTerbaru->harga_waralaba ?? 0;
                     <div class="card-body px-4">
                         <div class="d-flex align-items-center">
                             <div class="ms-3 name">
-                                <h6 class="text-muted font-semibold">Total Pendapatan</h6>
-                                <h6 class="font-extrabold">Rp. {{ number_format($totalPendapatanValue, 0, ',', '.')}}
-                                </h6>
+                                <h6 class="text-muted font-semibold">Total Pendapatan Anda</h6>
+                                <h5 class="font-extrabold">Rp. {{ number_format($totalPendapatanValue, 0, ',', '.')}}
+                                </h5>
                                 <small class="font-bold" style="color: green;">+ Rp. {{
                                     number_format($transaksiTerbaruValue, 0, ',', '.')}}</small>
                             </div>
@@ -143,12 +143,13 @@ $transaksiTerbaruValue = $transaksiTerbaru->harga_waralaba ?? 0;
                                 <p class="text-muted mb-0">{{ $transaction->created_at->format('d/m/Y H:i') }} WIB</p>
                             </div>
                         </div>
-                        @endforeach
-                        @endif
                         <div class="px-4">
                             <a href="{{ route('owner.transactions') }}"
                                 class="btn btn-block btn-xl btn-light-primary font-bold mt-4">Lainnya</a>
                         </div>
+
+                        @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@
     <style>
         /* CSS Styles */
         body {
-            background: #FEFEFE !important;
+            background: #fbfbfb !important;
         }
 
         .waralaba-card {

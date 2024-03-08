@@ -1,104 +1,107 @@
 <x-user-layout title="Daftar Pekerjaan" active="waracareer">
     @push('addonStyle')
     <style>
-        body {
-            background: #FEFEFE !important;
-        }
+    body {
+        background: #fbfbfb !important;
+    }
 
-        .navbar .navbar-nav a:hover.btn-signup {
-            color: white !important;
-        }
+    .navbar .navbar-nav a:hover.btn-signup {
+        color: white !important;
+    }
 
-        .navbar .navbar-nav a:hover {
-            color: #131313 !important;
-        }
+    .navbar .navbar-nav a:hover {
+        color: #131313 !important;
+    }
 
-        .navbar .navbar-nav .active {
-            color: #131313 !important;
-        }
+    .navbar .navbar-nav .active {
+        color: #131313 !important;
+    }
 
-        .profil-name {
-            color: #131313
-        }
+    .profil-name {
+        color: #131313
+    }
 
-        .navbar-expand-lg {
-            background-color: white !important;
-            box-shadow: -1.5px 4px 16px rgb(118 126 148 / 20%);
-            transition: background-color 200ms linear;
-        }
+    .navbar-expand-lg {
+        background-color: white !important;
+        box-shadow: -1.5px 4px 16px rgb(118 126 148 / 20%);
+        transition: background-color 200ms linear;
+    }
 
-        .header-primary {
-            color: #34364a;
-            font-size: 38px;
-            font-weight: 700;
-            line-height: 48px;
-        }
+    .header-primary {
+        color: #34364a;
+        font-size: 38px;
+        font-weight: 700;
+        line-height: 48px;
+    }
 
-        .course-card {
-            background: #fff;
-            border: none;
-            border-radius: 14px;
-            box-sizing: border-box;
-            color: #34364a;
-            display: flex;
-            flex-direction: column;
-            padding: 30px;
-            position: relative;
-            width: 100%;
-            max-width: 100%;
-        }
+    .course-card {
+        background: #fff;
+        border: none;
+        border-radius: 14px;
+        box-sizing: border-box;
+        color: #34364a;
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+    }
 
-        .form-label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
+    .form-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
 
+    .centered-card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 20px;
+        /* padding top and bottom 30px, left and right 20px */
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    .buttons-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .register-now {
+        background-color: #1ab059;
+        color: #fff;
+        width: 100%;
+        cursor: pointer;
+        border: 0;
+        border-radius: 30px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        padding: 10px;
+        height: 50px;
+        max-width: 150px;
+    }
+
+    .form-check-input {
+        border: 1px solid #ccc;
+        border-radius: 1px;
+        margin-right: 5px;
+        box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ccc;
+    }
+    .register-now:disabled {
+        opacity: 0.6;
+        cursor: not-allowed; 
+    }
+
+    @media (max-width: 768px) {
         .centered-card {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 30px 20px;
-            /* padding top and bottom 30px, left and right 20px */
+            margin-top: 0px;
         }
-
-        .form-group {
-            margin-bottom: 10px;
-        }
-
-        .buttons-container {
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .register-now {
-            background-color: #1ab059;
-            color: #fff;
-            width: 100%;
-            cursor: pointer;
-            border: 0;
-            border-radius: 30px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            font-size: 14px;
-            padding: 10px;
-            height: 50px;
-            max-width: 150px;
-        }
-
-        .form-check-input {
-            border: 1px solid #ccc;
-            border-radius: 1px;
-            margin-right: 5px;
-            box-shadow: 0 0 0 2px #fff, 0 0 0 3px #ccc;
-        }
-
-
-        @media (max-width: 768px) {
-            .centered-card {
-                margin-top: 0px;
-            }
-        }
+    }
     </style>
     @endpush
     <section class="py-5" style="margin-top: 50px;">
@@ -109,7 +112,8 @@
                         <h4 class="header-title mb-1">
                             <b>Lamaran Pekerjaan</b>
                         </h4>
-                        <form id="myForm" action="{{ route('careerJob.store') }}" enctype="multipart/form-data" method="POST">
+                        <form id="myForm" action="{{ route('careerJob.store') }}" enctype="multipart/form-data"
+                            method="POST">
                             @csrf
                             <div class="row m-0 mt-4">
                                 <div class="col-lg-6 p-0">
@@ -139,7 +143,7 @@
                             </div>
                             <div class="row m-0 mt-4">
                                 <div class="col-lg-6 p-0">
-                                <div class="form-group">
+                                    <div class="form-group">
                                         <label for="date_of_birth" class="form-label fw-bold">
                                             <p>Tanggal Lahir <span style="color: red;">*</span></p>
                                         </label>
@@ -250,13 +254,22 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="pernyataan" required>
                                     <label class="form-check-label" for="pernyataan">
-                                        Saya menyatakan bahwa data yang saya berikan adalah benar dan akurat dan dapat dipertanggung jawabakan.
+                                        Saya menyatakan bahwa data yang saya berikan adalah benar dan akurat dan dapat
+                                        dipertanggung jawabakan.
                                     </label>
                                 </div>
                             </div>
                             <div class="buttons-container">
-                                <button class="register-now">Kirim</button>
+                                <button class="register-now" id="submitButton" disabled>Kirim</button>
                             </div>
+
+                            <script>
+                            document.getElementById('pernyataan').addEventListener('change', function() {
+                                var button = document.getElementById('submitButton');
+                                button.disabled = !this.checked;
+                            });
+                            </script>
+
                         </form>
                     </div>
                 </div>
@@ -264,14 +277,13 @@
         </div>
     </section>
     <script>
-        document.getElementById('myForm').addEventListener('submit', function (event)
-        {
-            var pernyataanCheckbox = document.getElementById('pernyataan');
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        var pernyataanCheckbox = document.getElementById('pernyataan');
 
-            if (!pernyataanCheckbox.checked) {
-                alert('Anda harus menyetujui pernyataan sebelum mengirim formulir.');
-                event.preventDefault(); // Mencegah formulir dikirimkan jika checkbox tidak dicentang
-            }
-        });
+        if (!pernyataanCheckbox.checked) {
+            alert('Anda harus menyetujui pernyataan sebelum mengirim formulir.');
+            event.preventDefault(); // Mencegah formulir dikirimkan jika checkbox tidak dicentang
+        }
+    });
     </script>
 </x-user-layout>

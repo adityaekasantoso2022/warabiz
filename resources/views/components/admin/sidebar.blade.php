@@ -24,6 +24,12 @@
                         <span>Pengguna</span>
                     </a>
                 </li>
+                <li class="sidebar-item {{ $active == 'verifowner' ? 'active' : '' }}">
+                    <a href="#" class="sidebar-link d-flex align-items-center">
+                    <i class="fas fa-user-tie me-2"></i>
+                        <span>Verifikasi Owner</span>
+                    </a>
+                </li>
                 <li class="sidebar-item {{ $active == 'waralaba' ? 'active' : '' }}">
                     <a href="{{ route('admin.waralaba') }}" class="sidebar-link d-flex align-items-center">
                         <i class="fas fa-store me-2"></i>
