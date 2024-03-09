@@ -2,44 +2,64 @@
     @push('addonStyle')
     <!-- Masukkan gaya tambahan di sini -->
     <style>
-        /* Tambahkan gaya tambahan di sini */
+    /* Tambahkan gaya tambahan di sini */
 
-        .card {
-            margin-bottom: 20px;
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+
+    .info-item label {
+        font-weight: bold;
+    }
+
+    .waralaba-img {
+        width: 250px;
+        height: 150px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+
+    .waralaba-thumbnail {
+        width: 100px;
+        height: 100px;
+        max-width: 100px;
+        /* Sesuaikan lebar maksimum gambar thumbnail */
+        border-radius: 4px;
+    }
+
+    .info-container {
+        display: flex;
+    }
+
+    .info-column {
+        flex: 1;
+        margin-right: 20px;
+    }
+
+    .info-item {
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .info-container {
+            flex-direction: column;
         }
 
-        .card-body {
-            padding: 20px;
+        .info-column {
+            margin-right: 0
         }
-
-        .card-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .info-item {
-            margin-bottom: 10px;
-        }
-
-        .info-item label {
-            font-weight: bold;
-        }
-
-        .waralaba-img {
-            width: 250px;
-            height: 150px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-
-        .waralaba-thumbnail {
-            width: 100px;
-            height: 100px;
-            max-width: 100px;
-            /* Sesuaikan lebar maksimum gambar thumbnail */
-            border-radius: 4px;
-        }
+    }
     </style>
     @endpush
 
@@ -87,17 +107,34 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Bukti Pembayaran</h5>
+                            <h5 class="card-title">Konfirmasi Pembayaran</h5>
+                            <div class="info-item">
+                                <label>Tanggal Transaksi</label>
+                                <p>{{ $transaction->created_at->setTimezone('Asia/Jakarta')->format('d/m/Y H:i') }} WIB
+                                </p>
+                            </div>
+                            <div class="info-container">
+                                <div class="info-column">
+                                    <div class="info-item">
+                                        <label>Metode Pembayaran</label>
+                                        <p>Bank {{ $transaction->payment_method }}</p>
+                                    </div>
+                                </div>
+                                <div class="info-column">
+                                    <div class="info-item">
+                                        <label>Total Pembayaran</label>
+                                        <p>Rp. {{ number_format($transaction->total_payment, 0, ',', '.') }}</p>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
                             <?php
                             $file_extension = pathinfo($transaction->payment_proof, PATHINFO_EXTENSION);
                             if (in_array($file_extension, ['jpg', 'jpeg', 'png', 'gif', 'bmp'])) {
-                                // Display image if the format is an image
                                 echo '<img src="' . $transaction->payment_proof . '" alt="Bukti Pembayaran" style="max-width:400px; max-height: auto; display: block; margin: auto;">';
                             } elseif ($file_extension === 'pdf') {
-                                // Display PDF preview if the format is a PDF
                                 echo '<iframe src="' . $transaction->payment_proof . '" width="100%" height="600px"></iframe>';
                             } else {
-                                // Display link to file if the format is other than image or PDF
                                 echo '<a href="' . $transaction->payment_proof . '">Download Bukti Pembayaran</a>';
                             }
                             ?>
@@ -107,18 +144,18 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Konfirmasi Pembayaran</h5>
+                            <h5 class="card-title">Update Status</h5>
                             <div class="info-item">
-                                <label>Tanggal Transaksi</label>
+                                <label>Nama Owner</label>
                                 <p>{{ $transaction->created_at->setTimezone('Asia/Jakarta')->format('d/m/Y H:i') }} WIB
                                 </p>
                             </div>
                             <div class="info-item">
-                                <label>Metode Pembayaran</label>
+                                <label>Pengiriman Pembayaran</label>
                                 <p>{{ $transaction->payment_method }}</p>
                             </div>
                             <div class="info-item">
-                                <label>Total Pembayaran</label>
+                                <label>Nomer</label>
                                 <p>Rp. {{ number_format($transaction->total_payment, 0, ',', '.') }}</p>
                             </div>
                             <form action="{{ route('admin.transactions.update', $transaction->uuid) }}" method="POST">

@@ -283,9 +283,6 @@
     <section class="benefit"
         style="background-image: url('{{ asset('assets/frontend/image/backrground-fitur.png') }}');">
         <div class="container">
-            <div class="text-center text-white">
-                <h1>Fitur Unggulan Kami ✨</h1>
-            </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card card-benefit border-0 bg-white rounded-10" data-bs-toggle="modal"

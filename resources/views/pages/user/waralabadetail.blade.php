@@ -52,7 +52,6 @@
         font-size: 16px;
         line-height: 150%;
         padding: 12px 32px;
-        /* identical to box height, or 24px */
     }
 
     .img-header {
@@ -72,8 +71,6 @@
         background: #03173C;
         padding: 20px 0px;
     }
-
-
 
     @media (min-width: 767px) {
 
@@ -174,7 +171,6 @@
         margin: 0 0 16px;
     }
 
-
     .checkout .payment-details .title {
         color: #34364a;
         float: left;
@@ -211,8 +207,6 @@
 
     }
 
-
-
     .embed-responsive:before {
         content: "";
         display: block;
@@ -223,7 +217,6 @@
         width: 100%;
         height: 25vh;
     }
-
 
     .plyr__foto-embed img {
         width: 100%;
@@ -323,7 +316,7 @@
                 <div class="col-lg-4 col-md-5 col-12 p-md-0 offset-lg-1">
                     <div class="d-block" id="waralabaCardCheckout"
                         style="position: relative; transition: all 600ms ease-in-out 0s; top: 0px;">
-                        <div class="waralaba-card">
+                        <div class="waralaba-card mb-4">
                             <div class="embed-responsive embed-responsive-16by9 foto-iframe">
                                 <div class="plyr__foto-embed" id="foto waralaba">
                                     <img src="{{ $waralaba->image_url_1 }}" class="img-fluid" alt="Gambar Waralaba">
@@ -347,13 +340,29 @@
                                         </div>
                                     </div>
                                     <button onclick="copyPageURL()" class="share-button">
-                                    <i class="fas fa-share-alt" style="color: white;"></i>
+                                        <i class="fas fa-share-alt" style="color: white;"></i>
                                     </button>
                                 </div>
                             </div>
                             <h5><b>Rp. {{ number_format(floatval($waralaba->price), 0, ',', '.') }}</b></h5>
                         </div>
-                        <br>
+                        <div class="payment-details">
+                            <div class="item-pricing item-mentor d-flex flex-column gap-3 mb-3">
+                                <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                    <div class="d-flex gap-3 align-items-center">
+                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                            alt="BuildWith Angga">
+                                        <div class="d-flex flex-column">
+                                            <h5 class="header-title mb-1">
+                                                Disini company_name dari VerifiedOwner
+                                            </h5>
+                                            <p>10 Waralaba (Jumlah waralaba milik owner)
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="payment-details">
                             <div class="item-pricing item-mentor d-flex flex-column gap-3">
                                 <h5 class="header-title mb-0">
@@ -365,19 +374,6 @@
 
                                     </p>
                                 </div>
-                                <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
-                                    <div class="d-flex gap-3 align-items-center">
-                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                            alt="BuildWith Angga">
-                                        <div class="d-flex flex-column">
-                                            <h5 class="header-title mb-1">
-                                                Badan Hukum
-                                            </h5>
-                                            <p>PT. {{ $waralaba->waralaba_name }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                     <div class="d-flex gap-3 align-items-center">
                                         <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
@@ -403,22 +399,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
-                                    <div class="d-flex gap-3 align-items-center">
-                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                            alt="BuildWith Angga">
-                                        <div class="d-flex flex-column">
-                                            <h5 class="header-title mb-1">
-                                                Kontak
-                                            </h5>
-                                            <p>{{ $waralaba->contact }}</p>
-                                        </div>
+                                <div class="row d-flex justify-content-between">
+                                    <div class="col-md-8">
+                                        <a id="downloadLink1" href="{{ $waralaba->brochure_link }}"
+                                            class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3">
+                                            <i class="fas fa-download me-2"></i> Unduh Brosur
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a id="downloadLink2" href="https://wa.me/{{ $waralaba->contact }}"
+                                            class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3">
+                                            <i class="fas fa-comment me-2"></i>
+                                        </a>
                                     </div>
                                 </div>
-                                <a id="downloadLink" href="{{ $waralaba->brochure_link }}"
-                                    class="mt-2 mb-2 btn btn-outline-dark custom-btn">
-                                    <i class="fas fa-download me-2"></i> Unduh Brosur
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -490,21 +484,19 @@
                                 <div id="carouselKategori" class="carousel slide">
                                     <div class="carousel-inner">
                                         <?php
-        $imageUrls = [
-            $waralaba->image_url_1,
-            $waralaba->image_url_2,
-            $waralaba->image_url_3,
-            $waralaba->image_url_4,
-            $waralaba->image_url_1,
-            $waralaba->image_url_2,
-            $waralaba->image_url_3,
-            $waralaba->image_url_4,
-
-        ];
-
-        // Memecah daftar kategori menjadi kelompok empat
-        $categoryChunks = array_chunk($imageUrls, 4);
-        ?>
+                                         $imageUrls = [
+                                            $waralaba->image_url_1,
+                                            $waralaba->image_url_2,
+                                            $waralaba->image_url_3,
+                                            $waralaba->image_url_4,
+                                            $waralaba->image_url_1,
+                                            $waralaba->image_url_2,
+                                            $waralaba->image_url_3,
+                                            $waralaba->image_url_4,
+                                
+                                        ];                                
+                                        $categoryChunks = array_chunk($imageUrls, 4);
+                                        ?>
                                         <?php $active = true; ?>
                                         @foreach ($categoryChunks as $chunk)
                                         <div class="carousel-item @if($active) active @endif">
@@ -591,12 +583,9 @@ document.getElementById('downloadLink').addEventListener('click', function(event
 
     var brochureLink = this.getAttribute('href');
 
-    // Membuka tab baru dengan link brosur
     var newTab = window.open(brochureLink, '_blank');
 
-    // Menunggu sebentar sebelum memicu unduhan
     setTimeout(function() {
-        // Memicu unduhan di tab baru
         newTab.location.href = brochureLink;
     }, 500);
 });

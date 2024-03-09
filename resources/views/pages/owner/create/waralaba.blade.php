@@ -2,7 +2,7 @@
     @push('addonStyle')
     <style>
         body {
-            background: #fbfbfb !important;
+            background: #EDF2F7 !important;
         }
 
         .artikel-card {
