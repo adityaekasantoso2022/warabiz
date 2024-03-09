@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ArtikelAdminController;
 use App\Http\Controllers\Admin\CareerAdminController;
 use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Admin\BantuanAdminController;
+use App\Http\Controllers\Admin\VerifOwnerAdminController;
 use App\Http\Controllers\Owner\OwnerController;
 use App\Http\Controllers\Owner\TransactionOwnerController;
 use App\Http\Controllers\Owner\WaralabaOwnerController;
@@ -86,13 +87,18 @@ Route::
                 Route::delete('/admin/waralaba/delete/{id}', [WaralabaAdminController::class, 'destroy'])->name('admin.waralaba.destroy');
                 Route::put('/admin/waralaba/{id}', [WaralabaAdminController::class, 'update'])->name('admin.waralaba.update');
 
+                // Admin CRUD Verif Owner
+                Route::get('/admin/verif-owner', [VerifOwnerAdminController::class, 'index'])->name('admin.verifowner');
+                Route::get('/admin/verifowner/{id}/edit', [VerifOwnerAdminController::class, 'edit'])->name('admin.verifOwner.edit');
+                Route::put('/admin/verifowner/{id}', [VerifOwnerAdminController::class, 'update'])->name('admin.verifOwner.update');
+                Route::delete('/admin/verifowner/{id}', [VerifOwnerAdminController::class, 'destroy'])->name('admin.verifOwner.destroy');
+
                 // Admin CRUD transaction
                 Route::get('/admin/transaksi', [TransactionAdminController::class, 'index'])->name('admin.transactions');
                 Route::get('/admin/invoice/{id}', [TransactionAdminController::class, 'show'])->name('admin.transactions.show');
                 Route::get('/admin/transaction/{id}/edit', [TransactionAdminController::class, 'edit'])->name('admin.transactions.edit');
                 Route::put('/admin/transactions/{id}', [TransactionAdminController::class, 'update'])->name('admin.transactions.update');
                 Route::delete('/admin/transactions/{id}', [TransactionAdminController::class, 'destroy'])->name('admin.transactions.destroy');
-                Route::post('/admin/transactions', [TransactionAdminController::class, 'store'])->name('admin.transactions.store');
 
                 // Admin CRUD Article
                 Route::get('/admin/artikel', [ArtikelAdminController::class, 'index'])->name('admin.artikel');

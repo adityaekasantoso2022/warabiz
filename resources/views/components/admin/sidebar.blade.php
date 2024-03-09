@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item {{ $active == 'verifowner' ? 'active' : '' }}">
-                    <a href="#" class="sidebar-link d-flex align-items-center">
+                    <a href="{{ route('admin.verifowner')}}" class="sidebar-link d-flex align-items-center">
                     <i class="fas fa-user-tie me-2"></i>
                         <span>Verifikasi Owner</span>
                     </a>

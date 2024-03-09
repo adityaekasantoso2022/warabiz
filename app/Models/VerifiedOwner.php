@@ -37,4 +37,25 @@ class VerifiedOwner extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getUuidAttribute()
+    {
+        return $this->attributes['id'];
+    }
+
+    public function getStatusTextAttribute()
+    {
+        switch ($this->attributes['status']) {
+            case 0:
+                return 'Pending';
+            case 1:
+                return 'Ditolak';
+            case 2:
+                return 'Diproses';
+            case 3:
+                return 'Diterima';
+            default:
+                return 'Error';
+        }
+    }
 }

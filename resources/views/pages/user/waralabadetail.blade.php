@@ -354,10 +354,9 @@
                                             alt="BuildWith Angga">
                                         <div class="d-flex flex-column">
                                             <h5 class="header-title mb-1">
-                                                Disini company_name dari VerifiedOwner
+                                                Company Franchise : {{ $companyName }}
                                             </h5>
-                                            <p>10 Waralaba (Jumlah waralaba milik owner)
-                                            </p>
+                                            <p>Total Waralaba yang Dibuat: {{ $totalWaralaba }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -493,8 +492,8 @@
                                             $waralaba->image_url_2,
                                             $waralaba->image_url_3,
                                             $waralaba->image_url_4,
-                                
-                                        ];                                
+
+                                        ];
                                         $categoryChunks = array_chunk($imageUrls, 4);
                                         ?>
                                         <?php $active = true; ?>

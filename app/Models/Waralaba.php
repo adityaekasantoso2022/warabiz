@@ -68,9 +68,9 @@ class Waralaba extends Model
     {
         return $this->belongsTo(User::class, 'created_by');
     }
-    
-    // public function home()
-    // {
-    //     return $this->hasMany(Home::class, 'category_id', 'id');
-    // }
+
+    public function verifiedOwner()
+    {
+        return $this->belongsTo(VerifiedOwner::class, 'created_by', 'user_id');
+    }
 }

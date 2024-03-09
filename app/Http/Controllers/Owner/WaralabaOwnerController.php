@@ -145,10 +145,11 @@ class WaralabaOwnerController extends Controller
             'concept' => 'required',
             'concept_size' => 'required',
         ]);
-    
+
         // Cari waralaba berdasarkan ID
         $waralaba = Waralaba::findOrFail($id);
-    
+        $user_id = Auth::id();
+
         // Gunakan 'image_url' daripada 'image' pada baris berikut
         $logo = $request->file('logo');
         $image1 = $request->file('image_url_1');
@@ -157,7 +158,7 @@ class WaralabaOwnerController extends Controller
         $image4 = $request->file('image_url_4');
         $image5 = $request->file('image_url_5');
         $brochure = $request->file('brochure_link');
-    
+
         // Periksa apakah file baru dipilih, jika tidak, gunakan file yang sudah ada
         $logoPath = $logo ? CloudinaryStorage::replace($waralaba->logo, $logo->getRealPath(), $logo->getClientOriginalName()) : $waralaba->logo;
         $image1Path = $image1 ? CloudinaryStorage::replace($waralaba->image_url_1, $image1->getRealPath(), $image1->getClientOriginalName()) : $waralaba->image_url_1;
@@ -166,7 +167,7 @@ class WaralabaOwnerController extends Controller
         $image4Path = $image4 ? CloudinaryStorage::replace($waralaba->image_url_4, $image4->getRealPath(), $image4->getClientOriginalName()) : $waralaba->image_url_4;
         $image5Path = $image5 ? CloudinaryStorage::replace($waralaba->image_url_5, $image5->getRealPath(), $image5->getClientOriginalName()) : $waralaba->image_url_5;
         $brochurePath = $brochure ? CloudinaryStorage::replace($waralaba->brochure_link, $brochure->getRealPath(), $brochure->getClientOriginalName()) : $waralaba->brochure_link;
-    
+
         // Update data waralaba berdasarkan data yang diterima
         $waralaba->update([
             'logo' => $logoPath,
@@ -189,35 +190,36 @@ class WaralabaOwnerController extends Controller
             'rating' => $request->input('rating'),
             'concept' => $request->input('concept'),
             'concept_size' => $request->input('concept_size'),
+            'updated_by'=> $user_id,
         ]);
-    
+
         return redirect()->route('owner.waralaba')->with('success', 'Waralaba berhasil diupdate.');
     }
         public function destroy($id)
-{
-    // Cari waralaba berdasarkan ID
-    $waralaba = Waralaba::findOrFail($id);
+    {
+        // Cari waralaba berdasarkan ID
+        $waralaba = Waralaba::findOrFail($id);
 
-    // Hapus transaksi terkait dengan waralaba
-    Transaction::where('waralaba_id', $id)->delete();
+        // Hapus transaksi terkait dengan waralaba
+        Transaction::where('waralaba_id', $id)->delete();
 
-    // Hapus logo dari Cloudinary
-    CloudinaryStorage::delete($waralaba->logo);
+        // Hapus logo dari Cloudinary
+        CloudinaryStorage::delete($waralaba->logo);
 
-    // Hapus gambar dari Cloudinary
-    CloudinaryStorage::delete($waralaba->image_url_1);
-    CloudinaryStorage::delete($waralaba->image_url_2);
-    CloudinaryStorage::delete($waralaba->image_url_3);
-    CloudinaryStorage::delete($waralaba->image_url_4);
-    CloudinaryStorage::delete($waralaba->image_url_5);
+        // Hapus gambar dari Cloudinary
+        CloudinaryStorage::delete($waralaba->image_url_1);
+        CloudinaryStorage::delete($waralaba->image_url_2);
+        CloudinaryStorage::delete($waralaba->image_url_3);
+        CloudinaryStorage::delete($waralaba->image_url_4);
+        CloudinaryStorage::delete($waralaba->image_url_5);
 
-    // Hapus brosur dari Cloudinary
-    CloudinaryStorage::delete($waralaba->brochure_link);
+        // Hapus brosur dari Cloudinary
+        CloudinaryStorage::delete($waralaba->brochure_link);
 
-    // Hapus data waralaba dari database
-    $waralaba->delete();
+        // Hapus data waralaba dari database
+        $waralaba->delete();
 
-    return redirect()->route('owner.waralaba')->with('success', 'Waralaba berhasil dihapus beserta transaksinya.');
-}
+        return redirect()->route('owner.waralaba')->with('success', 'Waralaba berhasil dihapus beserta transaksinya.');
+    }
 
 }

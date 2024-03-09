@@ -119,6 +119,7 @@ class WaralabaAdminController extends Controller
                 'rating' => $request->input('rating'),
                 'concept' => $request->input('concept'),
                 'concept_size' => $request->input('concept_size'),
+                'created_by' => 'admin',
             ]);
             return redirect()->route('admin.waralaba')->with('success', 'Waralaba berhasil dibuat.');
         }
@@ -151,6 +152,7 @@ class WaralabaAdminController extends Controller
             'rating' => 'required',
             'concept' => 'required',
             'concept_size' => 'required',
+            'updated_by' => 'admin',
         ]);
 
         // Cari waralaba berdasarkan ID
