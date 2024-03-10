@@ -53,6 +53,7 @@ Route::
 
                 Route::get('/home', 'HomeController@index')->name('home.index');
                 Route::get('/waralaba/{id}', [WaralabaController::class, 'show'])->name("waralaba");
+                Route::get('/waralaba/category/{category_id}', [WaralabaController::class, 'getByCategory'])->name("waralaba.category");
                 Route::get('/waralaba/{id}/checkout', [WaralabaController::class, 'checkout'])->name("checkout");
                 Route::get('/waralaba/{id}/checkout/submit', [WaralabaController::class, 'show3'])->name("payment");
                 Route::post('/waralaba/{id}/checkout/submit', [TransactionController::class, 'store']);

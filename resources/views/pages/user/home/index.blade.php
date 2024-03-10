@@ -489,44 +489,33 @@
                     <h5 class="card-title mb-3">Kategori Pilihan</h5>
                     <div id="carouselKategori" class="carousel slide">
                         <div class="carousel-inner">
-                            <?php
-                        // Ambil daftar kategori
-                        $categories = [
-                            "https://awsimages.detik.net.id/community/media/visual/2022/11/20/rijsttafel-indonesia-2.jpeg?w=600&q=90",
-                            "https://static.wixstatic.com/media/ca1ed0_59b08e5d927a4d77ba6494a265deb199~mv2.jpg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/ca1ed0_59b08e5d927a4d77ba6494a265deb199~mv2.jpg",
-                            "https://everpro.id/wp-content/uploads/2022/09/jnt-reg.jpg",
-                            "https://via.placeholder.com/150",
-                            "https://via.placeholder.com/150",
-                            "https://via.placeholder.com/150",
-                            "https://via.placeholder.com/150",
-                            "https://via.placeholder.com/150",
-                            "https://via.placeholder.com/150",
-                            "https://via.placeholder.com/150",
-                            "https://via.placeholder.com/150",
-                            "https://via.placeholder.com/150"
-                        ];
-
-                        // Memecah daftar kategori menjadi kelompok empat
-                        $categoryChunks = array_chunk($categories, 4);
-                        ?>
-                            <?php $active = true; ?>
                             @foreach ($categoryChunks as $chunk)
-                            <div class="carousel-item @if($active) active @endif">
-                                <div class="container">
-                                    <div class="row">
-                                        @foreach ($chunk as $category)
-                                        <div class="col">
-                                            <div class="category-item"
-                                                style="width: 100%; height: 100%; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
-                                                <img src="{{ $category }}" alt="Kategori"
-                                                    style="width: 100%; height: 100%; object-fit: cover;">
-                                            </div>
+                                <div class="carousel-item @if($active) active @endif">
+                                    <div class="container">
+                                        <div class="row">
+                                            @foreach ($chunk as $category)
+                                                @php
+                                                    // Misalnya $category adalah objek dari model Category
+                                                    // Sesuaikan dengan implementasi model Category yang Anda miliki
+                                                    $categoryId = $category->id;
+                                                    $categoryName = $category->category_name;
+                                                    // $categoryImage = $category->image_url; // Sesuaikan dengan nama kolom di tabel
+                                                @endphp
+
+                                                <div class="col">
+                                                    <a href="{{ route('waralaba.category', ['category_id' => $categoryId]) }}">
+                                                        <div class="category-item"
+                                                            style="width: 100%; height: 100%; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
+                                                            <img src="" alt="{{ $categoryName }}"
+                                                                style="width: 100%; height: 100%; object-fit: cover;">
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                        @endforeach
                                     </div>
                                 </div>
-                            </div>
-                            <?php    $active = false; ?>
+                                <?php $active = false; ?>
                             @endforeach
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselKategori"

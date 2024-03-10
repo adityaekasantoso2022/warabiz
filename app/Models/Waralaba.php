@@ -54,6 +54,12 @@ class Waralaba extends Model
         return $this->transactions()->count();
     }
 
+    public function sold_count()
+    {
+        // Implement the logic for calculating the sold count
+        return $this->soldCountColumn; // Adjust this line based on your actual column name
+    }
+
     protected static function booted()
     {
         parent::booted();
@@ -72,5 +78,10 @@ class Waralaba extends Model
     public function verifiedOwner()
     {
         return $this->belongsTo(VerifiedOwner::class, 'created_by', 'user_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }

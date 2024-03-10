@@ -6,13 +6,14 @@ use App\Models\Waralaba;
 use App\Models\VerifiedOwner;
 use App\Models\Transaction;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 
 class WaralabaController extends Controller
 {
     public function show($id)
     {
-        $waralaba = Waralaba::with('verifiedOwner')->find($id);
+        $waralaba = Waralaba::with(['verifiedOwner', 'category'])->find($id);
 
         if (!$waralaba) {
             return abort(404);
@@ -26,8 +27,11 @@ class WaralabaController extends Controller
             $join->on('waralabas.created_by', '=', DB::raw('CAST(verified_owner.user_id AS VARCHAR)'))
                 ->where('verified_owner.user_id', '=', $waralaba->verifiedOwner->user_id ?? null);
         })->count();
-        
-        return view('pages.user.waralabadetail', compact('waralaba', 'companyName', 'totalWaralaba'));
+
+        // Mendapatkan Nama Category dari Table Category
+        $categories = Category::pluck('category_name', 'id');
+
+        return view('pages.user.waralabadetail', compact('waralaba', 'companyName', 'totalWaralaba', 'categories'));
     }
 
     public function checkout($id)
@@ -55,5 +59,20 @@ class WaralabaController extends Controller
         $waralaba = $transaction->waralaba;
 
         return view('pages.user.home.submit', compact('waralaba', 'transaction'));
+    }
+
+    public function getByCategory($category_id)
+    {
+        // Assuming you have a Category model
+        $category = Category::find($category_id);
+
+        if (!$category) {
+            return abort(404, 'Category not found');
+        }
+
+        // Fetch Waralaba records for the specified category_id
+        $waralabas = Waralaba::where('category_id', $category_id)->get();
+
+        return view('pages.user.waralabacategory', compact('waralabas', 'category'));
     }
 }

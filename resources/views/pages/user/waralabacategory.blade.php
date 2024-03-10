@@ -362,7 +362,8 @@
     }
     </style>
     @endpush
-    <section class="hero text-center d-flex align-items-center justify-content-center ">
+
+    <section class="hero text-center d-flex align-items-center justify-content-center">
         <div class="content">
             <div class="line-text">
                 <p class="text-white">
@@ -370,7 +371,7 @@
                 </p>
             </div>
             <h1 class="text-white fw-bolder m-0 px-2 display-6">
-                Menampilkan waralaba yang cocok dalam bidang <br>Disini nama kategori
+                Menampilkan waralaba yang cocok dalam bidang <br>{{ $category->category_name }}
             </h1>
         </div>
     </section>
@@ -379,30 +380,34 @@
         <div class="container-scrollable">
             <div class="container">
                 <div class="row row-cols-1 row-cols-lg-5 g-4">
-                    <div class="col">
-                        <div class="card card-home">
-                            <div class="waralaba-responsive">
-                                <div class="cardwaralaba" id="card">
-                                    <img src="#" class="card-img-top" alt="Gambar">
+                    @foreach ($waralabas as $waralaba)
+                        <div class="col">
+                            <a href="{{ route('waralaba', ['id' => $waralaba->id]) }}" class="card-link">
+                                <div class="card card-home">
+                                    <div class="waralaba-responsive">
+                                        <div class="cardwaralaba" id="card">
+                                            <img src="{{ $waralaba->image_url }}" class="card-img-top" alt="Gambar">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-3 align-items-center">
+                                        <img class="small-circle-img" src="{{ $waralaba->logo }}" alt="Waralaba Image">
+                                        <div class="d-flex flex-column">
+                                            <h6 class="waralaba-name"><b>{{ $waralaba->waralaba_name }}</b></h6>
+                                            <p>{{ $waralaba->concept }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="waralaba-price">Rp. {{ number_format($waralaba->price, 0, ',', '.') }}</div>
+                                    </div>
+                                    <div class="waralaba-footer mt-auto">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="sold-count">{{ $waralaba->sold_count() }} Terjual</div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="d-flex gap-3 align-items-center">
-                                <img class="small-circle-img" src="#" alt="Waralaba Image">
-                                <div class="d-flex flex-column">
-                                    <h6 class="waralaba-name"><b>nama waralaba</b></h6>
-                                    <p>konsep</p>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="waralaba-price">Rp. 10000</div>
-                            </div>
-                            <div class="waralaba-footer mt-auto">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="sold-count">10 Terjual</div>
-                                </div>
-                            </div>
+                            </a>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

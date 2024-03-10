@@ -108,7 +108,7 @@
                                 $creatorName = null;
                                 }
                                 @endphp
-                            
+
                                 @if ($creatorName)
                                 <p>{{ $creatorName }}</p>
                                 @else
@@ -140,7 +140,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Konsep Bisnis</h5>
                             <div class="info-item">
-                                <label>Konsep Waralana</label>
+                                <label>Konsep Waralaba</label>
                                 <p>{{ $waralaba->concept }}</p>
                             </div>
                             <div class="info-item">

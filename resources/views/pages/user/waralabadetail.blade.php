@@ -370,8 +370,19 @@
                                 <div class="item">
                                     <p>
                                         {{ $waralaba->description }}
-
                                     </p>
+                                </div>
+                                <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
+                                    <div class="d-flex gap-3 align-items-center">
+                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
+                                            alt="BuildWith Angga">
+                                        <div class="d-flex flex-column">
+                                            <h5 class="header-title mb-1">
+                                                Kategori Waralaba
+                                            </h5>
+                                                <p class="form-control-static">{{ $waralaba->category->category_name }}</p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                     <div class="d-flex gap-3 align-items-center">
