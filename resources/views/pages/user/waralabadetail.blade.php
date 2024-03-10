@@ -354,9 +354,9 @@
                                             alt="BuildWith Angga">
                                         <div class="d-flex flex-column">
                                             <h5 class="header-title mb-1">
-                                                Company Franchise : {{ $companyName }}
+                                                {{ $companyName }}
                                             </h5>
-                                            <p>Total Waralaba yang Dibuat: {{ $totalWaralaba }}</p>
+                                            <p>{{ $totalWaralaba }} Waralaba</p>
                                         </div>
                                     </div>
                                 </div>

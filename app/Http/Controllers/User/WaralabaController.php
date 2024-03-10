@@ -19,14 +19,14 @@ class WaralabaController extends Controller
         }
 
         // Mendapatkan company_name dari tabel verified_owner
-        $companyName = $waralaba->verifiedOwner->company_name;
+        $companyName = $waralaba->verifiedOwner->company_name ?? "Admin Warabiz";
 
         // Menghitung jumlah waralaba yang telah dibuat oleh owner berdasarkan user_id
         $totalWaralaba = Waralaba::join('verified_owner', function ($join) use ($waralaba) {
             $join->on('waralabas.created_by', '=', DB::raw('CAST(verified_owner.user_id AS VARCHAR)'))
-                ->where('verified_owner.user_id', '=', $waralaba->verifiedOwner->user_id);
+                ->where('verified_owner.user_id', '=', $waralaba->verifiedOwner->user_id ?? null);
         })->count();
-
+        
         return view('pages.user.waralabadetail', compact('waralaba', 'companyName', 'totalWaralaba'));
     }
 

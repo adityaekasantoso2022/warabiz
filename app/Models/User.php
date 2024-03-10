@@ -48,6 +48,6 @@ class User extends Authenticatable
 
     public function verifiedOwners(): HasMany
     {
-        return $this->hasMany(Faq::class);
+        return $this->hasMany(VerifiedOwner::class); 
     }
 }

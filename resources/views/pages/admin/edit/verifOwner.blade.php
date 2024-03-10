@@ -1,45 +1,42 @@
 <x-admin-layout title="Edit Verifikasi Owner" active="verifowner">
     @push('addonStyle')
-    <!-- Masukkan gaya tambahan di sini -->
     <style>
-        /* Tambahkan gaya tambahan di sini */
+    .card {
+        margin-bottom: 20px;
+    }
 
-        .card {
-            margin-bottom: 20px;
-        }
+    .card-body {
+        padding: 20px;
+    }
 
-        .card-body {
-            padding: 20px;
-        }
+    .card-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
 
-        .card-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+    .info-item {
+        margin-bottom: 10px;
+    }
 
-        .info-item {
-            margin-bottom: 10px;
-        }
+    .info-item label {
+        font-weight: bold;
+    }
 
-        .info-item label {
-            font-weight: bold;
-        }
+    .waralaba-img {
+        width: 250px;
+        height: 150px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
 
-        .waralaba-img {
-            width: 250px;
-            height: 150px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-
-        .waralaba-thumbnail {
-            width: 100px;
-            height: 100px;
-            max-width: 100px;
-            /* Sesuaikan lebar maksimum gambar thumbnail */
-            border-radius: 4px;
-        }
+    .waralaba-thumbnail {
+        width: 100px;
+        height: 100px;
+        max-width: 100px;
+        /* Sesuaikan lebar maksimum gambar thumbnail */
+        border-radius: 4px;
+    }
     </style>
     @endpush
 
@@ -65,6 +62,17 @@
                             <div class="info-item">
                                 <label>Nomor Telepon</label>
                                 <p>{{ $verifOwner->phone_number }}</p>
+                            </div>
+                            <div class="info-item">
+                                <label>Foto KTP</label>
+                                <?php
+                                $file_extension = pathinfo($verifOwner->ktp_upload, PATHINFO_EXTENSION);
+                                if (in_array($file_extension, ['jpg', 'jpeg', 'png', 'gif', 'bmp'])) {
+                                    echo '<img src="' . $verifOwner->ktp_upload . '" alt="Gambar KTP" style="max-width:400px; max-height: auto; display: block; margin: auto;">';
+                                } else {
+                                    echo '<a href="' . $verifOwner->ktp_upload . '">Download Gambar KTP</a>';
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -113,14 +121,11 @@
                                 <div class="mb-3">
                                     <label for="status" class="form-label">Status</label>
                                     <select class="form-control" id="status" name="status">
-                                        <option value=0 {{ $verifOwner->status == 0 ? 'selected' : '' }}>
-                                            Error
-                                        </option>
                                         <option value=1 {{ $verifOwner->status == 1 ? 'selected' : '' }}>
                                             Ditolak
                                         </option>
                                         <option value=2 {{ $verifOwner->status == 2 ? 'selected' : '' }}>
-                                            Diproses
+                                            Pending
                                         </option>
                                         <option value=3 {{ $verifOwner->status == 3 ? 'selected' : '' }}>
                                             Diterima

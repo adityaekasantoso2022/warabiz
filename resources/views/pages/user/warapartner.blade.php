@@ -137,6 +137,12 @@
         font-size: 40px;
         margin-bottom: 15px;
     }
+    .succes-icon {
+        color: #01A8B8;
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+
 
     .border {
         border: 1px solid #ccc;
@@ -177,7 +183,23 @@
             </div>
         </div>
     </div>
+    @elseif (optional($verifiedOwner)->status === 3)
+    <div class="container" style="margin-top: 190px;margin-bottom: 160px;">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card text-center border rounded-10 p-4">
+                <div class="card-body">
+                    <i class="fas fa-check-circle fa-5x success-icon succes-icon"></i>
+                    <h5 class="card-title"><b>Pengajuan Warapartner Diterima</b></h5>
+                    <p class="card-text">Selamat pengajuan akun Owner anda diterima, <br>tingkatkan penjualan waralabamu bersama Warabiz</p>
+                    <a href="{{ route('owner.dashboard') }}" class="btn btn-primary" style="background-color: #01A8B8; margin-top: 3rem; border: none;">Ke Halaman Owner</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     @else
+    
     <section class="py-3"
         style="background-image: url('{{ asset('assets/frontend/image/bg/bg-warapartner.svg') }}'); background-size: 100% auto; background-position: center; background-repeat: no-repeat;">
         <div class="warapartner-card">
