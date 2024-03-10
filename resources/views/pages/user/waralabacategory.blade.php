@@ -1,4 +1,4 @@
-<x-user-layout title="Warabiz-Detail Category" active="home">
+<x-user-layout title="Warabiz-Home" active="home">
     @push('addonStyle')
     <style>
     body {
@@ -70,6 +70,54 @@
         margin-bottom: 10px;
         border: none;
         border-top: 1px solid #A4A4A4;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .banner-container {
+            height: 150px;
+            top: 50px;
+        }
+
+        .card-container {
+            height: auto;
+            top: -10px;
+        }
+
+        .search-column {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .search-box,
+        .search-waralaba {
+            padding: 8px;
+            height: 35px;
+        }
+
+        .card-container h3 {
+            font-size: 16px;
+        }
+
+        .search-label {
+            font-size: 14px;
+        }
+    }
+
+    .card {
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .cardwaralaba .card-img-top {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
     }
 
     .card-body {
