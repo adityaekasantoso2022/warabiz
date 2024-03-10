@@ -8,8 +8,8 @@
     @endpush
 
     <?php
-$totalPendapatanValue = $totalPendapatan->total_pendapatan ?? 0;
-$transaksiTerbaruValue = $transaksiTerbaru->harga_waralaba ?? 0;
+    $totalPendapatanValue = $totalPendapatan->total_pendapatan ?? 0;
+    $transaksiTerbaruValue = $transaksiTerbaru->harga_waralaba ?? 0;
     ?>
 
     <div class="page-heading"></div>
@@ -109,10 +109,8 @@ $transaksiTerbaruValue = $transaksiTerbaru->harga_waralaba ?? 0;
                         <div class="d-flex align-items-center">
                             <div class="ms-3 name">
                                 <h6 class="text-muted font-semibold">Total Pendapatan Anda</h6>
-                                <h5 class="font-extrabold">Rp. {{ number_format($totalPendapatanValue, 0, ',', '.')}}
-                                </h5>
-                                <small class="font-bold" style="color: green;">+ Rp. {{
-                                    number_format($transaksiTerbaruValue, 0, ',', '.')}}</small>
+                                <h5 class="font-extrabold">Rp. {{ number_format($totalPendapatanValue, 0, ',', '.')}}</h5>
+                                <small class="font-bold" style="color: green;">+ Rp. {{ number_format($transaksiTerbaruValue, 0, ',', '.')}}</small>
                             </div>
                         </div>
                     </div>
@@ -124,84 +122,81 @@ $transaksiTerbaruValue = $transaksiTerbaru->harga_waralaba ?? 0;
                     </div>
                     <div class="card-content pb-4">
                         @if($transactions->isEmpty())
-                        <div class="recent-message d-flex px-4 py-3 justify-content-center">
-                            <p>Belum ada transaksi</p>
-                        </div>
+                            <div class="recent-message d-flex px-4 py-3 justify-content-center">
+                                <p>Belum ada transaksi</p>
+                            </div>
                         @else
-                        @foreach($transactions->sortByDesc('created_at')->take(5) as $transaction)
-                        <div class="recent-message d-flex px-4 py-3">
-                            <div class="avatar avatar-lg">
-                                <div class="avatar bg-warning">
-                                    <span class="avatar-content">{{ strtoupper(substr($transaction->user->name, 0, 2))
-                                        }}</span>
-                                    <span
-                                        class="avatar-status {{ $transaction->status === null ? 'bg-danger' : 'bg-success' }}"></span>
+                            @foreach($transactions->sortByDesc('created_at')->take(5) as $transaction)
+                                <div class="recent-message d-flex px-4 py-3">
+                                    <div class="avatar avatar-lg">
+                                        <div class="avatar bg-warning">
+                                            <span class="avatar-content">{{ strtoupper(substr($transaction->user->name, 0, 2)) }}</span>
+                                            <span class="avatar-status {{ $transaction->status === null ? 'bg-danger' : 'bg-success' }}"></span>
+                                        </div>
+                                    </div>
+                                    <div class="name ms-4">
+                                        <b>TRX-{{ strtoupper(substr($transaction->uuid, 2, 6)) }}</b>
+                                        <p class="text-muted mb-0">{{ $transaction->created_at->format('d/m/Y H:i') }} WIB</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="name ms-4">
-                                <b>TRX-{{ strtoupper(substr($transaction->uuid, 2, 6)) }}</b>
-                                <p class="text-muted mb-0">{{ $transaction->created_at->format('d/m/Y H:i') }} WIB</p>
-                            </div>
-                        </div>
-                        <div class="px-4">
-                            <a href="{{ route('owner.transactions') }}"
-                                class="btn btn-block btn-xl btn-light-primary font-bold mt-4">Lainnya</a>
-                        </div>
-
-                        @endforeach
+                            @endforeach
+                            @if($transactions->count() > 4)
+                                <div class="px-4">
+                                    <a href="{{ route('owner.transactions') }}" class="btn btn-block btn-xl btn-light-primary font-bold mt-4">Lainnya</a>
+                                </div>
+                            @endif
                         @endif
                     </div>
                 </div>
             </div>
         </section>
     </div>
+
     @push('addonScript')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-    <script>
-        const transactions = {!! json_encode($transactions)!!};
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+        <script>
+            const transactions = {!! json_encode($transactions) !!};
 
-        const transactionDates = transactions.map(transaction => new Date(transaction.created_at).toLocaleDateString());
-        const dailyTransactionCounts = {};
+            const transactionDates = transactions.map(transaction => new Date(transaction.created_at).toLocaleDateString());
+            const dailyTransactionCounts = {};
 
-        transactionDates.forEach(date => {
-            dailyTransactionCounts[date] = (dailyTransactionCounts[date] || 0) + 1;
-        });
+            transactionDates.forEach(date => {
+                dailyTransactionCounts[date] = (dailyTransactionCounts[date] || 0) + 1;
+            });
 
-        const dailySalesData = {
-            labels: Object.keys(dailyTransactionCounts),
-            datasets: [{
-                label: 'Jumlah Penjualan Waralaba',
-                data: Object.values(dailyTransactionCounts).map(count => Math.floor(count)), // Menggunakan Math.floor() untuk membulatkan ke bawah
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            }]
-        };
+            const dailySalesData = {
+                labels: Object.keys(dailyTransactionCounts),
+                datasets: [{
+                    label: 'Jumlah Penjualan Waralaba',
+                    data: Object.values(dailyTransactionCounts).map(count => Math.floor(count)), // Menggunakan Math.floor() untuk membulatkan ke bawah
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            };
 
-        const dailySalesConfig = {
-            type: 'bar',
-            data: dailySalesData,
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Jumlah Transaksi'
-                        }
-                    },
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Tanggal Transaksi'
+            const dailySalesConfig = {
+                type: 'bar',
+                data: dailySalesData,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Jumlah Transaksi'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Tanggal Transaksi'
+                            }
                         }
                     }
                 }
-            }
-        };
-        var dailySalesChart = new Chart(document.getElementById('dailySalesChart'), dailySalesConfig);
-    </script>
+            };
+            var dailySalesChart = new Chart(document.getElementById('dailySalesChart'), dailySalesConfig);
+        </script>
     @endpush
-
-
 </x-owner-layout>

@@ -147,16 +147,16 @@
                             <h5 class="card-title">Update Status</h5>
                             <div class="info-item">
                                 <label>Nama Owner</label>
-                                <p>{{ $transaction->created_at->setTimezone('Asia/Jakarta')->format('d/m/Y H:i') }} WIB
+                                <p>nama owner get dari verified_owner
                                 </p>
                             </div>
                             <div class="info-item">
                                 <label>Pengiriman Pembayaran</label>
-                                <p>{{ $transaction->payment_method }}</p>
+                                <p>rekening bank get dari verified_owner</p>
                             </div>
                             <div class="info-item">
                                 <label>Nomer</label>
-                                <p>Rp. {{ number_format($transaction->total_payment, 0, ',', '.') }}</p>
+                                <p>nomer rekening bank get dari verified_owner</p>
                             </div>
                             <form action="{{ route('admin.transactions.update', $transaction->uuid) }}" method="POST">
                                 @csrf
