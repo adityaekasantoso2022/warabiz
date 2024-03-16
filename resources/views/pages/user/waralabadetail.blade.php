@@ -2,7 +2,7 @@
     @push('addonStyle')
     <style>
     body {
-        background: #fafafa !important;
+        background: #fcfcfc !important;
     }
 
     .navbar .navbar-nav a:hover.btn-signup {
@@ -310,7 +310,7 @@
     }
     </style>
     @endpush
-    <section class="py-5" style="margin-top: 10px">
+    <section class="py-3" style="margin-top: 20px">
         <div class="container">
             <div class="mt-5 row pricing testimonials mentors checkout gy-4" id="reviews">
                 <div class="col-lg-4 col-md-5 col-12 p-md-0 offset-lg-1">
@@ -380,7 +380,7 @@
                                             <h5 class="header-title mb-1">
                                                 Kategori Waralaba
                                             </h5>
-                                                <p class="form-control-static">{{ $waralaba->category->category_name }}</p>
+                                            <p class="form-control-static">{{ $waralaba->category->category_name }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -551,7 +551,13 @@
                             </div>
                             <div class="item">
                                 <p class="title">Durasi Lisensi (Tahun)</p>
-                                <p class="value">{{($waralaba->license_duration) }} </p>
+                                <p class="value">
+                                    @if ($waralaba->license_duration == 0)
+                                    Tidak ada lisensi
+                                    @else
+                                    {{ $waralaba->license_duration }}
+                                    @endif
+                                </p>
                             </div>
                             <div class="item">
                                 <p class="title">Income</p>
@@ -559,9 +565,14 @@
                             </div>
                             <div class="item">
                                 <p class="title">Royalty Fee</p>
-                                <p class="value"> Rp. {{ number_format($waralaba->royality, 0, ',', '.') }} </p>
+                                <p class="value">
+                                    @if ($waralaba->royality == 0)
+                                    Tidak ada royalty
+                                    @else
+                                    Rp. {{ number_format($waralaba->royality, 0, ',', '.') }}
+                                    @endif
+                                </p>
                             </div>
-
                             <a href="{{ route('checkout', ['id' => $waralaba->id]) }}"
                                 class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3">
                                 Beli Sekarang

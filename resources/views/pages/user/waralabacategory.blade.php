@@ -381,32 +381,49 @@
             <div class="container">
                 <div class="row row-cols-1 row-cols-lg-5 g-4">
                     @foreach ($waralabas as $waralaba)
-                        <div class="col">
-                            <a href="{{ route('waralaba', ['id' => $waralaba->id]) }}" class="card-link">
-                                <div class="card card-home">
-                                    <div class="waralaba-responsive">
-                                        <div class="cardwaralaba" id="card">
-                                            <img src="{{ $waralaba->image_url }}" class="card-img-top" alt="Gambar">
-                                        </div>
+                    <div class="col">
+                        <a href="{{ route('waralaba', $waralaba->id) }}" class="text-decoration-none">
+                            <div class="card card-home">
+                                <div class="waralaba-responsive">
+                                    @if ($waralaba->soldCount() > 3)
+                                    <div class="badge-container">
+                                        <div class="badge bg-success">Terlaris</div>
                                     </div>
-                                    <div class="d-flex gap-3 align-items-center">
-                                        <img class="small-circle-img" src="{{ $waralaba->logo }}" alt="Waralaba Image">
-                                        <div class="d-flex flex-column">
-                                            <h6 class="waralaba-name"><b>{{ $waralaba->waralaba_name }}</b></h6>
-                                            <p>{{ $waralaba->concept }}</p>
-                                        </div>
+                                    @endif
+                                    <div class="cardwaralaba" id="card">
+                                        <img src="{{ $waralaba->image_url_1 }}" class="card-img-top"
+                                            alt="Gambar {{ $waralaba->waralaba_name }}">
                                     </div>
+                                </div>
+                                <div class="d-flex gap-3 align-items-center">
+                                    <img class="small-circle-img" src="{{ $waralaba->logo }}" alt="Waralaba Image">
+                                    <div class="d-flex flex-column">
+                                        <h6 class="waralaba-name"><b>{{ substr($waralaba->waralaba_name, 0, 19) }}</b>
+                                        </h6>
+                                        <p>{{ $waralaba->concept }}</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="waralaba-price">
+                                        Rp. {{ number_format(floatval($waralaba->price), 0, ',', '.') }}
+                                    </div>
+                                </div>
+                                <div class="waralaba-footer mt-auto">
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <div class="waralaba-price">Rp. {{ number_format($waralaba->price, 0, ',', '.') }}</div>
-                                    </div>
-                                    <div class="waralaba-footer mt-auto">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="sold-count">{{ $waralaba->sold_count() }} Terjual</div>
+                                        <div class="star-rating">
+                                            @for ($i = 0; $i < $waralaba->rating; $i++)
+                                                <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
+                                                    alt="ic_star">
+                                                @endfor
+                                        </div>
+                                        <div class="sold-count">
+                                            {{ $waralaba->soldCount() }} Terjual
                                         </div>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
+                            </div>
+                        </a>
+                    </div>
                     @endforeach
                 </div>
             </div>

@@ -244,42 +244,26 @@
 
     .form-control {
         border-radius: 8px;
-        /* Atur sudut bulat */
         border: 2px solid #CED4DA;
-        /* Warna border abu-abu dan ketebalan 8px */
         padding: 10px 15px;
-        /* Atur padding sesuai kebutuhan Anda */
         font-size: 16px;
-        /* Atur ukuran font sesuai kebutuhan Anda */
         line-height: 1.5;
-        /* Sesuaikan dengan kebutuhan Anda */
         color: #495057;
-        /* Warna teks */
         background-color: #FFFFFF;
-        /* Warna latar belakang */
         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         width: 100%;
-        /* Menyesuaikan lebar form-control dengan parentnya */
     }
 
-    /* Style saat form-control mendapat fokus */
     .form-control:focus {
         border-color: #4F94D7;
-        /* Ganti warna border saat mendapat fokus */
         outline: 0;
-        /* Hapus outline */
         box-shadow: 0 0 0 0.25rem rgba(79, 148, 215, 0.25);
-        /* Efek shadow saat mendapat fokus */
     }
 
-    /* Gaya label */
     .form-label {
         display: block;
-        /* Menjadikan label sebagai block element */
         margin-bottom: 5px;
-        /* Memberikan margin bawah agar tidak rapat dengan input */
         font-weight: bold;
-        /* Memberikan ketebalan pada teks label */
     }
 
     .custom-payment-info {
@@ -317,7 +301,6 @@
     .modal-body {
         padding: 2rem;
         background-color: #ffffff;
-        /* Ganti latar belakang menjadi putih */
     }
 
     .invoice-box img {
@@ -326,14 +309,12 @@
         margin-bottom: 1rem;
     }
 
-    /* Tambahkan media queries untuk responsivitas */
     @media (max-width: 576px) {
         .modal-dialog {
             max-width: 100%;
         }
     }
 
-    /* Gaya CSS untuk checkbox dan pernyataan */
     .custom-checkbox {
         display: inline-block;
         vertical-align: middle;
@@ -349,69 +330,49 @@
         display: inline-block;
         width: 20px;
         height: 20px;
-
-        /* Sesuaikan ukuran kotak centang dengan kebutuhan Anda */
         background-color: #fff;
         border: 1px solid #ccc;
     }
 
-    /* Gaya CSS untuk kotak centang saat tercentang */
     .custom-checkbox input[type="checkbox"]:checked+.checkmark {
         background-color: #429488;
-        /* Warna latar belakang saat tercentang */
         border-color: #429488;
-        /* Warna border saat tercentang */
     }
 
-    /* Gaya CSS untuk tanda centang */
     .checkmark:after {
         content: "";
         position: absolute;
         display: none;
     }
 
-    /* Gaya CSS untuk tanda centang saat tercentang */
     .custom-checkbox input[type="checkbox"]:checked+.checkmark:after {
         display: block;
     }
 
-    /* Gaya CSS untuk tanda centang */
     .checkmark:after {
         left: 7px;
-        /* Sesuaikan posisi tanda centang dengan kebutuhan Anda */
         top: 3px;
-        /* Sesuaikan posisi tanda centang dengan kebutuhan Anda */
         width: 5px;
-        /* Sesuaikan ukuran tanda centang dengan kebutuhan Anda */
         height: 10px;
-        /* Sesuaikan ukuran tanda centang dengan kebutuhan Anda */
         border: solid #fff;
         border-width: 0 2px 2px 0;
         transform: rotate(45deg);
     }
 
-    /* Gaya CSS untuk pernyataan */
     .statement {
         display: inline-block;
         vertical-align: middle;
         margin-left: 10px;
-        /* Sesuaikan margin kiri dengan kebutuhan Anda */
         font-size: 16px;
-        /* Sesuaikan ukuran teks dengan kebutuhan Anda */
     }
 
 
     .small-circle-img {
         width: 50px;
-        /* Sesuaikan lebar lingkaran sesuai kebutuhan */
         height: 50px;
-        /* Sesuaikan tinggi lingkaran sesuai kebutuhan */
         object-fit: contain;
-        /* Membuat gambar tetap proporsional dan terlihat sepenuhnya di dalam lingkaran */
         border-radius: 50%;
-        /* Membuat gambar menjadi lingkaran */
         overflow: hidden;
-        /* Menghilangkan bagian gambar yang keluar dari lingkaran */
     }
 
     .form-check-input {
@@ -452,7 +413,7 @@
                             <div class="custom-payment-info">
                                 <h5><i class="fas fa-info-circle"></i></h5>
                                 <p>
-                                    Lakukan pembayaran sesuai nominal yang tertera</b>
+                                    Lakukan pembayaran sejumlah </b>
                                 </p>
                             </div>
                             <h5 class="header-title mb-0">
@@ -544,10 +505,8 @@
                             }
 
                             function copyAccountNumber(button) {
-                                // Dapatkan nomor rekening terkait dengan tombol yang diklik
                                 var accountNumber = button.parentElement.querySelector('.account-number').innerText;
 
-                                // Copy nomor rekening ke clipboard
                                 navigator.clipboard.writeText(accountNumber).then(function() {
                                     console.log('Nomor rekening berhasil disalin: ' + accountNumber);
                                     alert('Nomor rekening berhasil disalin: ' + accountNumber);
@@ -573,10 +532,8 @@
                             $waralabaPrice = floatval($waralaba->price);
                             $biayaLayanan = 100000;
 
-                            // Generate a 3-digit unique code
                             $uniqueCode = mt_rand(100, 999);
 
-                            // Calculate the total transfer amount
                             $totalTransfer = number_format($waralabaPrice + $biayaLayanan + $uniqueCode, 0, ',', '.');
                             @endphp
                             <div class="tab-content" id="pills-tabContent">
@@ -592,21 +549,21 @@
 
                                 <div class="item">
                                     <p class="title">
-                                        Kode Unik
+                                        Biaya layanan
                                     </p>
-                                    <p class="value" id="uniqueCode">
-                                        {{ $uniqueCode }}
+                                    <p class="value text-green feeMidtransItem0">
+                                        + Rp. {{ number_format($biayaLayanan, 0, ',', '.') }}
+
                                     </p>
                                     <div class="clear"></div>
                                 </div>
 
                                 <div class="item">
                                     <p class="title">
-                                        Biaya layanan
+                                        Kode Unik
                                     </p>
-                                    <p class="value text-green feeMidtransItem0">
-                                        + Rp. {{ number_format($biayaLayanan, 0, ',', '.') }}
-
+                                    <p class="value" id="uniqueCode">
+                                        {{ $uniqueCode }}
                                     </p>
                                     <div class="clear"></div>
                                 </div>
@@ -626,7 +583,7 @@
                 </div>
                 <div class="col-lg-7 col-md-6 col-12">
                     <div class="course-card">
-                        <h5 class="header-title mb-0">
+                        <h5 class="header-title mb-0" style="color: black;">
                             <b>Informasi Pembelian</b>
                         </h5>
                         <form id="myForm" action="{{ route('transaction') }}" method="POST"
@@ -681,11 +638,10 @@
                                     Banyumas, Jawa Tengah</p>
                             </div>
                             <br>
-                            <h5 class="header-title mb-4">
+                            <h5 class="header-title mb-4" style="color: black;">
                                 <b>Informasi Pembayaran</b>
                             </h5>
 
-                            <!-- Input untuk metode pembayaran -->
                             <div class="form-group">
                                 <label for="payment_method" class="form-label fw-bold">
                                     <p>Pilih Metode Pembayaran <span style="color: red;">*</span></p>
@@ -698,10 +654,9 @@
                                     <option value="BRI">Bank BRI</option>
                                     <option value="Mandiri">Bank Mandiri</option>
                                 </select>
-                                <p class="text-sm text-secondary mt-2">Pilih metode pembayaran anda</p>
+                                <p class="text-sm text-secondary mt-2">Pilih metode pembayaran</p>
                             </div>
                             <br>
-                            <!-- Input untuk bukti pembayaran -->
                             <div class="form-group">
                                 <label for="payment_proof" class="form-label fw-bold">
                                     <p>Bukti Pembayaran <span style="color: red;">*</span></p>
@@ -711,8 +666,6 @@
                                     required>
                                 <p class="text-sm text-secondary mt-2">Unggah bukti pembayaran Anda di sini</p>
                             </div>
-
-                            <!-- Input tersembunyi untuk user_id, waralaba_id dan waralaba_name -->
                             <input type="hidden" name="waralaba_id" value="{{ $waralaba->id }}">
                             <input type="hidden" name="waralaba_name" value="{{ $waralaba->waralaba_name }}">
                             <input type="hidden" name="user_id" value="{{ auth()->id() }}">
@@ -727,7 +680,6 @@
                                 </label>
                             </div>
 
-                            <!-- Submit button -->
                             <button type="submit" class="mt-4 mb-2 btn bgTheme w-100 text-white border-12 py-3"
                                 id="submitButton" disabled>Kirim</button>
 
@@ -760,18 +712,15 @@
     </section>
     <script>
     getElement.addEventListener("submit", function(event))
-    event.preventDefault(); // Menghentikan pengiriman formulir langsung
+    event.preventDefault();
 
-    // Menampilkan popup pesanan sedang diproses
     $('#processingPopup').modal('show');
 
-    // Lakukan pengiriman formulir menggunakan AJAX
     var formData = new FormData(this);
     var xhr = new XMLHttpRequest();
     xhr.open("POST", this.action, true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            // Jika pengiriman berhasil, redirect ke halaman lain
             window.location.href = "{{ route('sukses') }}";
         }
     };
@@ -792,22 +741,12 @@
                 <div class="container">
                     <div class="row mb-4">
                         <div class="col-lg-8 col-12">
-                            <img src="{{ asset('assets/frontend/image/logo.svg') }}" class="mb-4" height="50">
-                            <h3 class="mb-0">Tagihan Pembayaran</h3>
-                        </div>
-                    </div>
-                    <hr class="mb-4">
-                    <div class="row mb-4">
-                        <div class="col-lg-6 col-12">
-                            <p class="mb-0">
-                                <strong>PT. Warabisnis Technology</strong>
-                            </p>
-                            <p class="mb-0">
-                                Banyumas, Jawa Tengah, Indonesia
-                            </p>
-                            <p class="mb-0">
-                                (081) 572663773
-                            </p>
+                            <h5>
+                                <strong style="color: black;">Tagihan Pembayaran</strong>
+                            </h5>
+                            <p>
+                                Berikut adalah tagihan pembayaran Anda.<br>Silakan melakukan pembayaran sesuai dengan
+                                nominal yang tertera.</p>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -823,7 +762,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">1</th>
+                                        <td scope="row">1</td>
                                         <td width="45%">{{ $waralaba->waralaba_name }}</td>
                                         <td>
                                             Rp. {{ number_format($waralaba->price, 0, ',', '.') }}
@@ -838,7 +777,7 @@
                             </div>
                             <div class="d-flex justify-content-between">
                                 <span></span>
-                                <span>Kode Unik : ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ {{ $uniqueCode }}</span>
+                                <span>Kode Unik : ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ {{ $uniqueCode }}</span>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <span></span>
@@ -851,10 +790,9 @@
                     <div class="row mt-3">
                         <div class="col-lg-12 col-12">
                             <div class="payment-instructions">
-                                <p class="mb-2">
-                                    <strong>Petunjuk Pembayaran Waralaba di Warabiz</strong>
-                                </p>
-
+                                <h6 class="mb-2">
+                                    <strong style="color: black;">Petunjuk Pembayaran Waralaba di Warabiz</strong>
+                                </h6>
                                 <ol>
                                     <li>
                                         <p>Pastikan Anda telah meninjau semua informasi waralaba yang tersedia di

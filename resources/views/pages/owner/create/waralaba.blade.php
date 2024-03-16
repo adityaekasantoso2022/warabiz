@@ -1,36 +1,36 @@
 <x-owner-layout title="Tambah Waralaba" active="waralaba" style="margin-top: 0;">
     @push('addonStyle')
     <style>
-        body {
-            background: #EDF2F7 !important;
-        }
+    body {
+        background: #EDF2F7 !important;
+    }
 
-        .artikel-card {
-            background: #fff;
-            border-radius: 14px;
-            color: #34364a;
-            padding: 30px;
-            overflow-x: auto;
-            overflow-y: auto;
-        }
+    .artikel-card {
+        background: #fff;
+        border-radius: 14px;
+        color: #34364a;
+        padding: 30px;
+        overflow-x: auto;
+        overflow-y: auto;
+    }
 
-        .article-form {
-            margin-top: 20px;
-        }
+    .article-form {
+        margin-top: 20px;
+    }
 
-        .article-form label {
-            margin-bottom: 5px;
-        }
+    .article-form label {
+        margin-bottom: 5px;
+    }
 
-        .article-form button {
-            margin-top: 15px;
-        }
-        .required::after {
-            content:  "*";
-            color: red;
-            margin-left: 5px;
-        }
+    .article-form button {
+        margin-top: 15px;
+    }
 
+    .required::after {
+        content: "*";
+        color: red;
+        margin-left: 5px;
+    }
     </style>
     @endpush
 
@@ -40,7 +40,7 @@
                 <h3>Tambah Waralaba</h3>
                 <form method="POST" action="{{ route('owner.waralaba.store') }}" enctype="multipart/form-data">
                     @csrf
-                    <div class="row">
+                    <div class="row mt-4">
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="waralaba_name" class="form-label required">Nama Waralaba</label>
@@ -60,12 +60,12 @@
                                     <option value=10102>Pendidikan</option>
                                     <option value=10103>Ritel</option>
                                     <option value=10104>Kesehatan dan Kecantikan</option>
-                                    <option value=10105>Otomotif</option>
-                                    <option value=10106>Layanan Keuangan</option>
+                                    <option value=10105>Bengkel Otomotif</option>
+                                    <option value=10106>Barber dan Salon</option>
                                     <option value=10107>Teknologi dan Komunikasi</option>
                                     <option value=10108>Hiburan</option>
                                     <option value=10109>Penginapan dan Wisata</option>
-                                    <option value=10110>Layanan Bisnis</option>
+                                    <option value=10110>Laundry and Cleaning</option>
                                     <option value=10111>Minyak dan Gas</option>
                                     <option value=10112>Penjualan Retail Berlisensi</option>
                                 </select>
@@ -107,12 +107,15 @@
                                 <label for="concept_size" class="form-label required">Ukuran Konsep</label>
                                 <input type="text" class="form-control" id="concept_size" name="concept_size"
                                     placeholder="Ukuran Konsep" required>
-                                    <small id="license_duration_note" class="form-text text-muted">Format: panjang x lebar. Contoh: 2 x 20</small>
+                                <small id="license_duration_note" class="form-text text-muted">Format: panjang x lebar.
+                                    Contoh: 2 x 20</small>
                             </div>
                             <div class="mb-3">
                                 <label for="contact" class="form-label required">Kontak Waralaba</label>
                                 <input type="number" class="form-control" id="contact" name="contact"
                                     placeholder="Kontak Waralaba" required>
+                                <small id="license_duration_note" class="form-text text-muted">Contoh:
+                                    62123456789</small>
                             </div>
                             <div class="mb-3">
                                 <label for="since" class="form-label required">Tanggal Berdiri Waralaba</label>
@@ -134,12 +137,14 @@
                                     lisensi, isi angka 0</small>
                             </div>
                             <div class="mb-3">
-                                <label for="royality" class="form-label required">Royality Waralaba</label>
+                                <label for="royality" class="form-label required">Royalty Waralaba</label>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon2">Rp</span>
                                     <input type="number" class="form-control" id="royality" name="royality"
-                                        placeholder="Royality Waralaba" required>
+                                        placeholder="Royalty Waralaba" required>
                                 </div>
+                                <small id="license_duration_note" class="form-text text-muted">Catatan: Jika tidak ada
+                                    royalty, isi angka 0</small>
                             </div>
                             <div class="mb-3">
                                 <label for="income" class="form-label required">Income Waralaba</label>
@@ -183,7 +188,8 @@
                                 <label for="brochure_link" class="form-label required">Upload Brosur</label>
                                 <input type="file" class="form-control" id="brochure_link" name="brochure_link"
                                     accept="file/*" placeholder="Upload Brosur" required>
-                                    <small id="license_duration_note" class="form-text text-muted">Catatan: Format file PDF</small>
+                                <small id="license_duration_note" class="form-text text-muted">Catatan: Format file PDF
+                                    Max. 2 Mb</small>
 
                             </div>
                         </div>
@@ -204,7 +210,15 @@
                         </ul>
                     </div>
                     @endif
-                    <button type="submit" style="margin-top: 20px;" class="btn btn-primary">Tambah</button>
+                    <button type="submit" style="margin-top: 20px;" id="submitButton" class="btn btn-primary"
+                        disabled>Tambah</button>
+
+                    <script>
+                    document.getElementById('pernyataan').addEventListener('change', function() {
+                        document.getElementById('submitButton').disabled = !this.checked;
+                    });
+                    </script>
+
                 </form>
             </div>
         </div>

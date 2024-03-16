@@ -85,7 +85,7 @@
     }
 
     .custom-color {
-        background-color: #4594A7;
+        background-color: #4BA5B2;
     }
 
     .subtitle {
@@ -314,7 +314,7 @@
                                 <option value="Fashion">Fashion</option>
                                 <option value="Elektronik">Elektronik</option>
                                 <option value="Kesehatan">Kesehatan</option>
-                                <option value="Otomotif">Otomotif</option>
+                                <option value="Bengkel Otomotif">Bengkel Otomotif</option>
                                 <option value="Pendidikan">Pendidikan</option>
                                 <option value="Hiburan">Hiburan</option>
                                 <option value="Lainnya">Lainnya</option>

@@ -119,9 +119,8 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>ID</th>
-                                    <th>Nama</th>
+                                    <th>Nama Pengaju</th>
                                     <th>Email</th>
-                                    <th>Alamat</th>
                                     <th>Nama Perusahaan</th>
                                     <th>Kategori Perusahaan</th>
                                     <th>Status</th>
@@ -132,19 +131,19 @@
                             <tbody>
                                 @php
                                 $sortedVeirfOwners = $verifOwners->sortByDesc('created_at');
-                                $verifOwnerIndex = 0; // Inisialisasi nomor urut transaksi
+                                $verifOwnerIndex = 0; 
                                 @endphp
 
                                 @foreach($sortedVeirfOwners as $verifOwner)
                                 <tr class="verifOwner-row" data-status="{{ $verifOwner->status }}">
-                                    <td>{{ ++$verifOwnerIndex }}</td>
-                                    <td>VEO-{{ strtoupper(substr($verifOwner->uuid, 0, 4)) }}</td>
-                                    <td>{{ $verifOwner->fullname }}</td>
-                                    <td>{{ $verifOwner->email }}</td>
-                                    <td>{{ $verifOwner->address }}</td>
-                                    <td>{{ $verifOwner->company_name }}</td>
-                                    <td>{{ $verifOwner->company_category }}</td>
-                                    <td>
+                                    <td style="text-align: center;">{{ ++$verifOwnerIndex }}</td>
+                                    <td style="text-align: left;">VEO-{{ strtoupper(substr($verifOwner->uuid, 0, 4)) }}
+                                    </td>
+                                    <td style="text-align: left;">{{ $verifOwner->fullname }}</td>
+                                    <td style="text-align: left;">{{ $verifOwner->email }}</td>
+                                    <td style="text-align: left;">{{ $verifOwner->company_name }}</td>
+                                    <td style="text-align: left;">{{ $verifOwner->company_category }}</td>
+                                    <td style="text-align: left;">
                                         @switch($verifOwner->status)
                                         @case(1)
                                         <span>Ditolak</span>
@@ -179,6 +178,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>

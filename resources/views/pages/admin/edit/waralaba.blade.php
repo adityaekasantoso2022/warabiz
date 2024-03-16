@@ -93,12 +93,12 @@
                             <option value=10102 {{ $waralaba->category_id == 10102 ? 'selected' : '' }}>Pendidikan</option>
                             <option value=10103 {{ $waralaba->category_id == 10103 ? 'selected' : '' }}>Ritel</option>
                             <option value=10104 {{ $waralaba->category_id == 10104 ? 'selected' : '' }}>Kesehatan dan Kecantikan</option>
-                            <option value=10105 {{ $waralaba->category_id == 10105 ? 'selected' : '' }}>Otomotif</option>
-                            <option value=10106 {{ $waralaba->category_id == 10106 ? 'selected' : '' }}>Layanan Keuangan</option>
+                            <option value=10105 {{ $waralaba->category_id == 10105 ? 'selected' : '' }}>Bengkel Otomotif</option>
+                            <option value=10106 {{ $waralaba->category_id == 10106 ? 'selected' : '' }}>Barber dan Salon</option>
                             <option value=10107 {{ $waralaba->category_id == 10107 ? 'selected' : '' }}>Teknologi dan Komunikasi</option>
                             <option value=10108 {{ $waralaba->category_id == 10108 ? 'selected' : '' }}>Hiburan</option>
                             <option value=10109 {{ $waralaba->category_id == 10109 ? 'selected' : '' }}>Penginapan dan Wisata</option>
-                            <option value=10110 {{ $waralaba->category_id == 10110 ? 'selected' : '' }}>Layanan Bisnis</option>
+                            <option value=10110 {{ $waralaba->category_id == 10110 ? 'selected' : '' }}>Laundry and Cleaning</option>
                             <option value=10111 {{ $waralaba->category_id == 10111 ? 'selected' : '' }}>Minyak dan Gas</option>
                             <option value=10112 {{ $waralaba->category_id == 10112 ? 'selected' : '' }}>Penjualan Retail Berlisensi</option>
                         </select>

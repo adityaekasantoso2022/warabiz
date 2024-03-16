@@ -8,7 +8,7 @@
         <!-- Display when the user is a guest -->
         <div class="navbar-nav d-lg-flex d-none">
             <a href="{{ route('login') }}" class="btn text-decoration-none login me-3 shadow-none">Masuk</a>
-            <a href="{{ route('registeras') }}" class="btn btn-signup bgTheme text-white shadow-none">Daftar</a>
+            <a href="{{ route('register') }}" class="btn btn-signup bgTheme text-white shadow-none">Daftar</a>
         </div>
         @else
         <!-- Display when the user is authenticated -->

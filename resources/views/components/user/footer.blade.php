@@ -1,34 +1,20 @@
 <style>
-    body {
-    background: #fbfbfd;
-}
-
 .new_footer_area {
-    background: #fbfbfd;
+    background: #ffffff;
 }
 
 
 .new_footer_top {
-    padding: 120px 0px 270px;
+    padding: 50px 0px 100px;
     position: relative;
       overflow-x: hidden;
 }
-.new_footer_area .footer_bottom {
-    padding-top: 5px;
-    padding-bottom: 50px;
-}
-.footer_bottom {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 20px;
-    color: #7f88a6;
-}
+
 .new_footer_top .company_widget p {
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 100;
     line-height: 28px;
     color: #6a7695;
-    margin-bottom: 20px;
 }
 .new_footer_top .company_widget .f_subscribe_two .btn_get {
     border-width: 1px;
@@ -116,126 +102,60 @@ h1, h2, h3, h4, h5, h6 {
     color: #6a7695;
 }
 
-
-.new_footer_top .footer_bg {
-    position: absolute;
-    bottom: 0;
-    background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigB8iI5tb8WSVBuVUGc9UjjB8O0708X7Fdic_4O1LT4CmLHoiwhanLXiRhe82yw0R7LgACQ2IhZaTY0hhmGi0gYp_Ynb49CVzfmXtYHUVKgXXpWvJ_oYT8cB4vzsnJLe3iCwuzj-w6PeYq_JaHmy_CoGoa6nw0FBo-2xLdOPvsLTh_fmYH2xhkaZ-OGQ/s16000/footer_bg.png") no-repeat scroll center 0;
-    width: 100%;
-    height: 266px;
-}
-
-.new_footer_top .footer_bg .footer_bg_one {
-    background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEia0PYPxwT5ifToyP3SNZeQWfJEWrUENYA5IXM6sN5vLwAKvaJS1pQVu8mOFFUa_ET4JuHNTFAxKURFerJYHDUWXLXl1vDofYXuij45JZelYOjEFoCOn7E6Vxu0fwV7ACPzArcno1rYuVxGB7JY6G7__e4_KZW4lTYIaHSLVaVLzklZBLZnQw047oq5-Q/s16000/volks.gif") no-repeat center center;
-    width: 330px;
-    height: 105px;
-  background-size:100%;
-    position: absolute;
-    bottom: 0;
-    left: 30%;
-    -webkit-animation: myfirst 22s linear infinite;
-    animation: myfirst 22s linear infinite;
-}
-
-.new_footer_top .footer_bg .footer_bg_two {
-    background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyLGwEUVwPK6Vi8xXMymsc-ZXVwLWyXhogZxbcXQYSY55REw_0D4VTQnsVzCrL7nsyjd0P7RVOI5NKJbQ75koZIalD8mqbMquP20fL3DxsWngKkOLOzoOf9sMuxlbyfkIBTsDw5WFUj-YJiI50yzgVjF8cZPHhEjkOP_PRTQXDHEq8AyWpBiJdN9SfQA/s16000/cyclist.gif") no-repeat center center;
-    width: 88px;
-    height: 100px;
-  background-size:100%;
-    bottom: 0;
-    left: 38%;
-    position: absolute;
-    -webkit-animation: myfirst 30s linear infinite;
-    animation: myfirst 30s linear infinite;
-}
-
-
-
-@-moz-keyframes myfirst {
-  0% {
-    left: -25%;
-  }
-  100% {
-    left: 100%;
-  }
-}
-
-@-webkit-keyframes myfirst {
-  0% {
-    left: -25%;
-  }
-  100% {
-    left: 100%;
-  }
-}
-
-@keyframes myfirst {
-  0% {
-    left: -25%;
-  }
-  100% {
-    left: 100%;
-  }
-}
 </style>
-
 <footer class="new_footer_area bg_color">
+<hr style="border-top: 2px solid #e2e2eb; margin-top: 50px;">
     <div class="new_footer_top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s">
-                        <h3 class="f-title f_600 t_color f_size_18">Tentang Kami</h3>
-                        <p>Warabiz adalah platform inovatif yang menyediakan layanan lengkap untuk memfasilitasi transaksi jual beli waralaba secara online.</p>
+                <div class="col-lg-5 col-md-6">
+                    <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.9s">
+                        <div class="logo">
+                            <img src="{{ asset('assets/frontend/image/logo.svg') }}" alt="logo"
+                                style="width: 180px; height: auto;">
+                        </div>
+                        <p style="font-size: 16px;" class="mt-3">Warabiz adalah platform yang menyediakan layanan lengkap untuk memfasilitasi transaksi jual beli waralaba secara online.</p>
+                        <p  class="mt-3">© 2024 PT.Warabisnis All rights reserved.</p> 
+
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s">
+                <div class="col-lg-2 col-md-6">
+                    <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s">
                         <h3 class="f-title f_600 t_color f_size_18">Fitur Utama</h3>
                         <ul class="list-unstyled f_list">
                             <li><a href="{{ route('home.index') }}">Waralaba</a></li>
                             <li><a href="{{ route('waraedu') }}">WaraEdu</a></li>
                             <li><a href="{{ route('waracareer') }}">WaraCareer</a></li>
                             <li><a href="{{ route('warapartner') }}">WaraPartner</a></li>
+                            <li><a href="{{ route('bantuan') }}">Bantuan</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s">
-                        <h3 class="f-title f_600 t_color f_size_18">Bantuan</h3>
+                <div class="col-lg-2 col-md-6">
+                    <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s">
+                        <h3 class="f-title f_600 t_color f_size_18">Lainnya</h3>
                         <ul class="list-unstyled f_list">
                             <li><a href="#">FAQ</a></li>
                             <li><a href="#">Term &amp; Conditions</a></li>
                             <li><a href="#">Reporting</a></li>
-                            <li><a href="#">Documentation</a></li>
                             <li><a href="#">Support Policy</a></li>
                             <li><a href="#">Privacy</a></li>
                         </ul>
+
                     </div>
                 </div>
+                
                 <div class="col-lg-3 col-md-6">
                     <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s">
                         <h3 class="f-title f_600 t_color f_size_18">Media Sosial</h3>
                         <div class="f_social_icon">
                             <a href="#" class="fab fa-facebook"></a>
+                            <a href="#" class="fab fa-instagram"></a>
                             <a href="#" class="fab fa-twitter"></a>
                             <a href="#" class="fab fa-linkedin"></a>
                             <a href="#" class="fab fa-pinterest"></a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer_bg">
-            <div class="footer_bg_one"></div>
-            <div class="footer_bg_two"></div>
-        </div>
-    </div>
-    <div class="footer_bottom">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-sm-7">
-                    <p class="mb-0 f_400">© PT. Warabisnis Technology. 2024 All rights reserved.</p> 
                 </div>
             </div>
         </div>

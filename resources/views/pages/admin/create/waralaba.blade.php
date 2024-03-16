@@ -73,12 +73,12 @@
                             <option value=10102>Pendidikan</option>
                             <option value=10103>Ritel</option>
                             <option value=10104>Kesehatan dan Kecantikan</option>
-                            <option value=10105>Otomotif</option>
-                            <option value=10106>Layanan Keuangan</option>
+                            <option value=10105>Bengkel Otomotif</option>
+                            <option value=10106>Barber dan Salon</option>
                             <option value=10107>Teknologi dan Komunikasi</option>
                             <option value=10108>Hiburan</option>
                             <option value=10109>Penginapan dan Wisata</option>
-                            <option value=10110>Layanan Bisnis</option>
+                            <option value=10110>Laundry and Cleaning</option>
                             <option value=10111>Minyak dan Gas</option>
                             <option value=10112>Penjualan Retail Berlisensi</option>
                         </select>

@@ -15,12 +15,6 @@ class HomeController extends Controller
         // Mendapatkan semua waralaba
         $waralabas = Waralaba::all();
 
-        // Jika terdapat parameter 'search' pada URL
-        if ($request->has('search')) {
-            $searchTerm = $request->input('search');
-            $waralabas = Waralaba::where('waralaba_name', 'like', '%' . $searchTerm . '%')->get();
-        }
-
         // Jika pengguna telah login
         if (Auth::check()) {
             // Jika pengguna adalah owner, arahkan ke dashboard owner
@@ -42,12 +36,10 @@ class HomeController extends Controller
 
                 return view('pages.user.waralabacategory', compact('category', 'waralabas'));
             }
-
-            // Jika pengguna adalah user, tampilkan halaman user
             return view('pages.user.home.index', [
                 'waralabas' => $waralabas,
-                'categoryChunks' => $this->chunkCategories(), // Add this line to send categoryChunks
-                'active' => true, // Set the initial value of $active
+                'categoryChunks' => $this->chunkCategories(), 
+                'active' => true, 
             ]);
         }
 
@@ -59,39 +51,9 @@ class HomeController extends Controller
         ]);
     }
 
-    // Add this function to chunk the categories
     private function chunkCategories()
     {
         $categories = Category::all();
-        return $categories->chunk(5); // Change 5 to the desired chunk size
+        return $categories->chunk(4); 
     }
-    // public function index(Request $request)
-    // {
-    //     // Mendapatkan semua waralaba
-    //     $waralabas = Waralaba::all();
-
-    //     // Jika terdapat parameter 'search' pada URL
-    //     if ($request->has('search')) {
-    //         $searchTerm = $request->input('search');
-    //         $waralabas = Waralaba::where('waralaba_name', 'like', '%' . $searchTerm . '%')->get();
-    //     }
-
-    //     // Jika pengguna telah login
-    //     if (Auth::check()) {
-    //         // Jika pengguna adalah owner, arahkan ke dashboard owner
-    //         if (Auth::user()->role == 'owner') {
-    //             return redirect()->route('owner.dashboard');
-    //         }
-
-    //         // Jika pengguna adalah user, tampilkan halaman user
-    //         return view('pages.user.home.index', [
-    //             'waralabas' => $waralabas,
-    //         ]);
-    //     }
-
-    //     // Jika pengguna belum login, tampilkan halaman home tanpa peran tertentu
-    //     return view('pages.user.home', [
-    //         'waralabas' => $waralabas,
-    //     ]);
-    // }
 }

@@ -1,152 +1,153 @@
 <x-user-layout title="Bantuan" active="bantuan">
     @push('addonStyle')
     <style>
-        body {
-            background: #fbfbfb !important;
-        }
+    body {
+        background: #fbfbfb !important;
+    }
 
-        .navbar .navbar-nav a:hover.btn-signup {
-            color: white !important;
-        }
+    .navbar .navbar-nav a:hover.btn-signup {
+        color: white !important;
+    }
 
-        .navbar .navbar-nav a:hover {
-            color: #131313 !important;
-        }
+    .navbar .navbar-nav a:hover {
+        color: #131313 !important;
+    }
 
-        .navbar .navbar-nav .active {
-            color: #131313 !important;
-        }
+    .navbar .navbar-nav .active {
+        color: #131313 !important;
+    }
 
-        .profil-name {
-            color: #131313
-        }
+    .profil-name {
+        color: #131313
+    }
 
-        .hero {
-            background: none !important;
-            margin-bottom: -33px !important;
-            height: 80vh !important;
-        }
+    .hero {
+        background: none !important;
+        margin-bottom: -33px !important;
+        height: 80vh !important;
+    }
 
-        .hero p {
-            font-weight: 400;
-            font-size: 16px;
-            color: rgba(19, 19, 19, 0.8);
-            margin: 0px !important;
-        }
+    .hero p {
+        font-weight: 400;
+        font-size: 16px;
+        color: rgba(19, 19, 19, 0.8);
+        margin: 0px !important;
+    }
 
-        .hero .hero-text {
-            color: #34364a;
-            font-size: 68px;
-            font-weight: 700;
-            line-height: 78px;
-        }
+    .hero .hero-text {
+        color: #34364a;
+        font-size: 68px;
+        font-weight: 700;
+        line-height: 78px;
+    }
 
-        .hero .btn-cta {
-            background: #4F94D7;
-            border-radius: 12px;
-            color: white;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 150%;
-            padding: 12px 32px;
-        }
+    .hero .btn-cta {
+        background: #4F94D7;
+        border-radius: 12px;
+        color: white;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        padding: 12px 32px;
+    }
 
-        .navbar-expand-lg {
-            background-color: white !important;
-            box-shadow: -1.5px 4px 16px rgb(118 126 148 / 20%);
-            transition: background-color 200ms linear;
-        }
+    .navbar-expand-lg {
+        background-color: white !important;
+        box-shadow: -1.5px 4px 16px rgb(118 126 148 / 20%);
+        transition: background-color 200ms linear;
+    }
 
 
-        .header-primary {
-            color: #34364a;
-            font-size: 38px;
-            font-weight: 700;
-            line-height: 48px;
-        }
+    .header-primary {
+        color: #34364a;
+        font-size: 38px;
+        font-weight: 700;
+        line-height: 48px;
+    }
 
-        .card-container,
-        .bantuan-card,
-        .bantuan-card-responsive {
-            background: #fff;
-            border: none;
-            border-radius: 14px;
-            color: #34364a;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            width: 99%;
-            padding: 30px;
-            position: center;
-            row-gap: 24px;
-        }
+    .card-container,
+    .bantuan-card,
+    .bantuan-card-responsive {
+        background: #fff;
+        border: none;
+        border-radius: 14px;
+        color: #34364a;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 99%;
+        padding: 30px;
+        position: center;
+        row-gap: 24px;
+    }
 
-        .card-row {
-            background: #fff;
-            border-radius: 10px;
-            box-sizing: border-box;
-            color: #34364a;
-            height: 100%;
-            weight: 100px;
-            padding: 30px;
-            position: relative;
-            row-gap: 20px;
+    .card-row {
+        background: #fff;
+        border-radius: 10px;
+        box-sizing: border-box;
+        color: #34364a;
+        height: 100%;
+        weight: 100px;
+        padding: 30px;
+        position: relative;
+        row-gap: 20px;
 
-        }
+    }
 
-        /* Styling untuk kartu */
-        .card {
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 1px;
-        }
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 1px;
+    }
 
-        /* CSS untuk gambar */
-        .card-body img {
-            max-width: 100px;
-            /* Sesuaikan ukuran gambar sesuai kebutuhan */
-            margin-bottom: 15px;
-            /* Jarak antara gambar dan teks */
-        }
-        .accordion-item {
-        border-bottom: 1px solid #ddd; /* Garis pembatas antar pertanyaan */
-        margin-bottom: 10px; /* Jarak antara setiap pertanyaan */
-        border-radius: 4px; /* Sudut lengkung kontainer pertanyaan */
+    .card-body img {
+        max-width: 100px;
+        margin-bottom: 15px;
+    }
+
+    .accordion-item {
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 10px;
+        border-radius: 4px;
     }
 
     .accordion-button {
-        background-color: #fff; /* Warna latar belakang tombol */
-        color: #343a40; /* Warna teks tombol */
-        font-weight: 400; /* Ketebalan font tombol */
-        border-radius: 4px; /* Sudut lengkung tombol */
-        border: none; /* Hapus border */
-        padding: 10px 15px; /* Padding tombol */
-        width: 100%; /* Lebar tombol */
-        text-align: left; /* Posisi teks ke kiri */
-        transition: background-color 0.3s ease; /* Efek transisi saat dihover */
+        background-color: #fff;
+        color: #343a40;
+        font-weight: 400;
+        border-radius: 4px;
+        border: none;
+        padding: 10px 15px;
+        width: 100%;
+        text-align: left;
+        transition: background-color 0.3s ease;
     }
 
-    
+
     .accordion-button:hover {
-        background-color: #e9ecef; /* Warna latar belakang tombol saat dihover */
+        background-color: #e9ecef;
     }
 
     .accordion-button:focus {
-        box-shadow: none; /* Hapus shadow saat tombol mendapatkan fokus */
+        box-shadow: none;
     }
 
     .accordion-button[aria-expanded="true"] {
-        background-color: #009BB8; /* Warna latar belakang tombol saat dibuka */
-        color: #fff; /* Warna teks tombol saat dibuka */
+        background-color: #4BA5B2;
+        color: #fff;
     }
 
     .accordion-body {
-        padding: 15px; /* Padding konten jawaban */
-        font-weight: 400; /* Ketebalan font konten jawaban */
+        padding: 15px;
+        font-weight: 400;
 
     }
-    
-</style>
+
+    .zoomable-card {
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+    </style>
 
     @endpush
     <section class="py-5" style="margin-top: 10px">
@@ -155,16 +156,17 @@
                 <div class="bantuan-card" style="margin-bottom: 20px;">
                     <div class="row justify-content-center mt-1">
                         <div class="col-md-3 col-xs-12 mb-3">
-                            <div class="card text-center rounded-card">
+                            <div class="card text-center rounded-card zoomable-card" data-href="tel:6281575332411">
                                 <div class="card-body">
                                     <img src="{{ asset('assets/frontend/image/icon/callcenter.png') }}">
                                     <h6>Call Center</h6>
-                                    <p>08123456789</p>
+                                    <p>081575332411</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3 col-xs-12 mb-3">
-                            <div class="card text-center rounded-card">
+                            <div class="card text-center rounded-card zoomable-card"
+                                data-href="mailto:bantuan@warabiz.com">
                                 <div class="card-body">
                                     <img src="{{ asset('assets/frontend/image/icon/gmail.png') }}">
                                     <h6>Email</h6>
@@ -173,16 +175,18 @@
                             </div>
                         </div>
                         <div class="col-md-3 col-xs-12 mb-3">
-                            <div class="card text-center rounded-card">
+                            <div class="card text-center rounded-card zoomable-card"
+                                data-href="https://wa.me/6281575332411">
                                 <div class="card-body">
                                     <img src="{{ asset('assets/frontend/image/icon/whatsapp.png') }}">
                                     <h6>WhatsApp</h6>
-                                    <p>0987654321</p>
+                                    <p>081575332411</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3 col-xs-12 mb-3">
-                            <div class="card text-center rounded-card">
+                            <div class="card text-center rounded-card zoomable-card"
+                                data-href="https://www.instagram.com/warabiz.com/">
                                 <div class="card-body">
                                     <img src="{{ asset('assets/frontend/image/icon/instagram.png') }}"
                                         style="width: 100px; height: auto;">
@@ -194,6 +198,28 @@
                     </div>
                 </div>
             </div>
+
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const zoomableCards = document.querySelectorAll('.zoomable-card');
+                zoomableCards.forEach(card => {
+                    card.addEventListener('mouseenter', function() {
+                        this.style.transform = 'scale(1.05)';
+                        this.style.transition = 'transform 0.3s';
+                    });
+                    card.addEventListener('mouseleave', function() {
+                        this.style.transform = 'scale(1)';
+                    });
+                    card.addEventListener('click', function() {
+                        const href = this.getAttribute('data-href');
+                        if (href) {
+                            window.location.href = href;
+                        }
+                    });
+                });
+            });
+            </script>
+
             <div class="row">
                 <div class="col">
                     <div class="card-row">
@@ -288,7 +314,7 @@
                         </h5>
                     </div>
                 </div>
-                
+
                 <div class="col">
                     <div class="card-row">
                         <h5 class="header-title">

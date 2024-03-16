@@ -122,36 +122,6 @@
 
     <section style="margin-top: 140px;">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="banner-carousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="https://images.tokopedia.net/img/cache/1208/NsjrJu/2024/2/15/2fdc3b2e-c9de-4d7c-b338-5aa544231639.jpg.webp?ect=4g"
-                                    class="d-block w-100" alt="Banner 1">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://images.tokopedia.net/img/cache/1208/NsjrJu/2024/2/15/9e0cbddf-0b29-4fe9-810a-9fdcc140271f.jpg.webp?ect=4g"
-                                    class="d-block w-100" alt="Banner 2">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://images.tokopedia.net/img/cache/1208/NsjrJu/2024/2/22/b9519e4c-81c6-4791-acc7-c192c5f524c9.jpg.webp?ect=4g"
-                                    class="d-block w-100" alt="Banner 3">
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#banner-carousel"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#banner-carousel"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
             <div class="row mt-4">
                 @foreach($articles as $article)
                 <div class="col-md-6 col-lg-3 mb-4">

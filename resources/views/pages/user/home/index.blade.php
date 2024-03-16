@@ -2,7 +2,7 @@
     @push('addonStyle')
     <style>
     body {
-        background: #fbfbfb !important;
+        background: #fefefe !important;
     }
 
     .banner-container {
@@ -219,7 +219,6 @@
     .card .small-circle-img {
         width: 40px;
         height: 40px;
-        /* Ukuran logo waralaba yang konsisten */
         object-fit: contain;
         border-radius: 60%;
         overflow: hidden;
@@ -331,7 +330,6 @@
         z-index: 1;
     }
 
-    /* Tambahkan CSS untuk menyembunyikan kartu yang tidak sesuai dengan pencarian */
     .card-home {
         display: block;
         width: 240px;
@@ -432,19 +430,14 @@
 
     .two-column-flexbox .card-column {
         flex: 1;
-        /* Setiap kolom akan mengisi ruang yang sama */
-        margin-right: 10px;
-        /* Jarak antara kolom */
     }
 
-    /* Untuk kolom terakhir, hilangkan margin-right */
     .two-column-flexbox .card-column:last-child {
         margin-right: 0;
     }
 
     .card-column {
         flex: 1;
-        margin-right: 10px;
     }
 
     .category-carousel {
@@ -454,15 +447,12 @@
 
     .category-item {
         flex: 0 0 auto;
-        margin-right: 10px;
-        border: 2px solid #ccc;
-        border-radius: 10px;
+        margin-right: 0px;
         overflow: hidden;
     }
 
     .category-item img {
-        width: 100px;
-        /* Sesuaikan ukuran gambar mini sesuai kebutuhan */
+        width: 122px;
         height: auto;
         display: block;
     }
@@ -478,10 +468,14 @@
     @endpush
     <section class="mt-4 mb-4">
         <div class="banner-container">
-            <img src="https://api.rintisan.co.id/storage/banners/zmipoQaqG8Z8MNlucvmNmRmlNus1ibAk9acjJiaa.png"
-                alt="Banner 1" class="banner-slide">
-            <img src="https://api.rintisan.co.id/storage/banners/ymejKHBvg5A8KG4eQqKDxjRHAb9SQwzHrg9xrehY.jpg"
-                alt="Banner 2" class="banner-slide">
+            <a href="http://127.0.0.1:8000/waralaba/798f146d-b5db-4a20-85b3-d5511953ff68">
+                <img src="https://res.cloudinary.com/dvgmjv4ie/image/upload/v1710255113/banner_5_tb3dt1.png"
+                    alt="Banner 1" class="banner-slide">
+            </a>
+            <a href="http://127.0.0.1:8000/waralaba/b4429b15-7e9d-4ef8-91b5-6ebe95bb3bab">
+                <img src="https://res.cloudinary.com/dvgmjv4ie/image/upload/v1710251080/banner2_1_kfngfw.png"
+                    alt="Banner 2" class="banner-slide">
+            </a>
         </div>
         <div class="card-container">
             <div class="two-column-flexbox">
@@ -490,32 +484,27 @@
                     <div id="carouselKategori" class="carousel slide">
                         <div class="carousel-inner">
                             @foreach ($categoryChunks as $chunk)
-                                <div class="carousel-item @if($active) active @endif">
-                                    <div class="container">
-                                        <div class="row">
-                                            @foreach ($chunk as $category)
-                                                @php
-                                                    // Misalnya $category adalah objek dari model Category
-                                                    // Sesuaikan dengan implementasi model Category yang Anda miliki
-                                                    $categoryId = $category->id;
-                                                    $categoryName = $category->category_name;
-                                                    // $categoryImage = $category->image_url; // Sesuaikan dengan nama kolom di tabel
-                                                @endphp
-
-                                                <div class="col">
-                                                    <a href="{{ route('waralaba.category', ['category_id' => $categoryId]) }}">
-                                                        <div class="category-item"
-                                                            style="width: 100%; height: 100%; border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
-                                                            <img src="" alt="{{ $categoryName }}"
-                                                                style="width: 100%; height: 100%; object-fit: cover;">
-                                                        </div>
-                                                    </a>
+                            @php $active = ($loop->first) ? 'active' : ''; @endphp
+                            <div class="carousel-item {{ $active }}">
+                                <div class="container">
+                                    <div class="row">
+                                        @foreach ($chunk as $category)
+                                        @php
+                                        $categoryId = $category->id;
+                                        $categoryName = $category->category_name;
+                                        $categoryImage = $category->image_url;
+                                        @endphp
+                                        <div class="col-md">
+                                            <a href="{{ route('waralaba.category', ['category_id' => $categoryId]) }}">
+                                                <div class="category-item">
+                                                    <img src="{{ $categoryImage }}" alt="{{ $categoryName }}">
                                                 </div>
-                                            @endforeach
+                                            </a>
                                         </div>
+                                        @endforeach
                                     </div>
                                 </div>
-                                <?php $active = false; ?>
+                            </div>
                             @endforeach
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselKategori"
@@ -529,6 +518,7 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
+
 
                 </div>
                 <div class="card-column">
@@ -573,7 +563,6 @@
     </section>
 
     <style>
-    /* Tambahkan CSS untuk responsivitas di perangkat seluler */
     @media only screen and (max-width: 576px) {
         .two-column-flexbox {
             flex-direction: column;
@@ -584,7 +573,6 @@
             margin-right: 0;
         }
 
-        /* Sembunyikan judul "Cari Waralaba Keinginanmu" di perangkat seluler */
         .card-title.hidden-xs {
             display: none;
         }
@@ -595,7 +583,6 @@
 
         .small-circle-img {
             display: none;
-            /* Sembunyikan gambar kecil di perangkat seluler */
         }
 
     }
@@ -607,18 +594,14 @@
             <div id="carouselWaralaba" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <?php
-            // Mengurutkan waralaba berdasarkan jumlah terjual terbanyak
             $sortedWaralabas = $waralabas->sortByDesc(function ($waralaba) {
                 return $waralaba->soldCount();
             });
 
-            // Memecah array waralabas menjadi kelompok lima
             $waralabasChunks = array_chunk($sortedWaralabas->all(), 5);
 
-            // Memastikan hanya ada 10 kartu yang ditampilkan
             $waralabasChunks = array_slice($waralabasChunks, 0, 2);
 
-            // Menentukan slide pertama sebagai slide aktif
             $active = true;
             ?>
                     @foreach ($waralabasChunks as $chunk)
@@ -634,7 +617,8 @@
                                                     alt="Waralaba Image">
                                                 <div class="d-flex flex-column">
                                                     <h6 class="waralaba-name">
-                                                        <b>{{ substr($waralaba->waralaba_name, 0, 18) }}</b></h6>
+                                                        <b>{{ substr($waralaba->waralaba_name, 0, 18) }}</b>
+                                                    </h6>
                                                     <p>{{ $waralaba->concept }} <span
                                                             class="sold-count">{{ $waralaba->soldCount() }}
                                                             Terjual</span></p>
@@ -675,7 +659,9 @@
                                 <div class="waralaba-responsive">
                                     @if ($waralaba->soldCount() > 3)
                                     <div class="badge-container">
-                                        <div class="badge bg-success">Terlaris</div>
+                                        <div class="badge bg-success"> <i class="fas fa-fire"
+                                                style="color: yellow;"></i>
+                                            Terlaris</div>
                                     </div>
                                     @endif
                                     <div class="cardwaralaba" id="card">
@@ -721,7 +707,6 @@
     @push('addonScript')
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Fungsi pencarian untuk semua waralaba
         document.getElementById('search').addEventListener('input', function() {
             let searchKeyword = this.value.toLowerCase();
             let cards = document.querySelectorAll('.card-home');
@@ -736,23 +721,19 @@
                 }
             });
 
-            // Memeriksa apakah input pencarian kosong
             if (searchKeyword === '') {
                 showPopularCards();
             } else {
-                // Menyembunyikan kartu waralaba populer saat sedang melakukan pencarian
                 popularSection.style.display = 'none';
             }
         });
 
-        // Fungsi untuk memperlihatkan kembali kartu waralaba populer setelah selesai pencarian
         function showPopularCards() {
             let popularCards = document.querySelectorAll('#popular-section .card-populer');
             popularCards.forEach(function(card) {
                 card.style.display = 'block';
             });
 
-            // Menampilkan kembali bagian populer setelah input pencarian dikosongkan
             document.getElementById('popular-section').style.display = 'block';
         }
     });
@@ -761,21 +742,17 @@
 </x-user-layout>
 
 <script>
-// Ambil semua gambar dalam slider
 const slides = document.querySelectorAll('.banner-slide');
 const slideCount = slides.length;
 let currentSlide = 0;
 
-// Fungsi untuk mengganti gambar setiap 15 detik
 function nextSlide() {
-    slides[currentSlide].classList.remove('active'); // Sembunyikan gambar saat ini
-    currentSlide = (currentSlide + 1) % slideCount; // Pindah ke gambar berikutnya
-    slides[currentSlide].classList.add('active'); // Tampilkan gambar berikutnya
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slideCount;
+    slides[currentSlide].classList.add('active');
 }
 
-// Atur interval untuk memanggil fungsi nextSlide setiap 15 detik
-setInterval(nextSlide, 15000); // 15 detik dalam milidetik (1000 ms = 1 detik)
+setInterval(nextSlide, 20000);
 
-// Tampilkan gambar pertama saat memuat halaman
 slides[currentSlide].classList.add('active');
 </script>

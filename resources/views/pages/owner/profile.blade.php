@@ -99,8 +99,8 @@
                                     <option value="Kesehatan"
                                         {{ $ownerVerified->company_category == 'Kesehatan' ? 'selected' : '' }}>
                                         Kesehatan</option>
-                                    <option value="Otomotif"
-                                        {{ $ownerVerified->company_category == 'Otomotif' ? 'selected' : '' }}>Otomotif
+                                    <option value="Bengkel Otomotif"
+                                        {{ $ownerVerified->company_category == 'Bengkel Otomotif' ? 'selected' : '' }}>Bengkel Otomotif
                                     </option>
                                     <option value="Pendidikan"
                                         {{ $ownerVerified->company_category == 'Pendidikan' ? 'selected' : '' }}>
@@ -150,11 +150,14 @@
                                             style="display: none;">
                                             @csrf
                                         </form>
-                                        <a href="#"
-                                            onclick="event.preventDefault(); document.getElementById('logoutForm').submit();"
-                                            class="nav-link text-danger">
-                                            <i class="fas fa-sign-out-alt me-1"></i> Logout
-                                        </a>
+                                        <form action="{{ url('logout') }}" method="POST" class="user-form">
+                                            @csrf
+                                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                                <button type="submit" class="btn btn-danger">
+                                                    <i class="fas fa-sign-out-alt me-1"></i> Logout
+                                                </button>
+                                            </div>
+                                        </form>
                                     </li>
                                 </ul>
                             </div>
