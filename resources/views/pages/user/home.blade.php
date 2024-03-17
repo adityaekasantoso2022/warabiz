@@ -152,14 +152,14 @@
         }
     }
 
-    .logo-container {
+    .logo-waralaba {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-top: 20px;
     }
 
-    .logo-container img {
+    .logo-waralaba img {
         margin-right: 10px;
     }
 
@@ -568,7 +568,6 @@
 
     .card-img-top {
         height: 400px;
-        /* Sesuaikan tinggi gambar sesuai kebutuhan Anda */
         object-fit: cover;
     }
 
@@ -581,21 +580,81 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 28%;
-        backdrop-filter: blur(3px);
+        height: 20%;
+        backdrop-filter: blur(3px) brightness(0.7);
     }
 
     .card-body {
         position: absolute;
         bottom: 20px;
-        /* Sesuaikan jarak teks dari bawah */
         left: 50%;
         transform: translateX(-50%);
         color: white;
-        /* Warna teks */
         text-align: center;
         z-index: 1;
-        /* Pastikan teks tampil di atas lapisan blur */
+    }
+
+    .logo-container {
+        width: 50px;/ height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 16px;
+    }
+
+    .logo {
+        width: 100%;
+        height: auto;
+    }
+
+    @media only screen and (max-width: 768px) {
+        /* Adjustments for smaller screens */
+
+        .hero {
+            padding: 50px 0 !important;
+        }
+
+        .hero .container {
+            padding: 0 15px;
+        }
+
+        .col-lg-6.col-12.pb-5 {
+            padding-bottom: 30px !important;
+        }
+
+        .carousel-item img {
+            height: auto;
+        }
+
+        .carousel-item .logo-container {
+            margin-top: 10px;
+        }
+
+        .carousel-item .row.w-100 .col-6 {
+            flex: 1 1 50%;
+            max-width: 50%;
+        }
+
+        .carousel-item .row.w-100 .col-12 {
+            margin-top: 10px;
+        }
+
+        .card-container {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .card.card-home {
+            width: 100%;
+            margin-right: 0;
+        }
+
+        .testimonial-section .container {
+            padding: 50px 15px !important;
+        }
+
+        .mb-4 .container-scrollable {
+            padding: 0 15px;
+        }
     }
     </style>
     @endpush
@@ -617,46 +676,53 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 pb-5 d-flex justify-content-end">
-                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            @foreach ($waralabas as $key => $waralaba)
-                            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                                <div class="card position-relative" style="width: 30rem;">
-                                    <img src="{{ $waralaba->image_url_1 }}" class="card-img-top" alt="Waralaba Image"
-                                        style="margin-top: 50px;">
-                                    <div class="overlay"></div>
-                                    <div class=" position-absolute bottom-0 start-0 p-3">
-                                        <div class="d-flex flex-column">
-                                            <h6 class="waralaba-name text-white">
-                                                <b>{{ substr($waralaba->waralaba_name, 0, 19) }}</b>
-                                            </h6>
-                                            <p class="text-white">{{ $waralaba->concept }}</p>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="text-white"
-                                                    style="margin-top: 10px; font-size: 17px; font-weight: bold;">
-                                                    Rp. {{ number_format(floatval($waralaba->price), 0, ',', '.') }}
+                    <div class="d-none d-md-block">
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                @foreach ($waralabas as $key => $waralaba)
+                                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                    <div class="card position-relative" style="width: 30rem;">
+                                        <img src="{{ $waralaba->image_url_1 }}" class="card-img-top"
+                                            alt="Waralaba Image" style="margin-top: 50px;">
+                                        <div class="overlay"></div>
+                                        <div class="position-absolute bottom-0 start-0 p-3 d-flex align-items-center">
+                                            <div class="logo-container mr-3">
+                                                <img src="{{ $waralaba->logo }}" class="logo" alt="Logo">
+                                            </div>
+                                            <div class="row w-100">
+                                                <div class="col-6">
+                                                    <h6 class="waralaba-name text-white mb-0">
+                                                        <b>{{ substr($waralaba->waralaba_name, 0, 19) }}</b>
+                                                    </h6>
+                                                </div>
+                                                <div class="col-6 text-right">
+                                                    <div class="text-white" style="font-size: 17px; font-weight: bold;">
+                                                        Rp. {{ number_format(floatval($waralaba->price), 0, ',', '.') }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <p class="text-white mb-0">{{ $waralaba->concept }}</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
-                            @endforeach
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <section id="testimonial-section-v3">
@@ -675,7 +741,7 @@
                         terpercaya. Dukungan dan solusi terbaik kami membantu Anda mencapai kesuksesan.
                     </p>
                     <div class="col-lg-7 mt-3">
-                        <div class="logo-container">
+                        <div class="logo-waralaba">
                             <img src="{{ asset('assets/frontend/image/logo/gacoan.png') }}" alt="Gacoan" width="90">
                             <img src="assets/frontend/image/logo/tehdesa.png" alt="Teh Desa" width="90">
                             <img src="assets/frontend/image/logo/bangor.png" alt="Burger Bangor" width="90">
@@ -683,7 +749,7 @@
                             <img src="assets/frontend/image/logo/roketchiken.png" alt="Roket Chiken" width="90">
                             <img src="assets/frontend/image/logo/geprekjuara.png" alt="Geprek Juara " width="90">
                         </div>
-                        <div class="logo-container">
+                        <div class="logo-waralaba">
                             <img src="{{ asset('assets/frontend/image/logo/rotio.png') }}" alt="Roti O" width="90">
                             <img src="assets/frontend/image/logo/mcd.png" alt="MCD" width="90">
                             <img src="assets/frontend/image/logo/kfc.png" alt="KFC" width="90">
@@ -736,9 +802,13 @@
                                 <div class="waralaba-footer mt-auto">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="star-rating">
-                                            @for ($i = 0; $i < $waralaba->rating; $i++)
-                                                <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
+                                            @for ($i = 0; $i < 5; $i++) @if ($i < $waralaba->rating)
+                                                <img src="{{ asset('assets/frontend/image/ic_star.svg') }}"
                                                     alt="ic_star">
+                                                @else
+                                                <img src="{{ asset('assets/frontend/image/ic_star_none.svg') }}"
+                                                    alt="ic_star_none">
+                                                @endif
                                                 @endfor
                                         </div>
                                         <div class="sold-count">

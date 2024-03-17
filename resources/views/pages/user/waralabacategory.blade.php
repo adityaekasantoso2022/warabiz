@@ -411,9 +411,13 @@
                                 <div class="waralaba-footer mt-auto">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="star-rating">
-                                            @for ($i = 0; $i < $waralaba->rating; $i++)
-                                                <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
+                                            @for ($i = 0; $i < 5; $i++) @if ($i < $waralaba->rating)
+                                                <img src="{{ asset('assets/frontend/image/ic_star.svg') }}"
                                                     alt="ic_star">
+                                                @else
+                                                <img src="{{ asset('assets/frontend/image/ic_star_none.svg') }}"
+                                                    alt="ic_star_none">
+                                                @endif
                                                 @endfor
                                         </div>
                                         <div class="sold-count">

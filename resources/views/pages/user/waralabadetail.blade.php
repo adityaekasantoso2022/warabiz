@@ -331,9 +331,13 @@
                                             <p>{{ $waralaba->concept }}</p>
                                             <div class="waralaba-footer mt-auto">
                                                 <div class="star-rating">
-                                                    @for ($i = 0; $i < $waralaba->rating; $i++)
-                                                        <img src="https://buildwithangga.com/themes/front/images/ic_star.svg"
+                                                    @for ($i = 0; $i < 5; $i++) @if ($i < $waralaba->rating)
+                                                        <img src="{{ asset('assets/frontend/image/ic_star.svg') }}"
                                                             alt="ic_star">
+                                                        @else
+                                                        <img src="{{ asset('assets/frontend/image/ic_star_none.svg') }}"
+                                                            alt="ic_star_none">
+                                                        @endif
                                                         @endfor
                                                 </div>
                                             </div>
@@ -350,8 +354,10 @@
                             <div class="item-pricing item-mentor d-flex flex-column gap-3 mb-3">
                                 <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                     <div class="d-flex gap-3 align-items-center">
-                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                            alt="BuildWith Angga">
+                                        <div class="rounded-circle"
+                                            style="background-color: #4BA5B2; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center;">
+                                            <i class="fas fa-building" style="color: white;"></i>
+                                        </div>
                                         <div class="d-flex flex-column">
                                             <h5 class="header-title mb-1">
                                                 {{ $companyName }}
@@ -374,8 +380,10 @@
                                 </div>
                                 <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                     <div class="d-flex gap-3 align-items-center">
-                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                            alt="BuildWith Angga">
+                                        <div class="rounded-circle"
+                                            style="background-color: #4BA5B2; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center;">
+                                            <i class="fas fa-book" style="color: white;"></i>
+                                        </div>
                                         <div class="d-flex flex-column">
                                             <h5 class="header-title mb-1">
                                                 Kategori Waralaba
@@ -386,8 +394,10 @@
                                 </div>
                                 <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                     <div class="d-flex gap-3 align-items-center">
-                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                            alt="BuildWith Angga">
+                                        <div class="rounded-circle"
+                                            style="background-color: #4BA5B2; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center;">
+                                            <i class="fas fa-calendar" style="color: white;"></i>
+                                        </div>
                                         <div class="d-flex flex-column">
                                             <h5 class="header-title mb-1">
                                                 Tahun Berdiri
@@ -399,8 +409,10 @@
                                 </div>
                                 <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                     <div class="d-flex gap-3 align-items-center">
-                                        <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                            alt="BuildWith Angga">
+                                        <div class="rounded-circle"
+                                            style="background-color: #4BA5B2; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center;">
+                                            <i class="fas fa-store-alt" style="color: white;"></i>
+                                        </div>
                                         <div class="d-flex flex-column">
                                             <h5 class="header-title mb-1">
                                                 Total Outlet
@@ -435,8 +447,7 @@
                             </h5>
                             <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                 <div class="d-flex gap-3 align-items-center">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                        alt="BuildWith Angga">
+                                    <img src="{{ asset('assets/frontend/image/icon/pelatihan.svg') }}" alt="Pelatihan">
                                     <div class="d-flex flex-column">
                                         <h5 class="header-title mb-1">
                                             Pelatihan & SOP
@@ -449,8 +460,8 @@
                             </div>
                             <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                 <div class="d-flex gap-3 align-items-center">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                        alt="BuildWith Angga">
+                                    <img src="{{ asset('assets/frontend/image/icon/persediaan.svg') }}"
+                                        alt="Persediaan">
                                     <div class="d-flex flex-column">
                                         <h5 class="header-title mb-1">
                                             Termasuk Persediaan
@@ -461,8 +472,7 @@
                             </div>
                             <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                 <div class="d-flex gap-3 align-items-center">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                        alt="BuildWith Angga">
+                                    <img src="{{ asset('assets/frontend/image/icon/marketing.svg') }}" alt="Marketing">
                                     <div class="d-flex flex-column">
                                         <h5 class="header-title mb-1">
                                             Bantuan Marketing
@@ -473,8 +483,7 @@
                             </div>
                             <div class="d-flex justify-content-between gap-2 align-items-center benefits-for-you">
                                 <div class="d-flex gap-3 align-items-center">
-                                    <img src="https://buildwithangga.com/themes/front/images/ic_sertifikat.svg"
-                                        alt="BuildWith Angga">
+                                    <img src="{{ asset('assets/frontend/image/icon/peralatan.svg') }}" alt="Peralatan">
                                     <div class="d-flex flex-column">
                                         <h5 class="header-title mb-1">
                                             Termasuk Peralatan
