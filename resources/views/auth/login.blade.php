@@ -62,6 +62,31 @@
         </div>
     </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const rememberMeCheckbox = document.getElementById('flexCheckDefault');
+            const emailInput = document.querySelector('input[name="email"]');
+
+            // Ketika halaman dimuat, cek apakah ada nilai yang tersimpan di localStorage untuk email
+            const savedEmail = localStorage.getItem('rememberedEmail');
+            if (savedEmail) {
+                emailInput.value = savedEmail;
+                rememberMeCheckbox.checked = true;
+            }
+
+            // Ketika checkbox "Ingat Saya" berubah status
+            rememberMeCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    // Simpan nilai email ke localStorage jika checkbox dicentang
+                    localStorage.setItem('rememberedEmail', emailInput.value);
+                } else {
+                    // Hapus nilai email dari localStorage jika checkbox tidak dicentang
+                    localStorage.removeItem('rememberedEmail');
+                }
+            });
+        });
+    </script>
+
     @push('addonStyle')
     <style>
     .form-check-input:checked {
