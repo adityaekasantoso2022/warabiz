@@ -45,7 +45,7 @@ class TransactionAdminController extends Controller
     public function show($id)
     {
         // Cari transaksi berdasarkan UUID
-        $transaction = Transaction::where('id', $id)->first();
+        $transaction = Transaction::where('id', $id)->with('waralabaOwner')->first();
 
         // Jika transaksi tidak ditemukan, bisa ditangani sesuai kebutuhan
         if (!$transaction) {

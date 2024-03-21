@@ -147,16 +147,16 @@
                             <h5 class="card-title">Update Status</h5>
                             <div class="info-item">
                                 <label>Nama Owner</label>
-                                <p>nama owner get dari verified_owner
+                                <p>{{ $transaction->waralaba->verifiedOwner->fullname }}
                                 </p>
                             </div>
                             <div class="info-item">
                                 <label>Pengiriman Pembayaran</label>
-                                <p>rekening bank get dari verified_owner</p>
+                                <p>{{ $transaction->waralaba->verifiedOwner->bank_name }}</p>
                             </div>
                             <div class="info-item">
                                 <label>Nomer</label>
-                                <p>nomer rekening bank get dari verified_owner</p>
+                                <p>{{ $transaction->waralaba->verifiedOwner->account_number }}</p>
                             </div>
                             <form action="{{ route('admin.transactions.update', $transaction->uuid) }}" method="POST">
                                 @csrf

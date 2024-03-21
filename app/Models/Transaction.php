@@ -51,4 +51,9 @@ class Transaction extends Model
                 return 'Menunggu Pembayaran';
         }
     }
+
+    public function waralabaOwner()
+    {
+        return $this->belongsTo(VerifiedOwner::class, 'created_by');
+    }
 }
