@@ -562,7 +562,7 @@
     }
 
     .custom-color {
-        color: #04B2C2;
+        color: #029EAD;
         font-weight: 700;
     }
 

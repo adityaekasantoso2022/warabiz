@@ -384,7 +384,6 @@
         .cardwaralaba .card-img-top {
             width: 100%;
             height: 100px;
-            /* Ubah ketinggian sesuai kebutuhan */
             object-fit: cover;
         }
 
@@ -468,20 +467,16 @@
     @endpush
     <section class="mt-4 mb-4">
         <div class="banner-container">
-            <a href="http://127.0.0.1:8000/waralaba/798f146d-b5db-4a20-85b3-d5511953ff68">
-                <img src="https://res.cloudinary.com/dvgmjv4ie/image/upload/v1710255113/banner_5_tb3dt1.png"
-                    alt="Banner 1" class="banner-slide">
-            </a>
-            <a href="http://127.0.0.1:8000/waralaba/b4429b15-7e9d-4ef8-91b5-6ebe95bb3bab">
-                <img src="https://res.cloudinary.com/dvgmjv4ie/image/upload/v1710251080/banner2_1_kfngfw.png"
-                    alt="Banner 2" class="banner-slide">
-            </a>
+            <img src="https://res.cloudinary.com/dvgmjv4ie/image/upload/v1711114509/banner_2_rkn2or.png" alt="Banner 1"
+                class="banner-slide">
+            <img src="https://res.cloudinary.com/dvgmjv4ie/image/upload/v1711113076/banner-02_1_mwi45e.png"
+                alt="Banner 2" class="banner-slide">
         </div>
         <div class="card-container">
             <div class="two-column-flexbox">
                 <div class="card-column" style="padding-right: 40px;">
                     <h5 class="card-title mb-3">Kategori Pilihan</h5>
-                    <div id="carouselKategori" class="carousel slide">
+                    <div id="carouselKategori" class="carousel slide custom-carousel d-none d-md-block">
                         <div class="carousel-inner">
                             @foreach ($categoryChunks as $chunk)
                             @php $active = ($loop->first) ? 'active' : ''; @endphp
@@ -518,8 +513,6 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-
-
                 </div>
                 <div class="card-column">
                     <h5 class="card-title mb-3 hidden-xs">Cari Waralaba Keinginanmu</h5>
@@ -562,6 +555,7 @@
         </div>
     </section>
 
+
     <style>
     @media only screen and (max-width: 576px) {
         .two-column-flexbox {
@@ -581,9 +575,6 @@
             display: none;
         }
 
-        .small-circle-img {
-            display: none;
-        }
 
     }
     </style>

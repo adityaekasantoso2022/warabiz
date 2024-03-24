@@ -1,28 +1,28 @@
 <x-owner-layout title="Invoice - TRX-{{ strtoupper(substr($transaction->uuid, 2, 6)) }}" active="transaksi">
     @push('addonStyle')
     <style>
-        body {
-            background: #EDF2F7 !important;
-        }
+    body {
+        background: #EDF2F7 !important;
+    }
 
-        /* Menyembunyikan navbar saat mencetak */
+    /* Menyembunyikan navbar saat mencetak */
+    .navbar {
+        display: none;
+    }
+
+    /* Menampilkan kembali navbar saat tidak mencetak */
+    @media screen {
         .navbar {
-            display: none;
+            display: block;
         }
+    }
 
-        /* Menampilkan kembali navbar saat tidak mencetak */
-        @media screen {
-            .navbar {
-                display: block;
-            }
+    /* Menetapkan page break setelah konten */
+    @media print {
+        .page-break {
+            page-break-after: always;
         }
-
-        /* Menetapkan page break setelah konten */
-        @media print {
-            .page-break {
-                page-break-after: always;
-            }
-        }
+    }
     </style>
     @endpush
 
@@ -209,11 +209,12 @@
                                                                 dengan pedoman yang diberikan.</li>
                                                         </ul>
                                                     </li>
+                                                    @if($transaction->waralaba->license_duration != 0)
                                                     <li><strong>Durasi Perjanjian:</strong> Perjanjian ini berlaku untuk
-                                                        jangka waktu {{ $transaction->waralaba->license_duration}} tahun
-                                                        dan
-                                                        dapat diperpanjang
-                                                        berdasarkan kesepakatan kedua belah pihak.</li>
+                                                        jangka waktu {{ $transaction->waralaba->license_duration }}
+                                                        tahun dan dapat diperpanjang berdasarkan kesepakatan kedua belah
+                                                        pihak.</li>
+                                                    @endif
                                                     @if($transaction->waralaba->royality > 0)
                                                     <li><strong>Pembayaran Royalti:</strong> Mitra waralaba wajib
                                                         membayar royalti sebesar Rp. {{
@@ -256,15 +257,15 @@
     </div>
 
     <script>
-        function printInvoice() {
-            var printContent = document.getElementById("print-content").innerHTML;
-            var originalContent = document.body.innerHTML;
+    function printInvoice() {
+        var printContent = document.getElementById("print-content").innerHTML;
+        var originalContent = document.body.innerHTML;
 
-            document.body.innerHTML = printContent;
+        document.body.innerHTML = printContent;
 
-            window.print();
+        window.print();
 
-            document.body.innerHTML = originalContent;
-        }
+        document.body.innerHTML = originalContent;
+    }
     </script>
 </x-owner-layout>

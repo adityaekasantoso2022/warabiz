@@ -59,33 +59,15 @@
     .warapartner-card {
         background-color: white;
         border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         padding: 50px;
         margin: auto;
-        margin-top: 40px;
-        margin-bottom: 80px;
-        max-width: 840px;
-        width: 100%;
-
-    }
-
-    @media (min-width: 992px) {
-        .warapartner-card {
-            margin-top: 210px !important;
-        }
-    }
-
-
-    /*bwa */
-    .header-title {
-        color: #34364a;
-        font-weight: 700;
-        font-size: 28px;
-        line-height: 46px
+        margin-top: 200px;
+        width: 70%;
+        box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.1);
     }
 
     .custom-color {
-        background-color: #4BA5B2;
+        background-color: #1B9FC3;
     }
 
     .subtitle {
@@ -94,36 +76,9 @@
         line-height: 32px
     }
 
-    #hero-section .btn-free-warapartner,
-    #testimonial-section-v3 .btn-free-warapartner {
-        margin-right: 14px
-    }
 
     .text-primary-green {
         color: #47bb8e !important
-    }
-
-    @media (max-width: 768px) {
-        .warapartner-card {
-            padding: 30px;
-        }
-
-        .mt-md-5 {
-            margin-top: 0 !important;
-        }
-
-        .col-lg-6 {
-            flex: 0 0 100%;
-            max-width: 100%;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .btn-free-warapartner {
-            margin-bottom: 10px;
-        }
     }
 
     .in-progress-icon {
@@ -137,12 +92,12 @@
         font-size: 40px;
         margin-bottom: 15px;
     }
+
     .succes-icon {
         color: #01A8B8;
         font-size: 40px;
         margin-bottom: 15px;
     }
-
 
     .border {
         border: 1px solid #ccc;
@@ -185,30 +140,26 @@
     </div>
     @elseif (optional($verifiedOwner)->status === 3)
     <div class="container" style="margin-top: 190px;margin-bottom: 160px;">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card text-center border rounded-10 p-4">
-                <div class="card-body">
-                    <i class="fas fa-check-circle fa-5x success-icon succes-icon"></i>
-                    <h5 class="card-title"><b>Pengajuan Warapartner Diterima</b></h5>
-                    <p class="card-text">Selamat pengajuan akun Owner anda diterima, <br>tingkatkan penjualan waralabamu bersama Warabiz</p>
-                    <a href="{{ route('owner.dashboard') }}" class="btn btn-primary" style="background-color: #01A8B8; margin-top: 3rem; border: none;">Ke Halaman Owner</a>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card text-center border rounded-10 p-4">
+                    <div class="card-body">
+                        <i class="fas fa-check-circle fa-5x success-icon succes-icon"></i>
+                        <h5 class="card-title"><b>Pengajuan Warapartner Diterima</b></h5>
+                        <p class="card-text">Selamat pengajuan akun Owner anda diterima, <br>tingkatkan penjualan
+                            waralabamu bersama Warabiz</p>
+                        <a href="{{ route('owner.dashboard') }}" class="btn btn-primary"
+                            style="background-color: #01A8B8; margin-top: 3rem; border: none;">Ke Halaman Owner</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
     @else
-    
-    <section class="py-3"
-        style="background-image: url('{{ asset('assets/frontend/image/bg/bg-warapartner.svg') }}'); background-size: 100% auto; background-position: center; background-repeat: no-repeat;">
+
+    <section class="pt-5 "
+        style="background-image: url('{{ asset('assets/frontend/image/bg/bg-warapartner.svg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; margin-top: 90px; ">
         <div class="warapartner-card">
-            <div style="display: flex; align-items: center; margin-bottom: 26px;">
-                <img src="{{ asset('assets/frontend/image/logo-mini.svg') }}" alt="Logo Warapartner"
-                    style="height: 40px; margin-right: 10px;">
-                <h4 style="color: #222222; font-size:22px; font-weight: bold; margin-left: 10px;">Pendaftaran
-                    Warapartner</h4>
-            </div>
             <h5 style="color: black;">
                 <b>Informasi Pemilik Waralaba</b>
             </h5>
@@ -254,7 +205,7 @@
                         <p>Alamat Rumah <span style="color: red;">*</span></p>
                     </label>
                     <textarea name="address" id="address" class="form-control border px-2 py-1 rounded-3 shadow-none"
-                        required cols="30" rows="3"></textarea>
+                        required cols="30" rows="2"></textarea>
                     <p class="text-sm text-secondary mt-2">Contoh: Jl. DI Panjaitan, No.128, Purwokerto, Banyumas, Jawa
                         Tengah</p>
                 </div>

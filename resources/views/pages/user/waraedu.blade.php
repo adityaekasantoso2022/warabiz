@@ -1,7 +1,6 @@
 <x-user-layout title="WaraEdu" active="waraedu">
     @push('addonStyle')
     <style>
-    /* Style untuk latar belakang dan elemen-elemen lainnya */
     body {
         background: #fbfbfb !important;
     }
@@ -57,7 +56,6 @@
         transition: background-color 200ms linear;
     }
 
-    /* Style untuk kartu artikel */
     .article-card {
         background-color: #fff;
         border-radius: 8px;
@@ -69,9 +67,8 @@
     .article-card img {
         width: 100%;
         height: 180px;
-        /* Ubah tinggi gambar sesuai kebutuhan */
         object-fit: cover;
-        border-radius: 10px 10px 0 0;
+        border-radius: 6px 6px 0 0;
     }
 
     .article-card .card-body {
@@ -117,11 +114,19 @@
         margin-left: 5px;
         margin-top: 12px;
     }
+    .featured-image {
+            width: 100%;
+            height: auto; /* Ensures aspect ratio is maintained */
+            margin-bottom: 30px; /* Adjust as needed */
+        }
+
     </style>
     @endpush
 
     <section style="margin-top: 140px;">
         <div class="container">
+        <img src="https://res.cloudinary.com/dvgmjv4ie/image/upload/v1711182516/banner-waraedu_opynxm.png" alt="Featured Image" class="featured-image">
+
             <div class="row mt-4">
                 @foreach($articles as $article)
                 <div class="col-md-6 col-lg-3 mb-4">
@@ -134,8 +139,6 @@
                                         class="sold-count">{{ \Carbon\Carbon::parse($article->created_at)->format('d/m/Y H:i') }}</span>
                                 </p>
                                 <p class="article-content">{!! substr(strip_tags($article->article), 0, 135) !!}...</p>
-                                <a href="{{ route('waraedu-detail', $article->id) }}" class="read-more">Selengkapnya
-                                    ></a>
                             </div>
                         </a>
                     </div>

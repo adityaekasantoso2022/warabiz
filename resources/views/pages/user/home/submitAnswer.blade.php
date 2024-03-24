@@ -144,6 +144,10 @@
                 display: none;
             }
         }
+        .custom-color {
+        background-color: #1B9FC3;
+    }
+
     </style>
     @endpush
 

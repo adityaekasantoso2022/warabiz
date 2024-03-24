@@ -146,16 +146,16 @@
                         <div class="card-body">
                             <h5 class="card-title">Update Status</h5>
                             <div class="info-item">
-                                <label>Nama Owner</label>
+                                <label>Nama Lengkap Owner</label>
                                 <p>{{ $transaction->waralaba->verifiedOwner->fullname }}
                                 </p>
                             </div>
                             <div class="info-item">
-                                <label>Pengiriman Pembayaran</label>
-                                <p>{{ $transaction->waralaba->verifiedOwner->bank_name }}</p>
+                                <label>Rekening Pengiriman</label>
+                                <p>Bank {{ $transaction->waralaba->verifiedOwner->bank_name }}</p>
                             </div>
                             <div class="info-item">
-                                <label>Nomer</label>
+                                <label>Nomer Reekening</label>
                                 <p>{{ $transaction->waralaba->verifiedOwner->account_number }}</p>
                             </div>
                             <form action="{{ route('admin.transactions.update', $transaction->uuid) }}" method="POST">
